@@ -1,0 +1,36 @@
+{{ $masthead := resources.Get "img/home/_bleiben-sie-gesund.webp" }}
+
+{{ if $masthead }}
+  {{ $resizedMasthead := $masthead.Resize "1920x q90" }}
+  <style>
+    header.masthead {
+      padding-top: 10rem;
+      padding-bottom: calc(10rem - 4.5rem);
+      background: linear-gradient(to bottom, rgba(92, 77, 66, 0.2) 0%, rgba(92, 77, 66, 0.8) 100%), 
+                  url("{{ $resizedMasthead.RelPermalink }}");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      background-size: cover;
+    }
+  </style>
+{{ else }}
+  <p>Error: background-image not found</p>
+{{ end }}
+
+<header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                <h1 class="text-white font-weight-bold">Bleiben Sie gesund.</h1>
+                <hr class="divider" />
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 mb-5" style="font-size: var(--sv-body-lead-font-size);">Gesund und munter leben – <strong>Das wollen wir alle.</strong><br><br>Das Wichtigste ist: <strong>Abwechslung</strong> für Körper und Geist, Ernährung mit Augenmaß und&nbsp;innere Balance. Und dann kommt: <strong>Kluge&nbsp;Vorsorge</strong>
+                  
+                  <br><br>                  Wenn Sie hier gelandet sind, weil Sie wissen, dass ein MRT für Sie das Richtige ist, bringt der Button Sie zur Terminvereinbarung. Aber wenn Sie erst genauer verstehen wollen, wie wir arbeiten, lesen Sie einfach weiter.</p>
+                <a class="btn btn-primary btn-xl" href="#termin">MRT-Termin</a>
+            </div>
+        </div>
+    </div>
+</header>

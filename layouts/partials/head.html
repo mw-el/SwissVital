@@ -1,0 +1,34 @@
+{{ $favicon := resources.Get "favicon.ico" }}
+{{ $masthead := resources.Get "img/bg-masthead.jpg" }}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="{{ .Site.Params.description }}">
+<meta name="author" content="{{ .Site.Params.author }}">
+<title>{{ .Site.Title }}</title>
+
+<!-- Favicon -->
+{{ if $favicon }}
+  <link rel="icon" type="image/x-icon" href="{{ $favicon.RelPermalink }}">
+{{ end }}
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Proza+Libre:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  document.fonts.ready.then(function() {
+    console.log('Fonts loaded successfully');
+  }).catch(function(error) {
+    console.error('Font loading failed:', error);
+  });
+</script>
+<!-- SimpleLightbox plugin CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet">
+
+<!-- Core Theme CSS (Bootstrap included) -->
+<link href="{{ "css/styles.css" | relURL }}" rel="stylesheet">
+

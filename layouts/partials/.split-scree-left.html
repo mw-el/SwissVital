@@ -1,0 +1,74 @@
+{{/* Get frontmatter values */}}
+{{ $image := .Params.bgImage | default .Params.image }}
+{{ $imageURL := "" }}  {{/* Declare image URL before conditions */}}
+
+{{ if $image }}
+  {{ $resource := resources.Get $image }}
+  {{ if $resource }}
+    {{ $imageResized := $resource | images.Resize "1920x q90" }}
+    {{ $imageURL = $imageResized.RelPermalink }}
+  {{ else }}
+    {{ $imageURL = $image | relURL }}
+  {{ end }}
+{{ else }}
+  {{ $imageURL = "/img/default-image.jpg" }}  {{/* Fallback image */}}
+{{ end }}
+
+<style>
+  .split-screen-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .split-screen-left {
+    width: 50%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%), url("{{ $imageURL }}");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .split-screen-left .overlay {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    width: 90%;
+    color: white;
+    text-align: left;
+  }
+
+  .split-screen-right {
+    width: 50%;
+    background-color: {{ .Params.bgColor | default "--sv-secondary" }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: white;
+    text-align: left;
+  }
+
+  .split-screen-right .content {
+    max-width: 600px;
+  }
+</style>
+
+<div class="split-screen-container">
+  <div class="split-screen-left">
+    {{ with .Content }}
+      {{ $doc := . | transform.Unmarshal }}
+      {{ $firstDiv := index $doc 0 }}
+      {{ if eq $firstDiv.Type "div" }}
+        <div class="overlay">
+          {{ $firstDiv.Content | safeHTML }}
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+  <div class="split-screen-right">
+    <div class="content">
+      {{ .Content | replaceRE "^<div[^>]*>.*?</div>" "" | safeHTML }}
+    </div>
+  </div>
+</div>

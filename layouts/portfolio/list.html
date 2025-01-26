@@ -1,0 +1,17 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        {{ range .Pages }}
+        <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="{{ .Permalink }}">
+                <img class="img-fluid" src="{{ .Params.image }}" alt="{{ .Title }}" />
+                <div class="portfolio-box-caption">
+                    <div class="project-name">{{ .Title }}</div>
+                </div>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

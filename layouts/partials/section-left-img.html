@@ -1,0 +1,47 @@
+{{/* Get content from the specified section */}}
+{{ $section := .section }}
+{{ with .Site.GetPage (printf "/sections/%s" $section) }}
+
+    {{/* Get the image URL */}}
+    {{ $bgImageURL := "" }}
+    {{ $bgImage := resources.Get .Params.bgImage }}
+    {{ if $bgImage }}
+        {{ $resizedImage := $bgImage.Resize "1920x q90" }}
+        {{ $bgImageURL = $resizedImage.RelPermalink }}
+    {{ else }}
+        {{ $bgImageURL = .Params.bgImage | relURL }}
+    {{ end }}
+
+    <section id="{{ $section }}" class="position-relative w-100 min-vh-100 overflow-hidden">
+        <!-- Background Layers -->
+        <div class="position-absolute top-0 start-0 w-50 h-100"
+             style="background: url('{{ $bgImageURL }}') center/cover no-repeat;">
+        </div>
+        <div class="position-absolute top-0 start-50 w-50 h-100 {{ .Params.bgClass }}">
+        </div>
+
+        <!-- Content Wrapper -->
+        <div class="container position-relative z-2 h-100 d-flex align-items-center">
+            <div class="row w-100 justify-content-center">
+                <!-- Left: Headline on Image (Wider Column) -->
+                <div class="col-lg-6 text-white d-flex align-items-center">
+                    <h2 class="fw-bold">{{ .Params.headline }}</h2>
+                </div>
+                <!-- Right: Normal Content with Wider Space -->
+                <div class="col-lg-6 d-flex align-items-center text-white {{ .Params.bgClass }} p-5">
+                    <div class="w-95 mx-auto">  <!-- Use Full Width Inside -->
+                       
+                        <div class="text-white-75 lead mb-4">
+                            {{ .Content }}
+                        </div>
+                        {{ if .Params.buttonText }}
+                            <a class="btn btn-light btn-xl mt-3" href="{{ .Params.buttonLink | relURL }}">
+                                {{ .Params.buttonText }}
+                            </a>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{{ end }}
