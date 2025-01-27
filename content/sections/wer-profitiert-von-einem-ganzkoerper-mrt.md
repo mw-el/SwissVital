@@ -1,7 +1,7 @@
 ---
-title: "Wer profitiert von einem Ganzkörper-MRT?"
-headline: "Wer profitiert von einem Ganzkörper-MRT?"
-bgClass: "bg-primary-darker"
+title: "Wer profitiert von einem Ganzkörper&#8209;MRT?"
+headline: "Wer profitiert von einem Ganzkörper&#8209;MRT?"
+bgClass: "bg-secondary"
 bgImage: "img/sections/-wer-profitiert.webp" # Add image path if needed
 buttonText: "Jetzt Selbsttest machen"
 buttonLink: "/selbsttest"

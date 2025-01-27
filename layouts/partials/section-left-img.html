@@ -4,44 +4,76 @@
 
     {{/* Get the image URL */}}
     {{ $bgImageURL := "" }}
-    {{ $bgImage := resources.Get .Params.bgImage }}
+    {{ $bgImage := resources.Get (.Params.bgImage | safeHTML) }}
     {{ if $bgImage }}
         {{ $resizedImage := $bgImage.Resize "1920x q90" }}
         {{ $bgImageURL = $resizedImage.RelPermalink }}
     {{ else }}
-        {{ $bgImageURL = .Params.bgImage | relURL }}
+        {{ $bgImageURL = .Params.bgImage | safeHTML | relURL }}
     {{ end }}
 
-    <section id="{{ $section }}" class="position-relative w-100 min-vh-100 overflow-hidden">
-        <!-- Background Layers -->
-        <div class="position-absolute top-0 start-0 w-50 h-100"
-             style="background: url('{{ $bgImageURL }}') center/cover no-repeat;">
-        </div>
-        <div class="position-absolute top-0 start-50 w-50 h-100 {{ .Params.bgClass }}">
-        </div>
+    <section id="{{ $section }}" class="position-relative w-100 min-vh-100">
+        <div class="container-fluid p-0 h-100">
+            
+            <!-- Mobile Layout (Stacked) -->
+            <div class="d-lg-none w-100 {{ .Params.bgClass | safeHTML }} text-center text-white py-4">
+                <h2 class="fw-bold h2-lg" style="margin: 0 5vw;">{{ .Params.headline | safeHTML }}</h2>
+            </div>
 
-        <!-- Content Wrapper -->
-        <div class="container position-relative z-2 h-100 d-flex align-items-center">
-            <div class="row w-100 justify-content-center">
-                <!-- Left: Headline on Image (Wider Column) -->
-                <div class="col-lg-6 text-white d-flex align-items-center">
-                    <h2 class="fw-bold">{{ .Params.headline }}</h2>
+            <!-- Mobile Image (Matches Text Width, Rounded Corners, Shadow) -->
+            <div class="d-lg-none d-flex justify-content-center w-100 {{ .Params.bgClass | safeHTML }} py-3">
+                <div class="rounded-image">
+                    <img src="{{ $bgImageURL | safeHTML }}" alt="" class="w-100 h-auto">
                 </div>
-                <!-- Right: Normal Content with Wider Space -->
-                <div class="col-lg-6 d-flex align-items-center text-white {{ .Params.bgClass }} p-5">
-                    <div class="w-95 mx-auto">  <!-- Use Full Width Inside -->
-                       
-                        <div class="text-white-75 lead mb-4">
-                            {{ .Content }}
+            </div>
+
+            <div class="d-lg-none w-100 {{ .Params.bgClass | safeHTML }} text-white p-4">
+                <div class="text-white-75 lead mb-4" style="margin: 0 5vw;">
+                    {{ .Content | safeHTML }}
+                </div>
+                {{ if .Params.buttonText }}
+                    <div class="text-center">
+                        <a class="btn btn-light btn-xl mt-3 section-button" href="{{ .Params.buttonLink | safeHTML }}">
+                            {{ .Params.buttonText | safeHTML }}
+                        </a>
+                    </div>
+                {{ end }}
+            </div>
+
+            <!-- Desktop Layout (Split Screen) -->
+            <div class="row h-100 g-0 d-none d-lg-flex">
+                
+                <!-- Left: Image with Overlay Title -->
+                <div class="col-lg-6 position-relative d-flex align-items-center justify-content-end"
+                     style="background: url('{{ $bgImageURL | safeHTML }}') center/cover no-repeat; min-height: 100vh;">
+                    
+                    <div class="position-absolute top-0 start-0 w-100 h-100"
+                         style="background: rgba(0, 0, 0, 0.3);"></div>
+
+                    <!-- Fix: Headline inside image with dynamic margin -->
+                    <div class="position-relative w-100 text-end pe-4">
+                        <h2 class="text-white fw-bold" style="font-size: 3rem; max-width: 80%; margin: 0 5vw;">
+                            {{ .Params.headline | safeHTML }}
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Right: Content Section -->
+                <div class="col-lg-6 d-flex align-items-center {{ .Params.bgClass | safeHTML }} text-white p-5">
+                    <div class="w-100">
+                        <div class="text-white-75 lead mb-4" style="margin: 0 5vw;">
+                            {{ .Content | safeHTML }}
                         </div>
                         {{ if .Params.buttonText }}
-                            <a class="btn btn-light btn-xl mt-3" href="{{ .Params.buttonLink | relURL }}">
-                                {{ .Params.buttonText }}
+                            <a class="btn btn-light btn-xl mt-3 section-button" href="{{ .Params.buttonLink | safeHTML }}">
+                                {{ .Params.buttonText | safeHTML }}
                             </a>
                         {{ end }}
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
+
 {{ end }}

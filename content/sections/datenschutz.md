@@ -1,7 +1,7 @@
 ---
 title: "Datenschutz"
 headline: "Datenschutz"
-bgClass: "bg-primary-darker"
+bgClass: "bg-secondary"
 bgImage: "" # Add image path if needed
 buttonText: "Mehr erfahren"
 buttonLink: "/kontakt"

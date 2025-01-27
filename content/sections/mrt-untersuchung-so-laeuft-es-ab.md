@@ -1,7 +1,7 @@
 ---
 title: "MRT-Untersuchung: So läuft es ab"
 headline: "MRT-Untersuchung: So läuft es ab"
-bgClass: "bg-secondary"
+bgClass: "bg-primary-darker"
 bgImage: "" # Add image path if needed
 buttonText: "Ablauf ansehen"
 buttonLink: "/mrt-ablauf"

@@ -1,7 +1,7 @@
 ---
 title: "Ganzkörper-MRT bei SwissVital"
 headline: "Ganzkörper-MRT bei SwissVital"
-bgClass: "bg-primary-darker"
+bgClass: "bg-secondary"
 bgImage: "" # Add image path if needed
 buttonText: "Mehr zu MRT bei SwissVital"
 buttonLink: "/mrt-info"

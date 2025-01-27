@@ -1,7 +1,7 @@
 ---
 title: "Selbsttest: Ihr erster Schritt – ohne Kosten"
 headline: "Selbsttest: Ihr erster Schritt – ohne Kosten"
-bgClass: "bg-secondary"
+bgClass: "bg-primary-darker"
 bgImage: "" # Add image path if needed
 buttonText: "Selbsttest starten"
 buttonLink: "/selbsttest"
