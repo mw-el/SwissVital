@@ -2,9 +2,12 @@
 title: "Übersicht schaffen: Das Ganzkörper-MRT"
 headline: "Übersicht schaffen: Das Ganzkörper-MRT"
 bgClass: "bg-secondary"
+Color: "var(--sv-offwhite)"
 bgImage: "" # Add image path if needed
 buttonText: "Mehr erfahren"
 buttonLink: "/kontakt"
+buttonColor: "var(--sv-offwhite)"
+buttonBg: "var(--sv-primary-darker)"
 ---
 
 Ein Ganzkörper-MRT ist die am besten investierte Stunde für Ihre Gesundheit. Es ist ein guter Start für Ihre persönliche Vorsorgestrategie – idealerweise kombiniert mit einem grossen Blutbild. Es gibt weitere Untersuchungen, die in Ihrem Fall vielleicht besonders sinnvoll sind, vielleicht sogar sinnvoller als ein MRT.

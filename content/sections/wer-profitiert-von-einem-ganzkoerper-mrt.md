@@ -1,10 +1,14 @@
 ---
 title: "Wer profitiert von einem Ganzkörper&#8209;MRT?"
 headline: "Wer profitiert von einem Ganzkörper&#8209;MRT?"
-bgClass: "bg-secondary"
+bgClass: "bg-offwhite"
+Color: "var(--sv-body-color)"
 bgImage: "img/sections/-wer-profitiert.webp" # Add image path if needed
 buttonText: "Jetzt Selbsttest machen"
 buttonLink: "/selbsttest"
+buttonColor: "var(--sv-offwhite)"
+buttonBg: "var(--sv-primary-darker)"
+
 ---
 
 Ein Ganzkörper-MRT ist als Überblick über Ihren körperlichen Status eine gute Sache. Besonders entlastend ist es für Menschen, die sich aus den folgenden Gründen Sorgen machen:

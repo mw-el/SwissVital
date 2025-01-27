@@ -2,9 +2,12 @@
 title: "Datenschutz"
 headline: "Datenschutz"
 bgClass: "bg-secondary"
+Color: "var(--sv-offwhite)"
 bgImage: "" # Add image path if needed
 buttonText: "Mehr erfahren"
 buttonLink: "/kontakt"
+buttonColor: "var(--sv-offwhite)"
+buttonBg: "var(--sv-primary-darker)"
 ---
 
 Gerade bei Gesundheitsdaten ist Datenschutz entscheidend. 
