@@ -3,8 +3,8 @@ title: "Wissen macht gesund."
 headline: "Wissen macht gesund."
 bgClass: "bg-offwhite"
 Color: "var(--sv-body-color)"
-bgImage: "img/sections/_wissen-macht-gesund.webp" # Add image path if needed
-buttonText: "Die beste Diadnostik"
+bgImage: "img/sections/_rothariger-businessman.webp" # Add image path if needed
+buttonText: "Die beste Diagnostik"
 buttonLink: "/untersuchungen"
 buttonColor: "var(--sv-offwhite)"
 buttonBg: "var(--sv-primary-darker)"

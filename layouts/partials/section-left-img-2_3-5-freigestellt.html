@@ -1,0 +1,60 @@
+
+{{/* Get content from the specified section */}}
+{{ $section := .section }}
+{{ with .Site.GetPage (printf "/sections/%s" $section) }}
+
+    {{/* Get the image URL */}}
+    {{ $bgImageURL := "" }}
+    {{ $bgImage := resources.Get (.Params.bgImage | safeCSS) }}
+    {{ if $bgImage }}
+        {{ $resizedImage := $bgImage.Resize "1920x q90" }}
+        {{ $bgImageURL = $resizedImage.RelPermalink }}
+    {{ else }}
+        {{ $bgImageURL = .Params.bgImage | safeCSS | relURL }}
+    {{ end }}
+
+    <section id="{{ $section }}" class="position-relative w-100 min-vh-100 d-flex align-items-center {{ .Params.bgClass | safeCSS }}">
+        <div class="container">
+            
+            <!-- Main Content (Image + Text Side by Side) -->
+            <div class="row gx-5 align-items-center">
+                
+                <!-- Left: Image (2/5) -->
+                <div class="col-lg-4 d-flex flex-column align-items-center">
+                    <img src="{{ $bgImageURL | safeCSS }}" alt="" class="img-fluid" style="background: transparent;">
+
+                    {{ if .Params.buttonText }}
+                        <!-- Button centered under image -->
+                        <div class="mt-3">
+                            <a class="btn btn-xl" href="{{ .Params.buttonLink | safeCSS }}" 
+                               style="background-color: {{ .Params.buttonBg | default "var(--sv-primary-darker)" | safeCSS }}; color: {{ .Params.buttonColor | default "var(--sv-offwhite)" | safeCSS }}; border-color: {{ .Params.buttonBorderColor | default (.Params.buttonBg | default "var(--sv-primary-darker)") | safeCSS }};">
+                                {{ .Params.buttonText | safeCSS }}
+                            </a>
+                        </div>
+                    {{ end }}
+                </div>
+
+                <!-- Right: Content (3/5) -->
+                <div class="col-lg-8">
+                    
+                    <!-- Headline (Left-aligned above text) -->
+                    <div class="mb-3">
+                        <h2 class="fw-bold h2-lg p-4">
+                            {{ .Params.headline | safeHTML }}
+                        </h2>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="{{ .Params.bgClass | safeCSS }} p-4 text-start">
+                        <div class="lead">
+                            {{ .Content | safeHTML }}
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+{{ end }}

@@ -3,7 +3,7 @@ title: "Wer profitiert von einem Ganzkörper&#8209;MRT?"
 headline: "Wer profitiert von einem Ganzkörper&#8209;MRT?"
 bgClass: "bg-offwhite"
 Color: "var(--sv-body-color)"
-bgImage: "img/sections/-wer-profitiert.webp" # Add image path if needed
+bgImage: "img/sections/_wer-profitiert.webp" # Add image path if needed
 buttonText: "Jetzt Selbsttest machen"
 buttonLink: "/selbsttest"
 buttonColor: "var(--sv-offwhite)"

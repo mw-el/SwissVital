@@ -1,0 +1,62 @@
+{{/* Get content from the specified section */}}
+{{ $section := .section }}
+{{ with .Site.GetPage (printf "/sections/%s" $section) }}
+
+    {{/* Get the image URL */}}
+    {{ $bgImageURL := "" }}
+    {{ $bgImage := resources.Get .Params.bgImage }}
+    {{ if $bgImage }}
+        {{ $resizedImage := $bgImage.Resize "1920x q90" }}
+        {{ $bgImageURL = $resizedImage.RelPermalink }}
+    {{ else }}
+        {{ $bgImageURL = .Params.bgImage | relURL }}
+    {{ end }}
+
+    <section id="{{ $section }}" class="position-relative w-100 min-vh-100 d-flex align-items-center justify-content-center {{ .Params.bgClass | safeCSS }}">
+        <div class="container">
+            
+            <!-- Ensuring both columns are stretched to the same height -->
+            <div class="row gx-5 align-items-stretch justify-content-center" style="row-gap: clamp(1rem, 2vw, 3rem);">
+                
+              
+                <!-- left: Content (3/5) -->
+                <div class="col-lg-8 d-flex flex-column justify-content-between">
+                    
+                    <!-- Headline (Left-aligned above text) -->
+                    <div class="mb-3">
+                        <h2 class="fw-bold h2-lg p-4 text-start" style="color: {{ .Params.Color | safeCSS }};">
+                            {{ .Params.headline | safeHTML }}
+                        </h2>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="lead p-4 text-start" style="color: {{ .Params.Color | safeCSS }};">
+                        {{ .Content | safeHTML }}
+                    </div>
+
+                    {{ if .Params.buttonText }}
+                        <!-- Button centered under the text -->
+                        <div class="mt-3 text-center" 
+                             style="margin-top: clamp(1.5rem, 3vw, 5rem);">
+                            <a class="btn btn-xl" href="{{ .Params.buttonLink | safeCSS }}" 
+                               style="background-color: {{ .Params.buttonBg | safeCSS }}; 
+                                      color: {{ .Params.buttonColor | safeCSS }}; 
+                                      border-color: {{ .Params.buttonBorderColor | default .Params.buttonBg | safeCSS }};">
+                                {{ .Params.buttonText | safeCSS }}
+                            </a>
+                        </div>
+                    {{ end }}
+
+                </div>
+                  <!-- right: Image (2/5) -->
+                  <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <img src="{{ $bgImageURL }}" alt="{{ .Params.imageAlt | default .Params.headline }}" 
+                         class="img-fluid rounded shadow-lg" 
+                         style="background: transparent; height: 100%; object-fit: cover;">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{{ end }}

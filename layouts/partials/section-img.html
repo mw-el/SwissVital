@@ -1,0 +1,58 @@
+{{/* Get content from the specified section */}}
+{{ $section := .section }}
+{{ with .Site.GetPage (printf "/sections/%s" $section) }}
+
+    {{/* Get the background image */}}
+    {{ $bgImageURL := "" }}
+    {{ $bgImage := resources.Get (.Params.bgImage | safeCSS) }}
+    {{ if $bgImage }}
+        {{ $resizedBgImage := $bgImage.Resize "1920x q90" }}
+        {{ $bgImageURL = $resizedBgImage.RelPermalink }}
+    {{ else }}
+        {{ $bgImageURL = .Params.bgImage | safeCSS | relURL }}
+    {{ end }}
+
+    <section id="{{ $section }}" class="position-relative w-100 d-flex align-items-center text-white text-center"
+        style="min-height: auto; 
+               min-height: clamp(50vh, 75vh, 100vh);
+               background: linear-gradient(to bottom, rgba(92, 77, 66, 0.2) 0%, rgba(92, 77, 66, 0.8) 100%), 
+               url('{{ $bgImageURL | safeCSS }}');
+               background-size: cover; 
+               background-position: left 15% top 5%;
+               background-repeat: no-repeat;
+               position: relative; 
+               z-index: 0;">
+        
+        <div class="container d-flex flex-column justify-content-center" style="min-height: inherit;">
+            <div class="row justify-content-center align-items-stretch">
+                <div class="col-lg-8" style="padding-top: max(12vh, clamp(50px, 12vh, 150px)); padding-bottom: clamp(40px, 5vh, 80px);">
+                    
+                    <!-- Headline (Centered) -->
+                    <h1 class="text-white font-weight-bold h1-lg" style="margin-bottom: clamp(20px, 5vh, 60px);">
+                        {{ .Params.headline | safeHTML }}
+                    </h1>
+                    
+                    <!-- Text Content -->
+                    <div class="lead" style="margin-bottom: clamp(20px, 5vh, 60px);">
+                        {{ .Content | safeHTML }}
+                    </div>
+                    
+                    <!-- Button (Centered) -->
+                    {{ if .Params.buttonText }}
+                        <div>
+                            <a class="btn btn-primary btn-xl" href="{{ .Params.buttonLink | safeCSS }}" 
+                               style="background-color: {{ .Params.buttonBg | default "var(--sv-primary-darker)" | safeCSS }}; 
+                                      color: {{ .Params.buttonColor | default "var(--sv-offwhite)" | safeCSS }}; 
+                                      border-color: {{ .Params.buttonBorderColor | default (.Params.buttonBg | default "var(--sv-primary-darker)") | safeCSS }};">
+                                {{ .Params.buttonText | safeCSS }}
+                            </a>
+                        </div>
+                    {{ end }}
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{{ end }}

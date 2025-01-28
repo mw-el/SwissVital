@@ -8220,6 +8220,27 @@ textarea.form-control-lg {
   background-color: rgba(var(--sv-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
+
+.bg-pumpkin {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--sv-pumpkin-rgb), var(--bs-bg-opacity)) !important;
+}
+
+
+
+.bg-mossgreen {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--sv-mossgreen-rgb), var(--bs-bg-opacity)) !important;
+}
+
+
+
+.bg-sandybrown {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--sv-sandybrown-rgb), var(--bs-bg-opacity)) !important;
+}
+
+
 .bg-offwhite {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--sv-offwhite-rgb), var(--bs-bg-opacity)) !important;
