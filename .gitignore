@@ -11,3 +11,6 @@ Thumbs.db
 # Temporary files
 *.swp
 *.swo
+
+# Local Netlify folder
+.netlify

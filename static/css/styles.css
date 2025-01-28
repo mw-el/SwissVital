@@ -229,6 +229,18 @@ h2, .h2 {
   }
 }
 
+
+.h1-lg {
+  font-size: calc(1.4rem + 4vw);
+}
+
+@media (min-width: 1200px) {
+  .h1-lg {
+    font-size: calc(1.5rem + 1.7vw);
+  }
+}
+
+
 .h2-lg {
   font-size: calc(1.1rem + 3.5vw);
 }
