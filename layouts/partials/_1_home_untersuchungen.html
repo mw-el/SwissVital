@@ -9,10 +9,11 @@
             {{ $fullimage := resources.Get .Params.fullimage }}
             {{ $fullresized := $fullimage.Resize "1600x q90 webp" }}
             <div class="col-lg-4 col-sm-6">
-                <a class="portfolio-box" href="{{ $fullresized.RelPermalink }}" data-lightbox="portfolio">
+                <a class="portfolio-box" href="{{ $fullresized.RelPermalink }}" data-lightbox="portfolio" title="{{ .Title }}">
                     <img class="img-fluid" src="{{ $resized.RelPermalink }}" alt="{{ .Title }}" />
-                    <div class="portfolio-box-caption">
-                        <div class="project-name text-center">{{ .Title }}</div>
+                    <div class="portfolio-box-caption p-3">
+                        <div class="project-category text-white-50">{{ .Params.category | default "Category" }}</div>
+                        <div class="project-name">{{ .Title }}</div>
                     </div>
                 </a>
             </div>

@@ -1,9 +1,9 @@
 ---
 title: "Selbsttest: Ihr erster Schritt – ohne Kosten"
 headline: "Selbsttest: Ihr erster Schritt – ohne Kosten"
-bgClass: "bg-primary-darker"
-Color: "var(--sv-offwhite)"
-bgImage: "" # Add image path if needed
+bgClass: "bg-offwhite"
+Color: ""
+bgImage: "img/sections/_man-takes-survey.png" # Add image path if needed
 buttonText: "Selbsttest starten"
 buttonLink: "/selbsttest"
 buttonColor: "var(--sv-offwhite)"

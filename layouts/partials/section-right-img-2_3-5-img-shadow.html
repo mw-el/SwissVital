@@ -18,8 +18,8 @@
             <!-- Ensuring both columns are stretched to the same height -->
             <div class="row gx-5 align-items-stretch justify-content-center" style="row-gap: clamp(1rem, 2vw, 3rem);">
                 
-              
-                <!-- left: Content (3/5) -->
+                
+                <!-- Left: Content (3/5) -->
                 <div class="col-lg-8 d-flex flex-column justify-content-between">
                     
                     <!-- Headline (Left-aligned above text) -->
@@ -48,13 +48,15 @@
                     {{ end }}
 
                 </div>
-                  <!-- right: Image (2/5) -->
-                  <div class="col-lg-4 d-flex justify-content-center align-items-center">
+
+                <!-- Right: Image (2/5) -->
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
                     <img src="{{ $bgImageURL }}" alt="{{ .Params.imageAlt | default .Params.headline }}" 
                          class="img-fluid rounded shadow-lg" 
                          style="background: transparent; height: 100%; object-fit: cover;">
                 </div>
 
+                
             </div>
         </div>
     </section>

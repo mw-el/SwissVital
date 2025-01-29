@@ -8220,6 +8220,11 @@ textarea.form-control-lg {
   background-color: rgba(var(--sv-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-viridian-pale {
+  --bs-bg-opacity: 0.3;
+  background-color: rgba(var(--sv-viridian-rgb), var(--bs-bg-opacity)) !important;
+}
+
 
 .bg-pumpkin {
   --bs-bg-opacity: 1;

@@ -1,9 +1,9 @@
 ---
 title: "Datenschutz"
 headline: "Datenschutz"
-bgClass: "bg-secondary"
+bgClass: "bg-primary"
 Color: "var(--sv-offwhite)"
-bgImage: "" # Add image path if needed
+bgImage: "img/sections/_fingerprint.webp" # Add image path if needed
 buttonText: "Mehr erfahren"
 buttonLink: "/kontakt"
 buttonColor: "var(--sv-offwhite)"
