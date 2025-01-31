@@ -1,0 +1,147 @@
+{{/*
+  partials/full-bg.html
+  --------------------
+  This partial generates a full-background section with configurable settings.
+  - Uses `.sv-bg-canvas` as the background layer, which supports:
+    - A background image (processed with Hugo resources).
+    - A solid background color if no image is provided.
+  - `.sv-bg-grid` ensures content is centered both horizontally & vertically.
+  - Handles responsive adjustments for different screen sizes.
+  - Adds spacing between headline, text, and buttons for a balanced look.
+*/}}
+
+<style>
+  /* Background Canvas (Outer Layer) */
+  .sv-bg-canvas {
+    width: 100%;
+    height: clamp(50vh, 60vh, 80vh);
+    padding: clamp(2rem, 5vw, 6rem);
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center center;
+    color: inherit; /* Inherit text color */
+  }
+
+  /* Inner Grid to Center Content */
+  .sv-bg-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text block horizontally */
+    justify-content: center; /* Center text block vertically */
+    height: 100%; /* Ensure it uses full available height */
+    text-align: center;
+    color: inherit; /* Inherit text color */
+  }
+
+  /* Headline Styling */
+  .sv-bg-grid h2 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: clamp(0.5rem, 2vw, 2rem);
+    color: inherit; /* Ensure h2 inherits text color */
+  }
+
+  /* Content Text */
+  .sv-bg-grid p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    max-width: 800px;
+    color: inherit; /* Ensure p inherits text color */
+  }
+
+  /* Button Styling */
+  .sv-buttons {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.5rem, 1vw, 1.5rem);
+    margin-top: clamp(1rem, 4vw, 3rem);
+  }
+
+  .sv-btn {
+    font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+    padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 2rem);
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .sv-btn-secondary {
+    border: 1px solid;
+  }
+
+  /* Responsive Behavior - Stacked Layout on Small Screens */
+  @media (max-width: 768px) {
+    .sv-bg-grid {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+
+{{/* Process Background Image */}}
+{{ $bgImageURL := "" }}
+{{ if .Params.background_image }}
+  {{ $bg := resources.Get .Params.background_image }}
+  {{ if $bg }}
+    {{ $bgRes := $bg.Resize "1920x q90" }}
+    {{ $bgImageURL = $bgRes.RelPermalink }}
+  {{ end }}
+{{ end }}
+
+{{/* Process Optional Foreground Image */}}
+{{ $fgImageURL := "" }}
+{{ if .Params.image }}
+  {{ $fg := resources.Get .Params.image }}
+  {{ if $fg }}
+    {{ $fgRes := $fg.Resize "800x q85" }}
+    {{ $fgImageURL = $fgRes.RelPermalink }}
+  {{ end }}
+{{ end }}
+
+{{/* Layout & Style Variables */}}
+{{ $bgColor := .Params.background_color | default "#ffffff" }}
+{{ $textColor := .Params.text_color | default "#222" }}
+
+{{/* Button Variables */}}
+{{ $primaryBtnBg := .Params.primary_button_background | default "var(--sv-primary)" }}
+{{ $primaryBtnText := .Params.primary_button_text_color | default "var(--sv-offwhite)" }}
+{{ $primaryBtnBorder := .Params.primary_button_border | default $primaryBtnBg }}
+{{ $primaryBtnLink := .Params.primary_button_link | default "#" }}
+{{ $primaryBtnLabel := .Params.primary_button_text | default "Mehr erfahren" }}
+
+{{ $secondaryBtnBg := .Params.secondary_button_background | default $primaryBtnText }}
+{{ $secondaryBtnText := .Params.secondary_button_text_color | default $primaryBtnBg }}
+{{ $secondaryBtnBorder := .Params.secondary_button_border | default $primaryBtnText }}
+{{ $secondaryBtnLink := .Params.secondary_button_link }}
+{{ $secondaryBtnLabel := .Params.secondary_button_text }}
+
+<section class="sv-section sv-full-bg">
+  <div class="sv-bg-canvas" style="{{ if $bgImageURL }}background-image: url('{{ $bgImageURL }}');{{ else }}background-color: {{ $bgColor | safeCSS }};{{ end }} color: {{ $textColor | safeCSS }};">
+    <div class="sv-bg-grid">
+      <!-- Headline -->
+      <h2 style="color: {{ $textColor | safeCSS }};">{{ .Title }}</h2>
+
+      <!-- Main Content -->
+      <div style="color: {{ $textColor | safeCSS }};">{{ .Content | safeHTML }}</div>
+
+      <!-- Buttons -->
+      {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+        <div class="sv-buttons" style="justify-content: {{ .Params.button_alignment | default "center" }};">
+          {{ if $primaryBtnLabel }}
+            <a href="{{ $primaryBtnLink }}" class="sv-btn"
+               style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+              {{ $primaryBtnLabel }}
+            </a>
+          {{ end }}
+
+          {{ if $secondaryBtnLabel }}
+            <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+               style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+              {{ $secondaryBtnLabel }}
+            </a>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

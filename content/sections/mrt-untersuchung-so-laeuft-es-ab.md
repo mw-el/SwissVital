@@ -14,3 +14,4 @@ Wir spulen nicht einfach ein Standardprogramm ab. Ein MRT kann je nach Parametri
 
 Dann folgt die eigentliche Untersuchung im offenen Scanner, die etwa 60 Minuten dauert. Dabei entstehen bis zu 4.000 Bilder, aus denen wir ein 3-D-Modell Ihres gesamten Körpers errechnen.
 
+

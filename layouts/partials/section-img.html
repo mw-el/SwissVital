@@ -1,58 +1,159 @@
-{{/* Get content from the specified section */}}
-{{ $section := .section }}
-{{ with .Site.GetPage (printf "/sections/%s" $section) }}
+{{/*
+  partials/full-bg.html
+  --------------------
+  - Uses `.sv-bg-canvas` for the background (image or color).
+  - `.sv-bg-grid` ensures content is centered.
+  - Retrieves all values correctly from front matter.
+  - Uses `resources.Get` for image processing.
+*/}}
 
-    {{/* Get the background image */}}
-    {{ $bgImageURL := "" }}
-    {{ $bgImage := resources.Get (.Params.bgImage | safeCSS) }}
-    {{ if $bgImage }}
-        {{ $resizedBgImage := $bgImage.Resize "1920x q90" }}
-        {{ $bgImageURL = $resizedBgImage.RelPermalink }}
-    {{ else }}
-        {{ $bgImageURL = .Params.bgImage | safeCSS | relURL }}
-    {{ end }}
-
-    <section id="{{ $section }}" class="position-relative w-100 d-flex align-items-center text-white text-center"
-        style="min-height: auto; 
-               min-height: clamp(50vh, 75vh, 100vh);
-               background: linear-gradient(to bottom, rgba(92, 77, 66, 0.2) 0%, rgba(92, 77, 66, 0.8) 100%), 
-               url('{{ $bgImageURL | safeCSS }}');
-               background-size: cover; 
-               background-position: left 15% top 5%;
-               background-repeat: no-repeat;
-               position: relative; 
-               z-index: 0;">
-        
-        <div class="container d-flex flex-column justify-content-center" style="min-height: inherit;">
-            <div class="row justify-content-center align-items-stretch">
-                <div class="col-lg-8" style="padding-top: max(12vh, clamp(50px, 12vh, 150px)); padding-bottom: clamp(40px, 5vh, 80px);">
-                    
-                    <!-- Headline (Centered) -->
-                    <h1 class="text-white font-weight-bold h1-lg" style="margin-bottom: clamp(20px, 5vh, 60px);">
-                        {{ .Params.headline | safeHTML }}
-                    </h1>
-                    
-                    <!-- Text Content -->
-                    <div class="lead" style="margin-bottom: clamp(20px, 5vh, 60px);">
-                        {{ .Content | safeHTML }}
-                    </div>
-                    
-                    <!-- Button (Centered) -->
-                    {{ if .Params.buttonText }}
-                        <div>
-                            <a class="btn btn-primary btn-xl" href="{{ .Params.buttonLink | safeCSS }}" 
-                               style="background-color: {{ .Params.buttonBg | default "var(--sv-primary-darker)" | safeCSS }}; 
-                                      color: {{ .Params.buttonColor | default "var(--sv-offwhite)" | safeCSS }}; 
-                                      border-color: {{ .Params.buttonBorderColor | default (.Params.buttonBg | default "var(--sv-primary-darker)") | safeCSS }};">
-                                {{ .Params.buttonText | safeCSS }}
-                            </a>
-                        </div>
-                    {{ end }}
-
-                </div>
+<style>
+    /* Background Canvas */
+    .sv-bg-canvas {
+      width: 100%;
+      height: clamp(50vh, 75vh, 100vh);
+      padding: clamp(2rem, 5vw, 6rem);
+      box-sizing: border-box;
+      background-size: cover;
+      background-position: left 15% top 5%;
+      background-repeat: no-repeat;
+      position: relative;
+      z-index: 0;
+    }
+  
+    /* Content Grid */
+    .sv-bg-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    /* Headline */
+    .sv-bg-grid h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: clamp(20px, 5vh, 60px);
+    }
+  
+    /* Content Text */
+    .sv-bg-grid .lead {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      margin-bottom: clamp(20px, 5vh, 60px);
+      max-width: 800px;
+    }
+  
+    /* Button Styling */
+    .sv-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: clamp(1rem, 4vw, 3rem);
+      gap: 1rem;
+    }
+  
+    .sv-btn {
+      font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+      padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 2rem);
+      border-radius: 5px;
+      text-decoration: none;
+      display: inline-block;
+    }
+  
+    .sv-btn-secondary {
+      border: 1px solid;
+    }
+  
+    @media (max-width: 768px) {
+      .sv-bg-grid {
+        text-align: center;
+      }
+    }
+  </style>
+  
+  {{/* Retrieve values from front matter */}}
+  {{ $bgImage := .Params.background_image }}
+  {{ $bgColor := .Params.background_color | default "#ffffff" }}
+  {{ $textColor := .Params.text_color | default "#222" }}
+  
+  {{/* Image Processing */}}
+  {{ $bgImageURL := "" }}
+  {{ $imageResource := resources.Get $bgImage }}
+  {{ if $imageResource }}
+      {{ $resizedImage := $imageResource.Resize "1920x q90" }}
+      {{ $bgImageURL = $resizedImage.RelPermalink }}
+  {{ else }}
+      {{ $bgImageURL = relURL $bgImage }}
+  {{ end }}
+  
+  {{/* Primary Button */}}
+  {{ $primaryBtnBg := .Params.primary_button_background | default "var(--sv-primary-darker)" }}
+  {{ $primaryBtnText := .Params.primary_button_text_color | default "var(--sv-offwhite)" }}
+  {{ $primaryBtnBorder := .Params.primary_button_border | default $primaryBtnBg }}
+  {{ $primaryBtnLink := .Params.primary_button_link | default "#" }}
+  {{ $primaryBtnLabel := .Params.primary_button_text | default "Mehr erfahren" }}
+  
+  {{/* Secondary Button */}}
+  {{ $secondaryBtnBg := .Params.secondary_button_background | default $primaryBtnText }}
+  {{ $secondaryBtnText := .Params.secondary_button_text_color | default $primaryBtnBg }}
+  {{ $secondaryBtnBorder := .Params.secondary_button_border | default $primaryBtnText }}
+  {{ $secondaryBtnLink := .Params.secondary_button_link }}
+  {{ $secondaryBtnLabel := .Params.secondary_button_text }}
+  
+  {{/* Debugging Output */}}
+  {{ with $bgImage }} [DEBUG] background_image (frontmatter): {{ . }} {{ end }}
+  {{ with $imageResource }} [DEBUG] Image found as Hugo resource: {{ . }} {{ end }}
+  {{ with $bgImageURL }} [DEBUG] Final $bgImageURL: {{ . }} {{ end }}
+  {{ with $bgColor }} [DEBUG] background_color: {{ . }} {{ end }}
+  {{ with $textColor }} [DEBUG] text_color: {{ . }} {{ end }}
+  
+  {{/* Determine background settings */}}
+  {{ $bgStyle := "" }}
+  {{ if $bgImageURL }}
+    {{ $bgStyle = printf "background: linear-gradient(to bottom, rgba(92, 77, 66, 0.2) 0%, rgba(92, 77, 66, 0.8) 100%), url('%s');" $bgImageURL }}
+  {{ else }}
+    {{ $bgStyle = printf "background-color: %s;" $bgColor }}
+  {{ end }}
+  
+  <section class="sv-section sv-full-bg">
+    <div class="sv-bg-canvas" style="{{ $bgStyle }} color: {{ $textColor }};">
+      
+      <div class="container d-flex flex-column justify-content-center" style="min-height: inherit;">
+        <div class="row justify-content-center align-items-stretch">
+          <div class="col-lg-8" style="padding-top: max(12vh, clamp(50px, 12vh, 150px)); padding-bottom: clamp(40px, 5vh, 80px);">
+            
+            <!-- Headline -->
+            <h1>{{ .Params.headline | safeHTML }}</h1>
+  
+            <!-- Text Content -->
+            <div class="lead">
+              {{ .Content | safeHTML }}
             </div>
+  
+            <!-- Buttons -->
+            {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+              <div class="sv-buttons">
+                {{ if $primaryBtnLabel }}
+                  <a href="{{ $primaryBtnLink }}" class="sv-btn"
+                     style="background-color: {{ $primaryBtnBg }}; color: {{ $primaryBtnText }}; border: 1px solid {{ $primaryBtnBorder }};">
+                    {{ $primaryBtnLabel }}
+                  </a>
+                {{ end }}
+  
+                {{ if $secondaryBtnLabel }}
+                  <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                     style="background-color: {{ $secondaryBtnBg }}; color: {{ $secondaryBtnText }}; border: 1px solid {{ $secondaryBtnBorder }};">
+                    {{ $secondaryBtnLabel }}
+                  </a>
+                {{ end }}
+              </div>
+            {{ end }}
+  
+          </div>
         </div>
-
-    </section>
-
-{{ end }}
+      </div>
+  
+    </div>
+  </section>
+  
