@@ -1,0 +1,59 @@
+{{/*
+  This partial expects a dictionary with:
+    - context: the parent context (e.g., .)
+    - section: the content section to iterate over (e.g., "quality", "services")
+*/}}
+
+<section class="page-section" id="iconized">
+
+  <!-- Load Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+
+  <style>
+    /* Ensure the Material Icons font is applied correctly */
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined' !important;
+      font-size: 47px; /* 30% larger than default (36px * 1.3 = 47px) */
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+
+  <div class="container px-4 px-lg-5">
+    <h2 class="text-center mt-0">Wer profitiert von einem Ganzkörper‑MRT?</h2>
+    <p><br>Ein Ganzkörper-MRT ist als Überblick über Ihren körperlichen Status eine gute Sache. Besonders entlastend ist es für Menschen, die sich aus den folgenden Gründen Sorgen machen:</p>
+    
+    {{ $items := sort (where .context.Site.RegularPages "Section" .section) ".Weight" }}
+    {{ $count := len $items }}
+
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      {{ range $index, $page := $items }}
+      {{ if eq (mod $index 3) 0 }}
+      <!-- Start new row for every 3rd item -->
+      <div class="w-100"></div>
+      {{ end }}
+      
+      <div class="col-lg-4 col-md-6 text-center">
+        <div class="mt-5">
+          <div class="mb-2">
+            <span class="material-symbols-outlined">
+              {{ with $page.Params.icon }}{{ . | safeHTML }}{{ else }}help{{ end }}
+            </span>
+          </div>
+          <h3 class="h4 mb-2">{{ $page.Title | safeHTML }}</h3>
+          <p class="text-muted mb-0">{{ $page.Params.description | safeHTML }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

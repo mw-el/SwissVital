@@ -2,4 +2,8 @@
   {{ range sort .Pages ".File.LogicalName" }}
     {{ .Render "section" }}
   {{ end }}
+
+  {{ partial "iconized.html" . }}
+  {{ partial "imagized.html" . }}
+  {{ partial "contact.html" . }}
 {{ end }}

@@ -9,7 +9,7 @@ background_color: "bg-offwhite"  # Background color
 text_color: "var(--sv-body-color)"  # Text color
 
 # Foreground Image (Optional)
-image: "img/home/_wer-profitiert.webp"  # No foreground image defined
+ # No foreground image defined
 image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
