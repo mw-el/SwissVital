@@ -1,6 +1,8 @@
 ---
 title: "Übersicht schaffen: Das Ganzkörper-MRT"
 layout: "section"
+id: "uebersicht"
+
 
 # Background settings
 background_image: ""  # Background image for the section
@@ -9,6 +11,7 @@ text_color: ""  # No text color defined
 
 # Foreground Image (Optional)
 image: "img/sections/_aerztin-mit-patientin.webp"  # No foreground image defined
+image-shadow: "shadow" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
 primary_button_text: "Mehr erfahren"
@@ -33,7 +36,7 @@ button_alignment: "center"  # Buttons are positioned as a unit (centered by defa
 button_placement: "content"  # Default placement under content
 
 # Grid layout configuration (for split layouts)
-grid_layout: "i2/5, c3/5"   
+grid_layout: "i3/5, c2/5"   
 ---
 
 Ein Ganzkörper-MRT ist die am besten investierte Stunde für Ihre Gesundheit – ideal kombiniert mit einem grossen Blutbild. Es gibt weitere Untersuchungen, die in Ihrem Fall vielleicht sinnvoll sind, vielleicht sinnvoller als ein MRT: Das kann die Analyse wichtiger genetischer Marker oder eine für Ihr persönliches Interesse noch wichtigere Untersuchung sein, zum Beispiel eine Koloskopie.

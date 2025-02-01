@@ -1,6 +1,7 @@
 ---
 title: "Wer profitiert von einem Ganzkörper‑MRT?"
 layout: "section"
+id: "wer-profitiert"
 
 # Background settings
 background_image: ""  # Background image for the section
@@ -9,6 +10,7 @@ text_color: "var(--sv-body-color)"  # Text color
 
 # Foreground Image (Optional)
 image: "img/home/_wer-profitiert.webp"  # No foreground image defined
+image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
 primary_button_text: "Jetzt Selbsttest machen"

@@ -1,6 +1,8 @@
 ---
 title: "Selbsttest: Ihr erster Schritt – ohne Kosten"
 layout: "section"
+id: "selbsttest"
+
 
 # Background settings
 background_image: ""  # Background image for the section
@@ -8,7 +10,8 @@ background_color: "bg-offwhite"  # Background color
 text_color: ""  # No text color defined
 
 # Foreground Image (Used in Split Layout)
-image: "img/sections/_man-takes-survey.png"  # Image used in a split layout
+image: "img/home/_selbsttest.webp"  # Image used in a split layout
+image-shadow: "shadow" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
 primary_button_text: "Selbsttest starten"
@@ -33,7 +36,7 @@ button_alignment: "center"  # Buttons are positioned as a unit (centered by defa
 button_placement: "content"  # Default placement under content
 
 # Grid layout configuration (Split Layout - Image Left)
-grid_layout: "c3/5, i2/5"  # Image 2/5 width, content 3/5 width
+grid_layout: "c2/5, i3/5"  # Image 2/5 width, content 3/5 width
 
 ---
 

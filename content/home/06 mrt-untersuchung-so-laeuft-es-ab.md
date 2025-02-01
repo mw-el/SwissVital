@@ -1,6 +1,8 @@
 ---
 title: "MRT-Untersuchung: So läuft es ab"
 layout: "section"
+id: "so-laeuft-es-ab"
+
 
 # Background settings
 background_image: "img/home/doktor-und-patient.jpg"  # Background image for the section
@@ -9,6 +11,7 @@ text_color: "var(--sv-offwhite)"  # Text color
 
 # Foreground Image (Used in Split Layout)
 image: ""  # Image used in a split layout
+image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
 primary_button_text: "Ablauf ansehen"

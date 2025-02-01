@@ -1,6 +1,8 @@
 ---
 title: "Datenschutz"
 layout: "section"
+id: "datenschutz"
+
 
 # Background settings
 background_image: ""  # Background image for the section
@@ -9,6 +11,7 @@ text_color: ""  # Text color
 
 # Foreground Image (Optional)
 image: "img/sections/_fingerprint.webp"  # No foreground image defined
+image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
 primary_button_text: "Mehr erfahren"

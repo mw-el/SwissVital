@@ -1,0 +1,450 @@
+{{/*
+  partials/full-bg.html
+  --------------------
+  1) Shared styles
+  2) Each section’s dynamic background (gradient + $bgImageURL) is done inline.
+  3) Avoids overwriting images when multiple sections appear on the same page.
+*/}}
+
+{{/* 1. Get $bgImageURL before we generate inline style */}}
+{{ $bgImageURL := "" }}
+{{ if .Params.background_image }}
+  {{ $bg := resources.Get .Params.background_image }}
+  {{ if $bg }}
+    {{ $bgRes := $bg.Resize "1920x q90" }}
+    {{ $bgImageURL = $bgRes.RelPermalink }}
+  {{ end }}
+{{ end }}
+
+{{/* 2. Get optional foreground images */}}
+{{ $fgImageDesktop := "" }}
+{{ $fgImageMobile := "" }}
+
+{{ if .Params.image }}
+  {{ $fg := resources.Get .Params.image }}
+  {{ if $fg }}
+    {{/* Full-size image for desktop */}}
+    {{ $fgDesktop := $fg.Resize "1200x q85" }}
+    {{ $fgImageDesktop = $fgDesktop.RelPermalink }}
+
+    {{/* Cropped square image for mobile (Favoring top) */}}
+    {{ $fgMobile := $fg.Fill "800x800 Top q85" }}
+    {{ $fgImageMobile = $fgMobile.RelPermalink }}
+  {{ end }}
+{{ end }}
+
+{{/* 3. Collect front matter values */}}
+{{ $bgColor       := .Params.background_color      | default "var(--sv-offwhite)" | safeCSS }}
+{{ $textColor     := .Params.text_color            | default "#222" | safeCSS }}
+{{ $gridLayout    := .Params.grid_layout           | default "c1/1" }}
+{{ $headlineAlign := .Params.headline_alignment    | default "left" | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_alignment   | default "left" | safeCSS }}
+{{ $buttonAlign   := .Params.button_alignment      | default "center" | safeCSS }}
+
+{{/* Button logic */}}
+{{ $primaryBtnBg     := .Params.primary_button_background | default "var(--sv-primary)" | safeCSS }}
+{{ $primaryBtnText   := .Params.primary_button_text_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $primaryBtnBorder := .Params.primary_button_border     | default $primaryBtnBg | safeCSS }}
+{{ $primaryBtnLink   := .Params.primary_button_link       | default "#" }}
+{{ $primaryBtnLabel  := .Params.primary_button_text       | default "Mehr erfahren" }}
+
+{{ $secondaryBtnBg     := .Params.secondary_button_background | default $primaryBtnText | safeCSS }}
+{{ $secondaryBtnText   := .Params.secondary_button_text_color | default $primaryBtnBg | safeCSS }}
+{{ $secondaryBtnBorder := .Params.secondary_button_border     | default $secondaryBtnText | safeCSS }}
+{{ $secondaryBtnLink   := .Params.secondary_button_link }}
+{{ $secondaryBtnLabel  := .Params.secondary_button_text }}
+
+<style>
+  /* Shared styling that applies to all .sv-bg-canvas sections */
+  .sv-bg-canvas {
+    width: 100%;
+    box-sizing: border-box;
+    padding: clamp(2rem, 5vw, 6rem);
+    color: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .sv-layout-wrapper {
+    display: flex;
+    gap: clamp(1rem, 2vw, 2.5rem);
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .sv-layout-full {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sv-layout-split {
+    flex-direction: row;
+  }
+
+  /* Fixed flex-basis for 2/5 & 3/5 layouts */
+  .sv-content-2-5,
+  .sv-content-3-5 {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .sv-content-2-5 {
+    flex: 0 0 40%;
+  }
+  .sv-content-3-5 {
+    flex: 0 0 60%;
+  }
+
+  /* For equal half layouts */
+  .sv-content-half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sv-layout-wrapper h2 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: clamp(1rem, 4vw, 3rem);
+    color: inherit;
+  }
+
+  .sv-layout-wrapper p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    max-width: 800px;
+    color: inherit;
+  }
+
+  .sv-grid-image {
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
+  }
+
+  .sv-buttons {
+    display: flex;
+    gap: clamp(0.5rem, 1vw, 1.5rem);
+    margin-top: clamp(1rem, 4vw, 3rem);
+    flex-wrap: wrap;
+  }
+  .sv-btn {
+    font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+    padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 2rem);
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .sv-btn-secondary {
+    border: 1px solid;
+  }
+
+  .sv-full-bg:first-of-type {
+    margin-top: calc(60px + 2rem);
+  }
+  .sv-mobile-image {
+    display: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .sv-layout-split {
+      flex-direction: column;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+    .sv-content-2-5,
+    .sv-content-3-5,
+    .sv-content-half {
+      flex: initial;
+      width: 100%;
+    }
+    .sv-grid-image {
+      height: auto;
+    }
+  }
+
+  .sv-desktop-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 10%;
+  }
+  .sv-mobile-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .sv-spacer {
+    margin-bottom: clamp(1rem, 4vw, 3rem);
+  }
+</style>
+
+{{/* Ensure background_color is only used if it has a real value (not an empty string) */}}
+{{ $useBgColor := and (isset .Params "background_color") (ne .Params.background_color "") }}
+
+{{/* Determine final background style */}}
+{{ $finalBgStyle := "" }}
+{{ if $useBgColor }}
+  {{ $finalBgStyle = printf "background: %s;" (.Params.background_color | safeCSS) }}
+{{ else if $bgImageURL }}
+  {{ $finalBgStyle = printf "background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%%, rgba(0, 0, 0, 0.2) 50%%, rgba(0, 0, 0, 0) 100%%), url('%s'); background-position: 15%% 15%%; background-size: cover; background-repeat: no-repeat;" $bgImageURL | safeCSS }}
+{{ end }}
+
+<section class="sv-section sv-full-bg">
+  <div class="sv-bg-canvas" style="color: {{ $textColor | safeCSS }};{{ $finalBgStyle | safeCSS }}">
+
+    {{/* Layout based on grid_layout */}}
+
+    {{ if eq $gridLayout "c2/5, i3/5" }}
+      <!-- Content (2/5) left, Image (3/5) right -->
+      <div class="sv-layout-wrapper sv-layout-split">
+        <div class="sv-content-2-5" style="text-align: {{ $bodyTextAlign }};">
+          <h2 style="text-align: {{ $headlineAlign }};" class="sv-spacer">{{ .Title }}</h2>
+          {{ if $fgImageMobile }}
+            <div class="sv-mobile-image">
+              <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}">
+            </div>
+          {{ end }}
+          <div>{{ .Content | safeHTML }}</div>
+          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+            <div class="sv-button-wrapper">
+              <div class="sv-buttons">
+                <a href="{{ $primaryBtnLink }}" class="sv-btn"
+                   style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+                  {{ $primaryBtnLabel }}
+                </a>
+                {{ if $secondaryBtnLabel }}
+                  <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                     style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+                    {{ $secondaryBtnLabel }}
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+        <div class="sv-content-3-5 sv-grid-image">
+          {{ if $fgImageDesktop }}
+            <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
+          {{ end }}
+        </div>
+      </div>
+
+    {{ else if eq $gridLayout "c3/5, i2/5" }}
+      <!-- Content (3/5) left, Image (2/5) right -->
+      <div class="sv-layout-wrapper sv-layout-split">
+        <div class="sv-content-3-5" style="text-align: {{ $bodyTextAlign }};">
+          <h2 style="text-align: {{ $headlineAlign }};" class="sv-spacer">{{ .Title }}</h2>
+          {{ if $fgImageMobile }}
+            <div class="sv-mobile-image">
+              <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}">
+            </div>
+          {{ end }}
+          <div>{{ .Content | safeHTML }}</div>
+          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+            <div class="sv-button-wrapper">
+              <div class="sv-buttons">
+                <a href="{{ $primaryBtnLink }}" class="sv-btn"
+                   style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+                  {{ $primaryBtnLabel }}
+                </a>
+                {{ if $secondaryBtnLabel }}
+                  <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                     style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+                    {{ $secondaryBtnLabel }}
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+        <div class="sv-content-2-5 sv-grid-image">
+          {{ if $fgImageDesktop }}
+            <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
+          {{ end }}
+        </div>
+      </div>
+
+    {{ else if eq $gridLayout "i2/5, c3/5" }}
+      <!-- Image (2/5) left, Content (3/5) right -->
+      <div class="sv-layout-wrapper sv-layout-split">
+        <div class="sv-content-2-5 sv-grid-image">
+          {{ if $fgImageDesktop }}
+            <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
+          {{ end }}
+          {{ if $fgImageMobile }}
+            <div class="sv-mobile-image">
+              <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}">
+            </div>
+          {{ end }}
+        </div>
+        <div class="sv-content-3-5" style="text-align: {{ $bodyTextAlign }};">
+          <h2 style="text-align: {{ $headlineAlign }};" class="sv-spacer">{{ .Title }}</h2>
+          <div>{{ .Content | safeHTML }}</div>
+          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+            <div class="sv-button-wrapper">
+              <div class="sv-buttons">
+                <a href="{{ $primaryBtnLink }}" class="sv-btn"
+                   style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+                  {{ $primaryBtnLabel }}
+                </a>
+                {{ if $secondaryBtnLabel }}
+                  <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                     style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+                    {{ $secondaryBtnLabel }}
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+
+    {{ else if eq $gridLayout "i3/5, c2/5" }}
+      <!-- Image (3/5) left, Content (2/5) right -->
+      <div class="sv-layout-wrapper sv-layout-split">
+        <div class="sv-content-3-5 sv-grid-image">
+          {{ if $fgImageDesktop }}
+            <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
+          {{ end }}
+          {{ if $fgImageMobile }}
+            <div class="sv-mobile-image">
+              <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}">
+            </div>
+          {{ end }}
+        </div>
+        <div class="sv-content-2-5" style="text-align: {{ $bodyTextAlign }};">
+          <h2 style="text-align: {{ $headlineAlign }};" class="sv-spacer">{{ .Title }}</h2>
+          <div>{{ .Content | safeHTML }}</div>
+          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+            <div class="sv-button-wrapper">
+              <div class="sv-buttons">
+                <a href="{{ $primaryBtnLink }}" class="sv-btn"
+                   style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+                  {{ $primaryBtnLabel }}
+                </a>
+                {{ if $secondaryBtnLabel }}
+                  <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                     style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+                    {{ $secondaryBtnLabel }}
+                  </a>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+
+    {{ else if eq $gridLayout "c1/2, i1/2" }}
+      <!-- Content (1/2) left, Image (1/2) right -->
+      <div class="sv-layout-wrapper sv-layout-split">
+        <div class="sv-content-half" style="text-align: {{ $bodyTextAlign }};">
+          <h2 style="text-align: {{ $headlineAlign }};">{{ .Title }}</h2>
+          <div>{{ .Content | safeHTML }}</div>
+          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+            <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
+              <a href="{{ $primaryBtnLink }}" class="sv-btn"
+                 style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+                {{ $primaryBtnLabel }}
+              </a>
+              {{ if $secondaryBtnLabel }}
+                <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                   style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+                  {{ $secondaryBtnLabel }}
+                </a>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+        <div class="sv-content-half sv-grid-image">
+          {{ if $fgImageMobile }}
+            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}">
+          {{ end }}
+        </div>
+      </div>
+
+    {{ else if eq $gridLayout "i1/2, c1/2" }}
+      <!-- Image (1/2) left, Content (1/2) right -->
+      <div class="sv-layout-wrapper sv-layout-split">
+        <div class="sv-content-half sv-grid-image">
+          {{ if $fgImageMobile }}
+            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}">
+          {{ end }}
+        </div>
+        <div class="sv-content-half" style="text-align: {{ $bodyTextAlign }};">
+          <h2 style="text-align: {{ $headlineAlign }};">{{ .Title }}</h2>
+          <div>{{ .Content | safeHTML }}</div>
+          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+            <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
+              <a href="{{ $primaryBtnLink }}" class="sv-btn"
+                 style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+                {{ $primaryBtnLabel }}
+              </a>
+              {{ if $secondaryBtnLabel }}
+                <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                   style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+                  {{ $secondaryBtnLabel }}
+                </a>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+
+    {{ else if eq $gridLayout "c1/1" }}
+      <!-- Full-width Content, no additional foreground image -->
+      <div class="sv-layout-wrapper sv-layout-full" style="text-align: {{ $bodyTextAlign }};">
+        <h2 style="text-align: {{ $headlineAlign }};">{{ .Title }}</h2>
+        <div>{{ .Content | safeHTML }}</div>
+        {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+          <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
+            <a href="{{ $primaryBtnLink }}" class="sv-btn"
+               style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+              {{ $primaryBtnLabel }}
+            </a>
+            {{ if $secondaryBtnLabel }}
+              <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                 style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+                {{ $secondaryBtnLabel }}
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+
+    {{ else }}
+      <!-- Fallback: Full-width Content -->
+      <div class="sv-layout-wrapper sv-layout-full" style="text-align: {{ $bodyTextAlign }};">
+        <h2 style="text-align: {{ $headlineAlign }};">{{ .Title }}</h2>
+        <div>{{ .Content | safeHTML }}</div>
+        {{ if or $primaryBtnLabel $secondaryBtnLabel }}
+          <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
+            <a href="{{ $primaryBtnLink }}" class="sv-btn"
+               style="background-color: {{ $primaryBtnBg | safeCSS }}; color: {{ $primaryBtnText | safeCSS }}; border: 1px solid {{ $primaryBtnBorder | safeCSS }};">
+              {{ $primaryBtnLabel }}
+            </a>
+            {{ if $secondaryBtnLabel }}
+              <a href="{{ $secondaryBtnLink }}" class="sv-btn sv-btn-secondary"
+                 style="background-color: {{ $secondaryBtnBg | safeCSS }}; color: {{ $secondaryBtnText | safeCSS }}; border: 1px solid {{ $secondaryBtnBorder | safeCSS }};">
+                {{ $secondaryBtnLabel }}
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+
+  </div>
+</section>

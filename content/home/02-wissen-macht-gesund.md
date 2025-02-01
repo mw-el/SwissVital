@@ -1,6 +1,8 @@
 ---
 title: "Wissen macht gesund."
 layout: "section"
+id: "wissen-macht-gesund"
+
 
 # Background settings
 background_image: ""  # Background image inside home subdirectory
@@ -9,6 +11,7 @@ text_color: "var(--sv-body-color)"  # Text color
 
 # Foreground Image (Optional)
 image: "img/home/_rothaariger-businessman.webp"  # If an additional image is needed in a split layout
+image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
 primary_button_text: "Die beste Diagnostik"

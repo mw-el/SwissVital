@@ -100,6 +100,9 @@
   .sv-full-bg:first-of-type {
     margin-top: calc(60px + 2rem);
   }
+.sv-spacer{
+  margin-top: clamp(2rem, 8vw, 6rem);
+  }
 
   /* Responsive Behavior - Stacked Layout on Small Screens */
   @media (max-width: 768px) {
@@ -173,6 +176,7 @@
         <!-- Content side -->
         <div class="sv-content-3-5" style="text-align: {{ $bodyTextAlign }};">
           <h2 style="text-align: {{ $headlineAlign }};">{{ .Title }}</h2>
+          <div class="sv-spacer"></div>
           <div>{{ .Content | safeHTML }}</div>
           {{ if or $primaryBtnLabel $secondaryBtnLabel }}
             <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
