@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{ range sort .Pages ".File.LogicalName" }}
+    {{ .Render "section" }}
+  {{ end }}
+
+  {{ partial "iconized.html" (dict "context" . "section" "indikationen") }}
+  {{ partial "imagized.html" (dict "context" . "section" "tests") }}
+  {{ partial "contact.html" . }}
+{{ end }}

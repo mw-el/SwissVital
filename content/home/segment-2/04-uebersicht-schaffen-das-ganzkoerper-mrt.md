@@ -6,7 +6,7 @@ id: "uebersicht"
 
 # Background settings
 background_image: ""  # Background image for the section
-background_color: "var(--sv-offwhite)"  # Background color
+background_color: ""  # Background color
 text_color: ""  # No text color defined
 
 # Foreground Image (Optional)
@@ -36,7 +36,7 @@ button_alignment: "center"  # Buttons are positioned as a unit (centered by defa
 button_placement: "content"  # Default placement under content
 
 # Grid layout configuration (for split layouts)
-grid_layout: "i3/5, c2/5"   
+grid_layout: "c3/5, i2/5"   
 ---
 
 Ein Ganzkörper-MRT ist die am besten investierte Stunde für Ihre Gesundheit – ideal kombiniert mit einem grossen Blutbild. Es gibt weitere Untersuchungen, die in Ihrem Fall vielleicht sinnvoll sind, vielleicht sinnvoller als ein MRT: Das kann die Analyse wichtiger genetischer Marker oder eine für Ihr persönliches Interesse noch wichtigere Untersuchung sein, zum Beispiel eine Koloskopie.

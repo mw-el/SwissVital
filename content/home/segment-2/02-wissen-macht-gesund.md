@@ -28,9 +28,9 @@ secondary_button_text_color: ""  # Defaults to `primary_button_background` if le
 secondary_button_border: ""      # Defaults to `primary_button_text_color` if left empty (inverted colors)
 
 # Content alignment settings
-headline_alignment: "center"  # Default: Left-aligned
-body_text_alignment: "left"  # Default: Left-aligned
-button_alignment: "center"  # Buttons are positioned as a unit (centered by default)
+headline_alignment: "right"  # Default: Left-aligned
+body_text_alignment: "right"  # Default: Left-aligned
+button_alignment: "right" # Buttons are positioned as a unit (centered by default)
 
 # Button Placement
 button_placement: "content"  # Default placement under content (can be "image")

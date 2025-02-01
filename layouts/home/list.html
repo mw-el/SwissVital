@@ -1,9 +1,68 @@
+{{/*
+----------------------------------------------------------------------------------
+  Hugo `list.html` Template for the Homepage
+----------------------------------------------------------------------------------
+
+  **Purpose:** This file dynamically builds the homepage using content from 
+  `/content/home/` and ensures:
+  - **Segment-1** is treated as the topmost section with `<h1>`.
+  - **Segment-2 & Segment-3** render as normal sections with `<h2>`.
+  - Special partials (`iconized.html`, `imagized.html`, `contact.html`) are injected 
+    between the segments.
+
+  **Expected Folder Structure**
+/content/home/ ├── segment-1/ │ ├── _index.md # Main homepage content (H1 section) │ ├── 01-bleiben-sie-gesund.md │ ├── segment-2/ │ ├── 02-wissen-macht-gesund.md │ ├── 04-uebersicht-schaffen-das-ganzkoerper-mrt.md │ ├── 05-selbsttest-ihr-erster-schritt—ohne-kosten.md │ ├── 06-mrt-untersuchung-so-laeuft-es-ab.md │ ├── segment-3/ │ ├── 07-datenschutz.md │ ├── 09-standorte.md │ ├── 10-partner.md
+
+
+
+**How It Works:**
+- Retrieves **all `.md` files** inside each segment recursively.
+- Ensures `segment-1` is displayed **first and with `<h1>`**.
+- Ensures all other segments display **normally with `<h2>`**.
+- Inserts `imagized.html` **between segment-2 and segment-3**.
+- Inserts `iconized.html` and `contact.html` **at the end**.
+
+----------------------------------------------------------------------------------
+*/}}
 {{ define "main" }}
-  {{ range sort .Pages ".File.LogicalName" }}
-    {{ .Render "section" }}
+
+  {{/* Collect all pages under "home" */}}
+  {{ $allPages := where .Site.Pages "Section" "home" }}
+  {{ $hasFile := where $allPages "File" "!=" nil }}
+  {{ $sortedPages := sort $hasFile ".File.LogicalName" }}
+
+  {{/* Filter sub-segments correctly */}}
+  {{ $segment1 := where $sortedPages "File.Dir" "home/segment-1/" }}
+  {{ $segment2 := where $sortedPages "File.Dir" "home/segment-2/" }}
+  {{ $segment3 := where $sortedPages "File.Dir" "home/segment-3/" }}
+
+  {{/* Render Segment-1's first item with <h2> to <h1> transformation */}}
+  {{ with index $segment1 0 }}
+    {{ $raw := partial "full-bg.html" . }}
+    {{ $updated := replaceRE "<h2(.*?)>" "<h1$1>" $raw | replaceRE "</h2>" "</h1>" }}
+    {{ $updated | safeHTML }}
   {{ end }}
 
-  {{ partial "iconized.html" (dict "context" . "section" "indikationen") }}
+  {{/* Render remaining Segment-1 items sequentially */}}
+  {{ range (after 1 $segment1) }}
+    {{ partial "full-bg.html" . }}
+  {{ end }}
+
+  {{/* Render Segment-2 sequentially */}}
+  {{ range $segment2 }}
+    {{ partial "full-bg.html" . }}
+  {{ end }}
+
+  {{/* Insert Imagized Partial before Segment-3 */}}
   {{ partial "imagized.html" (dict "context" . "section" "tests") }}
+
+  {{/* Render Segment-3 sequentially */}}
+  {{ range $segment3 }}
+    {{ partial "full-bg.html" . }}
+  {{ end }}
+
+  {{/* Final Special Partials */}}
+  {{ partial "iconized.html" (dict "context" . "section" "indikationen") }}
   {{ partial "contact.html" . }}
+
 {{ end }}

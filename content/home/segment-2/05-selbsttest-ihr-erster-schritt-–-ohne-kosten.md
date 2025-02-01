@@ -6,7 +6,7 @@ id: "selbsttest"
 
 # Background settings
 background_image: ""  # Background image for the section
-background_color: "bg-offwhite"  # Background color
+background_color: "var(--sv-offwhite)"  # Background color
 text_color: ""  # No text color defined
 
 # Foreground Image (Used in Split Layout)
@@ -36,7 +36,7 @@ button_alignment: "center"  # Buttons are positioned as a unit (centered by defa
 button_placement: "content"  # Default placement under content
 
 # Grid layout configuration (Split Layout - Image Left)
-grid_layout: "c2/5, i3/5"  # Image 2/5 width, content 3/5 width
+grid_layout: "i2/5, c3/5"  # Image 2/5 width, content 3/5 width
 
 ---
 

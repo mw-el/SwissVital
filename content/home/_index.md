@@ -1,5 +1,5 @@
 ---
 title: ""
 layout: "home"
-# url: "/"
+url: "/"
 ---
