@@ -1,16 +1,17 @@
 ---
-title: "Unsere Standorte"
+title: "Termin buchen"
 layout: "section"
-id: "standorte"
+id: "termin-buchen"
 
 # Available light BG Gradients: 
 # var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
 # Available Layouts: 
 # "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
 
+
 # Background settings
 background_image: ""  # Background image for the section
-background_color: "var(--sv-primary)"  # No background color defined
+background_color: "var(--bg-lightgrey-warm)"  # No background color defined
 text_color: ""  # Text color
 
 # Foreground Image (Optional)
@@ -43,5 +44,12 @@ button_placement: "content"  # Default placement under content
 grid_layout: "c1/1"  # Default to full-width content
 
 ---
+ 
+ Hier kommen Sie ganz einfach zu Ihrem Termin. 
+ 
+ **E-Mail eintragen**, Standort wählen, fertig. 
+ 
+ <br>&nbsp;       
+        
+{{< termin-formular >}}
 
-Hier finden Sie uns

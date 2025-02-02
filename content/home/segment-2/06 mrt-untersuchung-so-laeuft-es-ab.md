@@ -9,17 +9,17 @@ id: "so-laeuft-es-ab"
 # "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
 
 # Background settings
-background_image: "img/home/doktor-und-patient.jpg"  # Background image for the section
+background_image: "var(--bg-lightgrey-warm)"  # Background image for the section
 background_color: ""  # Background color
-text_color: "var(--sv-offwhite)"  # Text color
+text_color: ""  # Text color
 
 # Foreground Image (Used in Split Layout)
-image: ""  # Image used in a split layout
+image: "img/home/_niko-portrait.webp"  # Image used in a split layout
 image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
-primary_button_text: "Ablauf ansehen"
-primary_button_link: "/mrt-ablauf"
+primary_button_text: "Termin wählen"
+primary_button_link: "#termin-buchen"
 primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
 primary_button_border: ""  # Defaults to primary_button_background in the partial
@@ -40,7 +40,7 @@ button_alignment: "center"  # Buttons are positioned as a unit (centered by defa
 button_placement: "content"  # Default placement under content
 
 # Grid layout configuration (Split Layout - Image Right)
-grid_layout: "c1/1"  # Content 1/1 
+grid_layout: "c1/2, i1/2" 
 
 ---
 

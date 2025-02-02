@@ -4,7 +4,7 @@
     - section: the content section to iterate over (e.g., "quality", "services")
 */}}
 
-<section class="page-section" id="iconized">
+<section id="iconized">
 
   <!-- Load Material Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
@@ -47,8 +47,8 @@
               {{ with $page.Params.icon }}{{ . | safeHTML }}{{ else }}help{{ end }}
             </span>
           </div>
-          <h3 class="h4 mb-2">{{ $page.Title | safeHTML }}</h3>
-          <p class="text-muted mb-0">{{ $page.Params.description | safeHTML }}</p>
+          <h3 class="h2 mb-4">{{ $page.Title | safeHTML }}</h3>
+          <p class="mb-0">{{ $page.Params.description | safeHTML }}</p>
         </div>
       </div>
       {{ end }}

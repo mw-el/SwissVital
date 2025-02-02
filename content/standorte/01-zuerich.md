@@ -1,7 +1,7 @@
 ---
-title: "Projekt 1"
+title: "Zürich"
 date: 2025-01-25
-image: "img/untersuchungen/thumbnails/1.jpg"
-fullimage: "img/untersuchungen/fullsize/1.jpg"
+image: "img/standorte/zurich.webp"
+fullimage: "img/standorte/_zurich.webp"
 ---
 Dies ist eine Beispielbeschreibung für Projekt 1. Eine kurze Beschreibung des Projekts und seiner Highlights.

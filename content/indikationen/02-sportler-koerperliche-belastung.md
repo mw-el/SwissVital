@@ -1,5 +1,5 @@
 ---
-title: "Sportler und Menschen mit hoher körperlicher Belastung"
+title: "Sportler"
 icon: "directions_run"
 description: "Mikroverletzungen, Gelenkprobleme oder Muskelverletzungen sollen frühzeitig erkannt werden."
 weight: 1

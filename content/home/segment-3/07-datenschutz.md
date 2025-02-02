@@ -10,8 +10,8 @@ id: "datenschutz"
 
 
 # Background settings
-background_image: ""  # Background image for the section
-background_color: "bg-primary"  # Background color
+background_image: "(--bg-white-gradient)"  # Background image for the section
+background_color: ""  # Background color
 text_color: ""  # Text color
 
 # Foreground Image (Optional)
@@ -19,9 +19,9 @@ image: "img/sections/_fingerprint.webp"  # No foreground image defined
 image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
-primary_button_text: "Mehr erfahren"
-primary_button_link: "/kontakt"
-primary_button_background: "var(--sv-primary-darker)"
+primary_button_text: "Termin wählen"
+primary_button_link: "#termin-buchen"
+primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
 primary_button_border: ""  # Defaults to primary_button_background in the partial
 
@@ -35,7 +35,7 @@ secondary_button_border: ""      # Defaults to `primary_button_text_color` if le
 # Content alignment settings
 headline_alignment: "left"
 body_text_alignment: "left"
-button_alignment: "left"  # Buttons are positioned as a unit (centered by default)
+button_alignment: "center"  # Buttons are positioned as a unit (centered by default)
 
 # Button Placement
 button_placement: "content"  # Default placement under content

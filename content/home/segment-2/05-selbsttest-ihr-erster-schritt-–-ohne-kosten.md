@@ -20,8 +20,8 @@ image-shadow: "shadow" # shadow-none – shadow-sm – shadow – shadow-lg – 
 
 # Primary Button
 primary_button_text: "Selbsttest starten"
-primary_button_link: "/selbsttest"
-primary_button_background: "var(--sv-primary-darker)"
+primary_button_link: "#selbsttest"
+primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
 primary_button_border: ""  # Defaults to primary_button_background in the partial
 

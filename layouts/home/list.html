@@ -54,8 +54,7 @@
   {{ end }}
 
   {{/* Insert Imagized Partial before Segment-3 */}}
-  {{ partial "imagized.html" (dict "context" . "section" "tests") }}
-
+  
   {{/* Render Segment-3 sequentially */}}
   {{ range $segment3 }}
     {{ partial "full-bg.html" . }}

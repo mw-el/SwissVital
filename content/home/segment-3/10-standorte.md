@@ -1,17 +1,16 @@
 ---
-title: "Unsere Partner"
+title: "Unsere Standorte"
 layout: "section"
-id: "partner"
+id: "standorte"
 
 # Available light BG Gradients: 
-# var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
+# var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)   var(--bg-warm-dark-gradient)
 # Available Layouts: 
 # "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
 
-
 # Background settings
-background_image: ""  # Background image for the section
-background_color: "var(--sv-secondary)"  # No background color defined
+background_image: "var(--bg-white-gradient)"  # Background image for the section
+background_color: ""  # No background color defined
 text_color: ""  # Text color
 
 # Foreground Image (Optional)
@@ -19,9 +18,9 @@ image: ""  # No foreground image defined
 image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
-primary_button_text: ""
-primary_button_link: ""
-primary_button_background: "var(--sv-primary-darker)"
+primary_button_text: "Termin finden"
+primary_button_link: "#termin-buchen"
+primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
 primary_button_border: ""  # Defaults to primary_button_background in the partial
 
@@ -43,8 +42,11 @@ button_placement: "content"  # Default placement under content
 # Grid layout configuration (Full-width content)
 grid_layout: "c1/1"  # Default to full-width content
 
----
+--- 
 
-## 
+Bei der Terminwahl geben Sie bitte einfach Ihren bevorzugten Standort an.
+  
+&nbsp;
 
-Wir haben ein gewachsenes Netzwerk mit Partnern, denen wir vertrauen.
+        
+{{< standorte >}}

@@ -1,7 +1,7 @@
 ---
-title: "Termin buchen"
+title: "Unsere Partner"
 layout: "section"
-id: "termin-buchen"
+id: "partner"
 
 # Available light BG Gradients: 
 # var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
@@ -10,8 +10,8 @@ id: "termin-buchen"
 
 
 # Background settings
-background_image: ""  # Background image for the section
-background_color: "var(--bg-lightgrey-warm)"  # No background color defined
+background_image: "var(--bg-lightgrey-warm)"  # Background image for the section
+background_color: ""  # No background color defined
 text_color: ""  # Text color
 
 # Foreground Image (Optional)
@@ -19,9 +19,9 @@ image: ""  # No foreground image defined
 image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
-primary_button_text: ""
-primary_button_link: ""
-primary_button_background: "var(--sv-primary-darker)"
+primary_button_text: "Termin finden"
+primary_button_link: "#termin-buchen"
+primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
 primary_button_border: ""  # Defaults to primary_button_background in the partial
 
@@ -44,11 +44,7 @@ button_placement: "content"  # Default placement under content
 grid_layout: "c1/1"  # Default to full-width content
 
 ---
- 
- Hier kommen Sie ganz einfach zu Ihrem Termin. 
- 
- **E-Mail eintragen**, Standort wählen, fertig. 
-        
-        
-{{< termin-formular >}}
 
+## 
+
+Wir haben ein gewachsenes Netzwerk mit Partnern, denen wir vertrauen.
