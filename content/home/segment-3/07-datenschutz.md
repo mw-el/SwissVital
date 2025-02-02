@@ -3,6 +3,11 @@ title: "Datenschutz"
 layout: "section"
 id: "datenschutz"
 
+# Available light BG Gradients: 
+# var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
+# Available Layouts: 
+# "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
+
 
 # Background settings
 background_image: ""  # Background image for the section
@@ -36,7 +41,7 @@ button_alignment: "left"  # Buttons are positioned as a unit (centered by defaul
 button_placement: "content"  # Default placement under content
 
 # Grid layout configuration (Full-width content)
-grid_layout: "c3/5, i2/5"  # Default to full-width content
+grid_layout: "c1/2, i1/2"  # Default to full-width content
 
 ---
 

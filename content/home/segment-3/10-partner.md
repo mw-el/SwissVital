@@ -3,6 +3,12 @@ title: "Unsere Partner"
 layout: "section"
 id: "partner"
 
+# Available light BG Gradients: 
+# var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
+# Available Layouts: 
+# "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
+
+
 # Background settings
 background_image: ""  # Background image for the section
 background_color: "var(--sv-secondary)"  # No background color defined
@@ -38,5 +44,7 @@ button_placement: "content"  # Default placement under content
 grid_layout: "c1/1"  # Default to full-width content
 
 ---
+
+## 
 
 Wir haben ein gewachsenes Netzwerk mit Partnern, denen wir vertrauen.

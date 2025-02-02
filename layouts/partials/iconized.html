@@ -29,9 +29,7 @@
   </style>
 
   <div class="container px-4 px-lg-5">
-    <h2 class="text-center mt-0">Wer profitiert von einem Ganzkörper‑MRT?</h2>
-    <p><br>Ein Ganzkörper-MRT ist als Überblick über Ihren körperlichen Status eine gute Sache. Besonders entlastend ist es für Menschen, die sich aus den folgenden Gründen Sorgen machen:</p>
-    
+ 
     {{ $items := sort (where .context.Site.RegularPages "Section" .section) ".Weight" }}
     {{ $count := len $items }}
 

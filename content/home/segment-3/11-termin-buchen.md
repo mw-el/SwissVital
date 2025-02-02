@@ -1,29 +1,27 @@
 ---
-title: "Bleiben Sie gesund"
+title: "Termin buchen"
 layout: "section"
-id: "top"
+id: "termin-buchen"
 
 # Available light BG Gradients: 
 # var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
 # Available Layouts: 
 # "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
-# Text color bright  var(--sv-offwhite)
+
 
 # Background settings
-background_image: "var(--bg-lightgrey-warm)"  # Background image for the section 
-background_color: "var(--sv-giantsorange)"  # No background color defined
+background_image: ""  # Background image for the section
+background_color: "var(--bg-lightgrey-warm)"  # No background color defined
 text_color: ""  # Text color
 
 # Foreground Image (Optional)
-image: "/img/home/_bleiben-sie-gesund-architekt.webp"  # No foreground image defined
-image-shadow: "shadow" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
+image: ""  # No foreground image defined
+image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
-
-# Primary Button
-primary_button_text: "MRT-Termin"
-primary_button_link: "#termin"
-primary_button_background: "var(--sv-prussianblue)"
+primary_button_text: ""
+primary_button_link: ""
+primary_button_background: "var(--sv-primary-darker)"
 primary_button_text_color: "var(--sv-offwhite)"
 primary_button_border: ""  # Defaults to primary_button_background in the partial
 
@@ -43,12 +41,14 @@ button_alignment: "center"  # Buttons are positioned as a unit (centered by defa
 button_placement: "content"  # Default placement under content
 
 # Grid layout configuration (Full-width content)
-grid_layout: "i1/2, c1/2"  # Default to full-width content
+grid_layout: "c1/1"  # Default to full-width content
 
 ---
+ 
+ Hier kommen Sie ganz einfach zu Ihrem Termin. 
+ 
+ **E-Mail eintragen**, Standort wählen, fertig. 
+        
+        
+{{< termin-formular >}}
 
-Gesund und munter leben: **Das wollen wir alle.**
-
-Das Wichtigste ist Abwechslung für Körper und Geist, Ernährung mit Augenmass und innere Balance. Und dann kommt: **kluge Vorsorge**.
-
-Wenn Sie hier gelandet sind, weil Sie wissen, dass ein MRT für Sie das Richtige ist, bringt der Button Sie zum Termin. Oder Sie lesen erst noch einmal weiter.

@@ -252,12 +252,19 @@
 
 {{/* Determine final background style */}}
 {{ $useBgColor := and (isset .Params "background_color") (ne .Params.background_color "") }}
+{{ $bgImage := default "" .Params.background_image }}  {{/* Ensures it's always a string */}}
+{{ $useBgVariable := strings.HasPrefix $bgImage "var(--" }}
 {{ $finalBgStyle := "" }}
+
 {{ if $useBgColor }}
   {{ $finalBgStyle = printf "background: %s;" (.Params.background_color | safeCSS) }}
+{{ else if $useBgVariable }}
+  {{ $finalBgStyle = printf "background: %s;" ($bgImage | safeCSS) }}
 {{ else if $bgImageURL }}
   {{ $finalBgStyle = printf "background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%%, rgba(0,0,0,0.2) 50%%, rgba(0,0,0,0) 100%%), url('%s'); background-position: 15%% 15%%; background-size: cover; background-repeat: no-repeat;" $bgImageURL | safeCSS }}
 {{ end }}
+
+
 
 <section class="sv-section sv-full-bg">
   <div class="sv-bg-canvas" style="color: {{ $textColor | safeCSS }};{{ $finalBgStyle | safeCSS }}">
@@ -497,7 +504,7 @@
   <div class="sv-layout-wrapper sv-layout-split">
     <div class="sv-content-half" style="text-align: {{ $bodyTextAlign }};">
       <div class="sv-heading">
-        <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};">
+        <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
           {{ .Title }}
         </h2>
       </div>
@@ -559,7 +566,7 @@
 
     <div class="sv-content-half" style="text-align: {{ $bodyTextAlign }};">
       <div class="sv-heading">
-        <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};">
+        <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
           {{ .Title }}
         </h2>
       </div>
@@ -593,7 +600,7 @@
 <!-- Full-width Content, no additional foreground image -->
   {{ else if eq $gridLayout "c1/1" }}
   <div class="sv-layout-wrapper sv-layout-full" style="text-align: {{ $bodyTextAlign }};">
-    <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};">
+    <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
       {{ .Title }}
     </h2>
     
@@ -623,7 +630,7 @@
 
 <!-- Fallback: Full-width Content - same as c1/1 -->
   <div class="sv-layout-wrapper sv-layout-full" style="text-align: {{ $bodyTextAlign }};">
-    <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};">
+    <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
       {{ .Title }}
     </h2>
     

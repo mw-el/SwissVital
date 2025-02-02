@@ -3,6 +3,11 @@ title: "Übersicht schaffen: Das Ganzkörper-MRT"
 layout: "section"
 id: "uebersicht"
 
+# Available light BG Gradients: 
+# var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
+# Available Layouts: 
+# "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
+
 
 # Background settings
 background_image: ""  # Background image for the section

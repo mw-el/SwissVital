@@ -1,0 +1,43 @@
+<section class="page-section" id="contact">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-lg-8 col-xl-6 text-center">
+        <h2 id="termin-buchen" class="mt-0">Termin buchen</h2>
+         <p>
+          Hier kommen Sie ganz einfach zu Ihrem Termin. <br>E-Mail eintragen, Standort wählen, fertig. 
+        </p>
+      </div>
+    </div>
+    <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+      <div class="col-lg-6">
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+          <div class="form-floating mb-3">
+          </div>
+          <div class="form-floating mb-3">
+            <input class="form-control" id="email" type="email" placeholder="name@mailbox.ch" data-sb-validations="required,email" />
+            <label for="email">Eintragen: Ihre E-Mail Addresse für Wichtiges</label>
+            <div class="invalid-feedback" data-sb-feedback="email:required">Bitte geben Sie Ihre E-Mail-Adresse ein.</div>
+            <div class="invalid-feedback" data-sb-feedback="email:email">Bitte überprüfen Sie die E-Mail-Adresse.</div>
+          </div>
+          <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+              <div class="fw-bolder">Das hat geklappt. Danke. !</div>
+              </div>
+          </div>
+          <div class="d-none" id="submitErrorMessage">
+            <div class="text-center text-danger mb-3">Fehler – das hat leider nicht funktioniert.</div>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Termin organisieren</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-lg-4 text-center mb-5 mb-lg-0">
+        <i class="bi-phone fs-2 mb-3 text-muted"></i>
+        <div>+1 (555) 123-4567</div>
+      </div>
+    </div>
+  </div>
+</section>
