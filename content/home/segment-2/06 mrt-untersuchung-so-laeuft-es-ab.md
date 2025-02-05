@@ -15,7 +15,7 @@ text_color: ""  # Text color
 
 # Foreground Image (Used in Split Layout)
 image: "img/home/_niko-portrait.webp"  # Image used in a split layout
-image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
+image-shadow: "shadow" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow
 
 # Primary Button
 primary_button_text: "Termin wählen"

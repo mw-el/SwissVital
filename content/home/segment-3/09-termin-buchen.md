@@ -47,9 +47,9 @@ grid_layout: "c1/1"  # Default to full-width content
  
  Hier kommen Sie ganz einfach zu Ihrem Termin. 
  
- **E-Mail eintragen**, Standort wählen, fertig. 
+ **E-Mail eintragen**, Standort wählen, ab die Post.
  
  <br>&nbsp;       
         
-{{< termin-formular >}}
+{{< buchungsformular-standard >}}
 
