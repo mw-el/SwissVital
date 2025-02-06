@@ -49,7 +49,7 @@ grid_layout: "c1/1"  # Default to full-width content
  
  **E-Mail eintragen**, Standort wählen, ab die Post.
  
- <br>&nbsp;       
+{{< spacer >}}   
         
 {{< buchungsformular-standard >}}
 

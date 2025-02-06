@@ -46,7 +46,7 @@ grid_layout: "c1/1"  # Default to full-width content
 
 Bei der Terminwahl geben Sie bitte einfach Ihren bevorzugten Standort an.
   
-&nbsp;
+{{< spacer >}}
 
         
 {{< standorte >}}
