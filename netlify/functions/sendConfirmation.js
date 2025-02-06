@@ -14,24 +14,32 @@ exports.handler = async function(event, context) {
   }
 
   const mailOptions = {
-    from: '"Ihre Website" <no-reply@deinedomain.ch>',
-    to: 'mw@elektromail',
-    subject: 'Neue Formular-Einsendung',
-    text: `Neue Buchung:
-E-Mail: ${data.email}
-Standort: ${data.standort}
-Vorname: ${data.vorname}
-Nachname: ${data.nachname}
-Untersuchung: ${data.untersuchung}
-Termin: ${data.termin}`
+    from: `"Buchungsbestätigung" <${process.env.SMTP_USER}>`,
+    to: data.email, // ✅ Dynamic recipient
+    subject: 'Buchungsbestätigung',
+    text: `Sehr geehrte/r ${data.vorname} ${data.nachname},
+  
+  Ihre Buchung wurde erfolgreich übermittelt. Hier sind die Details:
+  
+  - **Standort:** ${data.standort}
+  - **Untersuchung:** ${data.untersuchung}
+  - **Termin:** ${data.termin}
+  
+  Vielen Dank für Ihre Buchung!
+  
+  Freundliche Grüße,  
+  Ihr Team von Swiss-Vital
+  `
   };
+  
 
   let transporter = nodemailer.createTransport({
-    host: 'smtp.example.com',
-    port: 587,
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT),
+    secure: true, // true for SSL/TLS (Port 465)
     auth: {
-      user: 'deinSMTPUser',
-      pass: 'deinSMTPPass'
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
     }
   });
 

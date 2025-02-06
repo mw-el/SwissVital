@@ -117,19 +117,29 @@
       const formData = new FormData(form);
 
       // Sende Daten an Netlify Forms
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      })
-      .then(function() {
-        // Rufe Netlify Function zum Versenden der Bestätigungsmail auf
-        return fetch('/.netlify/functions/sendConfirmation', {
+      document.getElementById('multiStepForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+      
+        // Directly send data to Netlify function
+        fetch('/.netlify/functions/sendConfirmation', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(Object.fromEntries(formData.entries()))
+        })
+        .then(response => {
+          if (response.ok) {
+            showSummary(formData);
+          } else {
+            console.error('Fehler beim Versenden der Bestätigungsmail.');
+          }
+        })
+        .catch(error => {
+          console.error('Fehler:', error);
         });
-      })
+      });
+      
       .then(function(response) {
         if (response.ok) {
           showSummary(formData);
