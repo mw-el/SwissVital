@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="path/to/bootstrap.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-    #multiStepForm {max-width: 600px; margin: 0 auto;}
     .form-step { display: none; }
     .form-step.active { display: block; }
     .step-title { font-size: 1.5rem; font-weight: bold; text-align: center; }
@@ -14,11 +13,6 @@
     .form-check-container { display: flex; align-items: center; justify-content: center; gap: 15px; }
     .form-floating { width: 100%; }
     .d-none { display: none; }
-    .tooltip-info { 
-      font-size: 0.8rem; 
-      color: #6c757d; 
-      margin-top: 0.25rem; 
-    }
   </style>
 </head>
 <body>
@@ -64,9 +58,8 @@
         <label for="nachname">Nachname *</label>
       </div>
       <div class="form-floating mb-3">
-        <input class="form-control" id="geburtsjahr" type="text" name="geburtsjahr" placeholder="Geburtsjahr" required>
-        <label for="geburtsjahr">Geburtsjahr *</label>
-        <div class="tooltip-info">Bitte tragen Sie hier Ihr Geburtsjahr ein.</div>
+        <input class="form-control" id="geburtsdatum" type="date" name="geburtsdatum" required>
+        <label for="geburtsdatum">Geburtsdatum *</label>
       </div>
       <div class="form-floating mb-3">
         <input class="form-control" id="strasse" type="text" name="strasse" placeholder="Strasse" required>
@@ -103,22 +96,8 @@
         <label for="untersuchung">Untersuchung *</label>
       </div>
       <div class="form-floating mb-3">
-        <select class="form-select" id="terminwunsch" name="terminwunsch" required>
-          <option value="">Bitte auswählen</option>
-          <option value="dringend">Dringend</option>
-          <option value="naechste-sechs-wochen">In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)</option>
-          <option value="naechste-drei-monate">In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)</option>
-          <option value="anruf">Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)</option>
-        </select>
-        <label for="terminwunsch">Terminwunsch *</label>
-      </div>
-      <div class="form-check-container mb-3">
-        <input class="form-check-input" type="checkbox" id="agb" name="agb" required>
-        <label class="form-check-label" for="agb">Ich stimme den <a href="/agb">AGB</a> zu.</label>
-      </div>
-      <div class="form-check-container mb-3">
-        <input class="form-check-input" type="checkbox" id="datenschutz" name="datenschutz" required>
-        <label class="form-check-label" for="datenschutz">Ich stimme der <a href="/datenschutzerklaerung">Datenschutzerklärung</a> zu.</label>
+        <input class="form-control" id="termin" type="date" name="termin" required>
+        <label for="termin">Gewünschter Termin *</label>
       </div>
       <div class="d-flex justify-content-between button-container">
         <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">Zurück</button>
@@ -132,62 +111,10 @@
     <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
     <p class="mb-3"><strong>Folgende Daten wurden erfasst:</strong></p>
     <div class="text-start" id="summaryContent"></div>
-    <hr>
-    <p class="lead" id="emailConfirmation" class="mt-3"></p>
+    <p id="emailConfirmation" class="mt-3"></p>
   </div>
 
   <script>
-    // Mapping nur im Formular-Frontend
-    const terminwunschMapping = {
-      "dringend": "Dringend",
-      "naechste-sechs-wochen": "In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)",
-      "naechste-drei-monate": "In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)",
-      "anruf": "Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)"
-    };
-
-    // NEUES Mapping für Untersuchung
-    const untersuchungMapping = {
-      "produkt1": "Produkt 1 - CHF 1970.-",
-      "produkt2": "Produkt 2 - CHF 2350.-",
-      "produkt3": "Produkt 3 - CHF 850.-"
-    };
-
-    document.getElementById("multiStepForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const formData = new FormData(event.target);
-      const formObject = Object.fromEntries(formData.entries());
-
-      // Prüfung, ob gemappter Wert vorhanden ist
-      formObject.terminwunsch = terminwunschMapping[formObject.terminwunsch] || formObject.terminwunsch;
-      formObject.untersuchung = untersuchungMapping[formObject.untersuchung] || formObject.untersuchung;
-
-      fetch('/.netlify/functions/sendConfirmation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formObject)
-      }).then(response => {
-        if (response.ok) {
-          response.json().then(returnedData => {
-            document.getElementById("multiStepForm").classList.add("d-none");
-            document.getElementById("successMessage").classList.remove("d-none");
-
-            let summaryHtml = "";
-            // Übersicht Terminwunsch
-            if (returnedData.terminwunsch) {
-              summaryHtml += `<p><strong>Terminwunsch:</strong> ${returnedData.terminwunsch}</p>`;
-            }
-            // Übersicht Untersuchung
-            if (returnedData.untersuchung) {
-              summaryHtml += `<p><strong>Untersuchung:</strong> ${returnedData.untersuchung}</p>`;
-            }
-            document.getElementById("summaryContent").innerHTML = summaryHtml;
-            document.getElementById("emailConfirmation").textContent =
-              "Sie erhalten in Kürze eine Bestätigungs-E-Mail an: " + (returnedData.email || "");
-          });
-        }
-      });
-    });
-
     function nextStep(currentStep) {
       document.getElementById("step-" + currentStep).classList.remove("active");
       document.getElementById("step-" + (currentStep + 1)).classList.add("active");
@@ -206,6 +133,13 @@
       return number;
     }
 
+    function formatDate(dateString) {
+      if (!dateString) return dateString;
+      const parts = dateString.split("-");
+      if (parts.length !== 3) return dateString;
+      return parts[2] + "." + parts[1] + "." + parts[0];
+    }
+
     document.getElementById("multiStepForm").addEventListener("submit", function(event) {
       event.preventDefault();
       const formData = new FormData(event.target);
@@ -221,16 +155,16 @@
           const formObject = Object.fromEntries(formData.entries());
           const fieldLabels = {
             email: "E-Mail-Adresse",
-            standort: "Gewählter Praxis-Standort",
+            standort: "Standort",
             vorname: "Vorname",
             nachname: "Nachname",
-            geburtsjahr: "Geburtsjahr",
+            geburtsdatum: "Geburtsdatum",
             strasse: "Strasse",
             plz: "PLZ",
             ort: "Ort",
             telefon: "Telefon",
             untersuchung: "Untersuchung",
-            terminwunsch: "Terminwunsch"
+            termin: "Termin"
           };
 
           const productMapping = {
@@ -239,26 +173,19 @@
             "Produkt 3": "Produkt 3 - CHF 850.-"
           };
 
-          const terminwunschMapping = {
-            "dringend": "Dringend",
-            "naechste-sechs-wochen": "In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)",
-            "naechste-drei-monate": "In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)",
-            "anruf": "Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)"
-          };
-
           let summaryHtml = "";
           const fieldsOrder = [
+            "email",
+            "standort",
             "vorname",
             "nachname",
-            "email",
-            "geburtsjahr",
+            "geburtsdatum",
             "strasse",
             "plz",
             "ort",
             "telefon",
-            "standort",
             "untersuchung",
-            "terminwunsch"
+            "termin"
           ];
           fieldsOrder.forEach(key => {
             if (formObject[key] !== undefined && formObject[key] !== "") {
@@ -266,11 +193,11 @@
               if (key === "untersuchung") {
                 value = productMapping[value] || value;
               }
-              if (key === "terminwunsch") {
-                value = terminwunschMapping[value] || value;
-              }
               if (key === "telefon") {
                 value = formatPhoneNumber(value);
+              }
+              if (key === "geburtsdatum" || key === "termin") {
+                value = formatDate(value);
               }
               summaryHtml += `<p><strong>${fieldLabels[key]}:</strong> ${value}</p>`;
             }

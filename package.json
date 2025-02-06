@@ -18,6 +18,7 @@
   "homepage": "https://github.com/mw-el/SwissVital#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "nodemailer": "^6.10.0"
   }
 }
