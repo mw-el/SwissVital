@@ -1,8 +1,12 @@
 [build]
-  command = "hugo"
   publish = "public"
+  command = "hugo"
 
-[build.environment]
-  GO_VERSION = "1.21"
-  HUGO_VERSION = "0.120.4" # Change this if using another version
-  NODE_VERSION = "18"
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/buchung"
+  to = "/.netlify/functions/sendConfirmation"
+  status = 200
+  force = true
