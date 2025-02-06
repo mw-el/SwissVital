@@ -1,156 +1,86 @@
-<!-- Google Material Icons laden -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<form id="multiStepForm" name="buchung" method="POST" data-netlify="true">
+  <!-- Hidden input for Netlify -->
+  <input type="hidden" name="form-name" value="buchung">
 
-<div id="buchungsformular-standard">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-6">
-        <form id="multiStepForm" data-sb-form-api-token="API_TOKEN" novalidate>
+  <!-- Schritt 1: E-Mail & Standort -->
+  <div class="form-step active" id="step-1">
+    <h3 class="text-center mb-4 step-title">Schritt 1 von 3: E-Mail & Standort</h3>
 
-          <!-- Schritt 1: E-Mail & Standort -->
-          <div class="form-step active" id="step-1">
-            <h3 class="text-center mb-4 step-title">Schritt 1 von 3: E-Mail & Standort</h3>
+    <div class="form-floating mb-3">
+      <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com" required>
+      <label for="email">E-Mail-Adresse *</label>
+    </div>
 
-            <div class="form-floating mb-3">
-              <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" required>
-              <label for="email">E-Mail-Adresse *</label>
-            </div>
+    <div class="form-floating mb-3">
+      <select class="form-select" id="standort" name="standort" required>
+        <option value="">Bitte wählen</option>
+        <option value="Zürich">Zürich</option>
+        <option value="Bern">Bern</option>
+        <option value="Basel">Basel</option>
+      </select>
+      <label for="standort">Standort *</label>
+    </div>
 
-            <div class="form-floating mb-3 position-relative">
-              <select class="form-select custom-select-icon" id="standort" name="standort" data-sb-validations="required" required>
-                <!-- Optionen werden per JavaScript eingefügt -->
-              </select>
-              <label for="standort">Wo in welcher Praxis soll die Untersuchung stattfinden? *</label>
-              <span class="material-icons custom-select-icon-icon">keyboard_arrow_down</span>
-            </div>
+    <div class="form-check-container mb-3">
+      <input class="form-check-input" type="checkbox" id="datenschutz1" name="datenschutz1" required>
+      <label class="form-check-label" for="datenschutz1">Ich stimme der Datenverarbeitung zu.</label>
+    </div>
 
-            <div class="form-check-container mb-3">
-              <input class="form-check-input" type="checkbox" id="datenschutz1" data-sb-validations="required" required>
-              <label class="form-check-label" for="datenschutz1">Ich stimme der Datenverarbeitung zu.</label>
-            </div>
-
-            <div class="d-grid button-container">
-              <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)">Weiter</button>
-            </div>
-          </div>
-
-          <!-- Schritt 2: Persönliche Angaben -->
-          <div class="form-step" id="step-2">
-            <h3 class="text-center mb-4 step-title">Schritt 2 von 3: Persönliche Angaben</h3>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="vorname" type="text" placeholder="Vorname" required>
-              <label for="vorname">Vorname *</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="nachname" type="text" placeholder="Nachname" required>
-              <label for="nachname">Nachname *</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="geburtsdatum" type="text" placeholder="TT.MM.JJJJ" pattern="\d{2}\.\d{2}\.\d{4}" required>
-              <label for="geburtsdatum">Geburtsdatum (TT.MM.JJJJ) *</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="strasse" type="text" placeholder="Strasse" required>
-              <label for="strasse">Strasse *</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="plz" type="text" placeholder="PLZ" required>
-              <label for="plz">PLZ *</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="ort" type="text" placeholder="Ort" required>
-              <label for="ort">Ort *</label>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="telefon" type="tel" placeholder="Telefonnummer" required>
-              <label for="telefon">Telefon *</label>
-            </div>
-
-            <div class="d-flex justify-content-between button-container">
-              <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)">Zurück</button>
-              <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)">Weiter</button>
-            </div>
-          </div>
-
-          <!-- Schritt 3: Untersuchung & Abschluss -->
-          <div class="form-step" id="step-3">
-            <h3 class="text-center mb-4 step-title">Schritt 3 von 3: Abschluss</h3>
-
-            <div class="form-floating mb-3 position-relative">
-              <select class="form-select custom-select-icon" id="untersuchung" name="untersuchung" data-sb-validations="required" required>
-                <option value="" disabled selected>Bitte auswählen</option>
-              </select>
-              <label for="untersuchung">Untersuchung *</label>
-              <span class="material-icons custom-select-icon-icon">keyboard_arrow_down</span>
-            </div>
-
-            <div class="form-floating mb-3">
-              <input class="form-control" id="termin" type="date" required>
-              <label for="termin">Gewünschter Termin *</label>
-            </div>
-
-            <div class="form-check-container mb-3">
-              <input class="form-check-input" type="checkbox" id="datenschutz2" required>
-              <label class="form-check-label" for="datenschutz2">Ich habe die Datenschutzerklärung gelesen und akzeptiere sie.</label>
-            </div>
-
-            <div class="d-flex justify-content-between button-container">
-              <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">Zurück</button>
-              <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Termin buchen</button>
-            </div>
-          </div>
-
-        </form>
-        <!-- Erfolgsnachricht (zunächst versteckt) -->
-        <div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none">
-          <h3 class="text-success mb-3">
-            <i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!
-          </h3>
-          <p class="mb-3">Die folgenden Daten haben wir für Sie erfasst:</p>
-          <div class="text-start" id="summaryContent">
-            <!-- Übersicht der eingegebenen Daten -->
-          </div>
-          <p class="mt-3">
-            <strong>Eine Bestätigungs-E-Mail ist zu Ihnen unterwegs an die folgende E-Mail-Adresse:</strong>
-            <span id="confirmationEmail"></span>
-          </p>
-        </div>
-      </div>
+    <div class="d-grid button-container">
+      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)">Weiter</button>
     </div>
   </div>
-</div>
 
-<style>
-  .form-step { display: none; }
-  .form-step.active { display: block; }
-  .step-title { font-size: 1.5rem; font-weight: bold; text-align: center; }
-  .button-container { margin-top: clamp(30px, 5vw, 50px); }
-  .form-check-container { display: flex; align-items: center; justify-content: center; gap: 15px; }
-  .form-floating { width: 100%; }
-  .position-relative { position: relative; }
-  .custom-select-icon {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding-right: 2.5rem;
-    background-image: none;
-  }
-  .custom-select-icon-icon {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #777;
-  }
-</style>
+  <!-- Schritt 2: Persönliche Angaben -->
+  <div class="form-step" id="step-2">
+    <h3 class="text-center mb-4 step-title">Schritt 2 von 3: Persönliche Angaben</h3>
+
+    <div class="form-floating mb-3">
+      <input class="form-control" id="vorname" type="text" name="vorname" placeholder="Vorname" required>
+      <label for="vorname">Vorname *</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input class="form-control" id="nachname" type="text" name="nachname" placeholder="Nachname" required>
+      <label for="nachname">Nachname *</label>
+    </div>
+
+    <div class="d-flex justify-content-between button-container">
+      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)">Zurück</button>
+      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)">Weiter</button>
+    </div>
+  </div>
+
+  <!-- Schritt 3: Untersuchung & Abschluss -->
+  <div class="form-step" id="step-3">
+    <h3 class="text-center mb-4 step-title">Schritt 3 von 3: Abschluss</h3>
+
+    <div class="form-floating mb-3">
+      <select class="form-select" id="untersuchung" name="untersuchung" required>
+        <option value="">Bitte auswählen</option>
+        <option value="Produkt 1">Produkt 1</option>
+        <option value="Produkt 2">Produkt 2</option>
+        <option value="Produkt 3">Produkt 3</option>
+      </select>
+      <label for="untersuchung">Untersuchung *</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input class="form-control" id="termin" type="date" name="termin" required>
+      <label for="termin">Gewünschter Termin *</label>
+    </div>
+
+    <div class="form-check-container mb-3">
+      <input class="form-check-input" type="checkbox" id="datenschutz2" name="datenschutz2" required>
+      <label class="form-check-label" for="datenschutz2">Ich habe die Datenschutzerklärung gelesen und akzeptiere sie.</label>
+    </div>
+
+    <div class="d-flex justify-content-between button-container">
+      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">Zurück</button>
+      <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Termin buchen</button>
+    </div>
+  </div>
+</form>
 
 <script>
   const CONFIG = {
