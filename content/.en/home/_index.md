@@ -1,4 +1,0 @@
----
-title: "Englisch"
-layout: "home"
----

@@ -1,4 +1,4 @@
-baseURL = "https://swiss-vital.ch"
+baseURL = "/"
 languageCode = "de-CH"
 title = "SwissVital"
 theme = "bootstrap-theme"
@@ -11,3 +11,15 @@ defaultContentLanguageInSubdir = true
     languageName = "Deutsch"
     weight = 1
     contentDir = "content/de"
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
+  [languages.fr]
+    languageName = "Francais"
+    weight = 3
+    contentDir = "content/fr"
+  [languages.it]
+    languageName = "Italiano"
+    weight = 4
+    contentDir = "content/it"

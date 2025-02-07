@@ -2,7 +2,7 @@
     <div class="container px-4 px-lg-5">
 
         <a class="navbar-brand" href="#page-top">
-            <img src="/img/logo/swiss-vital-logo-red.svg" alt="Swiss Vital Logo" style="height: 50px;">
+            <img src="/img/logo/swiss-vital-logo-2.svg" alt="Swiss Vital Logo" style="height: 50px;">
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,6 +13,30 @@
                 <li class="nav-item"><a class="nav-link" href="#leistungen">Leistungen</a></li>
                 <li class="nav-item"><a class="nav-link" href="#untersuchungen">Untersuchungen</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kontakt">Kontakt</a></li>
+
+                
+                <!-- Language Switcher with Material Icon -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <span class="material-icons">language</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                      {{ range $.Site.Home.AllTranslations }}
+                        {{ if ne $.Site.Language.Lang .Language.Lang }}
+                          {{/* Try to get the translation of the current page in the target language */}}
+                          {{ $translation := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
+                          {{/* If the translation is missing, get the fallback "no-translation" page */}}
+                          {{ $noTranslation := index (where ($.Site.GetPage "/no-translation.md").Translations "Language.Lang" .Language.Lang) 0 }}
+                          <li class="nav-item">
+                            <a class="dropdown-item" href="{{ default $noTranslation.Permalink $translation.Permalink }}">
+                              {{ .Language.LanguageName }}
+                            </a>
+                          </li>
+                        {{ end }}
+                      {{ end }}
+                    </ul>
+                  </li>
+                
             </ul>
         </div>
     </div>
