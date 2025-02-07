@@ -16,28 +16,49 @@
 
                 
                 <!-- Language Switcher with Material Icon -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <span class="material-icons">language</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                      {{ range $.Site.Home.AllTranslations }}
-                        {{ if ne $.Site.Language.Lang .Language.Lang }}
-                          {{/* Try to get the translation of the current page in the target language */}}
-                          {{ $translation := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
-                          {{/* If the translation is missing, get the fallback "no-translation" page */}}
-                          {{ $noTranslation := index (where ($.Site.GetPage "/no-translation.md").Translations "Language.Lang" .Language.Lang) 0 }}
-                          <li class="nav-item">
-                            <a class="dropdown-item" href="{{ default $noTranslation.Permalink $translation.Permalink }}">
-                              {{ .Language.LanguageName }}
-                            </a>
-                          </li>
-                        {{ end }}
-                      {{ end }}
-                    </ul>
-                  </li>
-                
-            </ul>
+                <div class="language-switcher ms-3">
+                    <div class="d-flex align-items-center">
+                    <span class="material-icons me-2" style="color: var(--sv-richblack);">language</span>
+                    <ul class="list-inline mb-0 d-flex align-items-center"></ul>
+                    {{ range $.Site.Home.AllTranslations }}
+                    {{ $isCurrentLang := eq $.Site.Language.Lang .Language.Lang }}
+                    {{ $translation := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
+                    {{ $noTranslation := index (where ($.Site.GetPage "/no-translation.md").Translations "Language.Lang" .Language.Lang) 0 }}
+                    <li class="list-inline-item"></li>
+                      <a href="{{ default $noTranslation.Permalink $translation.Permalink }}"
+                         class="language-bubble {{ if $isCurrentLang }}active{{ end }}"
+                         title="{{ .Language.LanguageName }}">
+                        {{ .Language.Lang | upper }}
+                      </a>
+                    </li>
+                    {{ end }}
+                  </ul>
+                </div>
+              </ul>
+
+        <style>
+        .language-bubble {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center; 
+          color: var(--sv-richblack);
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          margin: 0 3px 0 0;
+          transition: all 0.3s ease;
+          border: none;
+        }
+
+        .language-bubble:hover {
+          color: #333;
+          text-decoration: underline;
+        }
+
+        .language-bubble.active {
+          text-decoration: underline;
+          }
+        </style>
         </div>
     </div>
 </nav>
