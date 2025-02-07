@@ -1,0 +1,36 @@
+baseURL = "https://swiss-vital.ch"
+languageCode = "de"
+title = "SwissVital"
+theme = "bootstrap-theme"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  portfolio = "portfolio"
+
+[build]
+  writeStats = true
+
+[params]
+  company_name = "SwissVital"
+
+defaultContentLanguage = "de"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.de]
+    languageName = "Deutsch"
+    # Remove contentDir so that the default language uses "content"
+    weight = 1000
+  [languages.en]
+    languageName = "English"
+    contentDir = "content/en"
+    weight = 800
+  [languages.fr]
+    languageName = "Français"
+    contentDir = "content/fr"
+    weight = 20
+  [languages.it]
+    languageName = "Italiano"
+    contentDir = "content/it"
+    weight = 5

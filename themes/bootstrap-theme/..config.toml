@@ -1,0 +1,11 @@
+baseURL = "https://swiss-vital.ch"
+languageCode = "de-ch"
+title = "Creative - Hugo Theme"
+theme = "bootstrap-theme"
+
+[params]
+  hero_title = "Wenn das erscheint wird der Boostrap theme config file verwendet"
+  hero_subtitle = "Start Bootstrap hilft Ihnen, bessere Webseiten zu erstellen!"
+  about_title = "Wir haben, was Sie brauchen!"
+  about_text = "Start Bootstrap bietet alles, was Sie brauchen, um Ihre neue Webseite schnell und einfach zu erstellen!"
+  company_name = "Swiss Vital"

@@ -6,7 +6,8 @@
   <link rel="stylesheet" href="path/to/bootstrap.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
-    #multiStepForm {max-width: 600px; margin: 0 auto;}
+    #multiStepForm { max-width: 600px; margin: 0 auto; }
+    .success-message { max-width: 600px; margin: 0 auto; }
     .form-step { display: none; }
     .form-step.active { display: block; }
     .step-title { font-size: 1.5rem; font-weight: bold; text-align: center; }
@@ -14,18 +15,67 @@
     .form-check-container { display: flex; align-items: center; justify-content: center; gap: 15px; }
     .form-floating { width: 100%; }
     .d-none { display: none; }
-    .tooltip-info { 
-      font-size: 0.8rem; 
-      color: #6c757d; 
-      margin-top: 0.25rem; 
-    }
+    .tooltip-info { font-size: 0.8rem; color: #6c757d; margin-top: 0.25rem; }
+    .list-group { border-color: transparent; }
+/* Make form fields larger */
+.form-control, .form-select {
+  font-size: 1.1rem;  /* Increase input font size */
+  padding: 12px 14px; /* Adjust padding for better spacing */
+  height: 50px; /* Ensure uniform field height */
+}
+
+/* Adjust checkbox alignment */
+.form-check-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 10px; /* Space between checkbox and label */
+  font-size: 1.1rem; /* Increase label text size */
+  font-weight: 600;
+}
+
+.list-group {
+  border: transparent;
+}
+.form-check-input {
+  width: 1em;
+  height: 1em;
+  margin: 0 .2em .3em 0;
+  vertical-align: bottom;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+
+/* Style the button for a larger, more prominent appearance */
+.btn-xl {
+  font-size: 1.2rem;
+  padding: 14px 20px;
+  border-radius: 50px; /* Soft rounded button */
+}
+
+/* Increase space between form sections */
+.form-step {
+  margin-bottom: 30px;
+}
+
+    
   </style>
 </head>
 <body>
 
   <form id="multiStepForm" name="buchung" method="POST" data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="buchung">
-    <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+    <p class="d-none">
+      <label>Bitte nicht ausfüllen: <input name="bot-field"></label>
+    </p>
 
     <!-- Schritt 1: E-Mail & Standort -->
     <div class="form-step active" id="step-1">
@@ -96,19 +146,19 @@
       <div class="form-floating mb-3">
         <select class="form-select" id="untersuchung" name="untersuchung" required>
           <option value="">Bitte auswählen</option>
-          <option value="Produkt 1">Produkt 1 - CHF 1970.-</option>
-          <option value="Produkt 2">Produkt 2 - CHF 2350.-</option>
-          <option value="Produkt 3">Produkt 3 - CHF 850.-</option>
+          <option value="Produkt 1 - CHF 1970.-">Produkt 1 - CHF 1970.-</option>
+          <option value="Produkt 2 - CHF 2350.-">Produkt 2 - CHF 2350.-</option>
+          <option value="Produkt 3 - CHF 850.-">Produkt 3 - CHF 850.-</option>
         </select>
         <label for="untersuchung">Untersuchung *</label>
       </div>
       <div class="form-floating mb-3">
         <select class="form-select" id="terminwunsch" name="terminwunsch" required>
           <option value="">Bitte auswählen</option>
-          <option value="dringend">Dringend</option>
-          <option value="naechste-sechs-wochen">In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)</option>
-          <option value="naechste-drei-monate">In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)</option>
-          <option value="anruf">Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)</option>
+          <option value="Dringend">Dringend</option>
+          <option value="In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)">In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)</option>
+          <option value="In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)">In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)</option>
+          <option value="Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)">Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)</option>
         </select>
         <label for="terminwunsch">Terminwunsch *</label>
       </div>
@@ -128,66 +178,42 @@
   </form>
 
   <!-- Erfolgsnachricht -->
-  <div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none">
+  <div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none success-message">
     <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
-    <p class="mb-3"><strong>Folgende Daten wurden erfasst:</strong></p>
+    <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
     <div class="text-start" id="summaryContent"></div>
     <hr>
     <p class="lead" id="emailConfirmation" class="mt-3"></p>
   </div>
 
   <script>
-    // Mapping nur im Formular-Frontend
-    const terminwunschMapping = {
-      "dringend": "Dringend",
-      "naechste-sechs-wochen": "In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)",
-      "naechste-drei-monate": "In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)",
-      "anruf": "Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)"
-    };
+    // Phone number formatting function: removes non-digits and applies formatting
+    function formatPhoneNumber(number) {
+      let digits = number.replace(/\D/g, '');
+      if (digits.length === 10 && digits.startsWith("0")) {
+        return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+      }
+      return number;
+    }
 
-    // NEUES Mapping für Untersuchung
-    const untersuchungMapping = {
-      "produkt1": "Produkt 1 - CHF 1970.-",
-      "produkt2": "Produkt 2 - CHF 2350.-",
-      "produkt3": "Produkt 3 - CHF 850.-"
-    };
+    // Validate phone number: must have exactly 10 digits and start with "0"
+    function validatePhoneNumber(number) {
+      let digits = number.replace(/\D/g, '');
+      return (digits.length === 10 && digits.startsWith("0"));
+    }
 
-    document.getElementById("multiStepForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const formData = new FormData(event.target);
-      const formObject = Object.fromEntries(formData.entries());
-
-      // Prüfung, ob gemappter Wert vorhanden ist
-      formObject.terminwunsch = terminwunschMapping[formObject.terminwunsch] || formObject.terminwunsch;
-      formObject.untersuchung = untersuchungMapping[formObject.untersuchung] || formObject.untersuchung;
-
-      fetch('/.netlify/functions/sendConfirmation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formObject)
-      }).then(response => {
-        if (response.ok) {
-          response.json().then(returnedData => {
-            document.getElementById("multiStepForm").classList.add("d-none");
-            document.getElementById("successMessage").classList.remove("d-none");
-
-            let summaryHtml = "";
-            // Übersicht Terminwunsch
-            if (returnedData.terminwunsch) {
-              summaryHtml += `<p><strong>Terminwunsch:</strong> ${returnedData.terminwunsch}</p>`;
-            }
-            // Übersicht Untersuchung
-            if (returnedData.untersuchung) {
-              summaryHtml += `<p><strong>Untersuchung:</strong> ${returnedData.untersuchung}</p>`;
-            }
-            document.getElementById("summaryContent").innerHTML = summaryHtml;
-            document.getElementById("emailConfirmation").textContent =
-              "Sie erhalten in Kürze eine Bestätigungs-E-Mail an: " + (returnedData.email || "");
-          });
-        }
-      });
+    // Format and validate phone number when leaving the input field
+    document.getElementById("telefon").addEventListener("blur", function() {
+      let formatted = formatPhoneNumber(this.value);
+      if (!validatePhoneNumber(formatted)) {
+        alert("Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.");
+        this.value = "";
+      } else {
+        this.value = formatted;
+      }
     });
 
+    // Step navigation functions
     function nextStep(currentStep) {
       document.getElementById("step-" + currentStep).classList.remove("active");
       document.getElementById("step-" + (currentStep + 1)).classList.add("active");
@@ -198,88 +224,50 @@
       document.getElementById("step-" + (currentStep - 1)).classList.add("active");
     }
 
-    function formatPhoneNumber(number) {
-      let digits = number.replace(/\D/g, '');
-      if (digits.length === 10 && digits.startsWith("0")) {
-        return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
-      }
-      return number;
-    }
-
+    // Form submit event: formats phone number, creates a summary, and sends the form
     document.getElementById("multiStepForm").addEventListener("submit", function(event) {
       event.preventDefault();
       const formData = new FormData(event.target);
+      const formObject = Object.fromEntries(formData.entries());
+
+      // Format phone number before submission
+      formObject.telefon = formatPhoneNumber(formObject.telefon);
+
+      // Construct the summary using a Bootstrap list-group
+      let summaryHtml = `<ul class="list-group">
+            <li class="list-group-item"><strong>Vorname:</strong> ${formObject.vorname}</li>
+            <li class="list-group-item"><strong>Nachname:</strong> ${formObject.nachname}</li>
+            <li class="list-group-item"><strong>Geburtsjahr:</strong> ${formObject.geburtsjahr}</li>
+            <li class="list-group-item"><strong>Strasse:</strong> ${formObject.strasse}</li>
+            <li class="list-group-item"><strong>PLZ:</strong> ${formObject.plz}</li>
+            <li class="list-group-item"><strong>Ort:</strong> ${formObject.ort}</li>
+            <li class="list-group-item"><strong>E-Mail:</strong> ${formObject.email}</li>
+            <li class="list-group-item"><strong>Telefon:</strong> ${formObject.telefon}</li>
+            <li class="list-group-item"><strong>Gewählter Praxis-Standort:</strong> ${formObject.standort}</li>`;
+      
+      if (formObject.terminwunsch) {
+        summaryHtml += `<li class="list-group-item"><strong>Terminwunsch:</strong> ${formObject.terminwunsch}</li>`;
+      }
+      if (formObject.untersuchung) {
+        summaryHtml += `<li class="list-group-item"><strong>Untersuchung:</strong> ${formObject.untersuchung}</li>`;
+      }
+      
+      summaryHtml += `</ul>`;
+
+      // Inject the summary into the page
+      document.getElementById("summaryContent").innerHTML = summaryHtml;
+      document.getElementById("emailConfirmation").textContent =
+        "Sie erhalten in Kürze eine Bestätigungs-E-Mail an: " + (formObject.email || "");
+
+      // Hide form and show success message
+      document.getElementById("multiStepForm").classList.add("d-none");
+      document.getElementById("successMessage").classList.remove("d-none");
+
+      // Now send the request
       fetch('/.netlify/functions/sendConfirmation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(formData.entries()))
-      }).then(response => {
-        if (response.ok) {
-          document.getElementById("multiStepForm").classList.add("d-none");
-          document.getElementById("successMessage").classList.remove("d-none");
-
-          const formObject = Object.fromEntries(formData.entries());
-          const fieldLabels = {
-            email: "E-Mail-Adresse",
-            standort: "Gewählter Praxis-Standort",
-            vorname: "Vorname",
-            nachname: "Nachname",
-            geburtsjahr: "Geburtsjahr",
-            strasse: "Strasse",
-            plz: "PLZ",
-            ort: "Ort",
-            telefon: "Telefon",
-            untersuchung: "Untersuchung",
-            terminwunsch: "Terminwunsch"
-          };
-
-          const productMapping = {
-            "Produkt 1": "Produkt 1 - CHF 1970.-",
-            "Produkt 2": "Produkt 2 - CHF 2350.-",
-            "Produkt 3": "Produkt 3 - CHF 850.-"
-          };
-
-          const terminwunschMapping = {
-            "dringend": "Dringend",
-            "naechste-sechs-wochen": "In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)",
-            "naechste-drei-monate": "In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)",
-            "anruf": "Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)"
-          };
-
-          let summaryHtml = "";
-          const fieldsOrder = [
-            "vorname",
-            "nachname",
-            "email",
-            "geburtsjahr",
-            "strasse",
-            "plz",
-            "ort",
-            "telefon",
-            "standort",
-            "untersuchung",
-            "terminwunsch"
-          ];
-          fieldsOrder.forEach(key => {
-            if (formObject[key] !== undefined && formObject[key] !== "") {
-              let value = formObject[key];
-              if (key === "untersuchung") {
-                value = productMapping[value] || value;
-              }
-              if (key === "terminwunsch") {
-                value = terminwunschMapping[value] || value;
-              }
-              if (key === "telefon") {
-                value = formatPhoneNumber(value);
-              }
-              summaryHtml += `<p><strong>${fieldLabels[key]}:</strong> ${value}</p>`;
-            }
-          });
-          document.getElementById("summaryContent").innerHTML = summaryHtml;
-
-          document.getElementById("emailConfirmation").textContent =
-            `Eine Bestätigungs-E-Mail wurde an ${formObject.email} gesendet.`;
-        }
+        body: JSON.stringify(formObject)
       });
     });
   </script>
