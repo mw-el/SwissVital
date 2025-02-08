@@ -1,79 +1,82 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+<nav class="navbar navbar-light fixed-top py-3" id="mainNav">
   <div class="container px-4 px-lg-5">
-      <a class="navbar-brand" href="#page-top">
-          <img src="/img/logo/swiss-vital-logo-2.svg" alt="Swiss Vital Logo" style="height: 50px;">
-      </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto my-2 my-lg-0">
-              <li class="nav-item me-5"><a class="nav-link" href="#termin">Termin</a></li>
-              <li class="nav-item me-5"><a class="nav-link" href="#leistungen">Leistungen</a></li>
-              <li class="nav-item me-5"><a class="nav-link" href="#untersuchungen">Untersuchungen</a></li>
-              <li class="nav-item me-5"><a class="nav-link" href="#kontakt">Kontakt</a></li>
-          </ul>
-          
-          <!-- Language Switcher with Material Icon -->
-          <div class="language-switcher d-flex align-items-center justify-content-start mt-3 mt-lg-0 ms-4">
-              <span class="material-icons me-2" style="color: var(--sv-richblack); font-size: 20px;">language</span>
-              <ul class="list-inline mb-0 d-flex align-items-center">
-                  {{ range $.Site.Home.AllTranslations }}
-                  {{ $isCurrentLang := eq $.Site.Language.Lang .Language.Lang }}
-                  {{ $translation := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
-                  {{ $noTranslation := index (where ($.Site.GetPage "/no-translation.md").Translations "Language.Lang" .Language.Lang) 0 }}
-                  <li class="list-inline-item">
-                      <a href="{{ default $noTranslation.Permalink $translation.Permalink }}"
-                         class="language-bubble {{ if $isCurrentLang }}active{{ end }}"
-                         title="{{ .Language.LanguageName }}">
-                          {{ .Language.Lang | upper }}
-                      </a>
-                  </li>
-                  {{ end }}
-              </ul>
-          </div>
+    <div class="d-flex align-items-center justify-content-between flex-nowrap w-100">
+      <div class="navbar-brand">
+        <a href="{{ "/" | relLangURL }}">
+          <img class="logo-img" src="/img/logo/swiss-vital-logo-2.svg" alt="Swiss Vital Logo">
+        </a>
       </div>
+      <div>
+        <a class="sv-nav-button" href="#termin-buchen">{{ .Site.Params.termin }}</a>
+      </div>
+      <div class="language-switcher d-flex align-items-center justify-content-end">
+        <span class="material-icons me-2" style="color: var(--sv-richblack); font-size: 20px;">language</span>
+        <ul class="list-inline mb-0 d-flex align-items-center">
+          {{ range $.Site.Home.AllTranslations }}
+            {{ $isCurrentLang := eq $.Site.Language.Lang .Language.Lang }}
+            {{ $translation := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
+            {{ $noTranslation := index (where ($.Site.GetPage "/no-translation.md").Translations "Language.Lang" .Language.Lang) 0 }}
+            <li class="list-inline-item">
+              <a href="{{ default $noTranslation.Permalink $translation.Permalink }}"
+                 class="language-bubble {{ if $isCurrentLang }}active{{ end }}"
+                 title="{{ .Language.LanguageName }}">
+                {{ .Language.Lang | upper }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
   </div>
 
   <style>
-      .language-bubble {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          color: rgba(var(--sv-richblack-rgb), 0.5); /* Inactive language at 50% intensity */
-          text-decoration: none;
-          font-size: 0.9rem;
-          font-weight: 600;
-          margin: 0 4px 0 0;
-          transition: all 0.3s ease;
-          border: none;
+    .logo-img {
+      height: 50px;
+      transition: height 0.3s ease;
+    }
+    @media (max-width: 576px) {
+      .logo-img {
+        height: 35px;
       }
-      .language-bubble:hover {
-          color: rgba(var(--sv-richblack-rgb), 0.7);
-          text-decoration: underline;
-          transform: scale(1.1); /* Zoom animation */
-      }
-      .language-bubble.active {
-          text-decoration: underline;
-          color: var(--sv-richblack);
-          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Floating shadow around text only */
-      }
-
-      .navbar-nav {
-          display: flex;
-          justify-content: flex-start;
-      }
-
-      @media (max-width: 992px) {
-          .navbar-collapse {
-              text-align: left;
-          }
-          .navbar-nav, .language-switcher {
-              width: 100%;
-              display: flex;
-              flex-direction: column;
-              align-items: flex-start;
-          }
-      }
+    }
+    .language-bubble {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(var(--sv-richblack-rgb), 0.5);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 0 4px 0 0;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    .language-bubble:hover {
+      color: rgba(var(--sv-richblack-rgb), 0.7);
+      text-decoration: underline;
+      transform: scale(1.1);
+    }
+    .language-bubble.active {
+      text-decoration: underline;
+      color: var(--sv-richblack);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .sv-nav-button {
+      font-size: clamp(0.7rem, 1.2vw, 1rem);
+      padding: clamp(0.3rem, 0.6vw, 0.6rem) clamp(1rem, 2vw, 2rem);
+      border-radius: 2rem;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      background-color: var(--sv-primary);
+      margin-top: -1px;
+      transition: all 0.3s ease;
+      color: var(--sv-offwhite);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .sv-nav-button:hover {
+      box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.25);
+    }
   </style>
 </nav>

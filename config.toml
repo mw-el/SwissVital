@@ -11,15 +11,50 @@ defaultContentLanguageInSubdir = true
     languageName = "Deutsch"
     weight = 1
     contentDir = "content/de"
+    [languages.de.params]
+      termin = "Termin"
+      rechtliches = "Rechtliches"
+      standorte = "Standorte"
+      untersuchungen = "Untersuchungen"
+      agb = "AGB"
+      datenschutz = "Datenschutzerklärung"
+      impressum = "Impressum"
+      
   [languages.en]
     languageName = "English"
     weight = 2
     contentDir = "content/en"
+    [languages.en.params]
+      termin = "Appointment"
+      rechtliches = "Legal"
+      standorte = "Locations"
+      untersuchungen = "Examinations"
+      agb = "Terms and Conditions"
+      datenschutz = "Privacy Policy"
+      impressum = "Imprint"
+
   [languages.fr]
     languageName = "Francais"
     weight = 3
     contentDir = "content/fr"
+    [languages.fr.params]
+      termin = "Rendez-vous"
+      rechtliches = "Mentions légales"
+      standorte = "Lieux"
+      untersuchungen = "Examens"
+      agb = "Conditions Générales"
+      datenschutz = "Politique de Confidentialité"
+      impressum = "Mentions légales"
+
   [languages.it]
     languageName = "Italiano"
     weight = 4
     contentDir = "content/it"
+    [languages.it.params]
+      termin = "Visita"
+      rechtliches = "Note legali"
+      standorte = "Sedi"
+      untersuchungen = "Esami"
+      agb = "Condizioni Generali"
+      datenschutz = "Informativa sulla Privacy"
+      impressum = "Impressum"

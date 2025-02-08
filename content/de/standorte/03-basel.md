@@ -8,4 +8,4 @@ In Basel werden die Untersuchungen bei unserem Partner durchgeführt.
 
 **Die Adresse lautet:**
 
-In Basel haben wr mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+In Basel haben wir mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.

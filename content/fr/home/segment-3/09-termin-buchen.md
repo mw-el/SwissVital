@@ -50,5 +50,5 @@ Voici comment prendre facilement votre rendez-vous.
 
 {{< spacer >}}   
         
-{{< buchungsformular-standard >}}
+{{< fr_buchungsformular-standard >}}
 

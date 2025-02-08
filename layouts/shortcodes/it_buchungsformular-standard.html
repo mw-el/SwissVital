@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Modulo di Prenotazione</title>
+  <link rel="stylesheet" href="path/to/bootstrap.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    #multiStepForm { max-width: 600px; margin: 0 auto; }
+    .success-message { max-width: 600px; margin: 0 auto; }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    .step-title { font-size: 1.5rem; font-weight: bold; text-align: center; }
+    .button-container { margin-top: clamp(30px, 5vw, 50px); }
+    .form-check-container { display: flex; align-items: center; justify-content: center; gap: 15px; }
+    .form-floating { width: 100%; }
+    .d-none { display: none; }
+    .tooltip-info { font-size: 0.8rem; color: #6c757d; margin-top: 0.25rem; }
+    .list-group { border-color: transparent; }
+    /* Make form fields larger */
+    .form-control, .form-select {
+      font-size: 1.1rem;  /* Increase input font size */
+      padding: 12px 14px; /* Adjust padding for better spacing */
+      height: 50px; /* Ensure uniform field height */
+    }
+
+    /* Adjust checkbox alignment */
+    .form-check-container {
+      display: flex;
+      align-items: center; /* Align items vertically */
+      gap: 10px; /* Space between checkbox and label */
+      font-size: 1.1rem; /* Increase label text size */
+      font-weight: 600;
+    }
+
+    .list-group {
+      border: transparent;
+    }
+    .form-check-input {
+      width: 1em;
+      height: 1em;
+      margin: 0 .2em .3em 0;
+      vertical-align: bottom;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Style the button for a larger, more prominent appearance */
+    .btn-xl {
+      font-size: 1.2rem;
+      padding: 14px 20px;
+      border-radius: 50px; /* Soft rounded button */
+    }
+
+    /* Increase space between form sections */
+    .form-step {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="multiStepForm" name="buchung" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="buchung">
+    <p class="d-none">
+      <label>Si prega di non compilare: <input name="bot-field"></label>
+    </p>
+
+    <!-- Fase 1: Email & Località -->
+    <div class="form-step active" id="step-1">
+      <h3 class="text-center mb-4 step-title">Fase 1 di 3: Email & Località</h3>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com" required>
+        <label for="email">Indirizzo Email *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="standort" name="standort" required>
+          <option value="">Seleziona</option>
+          <option value="Zürich">Zurigo</option>
+          <option value="Bern">Berna</option>
+          <option value="Basel">Basilea</option>
+        </select>
+        <label for="standort">Località *</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="datenschutz1" name="datenschutz1" required>
+        <label class="form-check-label" for="datenschutz1">Acconsento al trattamento dei dati.</label>
+      </div>
+      <div class="d-grid button-container">
+        <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)">Avanti</button>
+      </div>
+    </div>
+
+    <!-- Fase 2: Dettagli Personali -->
+    <div class="form-step" id="step-2">
+      <h3 class="text-center mb-4 step-title">Fase 2 di 3: Dettagli Personali</h3>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="vorname" type="text" name="vorname" placeholder="Vorname" required>
+        <label for="vorname">Nome *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="nachname" type="text" name="nachname" placeholder="Nachname" required>
+        <label for="nachname">Cognome *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="geburtsjahr" type="text" name="geburtsjahr" placeholder="Geburtsjahr" required>
+        <label for="geburtsjahr">Anno di Nascita *</label>
+        <div class="tooltip-info">Inserisci qui il tuo anno di nascita.</div>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="strasse" type="text" name="strasse" placeholder="Strasse" required>
+        <label for="strasse">Via *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="plz" type="text" name="plz" placeholder="PLZ" required>
+        <label for="plz">CAP *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="ort" type="text" name="ort" placeholder="Ort" required>
+        <label for="ort">Città *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="telefon" type="tel" name="telefon" placeholder="Telefonnummer" required>
+        <label for="telefon">Telefono *</label>
+      </div>
+      <div class="d-flex justify-content-between button-container">
+        <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)">Indietro</button>
+        <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)">Avanti</button>
+      </div>
+    </div>
+
+    <!-- Fase 3: Completamento -->
+    <div class="form-step" id="step-3">
+      <h3 class="text-center mb-4 step-title">Fase 3 di 3: Completamento</h3>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="untersuchung" name="untersuchung" required>
+          <option value="">Seleziona</option>
+          <option value="Produkt 1 - CHF 1970.-">Prodotto 1 - CHF 1970.-</option>
+          <option value="Produkt 2 - CHF 2350.-">Prodotto 2 - CHF 2350.-</option>
+          <option value="Produkt 3 - CHF 850.-">Prodotto 3 - CHF 850.-</option>
+        </select>
+        <label for="untersuchung">Esame *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="terminwunsch" name="terminwunsch" required>
+          <option value="">Seleziona</option>
+          <option value="Dringend">Urgente</option>
+          <option value="In den nächsten sechs Wochen (Bitte per E-Mail Terminvorschlag senden)">Entro le prossime sei settimane (invia una proposta di appuntamento via e-mail)</option>
+          <option value="In den nächsten drei Monaten (Bitte per E-Mail Terminvorschlag schicken)">Entro i prossimi tre mesi (invia una proposta di appuntamento via e-mail)</option>
+          <option value="Bitte rufen Sie mich zur Terminvereinbarung an (Anruf meist innerhalb von 60 Minuten)">Per favore chiamami per fissare un appuntamento (la chiamata avviene solitamente entro 60 minuti)</option>
+        </select>
+        <label for="terminwunsch">Preferenza Appuntamento *</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="agb" name="agb" required>
+        <label class="form-check-label" for="agb">Accetto i <a href="/agb">Termini e Condizioni</a>.</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="datenschutz" name="datenschutz" required>
+        <label class="form-check-label" for="datenschutz">Accetto l' <a href="/datenschutzerklaerung">Informativa sulla Privacy</a>.</label>
+      </div>
+      <div class="d-flex justify-content-between button-container">
+        <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">Indietro</button>
+        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Prenota Appuntamento</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Messaggio di Successo -->
+  <div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none success-message">
+    <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Grazie per la tua registrazione!</h3>
+    <p class="mb-3"><strong>Hai comunicato le seguenti informazioni:</strong></p>
+    <div class="text-start" id="summaryContent"></div>
+    <hr>
+    <p class="lead" id="emailConfirmation" class="mt-3"></p>
+  </div>
+
+  <script>
+    // Funzione per formattare il numero di telefono: rimuove i caratteri non numerici e applica un formato
+    function formatPhoneNumber(number) {
+      let digits = number.replace(/\D/g, '');
+      if (digits.length === 10 && digits.startsWith("0")) {
+        return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+      }
+      return number;
+    }
+
+    // Validazione del numero di telefono: deve avere esattamente 10 cifre e iniziare con "0"
+    function validatePhoneNumber(number) {
+      let digits = number.replace(/\D/g, '');
+      return (digits.length === 10 && digits.startsWith("0"));
+    }
+
+    // Formattare e validare il numero di telefono dopo aver lasciato il campo
+    document.getElementById("telefon").addEventListener("blur", function() {
+      let formatted = formatPhoneNumber(this.value);
+      if (!validatePhoneNumber(formatted)) {
+        alert("Si prega di inserire un numero di telefono valido con 10 cifre.");
+        this.value = "";
+      } else {
+        this.value = formatted;
+      }
+    });
+
+    // Funzioni di navigazione tra le fasi
+    function nextStep(currentStep) {
+      document.getElementById("step-" + currentStep).classList.remove("active");
+      document.getElementById("step-" + (currentStep + 1)).classList.add("active");
+    }
+
+    function prevStep(currentStep) {
+      document.getElementById("step-" + currentStep).classList.remove("active");
+      document.getElementById("step-" + (currentStep - 1)).classList.add("active");
+    }
+
+    // Evento di invio del form: formatta il numero di telefono, crea il riepilogo e invia il modulo
+    document.getElementById("multiStepForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const formObject = Object.fromEntries(formData.entries());
+
+      // Formattare il numero di telefono prima dell'invio
+      formObject.telefon = formatPhoneNumber(formObject.telefon);
+
+      // Costruire il riepilogo usando una list-group di Bootstrap
+      let summaryHtml = `<ul class="list-group">
+            <li class="list-group-item"><strong>Nome:</strong> ${formObject.vorname}</li>
+            <li class="list-group-item"><strong>Cognome:</strong> ${formObject.nachname}</li>
+            <li class="list-group-item"><strong>Anno di Nascita:</strong> ${formObject.geburtsjahr}</li>
+            <li class="list-group-item"><strong>Via:</strong> ${formObject.strasse}</li>
+            <li class="list-group-item"><strong>CAP:</strong> ${formObject.plz}</li>
+            <li class="list-group-item"><strong>Città:</strong> ${formObject.ort}</li>
+            <li class="list-group-item"><strong>Indirizzo Email:</strong> ${formObject.email}</li>
+            <li class="list-group-item"><strong>Telefono:</strong> ${formObject.telefon}</li>
+            <li class="list-group-item"><strong>Località Selezionata:</strong> ${formObject.standort}</li>`;
+
+      if (formObject.terminwunsch) {
+        summaryHtml += `<li class="list-group-item"><strong>Preferenza Appuntamento:</strong> ${formObject.terminwunsch}</li>`;
+      }
+      if (formObject.untersuchung) {
+        summaryHtml += `<li class="list-group-item"><strong>Esame:</strong> ${formObject.untersuchung}</li>`;
+      }
+      
+      summaryHtml += `</ul>`;
+
+      // Inserire il riepilogo nella pagina
+      document.getElementById("summaryContent").innerHTML = summaryHtml;
+      document.getElementById("emailConfirmation").textContent =
+        "Riceverai a breve un'email di conferma all'indirizzo: " + (formObject.email || "");
+
+      // Nascondi il form e mostra il messaggio di successo
+      document.getElementById("multiStepForm").classList.add("d-none");
+      document.getElementById("successMessage").classList.remove("d-none");
+
+      // Invia la richiesta
+      fetch('/.netlify/functions/sendConfirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formObject)
+      });
+    });
+  </script>
+
+</body>
+</html>

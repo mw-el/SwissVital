@@ -9,4 +9,7 @@ In Bern werden die Untersuchungen bei MRI-Bern durchgeführt.
 **Die Adresse lautet:**
 
 Schwanengasse 5/7
+
+<br>
+
 3011 Bern

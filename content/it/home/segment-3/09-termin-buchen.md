@@ -50,5 +50,5 @@ Ecco come prenotare facilmente il tuo appuntamento.
 
 {{< spacer >}}   
         
-{{< buchungsformular-standard >}}
+{{< it_buchungsformular-standard >}}
 

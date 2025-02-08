@@ -8,4 +8,4 @@ In Genf werden die Untersuchungen bei unserem Partner durchgeführt.
 
 **Die Adresse lautet:**
 
-In Genf haben wr mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+In Genf haben wir mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.

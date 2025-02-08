@@ -51,5 +51,5 @@ grid_layout: "c1/1"  # Default to full-width content
  
 {{< spacer >}}   
         
-{{< buchungsformular-standard >}}
+{{< de_buchungsformular-standard >}}
 
