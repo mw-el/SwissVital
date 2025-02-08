@@ -1,50 +1,33 @@
 ---
-title: "Selbsttest: Ihr erster Schritt – ohne Kosten"
+title: "Auto-Test : Votre Première Étape – Gratuitement"
 layout: "section"
 id: "selbsttest"
 
-# Available light BG Gradients: 
-# var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
-# Available Layouts: 
-# "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
-
-
 # Background settings
-background_image: ""  # Background image for the section
-background_color: "var(--sv-offwhite)"  # Background color
-text_color: ""  # No text color defined
+background_image: ""  
+background_color: "var(--sv-offwhite)"  
+text_color: ""  
 
-# Foreground Image (Used in Split Layout)
-image: "img/home/_selbsttest.webp"  # Image used in a split layout
-image-shadow: "shadow" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
+# Foreground Image
+image: "img/home/_selbsttest.webp"  
+image-shadow: "shadow"
 
 # Primary Button
-primary_button_text: "Selbsttest starten"
+primary_button_text: "Démarrer l'auto-test"
 primary_button_link: "#selbsttest"
 primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
-primary_button_border: ""  # Defaults to primary_button_background in the partial
-
-# Secondary Button (Optional)
-secondary_button_text: ""
-secondary_button_link: ""
-secondary_button_background: ""  # Defaults to `primary_button_text_color` if left empty
-secondary_button_text_color: ""  # Defaults to `primary_button_background` if left empty
-secondary_button_border: ""      # Defaults to `primary_button_text_color` if left empty (inverted colors)
 
 # Content alignment settings
 headline_alignment: "left"
 body_text_alignment: "left"
-button_alignment: "center"  # Buttons are positioned as a unit (centered by default)
-
-# Button Placement
-button_placement: "content"  # Default placement under content
+button_alignment: "center"  
 
 # Grid layout configuration (Split Layout - Image Left)
-grid_layout: "i2/5, c3/5"  # Image 2/5 width, content 3/5 width
+grid_layout: "i2/5, c3/5"  
 
 ---
 
-Nicht immer ist ein Ganzkörper-MRT erste Wahl. Manchmal sind andere Vorsorgemassnahmen zielsicherer oder wichtiger. Das hängt von Ihrer persönlichen Gesundheitsgeschichte und Ihren Lebensumständen ab.
+Une IRM du corps entier n'est pas toujours le premier choix. Parfois, d'autres mesures préventives sont plus précises ou plus importantes. Cela dépend de votre historique médical personnel et de votre situation de vie.
 
-Die medizinischen Fachgesellschaften haben für verschiedene Vorsorgeuntersuchungen klare Empfehlungen ausgesprochen, die natürlich auf den Einzelfall abgestimmt werden müssen. Bei uns können Sie sich leicht einen Überblick verschaffen, welche Vorsorgestrategie für Sie sinnvoll ist.
+Les sociétés médicales ont émis des recommandations claires pour divers examens préventifs, qui doivent bien sûr être adaptées aux cas individuels. Avec nous, vous pouvez facilement obtenir un aperçu de la stratégie de prévention qui vous convient le mieux.

@@ -1,7 +1,12 @@
 ---
-title: "Zürich"
+title: "Zurich"
 date: 2025-01-25
 image: "img/standorte/zurich.webp"
 fullimage: "img/standorte/_zurich.webp"
 ---
-Dies ist eine Beispielbeschreibung für Projekt 1. Eine kurze Beschreibung des Projekts und seiner Highlights.
+In Zurich, examinations are carried out at the Rimed practice.
+
+**The address is:**
+
+Mühlebachstrasse 7  
+8008 Zurich

@@ -1,6 +1,6 @@
 ---
-title: "Strahlenbelastung"
+title: "Radiation Exposure"
 icon: "airwave"
-description: "Das MRT liefert oft (aber nicht immer) gleichwertige oder bessere Bilder als Röntgen und Computertomografie (CT), ohne den Körper mit Strahlen zu belasten."
+description: "MRI often (but not always) provides images that are equivalent or superior to X-rays and CT scans, without exposing the body to radiation."
 weight: 1
 ---

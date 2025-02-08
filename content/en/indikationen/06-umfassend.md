@@ -1,6 +1,8 @@
 ---
-title: "Umfassende Vorsorge"
+
+title: "Comprehensive Prevention"
 icon: "sync_saved_locally"
-description: "Wer einfach nur mit einer einzigen Untersuchung eine breit angelegte Vorsorge möchte, trifft mit einem MRT eine gute Wahl, weil es viele verschiedene Risiken abdeckt."
+description: "Anyone who simply wants broad-based prevention with a single examination makes a good choice with MRI, as it covers many different risks."
 weight: 6
+
 ---

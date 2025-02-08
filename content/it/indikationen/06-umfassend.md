@@ -1,6 +1,6 @@
 ---
-title: "Umfassende Vorsorge"
+title: "Screening preventivo completo"
 icon: "sync_saved_locally"
-description: "Wer einfach nur mit einer einzigen Untersuchung eine breit angelegte Vorsorge möchte, trifft mit einem MRT eine gute Wahl, weil es viele verschiedene Risiken abdeckt."
+description: "Chi desidera un unico esame per una prevenzione completa fa una scelta ottima con una risonanza magnetica, perché copre numerosi rischi diversi."
 weight: 6
 ---

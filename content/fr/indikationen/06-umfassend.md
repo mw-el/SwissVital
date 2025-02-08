@@ -1,6 +1,6 @@
 ---
-title: "Umfassende Vorsorge"
+title: "Bilan de prévention complet"
 icon: "sync_saved_locally"
-description: "Wer einfach nur mit einer einzigen Untersuchung eine breit angelegte Vorsorge möchte, trifft mit einem MRT eine gute Wahl, weil es viele verschiedene Risiken abdeckt."
+description: "Ceux qui souhaitent un examen unique pour une prévention large font un bon choix avec une IRM, car elle couvre de nombreux risques différents."
 weight: 6
 ---

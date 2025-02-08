@@ -4,4 +4,9 @@ date: 2025-01-25
 image: "img/standorte/bern.webp"
 fullimage: "img/standorte/_bern.webp"
 ---
-Dies ist eine Beispielbeschreibung für Projekt 2. Eine kurze Beschreibung des Projekts und seiner Highlights.
+In Bern, examinations are carried out at MRI-Bern.
+
+**The address is:**
+
+Schwanengasse 5/7  
+3011 Bern

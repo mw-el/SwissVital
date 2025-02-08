@@ -1,6 +1,6 @@
 ---
-title: "Menschen mit viel Stress"
+title: "People with High Stress"
 icon: "flood"
-description: "Chronischer Stress ist eine Belastung für den gesamten Körper. Wer den Stress nicht reduzieren kann, möchte sich durch optimale Vorsorge vor gesundheitlichen Folgeschäden schützen."
+description: "Chronic stress is a burden on the entire body. Those who cannot reduce stress want to protect themselves from health consequences through optimal prevention."
 weight: 1
 ---

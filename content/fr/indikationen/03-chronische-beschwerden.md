@@ -1,6 +1,6 @@
 ---
-title: "Chronische Beschwerden"
+title: "Troubles chroniques"
 icon: "ecg"
-description: "Erschöpfung, Schmerzen, Schwindel oder Schlafstörungen: Eine umfassende Bildgebung Verdachtsmomente ausschliessen oder die Diagnose erleichtern."
+description: "Épuisement, douleurs, vertiges ou troubles du sommeil : une imagerie complète permet d’exclure des suspicions ou de faciliter le diagnostic."
 weight: 1
 ---

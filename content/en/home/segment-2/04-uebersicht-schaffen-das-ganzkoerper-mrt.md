@@ -1,49 +1,42 @@
 ---
-title: "Übersicht schaffen: Das Ganzkörper-MRT"
+
+title: "Creating Clarity: The Full-Body MRI"
 layout: "section"
 id: "uebersicht"
 
-# Available light BG Gradients: 
-# var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
-# Available Layouts: 
-# "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
-
-
 # Background settings
-background_image: ""  # Background image for the section
-background_color: ""  # Background color
-text_color: ""  # No text color defined
+
+background_image: ""
+background_color: ""
+text_color: ""
 
 # Foreground Image (Optional)
 image: "img/sections/_aerztin-mit-patientin.webp"  # No foreground image defined
 image-shadow: "shadow" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
-
 # Primary Button
-primary_button_text: "Zum MRT-Termin"
+
+primary_button_text: "Book an MRI Appointment"
 primary_button_link: "#termin-buchen"
 primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
-primary_button_border: ""  # Defaults to primary_button_background in the partial
-
-# Secondary Button (Optional)
-secondary_button_text: ""
-secondary_button_link: ""
-secondary_button_background: ""  # Defaults to `primary_button_text_color` if left empty
-secondary_button_text_color: ""  # Defaults to `primary_button_background` if left empty
-secondary_button_border: ""      # Defaults to `primary_button_text_color` if left empty (inverted colors)
+primary_button_border: ""
 
 # Content alignment settings
+
 headline_alignment: "left"
 body_text_alignment: "left"
-button_alignment: "center"  # Buttons are positioned as a unit (centered by default)
+button_alignment: "center"
 
 # Button Placement
-button_placement: "content"  # Default placement under content
 
-# Grid layout configuration (for split layouts)
-grid_layout: "c3/5, i2/5"   
+button_placement: "content"
+
+# Grid layout configuration
+
+grid_layout: "c3/5, i2/5"
+
 ---
 
-Ein Ganzkörper-MRT ist die am besten investierte Stunde für Ihre Gesundheit – ideal kombiniert mit einem grossen Blutbild. Es gibt weitere Untersuchungen, die in Ihrem Fall vielleicht sinnvoll sind, vielleicht sinnvoller als ein MRT: Das kann die Analyse wichtiger genetischer Marker oder eine für Ihr persönliches Interesse noch wichtigere Untersuchung sein, zum Beispiel eine Koloskopie.
+A full-body MRI is the best-invested hour for your health – ideally combined with a comprehensive blood test. There are other examinations that might be more suitable in your case, possibly more beneficial than an MRI: This could be the analysis of important genetic markers or an examination that is even more relevant to your personal health interests, such as a colonoscopy.
 
-Wenn Sie es genauer wissen möchten, machen Sie den Selbsttest. Dann erhalten Sie eine Empfehlung, welche Vorsorge für Sie sinnvoll ist. Dabei orientieren wir uns an den Empfehlungen der medizinischen Fachgesellschaften und an dem Prinzip: Wir empfehlen Ihnen nur, **was wir auch einem guten Freund empfehlen würden**.
+If you want to know more, take the self-test. You will receive a recommendation on which preventive measures are suitable for you. We base our recommendations on the guidelines of medical societies and on a simple principle: **We only recommend what we would also suggest to a good friend.**

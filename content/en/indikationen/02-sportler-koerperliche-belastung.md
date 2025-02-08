@@ -1,6 +1,6 @@
 ---
-title: "Sportler"
+title: "Athletes"
 icon: "directions_run"
-description: "Mikroverletzungen, Gelenkprobleme oder Muskelverletzungen sollen frühzeitig erkannt werden."
+description: "Micro-injuries, joint problems, or muscle injuries should be detected at an early stage."
 weight: 1
 ---

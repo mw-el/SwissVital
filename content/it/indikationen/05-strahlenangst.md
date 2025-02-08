@@ -1,6 +1,6 @@
 ---
-title: "Strahlenbelastung"
+title: "Esposizione alle radiazioni"
 icon: "airwave"
-description: "Das MRT liefert oft (aber nicht immer) gleichwertige oder bessere Bilder als Röntgen und Computertomografie (CT), ohne den Körper mit Strahlen zu belasten."
+description: "La risonanza magnetica offre spesso (ma non sempre) immagini equivalenti o migliori rispetto ai raggi X e alla tomografia computerizzata (CT), senza esporre il corpo alle radiazioni."
 weight: 1
 ---

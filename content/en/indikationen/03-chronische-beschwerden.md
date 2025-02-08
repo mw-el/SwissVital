@@ -1,6 +1,6 @@
 ---
-title: "Chronische Beschwerden"
+title: "Chronic Complaints"
 icon: "ecg"
-description: "Erschöpfung, Schmerzen, Schwindel oder Schlafstörungen: Eine umfassende Bildgebung Verdachtsmomente ausschliessen oder die Diagnose erleichtern."
+description: "Exhaustion, pain, dizziness, or sleep disorders: Comprehensive imaging can rule out suspicions or facilitate diagnosis."
 weight: 1
 ---

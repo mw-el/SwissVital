@@ -19,8 +19,8 @@ image: ""  # No foreground image defined
 image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
-primary_button_text: "Termin finden"
-primary_button_link: "#termin-buchen"
+primary_button_text: "Brauchen Sie eine Arzt?"
+primary_button_link: "#selbsttest"
 primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
 primary_button_border: ""  # Defaults to primary_button_background in the partial
@@ -45,4 +45,6 @@ grid_layout: "c1/1"  # Default to full-width content
 
 ---
 
-## Wir haben ein gewachsenes Netzwerk mit Partnern, denen wir vertrauen.
+#### Wir haben ein gewachsenes Netzwerk mit Partnern, denen wir vertrauen.
+
+Wohin geht ein Arzt, wenn er mal zum Arzt muss, fragen Sie sich vielleicht? Die meisten Ärzte doktern erst einmal selbst an sich herum. Aber wenn sie dann doch einmal fremde Hilfe brauchen, haben sie ein Netzwerk aus guten Leuten, die sie vom Studium kennen oder von der gemeinschaftlichen Betreuung einiger Patient:innen. Zu so einer Person gehen sie, wenn sie mal einen Arzt oder eine Ärztin brauchen und nur solche Personen empfehlen wir auch Ihnen. Unsere Partner sind nicht nur approbiert und gut ausgebildet; sie haben ihre Fähigkeiten auch im persönlichen Kontakt mit SwissVital bewiesen. Auch diesen Menschen können Fehler passieren. Aber wenn Sie selbst keinen guten Spezialisten kennen, fahren Sie mit unseren Empfehlungen sicher gut.

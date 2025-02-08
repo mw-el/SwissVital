@@ -1,6 +1,6 @@
 ---
-title: "Familiäre Vorbelastung"
+title: "Predisposizione familiare"
 icon: "familiar_face_and_zone"
-description: "Menschen mit einer genetischen Prädisposition zum Beispiel für Krebs oder Aneurysmen möchten sicher gehen, dass bei Ihnen noch alles in Ordnung ist."
+description: "Le persone con una predisposizione genetica, ad esempio al cancro o agli aneurismi, vogliono essere sicure che tutto sia ancora in ordine."
 weight: 1
 ---

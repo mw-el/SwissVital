@@ -1,6 +1,6 @@
 ---
-title: "Strahlenbelastung"
+title: "Exposition aux radiations"
 icon: "airwave"
-description: "Das MRT liefert oft (aber nicht immer) gleichwertige oder bessere Bilder als Röntgen und Computertomografie (CT), ohne den Körper mit Strahlen zu belasten."
+description: "L’IRM fournit souvent (mais pas toujours) des images équivalentes ou meilleures que les radiographies et la tomodensitométrie (CT), sans exposer le corps aux radiations."
 weight: 1
 ---

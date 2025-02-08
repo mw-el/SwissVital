@@ -1,6 +1,6 @@
 ---
-title: "Sportler"
+title: "Sportifs"
 icon: "directions_run"
-description: "Mikroverletzungen, Gelenkprobleme oder Muskelverletzungen sollen frühzeitig erkannt werden."
+description: "Les micro-blessures, les problèmes articulaires ou les lésions musculaires doivent être détectés à un stade précoce."
 weight: 1
 ---

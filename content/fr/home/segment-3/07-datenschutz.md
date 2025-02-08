@@ -1,5 +1,5 @@
 ---
-title: "Datenschutz"
+title: "Protection des données"
 layout: "section"
 id: "datenschutz"
 
@@ -7,7 +7,6 @@ id: "datenschutz"
 # var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
 # Available Layouts: 
 # "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
-
 
 # Background settings
 background_image: "(--bg-white-gradient)"  # Background image for the section
@@ -19,7 +18,7 @@ image: "img/sections/_fingerprint.webp"  # No foreground image defined
 image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
-primary_button_text: "Termin wählen"
+primary_button_text: "Choisir un rendez-vous"
 primary_button_link: "#termin-buchen"
 primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
@@ -45,6 +44,6 @@ grid_layout: "c1/2, i1/2"  # Default to full-width content
 
 ---
 
-Gerade bei Gesundheitsdaten ist Datenschutz entscheidend.
+En matière de données de santé, la protection des données est essentielle.
 
-Wir behandeln Ihre Daten vertraulich. Wir verdienen nichts an Therapien und raten Ihnen, was wir auch einem guten Freund raten würden. Ausserdem gehen wir noch einen Schritt weiter und speichern Ihre Daten in einem der sichersten Serverstandorte der Welt, wo nur Sie und Ihr behandelnder Arzt bei SwissVital Zugriff haben. Sie allein entscheiden, wem Sie in welchem Umfang Einsicht gewähren möchten. Falls gewünscht, können Sie auch uns den Zugriff per Knopfdruck entziehen – dann können auch wir Ihre Daten erst wieder sehen, wenn Sie uns erneuten Zugriff gewährt haben.
+Nous traitons vos données de manière confidentielle. Nous ne tirons aucun profit des thérapies et nous vous conseillons comme nous conseillerions un bon ami. De plus, nous allons encore plus loin en stockant vos données dans l'un des emplacements de serveurs les plus sécurisés au monde, où seuls vous et votre médecin traitant chez SwissVital avez accès. Vous seul décidez à qui vous accordez l’accès et dans quelle mesure. Si vous le souhaitez, vous pouvez également nous retirer l’accès en un clic – nous ne pourrons alors voir vos données que si vous nous accordez à nouveau l'accès.

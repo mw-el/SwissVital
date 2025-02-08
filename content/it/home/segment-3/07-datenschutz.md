@@ -1,5 +1,5 @@
 ---
-title: "Datenschutz"
+title: "Protezione dei dati"
 layout: "section"
 id: "datenschutz"
 
@@ -7,7 +7,6 @@ id: "datenschutz"
 # var(--bg-lightgrey) var(--bg-lightgrey-warm)  var(--bg-lightgrey-cold)  var(--bg-white-gradient)
 # Available Layouts: 
 # "i2/5, c3/5"  "i3/5, c2/5"  "i1/2, c1/2"  "c2/5, i3/5"  "c3/5, i2/5"  "c1/2, i1/2"  "c1/1"
-
 
 # Background settings
 background_image: "(--bg-white-gradient)"  # Background image for the section
@@ -19,7 +18,7 @@ image: "img/sections/_fingerprint.webp"  # No foreground image defined
 image-shadow: "" # shadow-none – shadow-sm – shadow – shadow-lg – large shadow 
 
 # Primary Button
-primary_button_text: "Termin wählen"
+primary_button_text: "Scegli un appuntamento"
 primary_button_link: "#termin-buchen"
 primary_button_background: "var(--sv-primary)"
 primary_button_text_color: "var(--sv-offwhite)"
@@ -45,6 +44,6 @@ grid_layout: "c1/2, i1/2"  # Default to full-width content
 
 ---
 
-Gerade bei Gesundheitsdaten ist Datenschutz entscheidend.
+Quando si tratta di dati sanitari, la protezione dei dati è fondamentale.
 
-Wir behandeln Ihre Daten vertraulich. Wir verdienen nichts an Therapien und raten Ihnen, was wir auch einem guten Freund raten würden. Ausserdem gehen wir noch einen Schritt weiter und speichern Ihre Daten in einem der sichersten Serverstandorte der Welt, wo nur Sie und Ihr behandelnder Arzt bei SwissVital Zugriff haben. Sie allein entscheiden, wem Sie in welchem Umfang Einsicht gewähren möchten. Falls gewünscht, können Sie auch uns den Zugriff per Knopfdruck entziehen – dann können auch wir Ihre Daten erst wieder sehen, wenn Sie uns erneuten Zugriff gewährt haben.
+Trattiamo i vostri dati in modo confidenziale. Non traiamo alcun profitto dalle terapie e vi consigliamo solo come faremmo con un buon amico. Inoltre, facciamo un passo in più e memorizziamo i vostri dati in una delle sedi di server più sicure al mondo, dove solo voi e il vostro medico curante presso SwissVital avete accesso. Siete voi a decidere chi può accedere e in che misura. Se lo desiderate, potete anche revocare il nostro accesso con un semplice clic – potremo vedere i vostri dati solo se ci concedete nuovamente l'accesso.
