@@ -1,12 +1,15 @@
 ---
-title: "Bern"
+title: "Berne"
 date: 2025-01-25
 image: "img/standorte/bern.webp"
 fullimage: "img/standorte/_bern.webp"
 ---
-In Bern, examinations are carried out at MRI-Bern.
+À Berne, les examens sont effectués chez MRI-Bern.
 
-**The address is:**
+**L'adresse est :**
 
-Schwanengasse 5/7  
-3011 Bern
+Schwanengasse 5/7
+
+<br>
+
+3011 Berne

@@ -1,12 +1,12 @@
 ---
-title: "Zürich"
+title: "Zurich"
 date: 2025-01-25
 image: "img/standorte/zurich.webp"
 fullimage: "img/standorte/_zurich.webp"
 ---
-In Zürich werden die Untersuchungen in der Praxis Rimed durchgeführt. 
+In Zurich, the examinations are carried out at the Rimed practice.
 
-**Die Adresse lautet:**
+**The address is:**
 
-Mühlebachstrasse 7
-8008 Zürich
+Mühlebachstrasse 7  
+8008 Zurich

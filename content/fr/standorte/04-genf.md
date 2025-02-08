@@ -1,11 +1,11 @@
 ---
-title: "Geneva"
+title: "Genève"
 date: 2025-01-25
 image: "img/standorte/genf.webp"
 fullimage: "img/standorte/_genf.webp"
 ---
-In Geneva, examinations are carried out at our partner facility.
+À Genève, les examens sont effectués par notre partenaire.
 
-**The address is:**
+**L'adresse est :**
 
-In Geneva, we have multiple partners. You will receive the address with your appointment confirmation.
+Nous avons plusieurs partenaires à Genève. L'adresse vous sera communiquée avec la confirmation du rendez-vous.

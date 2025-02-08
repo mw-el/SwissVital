@@ -4,8 +4,8 @@ date: 2025-01-25
 image: "img/standorte/basel.webp"
 fullimage: "img/standorte/_basel.webp"
 ---
-In Basel werden die Untersuchungen bei unserem Partner durchgeführt. 
+In Basel, the examinations are carried out by our partner.
 
-**Die Adresse lautet:**
+**The address is:**
 
-In Basel haben wr mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+We have several partners in Basel. The address will be provided with the appointment confirmation.
