@@ -22,7 +22,8 @@ exports.handler = async function(event, context) {
   const mailOptions = {
     from: `"Buchungsbestätigung" <${process.env.SMTP_USER}>`,
     to: data.email,
-    subject: 'Buchungsbestätigung',
+    bcc: ['niko.loehr@swiss-vital.ch', 'matthias.wiemeyer@schreibszene.ch'],
+    subject: `Buchungsbestätigung: für ${data.vorname} ${data.nachname}`,
     html: `<div style="font-family: Arial, Helvetica, sans-serif; color: #333333; line-height: 130%">
       <p>Guten Tag ${data.vorname} ${data.nachname}</p>
 
@@ -46,9 +47,7 @@ exports.handler = async function(event, context) {
         <li>Gewünschter Termin: ${data.terminwunsch}</li>
       </ul>
 
-      <p>Stimmt das so für Sie? Falls nicht, antworten Sie einfach mit Ihrem Korrekturwunsch auf diese Nachricht. <b>Wir werden Sie aber ohnehin noch anrufen, um Ihren Wunschtermin zu fixieren. Dann bringen wir das rasch in Ordnung.</b></p>
-
-      <p>Zu den normalen Praxiszeiten rufen wir meist innerhalb einer Stunde an. Ansonsten melden wir uns am nächsten Werktag – verlassen Sie sich darauf.</p>
+      <p>Stimmt das so für Sie? Falls nicht, antworten Sie einfach mit Ihrem Korrekturwunsch auf diese Nachricht. <b>Wir werden Sie aber ohnehin noch anrufen, um Ihren Wunschtermin zu fixieren. Dann bringen wir das rasch in Ordnung.</b> – verlassen Sie sich darauf.</p>
 
       <p>Freundliche Grüsse und bis bald.</p>
 
