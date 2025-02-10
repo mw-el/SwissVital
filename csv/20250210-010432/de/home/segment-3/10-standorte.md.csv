@@ -1,0 +1,42 @@
+"key","de","en","fr","it"
+"background_color","""""","""""","""""",""""""
+"background_image","""var(--bg-white-gradient)""","""var(--bg-white-gradient)""","""var(--bg-white-gradient)""","""var(--bg-white-gradient)"""
+"body_text_alignment","""center""","""center""","""center""","""center"""
+"button_alignment","""center""","""center""","""center""","""center"""
+"button_placement","""content""","""content""","""content""","""content"""
+"grid_layout","""c1/1""","""c1/1""","""c1/1""","""c1/1"""
+"headline_alignment","""center""","""center""","""center""","""center"""
+"id","""standorte""","""standorte""","""standorte""","""standorte"""
+"image","""""","""""","""""",""""""
+"image-shadow","""""","""""","""""",""""""
+"layout","""section""","""section""","""section""","""section"""
+"primary_button_background","""var(--sv-primary)""","""var(--sv-primary)""","""var(--sv-primary)""","""var(--sv-primary)"""
+"primary_button_border","""""","""""","""""",""""""
+"primary_button_link","""#termin-buchen""","""#termin-buchen""","""#termin-buchen""","""#termin-buchen"""
+"primary_button_text","""Termin finden""","""Find an appointment""","""Trouver un rendez-vous""","""Trova un appuntamento"""
+"primary_button_text_color","""var(--sv-offwhite)""","""var(--sv-offwhite)""","""var(--sv-offwhite)""","""var(--sv-offwhite)"""
+"secondary_button_background","""rgba(var(--sv-offwhite-rgb), 0.3)""","""rgba(var(--sv-offwhite-rgb), 0.3)""","""rgba(var(--sv-offwhite-rgb), 0.3)""","""rgba(var(--sv-offwhite-rgb), 0.3)"""
+"secondary_button_border","""rgba(var(--sv-offwhite-rgb), 0.3)""","""rgba(var(--sv-offwhite-rgb), 0.3)""","""rgba(var(--sv-offwhite-rgb), 0.3)""","""rgba(var(--sv-offwhite-rgb), 0.3)"""
+"secondary_button_link","""""","""""","""""",""""""
+"secondary_button_text","""""","""""","""""",""""""
+"secondary_button_text_color","""rgba(var(--sv-offwhite-rgb), 0.8)""","""rgba(var(--sv-offwhite-rgb), 0.8)""","""rgba(var(--sv-offwhite-rgb), 0.8)""","""rgba(var(--sv-offwhite-rgb), 0.8)"""
+"text_color","""""","""""","""""",""""""
+"title","""Unsere Standorte""","""Our Locations""","""Nos sites""","""Le nostre sedi"""
+"body_text","Bei der Terminwahl geben Sie bitte einfach Ihren bevorzugten Standort an.
+  
+{{< spacer >}}
+
+        
+{{< standorte >}}","When selecting an appointment, simply indicate your preferred location.
+
+{{< spacer >}}
+
+{{< standorte >}}","Lors du choix de votre rendez-vous, veuillez simplement indiquer votre site préféré.
+
+{{< spacer >}}
+
+{{< standorte >}}","Quando scegli un appuntamento, indica semplicemente la sede preferita.
+
+{{< spacer >}}
+
+{{< standorte >}}"

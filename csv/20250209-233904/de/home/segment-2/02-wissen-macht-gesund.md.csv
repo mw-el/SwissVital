@@ -1,0 +1,49 @@
+"key","de","en","fr","it"
+"background_color","","","",""
+"background_image","var(--bg-white-gradient)","var(--bg-white-gradient)","var(--bg-white-gradient)","var(--bg-white-gradient)"
+"body_text_alignment","center","center","center","center"
+"button_alignment","center","center","center","center"
+"button_placement","content","content","content","content"
+"grid_layout","c3/5, i2/5","c3/5, i2/5","c3/5, i2/5","c3/5, i2/5"
+"headline_alignment","center","center","center","center"
+"id","wissen-macht-gesund","wissen-macht-gesund","wissen-macht-gesund","wissen-macht-gesund"
+"image","img/home/_rothaariger-businessman.webp","img/home/_rothaariger-businessman.webp","img/home/_rothaariger-businessman.webp","img/home/_rothaariger-businessman.webp"
+"image-shadow","","","",""
+"layout","section","section","section","section"
+"primary_button_background","var(--sv-primary-darker)","var(--sv-primary-darker)","var(--sv-primary-darker)","var(--sv-primary-darker)"
+"primary_button_border","","","",""
+"primary_button_link","#wer-profitiert","#wer-profitiert","#wer-profitiert","#wer-profitiert"
+"primary_button_text","Die beste Diagnostik","The Best Diagnostics","Le meilleur diagnostic","La migliore diagnostica"
+"primary_button_text_color","var(--sv-offwhite)","var(--sv-offwhite)","var(--sv-offwhite)","var(--sv-offwhite)"
+"secondary_button_background","","","",""
+"secondary_button_border","","","",""
+"secondary_button_link","","","",""
+"secondary_button_text","","","",""
+"secondary_button_text_color","","","",""
+"text_color","var(--sv-body-color)","var(--sv-body-color)","var(--sv-body-color)","var(--sv-body-color)"
+"title","Wissen macht gesund.","Knowledge Makes You Healthy","Le savoir rend en bonne santé","La conoscenza rende sani"
+"body_text","Das Leben ist manchmal unbarmherzig und verlangt uns mehr ab, als der Gesundheit gut tut. Wer seinen Lebenswandel nicht ändern kann, muss besonders **gut auf sich achten**.
+
+Regelmässige, individuell abgestimmte Vorsorge schützt vor bösen Überraschungen und gibt Ihnen das gute Gefühl, auf der sicheren Seite zu sein.
+
+Seit es möglich ist, hochauflösende MRT-Untersuchungen des ganzen Körpers durchzuführen, ist bei der **Früherkennung** ein neues Zeitalter angebrochen. Vor allem bei Krebserkrankungen haben MRT-Untersuchungen schon tausende Leben gerettet.
+
+**Und das ist nur der Anfang**","Life can be relentless and demand more from us than is good for our health. If you can't change your lifestyle, you must **take extra care of yourself**.
+
+Regular, personalized check-ups protect against unpleasant surprises and give you the good feeling of being on the safe side.
+
+Since high-resolution MRI scans of the entire body have become possible, a **new era of early detection** has begun. Especially for cancer, MRI scans have already saved thousands of lives.
+
+**And this is just the beginning**.","La vie peut être impitoyable et exiger de nous plus que ce qui est bon pour notre santé. Si vous ne pouvez pas changer votre mode de vie, vous devez **prendre particulièrement soin de vous**.
+
+Des bilans de santé réguliers et personnalisés protègent des mauvaises surprises et vous donnent la certitude d’être du bon côté.
+
+Depuis que les IRM haute résolution du corps entier sont possibles, une **nouvelle ère de la détection précoce** a commencé. En particulier pour le cancer, les IRM ont déjà sauvé des milliers de vies.
+
+**Et ce n’est que le début**.","La vita può essere implacabile e chiedere più di quanto sia salutare. Se non puoi cambiare il tuo stile di vita, devi **prenderti particolare cura di te stesso**.
+
+Controlli regolari e personalizzati proteggono dalle sorprese spiacevoli e ti danno la sicurezza di essere dalla parte giusta.
+
+Da quando sono possibili le risonanze magnetiche ad alta risoluzione dell'intero corpo, è iniziata **una nuova era della diagnosi precoce**. In particolare per il cancro, le risonanze magnetiche hanno già salvato migliaia di vite.
+
+**E questo è solo l’inizio**."

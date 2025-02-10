@@ -1,0 +1,33 @@
+"key","de","en","fr","it"
+"background_color","","","",""
+"background_image","","","",""
+"body_text_alignment","left","left","left","left"
+"button_alignment","center","center","center","center"
+"button_placement","content","content","content","content"
+"grid_layout","c3/5, i2/5","c3/5, i2/5","c3/5, i2/5","c3/5, i2/5"
+"headline_alignment","left","left","left","left"
+"id","uebersicht","uebersicht","uebersicht","uebersicht"
+"image","img/sections/_aerztin-mit-patientin.webp","img/sections/_aerztin-mit-patientin.webp","img/sections/_aerztin-mit-patientin.webp","img/sections/_aerztin-mit-patientin.webp"
+"image-shadow","shadow","shadow","shadow","shadow"
+"layout","section","section","section","section"
+"primary_button_background","var(--sv-primary)","var(--sv-primary)","var(--sv-primary)","var(--sv-primary)"
+"primary_button_border","","","",""
+"primary_button_link","#termin-buchen","#termin-buchen","#termin-buchen","#termin-buchen"
+"primary_button_text","Zum MRT-Termin","Book an MRI Appointment","Prendre un rendez-vous pour l’IRM","Prenota un appuntamento per la risonanza magnetica"
+"primary_button_text_color","var(--sv-offwhite)","var(--sv-offwhite)","var(--sv-offwhite)","var(--sv-offwhite)"
+"secondary_button_background","","","",""
+"secondary_button_border","","","",""
+"secondary_button_link","","","",""
+"secondary_button_text","","","",""
+"secondary_button_text_color","","","",""
+"text_color","","","",""
+"title","Übersicht schaffen: Das Ganzkörper-MRT","Creating Clarity: The Full-Body MRI","Créer de la clarté : L’IRM corporelle complète","Creare chiarezza: La risonanza magnetica total body"
+"body_text","Ein Ganzkörper-MRT ist die am besten investierte Stunde für Ihre Gesundheit – ideal kombiniert mit einem grossen Blutbild. Es gibt weitere Untersuchungen, die in Ihrem Fall vielleicht sinnvoll sind, vielleicht sinnvoller als ein MRT: Das kann die Analyse wichtiger genetischer Marker oder eine für Ihr persönliches Interesse noch wichtigere Untersuchung sein, zum Beispiel eine Koloskopie.
+
+Wenn Sie es genauer wissen möchten, machen Sie den Selbsttest. Dann erhalten Sie eine Empfehlung, welche Vorsorge für Sie sinnvoll ist. Dabei orientieren wir uns an den Empfehlungen der medizinischen Fachgesellschaften und an dem Prinzip: Wir empfehlen Ihnen nur, **was wir auch einem guten Freund empfehlen würden**.","A full-body MRI is the best-invested hour for your health – ideally combined with a comprehensive blood test. There are other examinations that might be more suitable in your case, possibly more beneficial than an MRI: This could be the analysis of important genetic markers or an examination that is even more relevant to your personal health interests, such as a colonoscopy.
+
+If you want to know more, take the self-test. You will receive a recommendation on which preventive measures are suitable for you. We base our recommendations on the guidelines of medical societies and on a simple principle: **We only recommend what we would also suggest to a good friend.**","Une IRM corporelle complète est l’heure la mieux investie pour votre santé – idéalement combinée avec un bilan sanguin complet. D’autres examens peuvent être plus adaptés à votre situation, peut-être plus bénéfiques qu’une IRM : Cela pourrait être l’analyse de marqueurs génétiques importants ou un examen encore plus pertinent pour votre santé personnelle, comme une coloscopie.
+
+Si vous souhaitez en savoir plus, faites le test. Vous recevrez une recommandation sur les mesures préventives adaptées à votre situation. Nos recommandations s’appuient sur les directives des sociétés médicales et sur un principe simple : **Nous ne recommandons que ce que nous conseillerions aussi à un bon ami.**","Una risonanza magnetica total body è l’ora meglio investita per la tua salute – idealmente combinata con un esame del sangue completo. Ci sono altri esami che potrebbero essere più adatti al tuo caso, forse più utili di una risonanza magnetica: potrebbe essere l’analisi di importanti marcatori genetici o un esame ancora più rilevante per la tua salute personale, come una colonscopia.
+
+Se vuoi saperne di più, fai il test. Riceverai un consiglio su quali misure preventive sono più adatte a te. Le nostre raccomandazioni si basano sulle linee guida delle società mediche e su un principio semplice: **Consigliamo solo ciò che consiglieremmo anche a un buon amico.**"
