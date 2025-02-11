@@ -1,11 +1,11 @@
 ---
-date: "2025-01-25"
-fullimage: "img/standorte/_genf.webp"
-image: "img/standorte/genf.webp"
-title: "Genf"
+date: 2025-01-25
+fullimage: img/standorte/_genf.webp
+image: img/standorte/genf.webp
+title: Genf
 ---
 
-In Genf werden die Untersuchungen bei unserem Partner durchgeführt. 
+In Genf werden die Untersuchungen bei unserem Partner durchgeführt.
 
 **Die Adresse lautet:**
 

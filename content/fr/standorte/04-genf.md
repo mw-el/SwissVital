@@ -1,8 +1,8 @@
 ---
-date: "2025-01-25"
-fullimage: "img/standorte/_genf.webp"
-image: "img/standorte/genf.webp"
-title: "Genève"
+date: 2025-01-25
+fullimage: img/standorte/_genf.webp
+image: img/standorte/genf.webp
+title: Genève
 ---
 
 À Genève, les examens sont effectués par notre partenaire.

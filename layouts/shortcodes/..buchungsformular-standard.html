@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title data-i18n="title">Buchungsformular</title>
+  <link rel="stylesheet" href="path/to/bootstrap.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    #multiStepForm { max-width: 600px; margin: 0 auto; }
+    .success-message { max-width: 600px; margin: 0 auto; }
+    .form-step { display: none; }
+    .form-step.active { display: block; }
+    .step-title { font-size: 1.5rem; font-weight: bold; text-align: center; }
+    .button-container { margin-top: clamp(30px, 5vw, 50px); }
+    .form-check-container { display: flex; align-items: center; justify-content: center; gap: 15px; }
+    .form-floating { width: 100%; }
+    .d-none { display: none; }
+    .tooltip-info { font-size: 0.8rem; color: #6c757d; margin-top: 0.25rem; }
+    .list-group { border-color: transparent; }
+    /* Make form fields larger */
+    .form-control, .form-select {
+      font-size: 1.1rem;
+      padding: 12px 14px;
+      height: 50px;
+    }
+    /* Adjust checkbox alignment */
+    .form-check-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .list-group { border: transparent; }
+    .form-check-input {
+      width: 1em;
+      height: 1em;
+      margin: 0 .2em .3em 0;
+      vertical-align: bottom;
+      background-color: #fff;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    /* Style the button for a larger, more prominent appearance */
+    .btn-xl {
+      font-size: 1.2rem;
+      padding: 14px 20px;
+      border-radius: 50px;
+    }
+    /* Increase space between form sections */
+    .form-step {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Language Selector -->
+  <div class="text-center mb-3">
+    <label for="langSelector" data-i18n="language_label">Sprache:</label>
+    <select id="langSelector" class="form-select" style="max-width: 200px; margin: 0 auto;">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+      <option value="it">Italiano</option>
+    </select>
+  </div>
+
+  <form id="multiStepForm" name="buchung" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="buchung">
+    <p class="d-none">
+      <label data-i18n="bot_field_label">Bitte nicht ausfüllen: <input name="bot-field"></label>
+    </p>
+
+    <!-- Schritt 1: E-Mail & Standort -->
+    <div class="form-step active" id="step-1">
+      <h3 class="text-center mb-4 step-title" data-i18n="step1_title">Schritt 1 von 3: E-Mail & Standort</h3>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="email" type="email" name="email" data-i18n-placeholder="email_placeholder" placeholder="name@example.com" required>
+        <label for="email" data-i18n="emailLabel">E-Mail-Adresse *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="standort" name="standort" required>
+          <option value="" data-i18n="locationOptionDefault">Bitte wählen</option>
+          <option value="Zürich" data-i18n="location_Zurich">Zürich</option>
+          <option value="Bern" data-i18n="location_Bern">Bern</option>
+          <option value="Basel" data-i18n="location_Basel">Basel</option>
+        </select>
+        <label for="standort" data-i18n="locationLabel">Standort *</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="datenschutz1" name="datenschutz1" required>
+        <label class="form-check-label" for="datenschutz1" data-i18n="privacyAgreement">Ich stimme der Datenverarbeitung zu.</label>
+      </div>
+      <div class="d-grid button-container">
+        <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)" data-i18n="nextButton">Weiter</button>
+      </div>
+    </div>
+
+    <!-- Schritt 2: Persönliche Angaben -->
+    <div class="form-step" id="step-2">
+      <h3 class="text-center mb-4 step-title" data-i18n="step2_title">Schritt 2 von 3: Persönliche Angaben</h3>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="vorname" type="text" name="vorname" data-i18n-placeholder="firstName_placeholder" placeholder="Vorname" required>
+        <label for="vorname" data-i18n="firstName">Vorname *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="nachname" type="text" name="nachname" data-i18n-placeholder="lastName_placeholder" placeholder="Nachname" required>
+        <label for="nachname" data-i18n="lastName">Nachname *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="geburtsjahr" type="text" name="geburtsjahr" data-i18n-placeholder="birthYear_placeholder" placeholder="Geburtsjahr" required>
+        <label for="geburtsjahr" data-i18n="birthYear">Geburtsjahr *</label>
+        <div class="tooltip-info" data-i18n="birthYearInfo">Bitte tragen Sie hier Ihr Geburtsjahr ein.</div>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="strasse" type="text" name="strasse" data-i18n-placeholder="street_placeholder" placeholder="Strasse" required>
+        <label for="strasse" data-i18n="street">Strasse *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="plz" type="text" name="plz" data-i18n-placeholder="postalCode_placeholder" placeholder="PLZ" required>
+        <label for="plz" data-i18n="postalCode">PLZ *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="ort" type="text" name="ort" data-i18n-placeholder="city_placeholder" placeholder="Ort" required>
+        <label for="ort" data-i18n="city">Ort *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="telefon" type="tel" name="telefon" data-i18n-placeholder="phone_placeholder" placeholder="Telefonnummer" required>
+        <label for="telefon" data-i18n="phone">Telefon *</label>
+      </div>
+      <div class="d-flex justify-content-between button-container">
+        <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)" data-i18n="prevButton">Zurück</button>
+        <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)" data-i18n="nextButton">Weiter</button>
+      </div>
+    </div>
+
+    <!-- Schritt 3: Untersuchung & Abschluss -->
+    <div class="form-step" id="step-3">
+      <h3 class="text-center mb-4 step-title" data-i18n="step3_title">Schritt 3 von 3: Abschluss</h3>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="untersuchung" name="untersuchung" required>
+          <option value="" data-i18n="examination_default">Bitte auswählen</option>
+          <option value="Produkt 1 - CHF 1970.-">Produkt 1 - CHF 1970.-</option>
+          <option value="Produkt 2 - CHF 2350.-">Produkt 2 - CHF 2350.-</option>
+          <option value="Produkt 3 - CHF 850.-">Produkt 3 - CHF 850.-</option>
+        </select>
+        <label for="untersuchung" data-i18n="examination">Untersuchung *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="terminwunsch" name="terminwunsch" required>
+          <option value="" data-i18n="appointmentPreference_default">Bitte auswählen</option>
+          <option value="Dringend">Dringend</option>
+          <option value="In den nächsten sechs Wochen">In den nächsten sechs Wochen</option>
+          <option value="Bitte rufen Sie mich zur Terminvereinbarung an.">Bitte rufen Sie mich zur Terminvereinbarung an.</option>
+        </select>
+        <label for="terminwunsch" data-i18n="appointmentPreference">Terminwunsch *</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="agb" name="agb" required>
+        <label class="form-check-label" for="agb" data-i18n="termsAgreement">Ich stimme den <a href="/agb">AGB</a> zu.</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="datenschutz" name="datenschutz" required>
+        <label class="form-check-label" for="datenschutz" data-i18n="privacyPolicyAgreement">Ich stimme der <a href="/privacy">Datenschutzerklärung</a> zu.</label>
+      </div>
+      <div class="d-flex justify-content-between button-container">
+        <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)" data-i18n="prevButton">Zurück</button>
+        <button class="btn btn-primary btn-xl" id="submitButton" type="submit" data-i18n="submitButton">Termin buchen</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Erfolgsnachricht -->
+  <div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none success-message">
+    <h3 class="text-success mb-3">
+      <i class="material-icons">check_circle</i>
+      <span data-i18n="successMessageTitle">Vielen Dank für Ihre Anmeldung!</span>
+    </h3>
+    <p class="mb-3"><strong data-i18n="successMessageIntro">Sie haben uns das Folgende mitgeteilt:</strong></p>
+    <div class="text-start" id="summaryContent"></div>
+    <hr>
+    <p class="lead" id="emailConfirmation" class="mt-3"></p>
+  </div>
+
+  <script>
+    // --- Phone Number Formatting and Validation ---
+    function formatPhoneNumber(number) {
+      let digits = number.replace(/\D/g, '');
+      if (digits.length === 10 && digits.startsWith("0")) {
+        return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+      }
+      return number;
+    }
+
+    function validatePhoneNumber(number) {
+      let digits = number.replace(/\D/g, '');
+      return (digits.length === 10 && digits.startsWith("0"));
+    }
+
+    document.getElementById("telefon").addEventListener("blur", function() {
+      let formatted = formatPhoneNumber(this.value);
+      if (!validatePhoneNumber(formatted)) {
+        alert("Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.");
+        this.value = "";
+      } else {
+        this.value = formatted;
+      }
+    });
+
+    // --- Step Navigation Functions ---
+    function nextStep(currentStep) {
+      document.getElementById("step-" + currentStep).classList.remove("active");
+      document.getElementById("step-" + (currentStep + 1)).classList.add("active");
+    }
+
+    function prevStep(currentStep) {
+      document.getElementById("step-" + currentStep).classList.remove("active");
+      document.getElementById("step-" + (currentStep - 1)).classList.add("active");
+    }
+
+    // --- Form Submission ---
+    document.getElementById("multiStepForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const formObject = Object.fromEntries(formData.entries());
+      formObject.telefon = formatPhoneNumber(formObject.telefon);
+
+      let summaryHtml = `<ul class="list-group">
+          <li class="list-group-item"><strong data-i18n="firstName">Vorname:</strong> ${formObject.vorname}</li>
+          <li class="list-group-item"><strong data-i18n="lastName">Nachname:</strong> ${formObject.nachname}</li>
+          <li class="list-group-item"><strong data-i18n="birthYear">Geburtsjahr:</strong> ${formObject.geburtsjahr}</li>
+          <li class="list-group-item"><strong data-i18n="street">Strasse:</strong> ${formObject.strasse}</li>
+          <li class="list-group-item"><strong data-i18n="postalCode">PLZ:</strong> ${formObject.plz}</li>
+          <li class="list-group-item"><strong data-i18n="city">Ort:</strong> ${formObject.ort}</li>
+          <li class="list-group-item"><strong data-i18n="emailLabel">E-Mail:</strong> ${formObject.email}</li>
+          <li class="list-group-item"><strong data-i18n="phone">Telefon:</strong> ${formObject.telefon}</li>
+          <li class="list-group-item"><strong data-i18n="locationLabel">Gewählter Praxis-Standort:</strong> ${formObject.standort}</li>`;
+      
+      if (formObject.terminwunsch) {
+        summaryHtml += `<li class="list-group-item"><strong data-i18n="appointmentPreference">Terminwunsch:</strong> ${formObject.terminwunsch}</li>`;
+      }
+      if (formObject.untersuchung) {
+        summaryHtml += `<li class="list-group-item"><strong data-i18n="examination">Untersuchung:</strong> ${formObject.untersuchung}</li>`;
+      }
+      
+      summaryHtml += `</ul>`;
+      document.getElementById("summaryContent").innerHTML = summaryHtml;
+      document.getElementById("emailConfirmation").textContent =
+        "Sie erhalten in Kürze eine Bestätigungs-E-Mail an: " + (formObject.email || "");
+      document.getElementById("multiStepForm").classList.add("d-none");
+      document.getElementById("successMessage").classList.remove("d-none");
+
+      fetch('/.netlify/functions/sendConfirmation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formObject)
+      });
+    });
+
+    // --- Multi-Language Translation Functions ---
+    let translations = {};
+    let currentLang = 'de'; // Default language
+
+    async function loadTranslations(lang) {
+      try {
+        // Updated fetch path to match booking-form-standard.{lang}.json files
+        const response = await fetch(`/i18n/booking-form-standard.${lang}.json`);
+        translations = await response.json();
+        currentLang = lang;
+        applyTranslations();
+      } catch (error) {
+        console.error("Translation loading failed", error);
+      }
+    }
+
+    function applyTranslations() {
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const key = element.getAttribute("data-i18n");
+        if (translations[key]) {
+          element.innerHTML = translations[key];
+        }
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
+        const key = element.getAttribute("data-i18n-placeholder");
+        if (translations[key]) {
+          element.setAttribute("placeholder", translations[key]);
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadTranslations(currentLang);
+      document.getElementById("langSelector").addEventListener("change", (event) => {
+        loadTranslations(event.target.value);
+      });
+    });
+  </script>
+
+</body>
+</html>

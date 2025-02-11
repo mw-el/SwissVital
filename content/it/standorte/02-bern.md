@@ -11,6 +11,4 @@ A Berna, gli esami vengono effettuati presso MRI-Bern.
 
 Schwanengasse 5/7
 
-<br>
-
 3011 Berna

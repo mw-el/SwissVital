@@ -11,6 +11,4 @@ title: "Berne"
 
 Schwanengasse 5/7
 
-<br>
-
 3011 Berne
