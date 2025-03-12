@@ -1,0 +1,124 @@
+{{/*
+  This partial expects a dictionary with:
+    - context: the parent context (e.g., .)
+    - section: the content section to iterate over (e.g., "quality", "services")
+*/}}
+
+<section id="iconized">
+    <!-- Load Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+  
+    <style>
+      /* Ensure the Material Icons font is applied correctly */
+      .material-symbols-outlined {
+        font-family: 'Material Symbols Outlined' !important;
+        font-size: 32px; /* Slightly smaller for buttons */
+        font-weight: normal;
+        font-style: normal;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+        -webkit-font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased;
+        vertical-align: middle;
+        margin: 0 10px;
+      }
+      
+      /* Button styling */
+      .sv-btn {
+        background-color: var(--sv-primary); 
+        color: var(--sv-offwhite); 
+        border: 1px solid var(--sv-primary);
+        padding-left: 10px;
+        transition: all 0.3s ease;
+      }
+      
+      .sv-btn:hover {
+        background-color: rgba(var(--sv-primary-rgb), 0.8);
+      }
+      
+      /* Tile styling */
+      .iconized-item {
+        display: flex;
+        height: 100%;
+      }
+      
+      .iconized-item-inner {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        border-radius: 30px;
+        padding: 25px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      
+      .iconized-title {
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      
+      .iconized-description {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      
+      .iconized-description p {
+        margin-bottom: 1.5rem;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 767px) {
+        .iconized-title {
+          min-height: auto;
+        }
+      }
+    </style>
+  
+    <div class="container px-4 px-lg-5">
+      {{ $items := sort (where .context.Site.RegularPages "Section" .section) ".Weight" }}
+      {{ $count := len $items }}
+  
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        {{ range $index, $page := $items }}
+        {{ if eq (mod $index 3) 0 }}
+        <!-- Start new row for every 3rd item -->
+        <div class="w-100"></div>
+        {{ end }}
+        
+        <div class="col-lg-4 col-md-6 text-center mb-4">
+          <div class="iconized-item">
+            <div class="iconized-item-inner">
+              <div class="iconized-title">
+                <h3 class="h2 m-0">{{ $page.Title | safeHTML }}</h3>
+              </div>
+              
+              <div class="iconized-description">
+                <p>{{ $page.Params.description | safeHTML }}</p>
+                
+                <!-- Button with icon below the description -->
+                <div>
+                  <a href="{{ $page.RelPermalink }}" class="sv-btn">
+                    <span class="material-symbols-outlined">
+                      {{ with $page.Params.icon }}{{ . | safeHTML }}{{ else }}arrow_forward{{ end }}
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>

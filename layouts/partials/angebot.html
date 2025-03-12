@@ -1,0 +1,202 @@
+{{/*
+  This partial can be called in two ways:
+  1. With just the page context: {{ partial "angebot.html" . }}
+  2. With a dictionary: {{ partial "angebot" (dict "context" . "section" "angebot" ...) }}
+*/}}
+
+<!-- Load Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+
+<style>
+  .sv-angebot {
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 0;
+    color: white;
+  }
+
+  .sv-angebot-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .sv-angebot-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% darkness */
+  }
+
+  .sv-angebot-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .sv-angebot-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sv-angebot-icon {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+
+  .sv-angebot-icon img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .sv-angebot h2, .sv-angebot h3, .sv-angebot p {
+    color: white;
+  }
+  
+  .sv-angebot-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .sv-angebot-item {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .sv-angebot-item-inner {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .sv-btn {
+    background-color: var(--sv-primary); 
+    color: var(--sv-offwhite); 
+    border: 1px solid var(--sv-primary);
+    padding: 8px 16px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+  }
+
+  .sv-btn:hover {
+    background-color: transparent;
+    color: var(--sv-offwhite);
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 768px) {
+    .sv-angebot-icon {
+      width: 160px;
+      height: 160px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .sv-angebot-icon {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  /* Mobile layout adjustments */
+  @media (max-width: 767px) {
+    .sv-angebot {
+      padding: 3rem 0;
+    }
+    
+    .sv-angebot-heading {
+      margin-bottom: 2rem;
+    }
+  }
+</style>
+
+{{/* Determine if we're called with a dictionary or just a page context */}}
+{{ $isDict := reflect.IsMap . }}
+{{ $context := . }}
+{{ $section := "angebot" }}
+{{ $bgImagePath := "img/angebot/angebot-background.jpg" }}
+{{ $title := "Unser Angebot" }}
+{{ $description := "Bei uns finden Sie ein umfassendes Sortiment sinnvoller Vorsorgeuntersuchungen; immer abgestimmt auf Ihre Lebenssituation, Ihre persönliche Vorgeschichte und Ihren Bedarf." }}
+
+{{/* If we're called with a dictionary, extract the values */}}
+{{ if $isDict }}
+  {{ $context = .context }}
+  {{ with .section }}{{ $section = . }}{{ end }}
+  {{ with .background }}{{ $bgImagePath = . }}{{ end }}
+  {{ with .title }}{{ $title = . }}{{ end }}
+  {{ with .description }}{{ $description = . }}{{ end }}
+{{ end }}
+
+<section class="sv-angebot">
+  <!-- Background image with processing -->
+  <div class="sv-angebot-bg">
+    {{ $bgImage := resources.Get $bgImagePath }}
+    {{ if $bgImage }}
+      {{ $bgSmall := $bgImage.Resize "800x jpg q80" }}
+      {{ $bgMedium := $bgImage.Resize "1200x jpg q80" }}
+      {{ $bgLarge := $bgImage.Resize "1920x jpg q80" }}
+      <picture>
+        <source srcset="{{ $bgSmall.RelPermalink }}" media="(max-width: 767px)">
+        <source srcset="{{ $bgMedium.RelPermalink }}" media="(max-width: 1199px)">
+        <source srcset="{{ $bgLarge.RelPermalink }}">
+        <img src="{{ $bgMedium.RelPermalink }}" alt="Background">
+      </picture>
+    {{ else }}
+      <img src="/img/angebot/angebot-background.jpg" alt="Background">
+    {{ end }}
+  </div>
+
+  <div class="container sv-angebot-content">
+    <!-- Centered full-width heading and description -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="sv-angebot-heading">
+          <h2 class="display-4 fw-bold mb-4">{{ $title }}</h2>
+          <p class="lead mx-auto" style="max-width: 800px;">
+            {{ $description }}
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Row of offerings with icons and buttons -->
+    <div class="row">
+      {{ $items := sort (where $context.Site.RegularPages "Section" $section) ".Weight" }}
+      {{ range $items }}
+      <div class="col-md-3 sv-angebot-item">
+        <div class="sv-angebot-item-inner">
+          <div class="sv-angebot-icon mx-auto">
+            {{ $imagePath := .Params.image }}
+            {{ if $imagePath }}
+              {{ $image := resources.Get (strings.TrimPrefix "/" $imagePath) }}
+              {{ if $image }}
+                {{ $imageResized := $image.Resize "300x" }}
+                <img src="{{ $imageResized.RelPermalink }}" alt="{{ .Title }}" class="img-fluid">
+              {{ else }}
+                <img src="{{ $imagePath }}" alt="{{ .Title }}" class="img-fluid">
+              {{ end }}
+            {{ end }}
+          </div>
+            <div class="mt-4">
+            <a href="{{ .Params.primary_button_link | default .RelPermalink }}" class="sv-btn">
+              {{ .Title | safeHTML }}
+            </a>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

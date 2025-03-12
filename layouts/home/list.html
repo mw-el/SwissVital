@@ -42,7 +42,7 @@
     {{ $updated := replaceRE "<h2(.*?)>" "<h1$1>" $raw | replaceRE "</h2>" "</h1>" }}
     {{ $updated | safeHTML }}
   {{ end }}
-
+  {{ partial "angebot.html" . }}
   {{/* Render remaining Segment-1 items sequentially */}}
   {{ range (after 1 $segment1) }}
     {{ partial "full-bg.html" . }}
