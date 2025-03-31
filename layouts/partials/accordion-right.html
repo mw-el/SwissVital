@@ -1,0 +1,379 @@
+{{/* 
+  =============================================================================
+  ACCORDION PARTIAL DOCUMENTATION
+  =============================================================================
+  
+  OVERVIEW:
+  ---------
+  This partial creates a section with an accordion component and an image, with layout determined by
+  which partial is used (accordion-right.html or accordion-left.html).
+  It displays content from child pages as expandable/collapsible accordion items.
+  
+  CONTENT STRUCTURE:
+  -----------------
+  - This partial expects to be called from a section content file (e.g., content/de/home/02-leistungen/_index.md)
+  - The accordion items come from child pages within that section
+  - Each child page (e.g., content/de/home/02-leistungen/ganzkoerper-scan.md) becomes one accordion item
+  - The .Title of each child page becomes the accordion button text
+  - The .Content of each child page becomes the accordion panel content
+  
+  REQUIRED FRONTMATTER:
+  --------------------
+  In the section content file (_index.md) that calls this partial:
+  - layout: accordion-right or accordion-left (to determine image and accordion positioning)
+  - image: "/path/to/image.jpg" (with leading slash, relative to assets directory, typically mirroring the content path structure)
+  
+  OPTIONAL FRONTMATTER:
+  --------------------
+  - background_color: CSS color value or variable (default: var(--sv-imperialred))
+  - text_color: CSS color value or variable (default: var(--sv-offwhite))
+  - accordion_background_color: CSS color value (default: same as background_color)
+  - accordion_content_background_color: CSS color value (default: var(--sv-offwhite))
+  - accordion_accent_color: CSS color value (default: var(--sv-pumpkin))
+  - accordion_accent_color_rgb: RGB values as "r, g, b" string (default: "248, 119, 30")
+  - pre_headline: Text that appears above the main headline
+  - headline_align: Text alignment for headline (default: "left")
+  - body_text_align: Text alignment for body text (default: "left")
+  - image_shadow: CSS class to apply shadow effect to image (if needed)
+  
+  IMAGE PREPROCESSING:
+  ------------------
+  1. The image path is retrieved from frontmatter using .Params.image
+  2. Path is normalized to always have a leading slash
+  3. Image is loaded using resources.Get from the assets directory
+  4. Two versions are processed:
+     - Desktop: Resized to 1200px width with 85% quality
+     - Mobile: Cropped to 800x800px square (top aligned) with 85% quality
+  5. If image can't be found in resources, fallback to the raw path
+  
+  UNIQUE IDs:
+  ----------
+  - Each accordion instance gets a unique ID based on the content file name
+  - Format: accordion-[filename-urlized]
+  - This prevents conflicts when multiple accordions appear on the same page
+  
+  LAYOUT STRUCTURE:
+  ---------------
+  - Uses a 2/5 : 3/5 split layout (40% for one side, 60% for the other)
+  - .sv-layout-wrapper .sv-layout-split creates the grid layout
+  - In accordion-right: Left side (.sv-content-2-5) is image, right side (.sv-content-3-5) is accordion
+  - In accordion-left: Left side (.sv-content-3-5) is accordion, right side (.sv-content-2-5) is image
+  - Mobile image placement is handled specially for responsive design
+  
+  CSS STYLING:
+  -----------
+  - Each accordion instance has scoped styles applied inline
+  - Styles are scoped using the unique accordion ID to prevent conflicts
+  - !important flags are used to override Bootstrap defaults
+  - Special SVG encoding is used for the accordion arrows to match text color
+  
+  HUGO FUNCTIONS & METHODS USED:
+  ----------------------------
+  - .Params: Accesses frontmatter variables from the content file
+  - default: Provides default values when frontmatter variables aren't set
+  - safeCSS: Marks string as safe CSS to prevent escaping
+  - resources.Get: Loads image from assets directory as a resource
+  - .Resize: Processes image to specific dimensions/quality
+  - .Fill: Crops image to specific dimensions/quality
+  - .RelPermalink: Gets relative URL path for processed images
+  - .File.ContentBaseName: Gets filename without extension for ID generation
+  - urlize: Converts string to URL-friendly format
+  - print: Concatenates strings
+  - range: Iterates over child pages (.Pages)
+  - hasPrefix: Checks if string starts with specified prefix
+  - strings.TrimPrefix: Removes prefix from string
+  - replaceRE: Applies regex replacement (used for SVG color encoding)
+  
+  BOOTSTRAP COMPONENTS USED:
+  ------------------------
+  - Accordion (Bootstrap 5)
+  - Container grid system
+  - Custom styling applied to override Bootstrap defaults
+  
+  DATA FLOW:
+  ---------
+  1. Partial receives the current context (.) which is the section page
+  2. Frontmatter values are extracted with fallbacks
+  3. Image is processed if provided
+  4. Unique ID is generated for the accordion
+  5. Section layout is created with image and accordion areas
+  6. Child pages (.Pages) are iterated to create accordion items
+  7. Scoped CSS is generated to style this specific accordion instance
+  
+  USAGE EXAMPLE:
+  -------------
+  In content/de/home/02-leistungen/_index.md:
+  ```
+  ---
+  title: "Unsere Leistungen"
+  layout: accordion-right
+  image: "/de/home/02-leistungen/main-image.jpg"
+  background_color: "var(--sv-navy)"
+  text_color: "var(--sv-offwhite)"
+  accordion_accent_color: "var(--sv-pumpkin)"
+  pre_headline: "Was wir anbieten"
+  ---
+  
+  Introduction text here will appear above the accordion.
+  ```
+  
+  Then create child pages like content/de/home/02-leistungen/ganzkoerper-scan.md, etc.
+  Each will become an accordion item.
+*/}}
+
+{{/* Access frontmatter values with safeCSS */}}
+{{ $bgColor := .Params.background_color | default "var(--sv-imperialred)" | safeCSS }}
+{{ $textColor := .Params.text_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionBgColor := .Params.accordion_background_color | default $bgColor | safeCSS }}
+{{ $accordionContentBgColor := .Params.accordion_content_background_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionAccentColor := .Params.accordion_accent_color | default "var(--sv-pumpkin)" | safeCSS }}
+{{ $preHeadline := .Params.pre_headline }}
+{{ $headlineAlign := .Params.headline_align | default "left" | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_align | default "left" | safeCSS }}
+
+{{/* Extract RGB values for the accent color if an RGB variable isn't provided */}}
+{{ $accordionAccentColorRGB := .Params.accordion_accent_color_rgb | default "248, 119, 30" | safeCSS }}
+
+{{/* Process image with proper resource handling like in full-bg.html */}}
+{{ $imageSrc := "" }}
+{{ $imageSrcMobile := "" }}
+
+{{ if .Params.image }}
+  {{ $imgPath := .Params.image }}
+  {{ if not (hasPrefix $imgPath "/") }}
+    {{ $imgPath = print "/" $imgPath }}
+  {{ end }}
+  
+  {{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+  {{ if $img }}
+    {{ $imgDesktop := $img.Resize (printf "1200x q%d" 85) }}
+    {{ $imageSrc = $imgDesktop.RelPermalink }}
+    
+    {{ $imgMobile := $img.Fill (printf "800x800 Top q%d" 85) }}
+    {{ $imageSrcMobile = $imgMobile.RelPermalink }}
+  {{ else }}
+    {{ $imageSrc = $imgPath }}
+    {{ $imageSrcMobile = $imgPath }}
+  {{ end }}
+{{ end }}
+
+{{/* Define unique ID for this accordion instance */}}
+{{ $accordionID := print "accordion-" (.File.ContentBaseName | urlize) }}
+
+<section class="sv-section sv-accordion-section">
+  <div class="sv-bg-canvas" style="background-color: {{ $bgColor }}; color: {{ $textColor }};">
+    <div class="container">
+      <div class="sv-layout-wrapper sv-layout-split">
+        <!-- Left side - Image (2/5) -->
+        <div class="sv-content-2-5 sv-grid-image">
+          {{ if $imageSrc }}
+            <div class="sv-desktop-image-outer">
+              <div class="sv-desktop-image-inner">
+                <img src="{{ $imageSrc }}" alt="{{ .Title }}" class="sv-desktop-image {{ .Params.image_shadow }}" style="max-width: 100%; height: auto; object-fit: contain;">
+              </div>
+            </div>
+          {{ end }}
+        </div>
+
+        <!-- Right side - Accordion content (3/5) -->
+        <div class="sv-content-3-5 sv-text-column" style="text-align: {{ $bodyTextAlign }};">
+          <!-- Heading (visible on both desktop and mobile) -->
+          <div class="sv-heading">
+            {{ if $preHeadline }}
+              <p class="sv-pre-headline">{{ $preHeadline }}</p>
+            {{ end }}
+            <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
+              {{ .Title }}
+            </h2>
+          </div>
+
+          <!-- Mobile image (visible only on mobile) -->
+          {{ if $imageSrcMobile }}
+            <div class="sv-mobile-image">
+              <img src="{{ $imageSrcMobile }}" alt="{{ .Title }}" class="{{ .Params.image_shadow }}" style="max-width: 100%; height: auto; object-fit: contain;">
+            </div>
+          {{ end }}
+
+          <!-- Introduction text if any -->
+          {{ if .Content }}
+            <div class="sv-text-content">
+              <div class="sv-accordion-intro">
+                {{ .Content | safeHTML }}
+              </div>
+            </div>
+          {{ end }}
+
+          <!-- Accordion Component -->
+          <div class="sv-accordion-container" style="background-color: transparent; padding: 0; border-radius: 0.25rem;">
+            <div class="sv-accordion accordion" id="{{ $accordionID }}">
+              {{ range $index, $page := .Pages }}
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="heading-{{ $page.File.ContentBaseName | urlize }}">
+                    <button class="accordion-button collapsed" 
+                            type="button" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapse-{{ $page.File.ContentBaseName | urlize }}" 
+                            aria-expanded="false" 
+                            aria-controls="collapse-{{ $page.File.ContentBaseName | urlize }}">
+                      {{ $page.Title }}
+                    </button>
+                  </h3>
+                  <div id="collapse-{{ $page.File.ContentBaseName | urlize }}" 
+                       class="accordion-collapse collapse" 
+                       aria-labelledby="heading-{{ $page.File.ContentBaseName | urlize }}" 
+                       data-bs-parent="#{{ $accordionID }}">
+                    <div class="accordion-body" style="background-color: {{ $accordionContentBgColor }};">
+                      {{ $page.Content | safeHTML }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Base accordion item styling */
+  #{{ $accordionID }} .accordion-item {
+    background-color: {{ $accordionBgColor }} !important;
+    border: 1px solid {{ $accordionAccentColor }} !important;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    border-radius: 0 !important;
+  }
+  
+  /* EXPLICITLY TARGET THE REDDISH BACKGROUND AND OVERRIDE IT */
+  #{{ $accordionID }} .accordion-item,
+  #{{ $accordionID }} .accordion-header,
+  #{{ $accordionID }} .accordion-collapse,
+  #{{ $accordionID }} .accordion-body,
+  #{{ $accordionID }} .accordion-button {
+    background-color: {{ $accordionBgColor }} !important;
+  }
+  
+  /* First and last item border radius */
+  #{{ $accordionID }} .accordion-item:first-of-type {
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+  }
+  
+  #{{ $accordionID }} .accordion-item:last-of-type {
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+  }
+  
+  /* Prevent double borders */
+  #{{ $accordionID }} .accordion-item:not(:first-of-type) {
+    border-top: none !important;
+  }
+  
+  /* RESET ALL BACKGROUND COLORS TO DEFAULT */
+  .sv-accordion-container {
+    background-color: transparent !important;
+  }
+  
+  /* Explicitly define collapsed state */
+  #{{ $accordionID }} .accordion-button.collapsed {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+  }
+  
+  /* Default button styling */
+  #{{ $accordionID }} .accordion-button {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    padding: 1rem;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0 !important;
+    transition: background-color 0.3s ease !important;
+  }
+
+  /* Hover state */
+  #{{ $accordionID }} .accordion-button:hover {
+    background-color: {{ $accordionAccentColor }} !important;
+    color: {{ $textColor }} !important;
+  }
+
+  /* Focus state */
+  #{{ $accordionID }} .accordion-button:focus {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  
+  /* Accordion body */
+  #{{ $accordionID }} .accordion-body {
+    background-color: {{ $accordionContentBgColor }} !important;
+    padding: 1rem;
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+  
+  /* Active/expanded state - only apply to non-collapsed */
+  #{{ $accordionID }} .accordion-button:not(.collapsed) {
+    background-color: {{ $accordionAccentColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* Arrow styling */
+  #{{ $accordionID }} .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='{{ $textColor | replaceRE "^var\\(--(.+)\\)$" "${1}" | replaceRE "^#" "%23" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  /* Arrow for non-collapsed state */
+  #{{ $accordionID }} .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='{{ $textColor | replaceRE "^var\\(--(.+)\\)$" "${1}" | replaceRE "^#" "%23" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+  }
+  
+  /* Remove all borders from collapse element */
+  #{{ $accordionID }} .accordion-item .accordion-collapse {
+    border: none !important;
+  }
+  
+  /* Fix border colors */
+  #{{ $accordionID }} .accordion-item,
+  #{{ $accordionID }} .accordion-header,
+  #{{ $accordionID }} .accordion-collapse,
+  #{{ $accordionID }} .accordion-body {
+    border-color: {{ $accordionAccentColor }} !important;
+  }
+  
+  /* Remove borders from shown collapse */
+  #{{ $accordionID }} .accordion-collapse.show {
+    border: none !important;
+  }
+  
+  /* Ensure proper border radius on first/last items */
+  #{{ $accordionID }} .accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+  }
+  
+  #{{ $accordionID }} .accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+  }
+  
+  /* IMPORTANT: Fix for persistent background color issues */
+  /* Target any item with a background color that isn't the default */
+  #{{ $accordionID }} .accordion-item[style*="background"],
+  #{{ $accordionID }} .accordion-header[style*="background"],
+  #{{ $accordionID }} .accordion-button[style*="background"] {
+    background-color: {{ $accordionBgColor }} !important;
+  }
+  
+  /* Only the active button should have the accent color */
+  #{{ $accordionID }} .accordion-button:not(.collapsed) {
+    background-color: {{ $accordionAccentColor }} !important;
+  }
+</style>

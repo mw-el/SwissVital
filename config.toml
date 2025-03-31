@@ -6,6 +6,17 @@ theme = "bootstrap-theme"
 defaultContentLanguage = "de"
 defaultContentLanguageInSubdir = true
 
+# Global parameters for asset processing.
+[params]
+  enableSourceMaps = true
+
+# Disable minification during development for easier debugging.
+[minify]
+  disableXML = true
+  disableCSS = true
+  disableJS = true
+  disableHTML = true
+
 [languages]
   [languages.de]
     languageName = "Deutsch"
@@ -19,7 +30,7 @@ defaultContentLanguageInSubdir = true
       agb = "AGB"
       datenschutz = "Datenschutzerklärung"
       impressum = "Impressum"
-      
+
   [languages.en]
     languageName = "English"
     weight = 2

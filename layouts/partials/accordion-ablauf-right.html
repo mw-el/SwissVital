@@ -1,0 +1,487 @@
+{{/* 
+  =============================================================================
+  DYNAMIC IMAGE ACCORDION PARTIAL DOCUMENTATION
+  =============================================================================
+  
+  OVERVIEW:
+  ---------
+  This partial creates a section with an accordion component and an image that changes dynamically 
+  based on which accordion item is active. It uses the layout determined by which partial is used 
+  (accordion-right.html or accordion-left.html).
+  
+  The key enhancement of this partial over the standard accordion-right.html is that the image 
+  changes based on which accordion item is expanded, providing a more interactive user experience.
+  
+  CONTENT STRUCTURE:
+  -----------------
+  - This partial expects to be called from a section content file (e.g., content/de/home/04-ablauf/_index.md)
+  - The accordion items come from child pages within that section
+  - Each child page (e.g., content/de/home/04-ablauf/schritt-1.md) becomes one accordion item
+  - The .Title of each child page becomes the accordion button text
+  - The .Content of each child page becomes the accordion panel content
+  - Each child page should include an image parameter in its frontmatter
+  
+  REQUIRED FRONTMATTER:
+  --------------------
+  In the section content file (_index.md) that calls this partial:
+  - layout: accordion-right or accordion-left (to determine image and accordion positioning)
+  - default_image: "/img/home/ablauf/image.webp" (fallback image if child pages don't have images)
+  - partial: "accordion-ablauf-right.html" (to specify this partial should be used)
+  
+  In each child page:
+  - image: "/img/home/ablauf/image.webp" (with leading slash, relative to assets directory)
+  
+  OPTIONAL FRONTMATTER:
+  --------------------
+  - background_color: CSS color value or variable (default: var(--sv-imperialred))
+  - text_color: CSS color value or variable (default: var(--sv-offwhite))
+  - accordion_background_color: CSS color value (default: same as background_color)
+  - accordion_content_background_color: CSS color value (default: var(--sv-offwhite))
+  - accordion_accent_color: CSS color value (default: var(--sv-pumpkin))
+  - accordion_accent_color_rgb: RGB values as "r, g, b" string (default: "248, 119, 30")
+  - pre_headline: Text that appears above the main headline
+  - headline_align: Text alignment for headline (default: "left")
+  - body_text_align: Text alignment for body text (default: "left")
+  - image_shadow: CSS class to apply shadow effect to image (if needed)
+  
+  IMAGE HANDLING:
+  --------------
+  This partial implements dynamic image switching based on which accordion item is active:
+  
+  1. Default image from section _index.md is shown initially
+  2. When an accordion item is opened, its associated image is displayed
+  3. When all accordion items are closed, the default image is shown again
+  4. Both desktop and mobile versions of each image are handled separately
+  
+  RESPONSIVE DESIGN:
+  ----------------
+  - Desktop: Image is shown on the left side in a 2/5 column width
+  - Mobile: Image is shown below the heading and above the accordion items
+  - Different image resolutions are generated for optimal performance on different devices
+  
+  JAVASCRIPT FUNCTIONALITY:
+  -----------------------
+  JavaScript is used to handle the dynamic image switching:
+  1. On page load: Only the default image is visible
+  2. On accordion item open: The related image is shown while others are hidden
+  3. On accordion item close: If no other items are open, default image is shown
+  
+  CSS STYLING:
+  -----------
+  - Each accordion instance has scoped styles applied inline using the unique ID
+  - Styles are isolated to prevent conflicts with other accordions on the same page
+  - Custom styling for accordion items, headers, buttons, and content areas
+  - Smooth transitions are applied when switching between images
+  
+  USAGE EXAMPLE:
+  -------------
+  _index.md:
+  ```yaml
+  ---
+  title: "Ihr Check-up Schritt für Schritt"
+  layout: "accordion-right"
+  default_image: "/img/home/ablauf/5-steps-with-doctor.webp"
+  partial: "accordion-ablauf-right.html"
+  ---
+  
+  Introduction text here...
+  ```
+  
+  schritt-1.md:
+  ```yaml
+  ---
+  title: "Schritt 1: Beratung"
+  image: "/img/home/ablauf/beratung.webp"
+  ---
+  
+  Content for step 1...
+  ```
+  
+  IMPORTANT NOTES:
+  --------------
+  - Image paths must match your assets directory structure
+  - For SwissVital, images should be in /assets/img/home/ablauf/
+  - Each accordion item (step) should have its own image specified in frontmatter
+*/}}
+
+{{/* Access frontmatter values with safeCSS */}}
+{{ $bgColor := .Params.background_color | default "var(--sv-imperialred)" | safeCSS }}
+{{ $textColor := .Params.text_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionBgColor := .Params.accordion_background_color | default $bgColor | safeCSS }}
+{{ $accordionContentBgColor := .Params.accordion_content_background_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionAccentColor := .Params.accordion_accent_color | default "var(--sv-pumpkin)" | safeCSS }}
+{{ $preHeadline := .Params.pre_headline }}
+{{ $headlineAlign := .Params.headline_align | default "left" | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_align | default "left" | safeCSS }}
+
+{{/* Extract RGB values for the accent color if an RGB variable isn't provided */}}
+{{ $accordionAccentColorRGB := .Params.accordion_accent_color_rgb | default "248, 119, 30" | safeCSS }}
+
+{{/* Process default image with proper resource handling */}}
+{{ $defaultImageSrc := "" }}
+{{ $defaultImageSrcMobile := "" }}
+
+{{ if .Params.default_image }}
+  {{ $imgPath := .Params.default_image }}
+  
+  <!-- Try to get the image resource -->
+  {{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+  {{ if not $img }}
+    <!-- Fallback - try with path correction for the SwissVital structure -->
+    {{ $img = resources.Get (replace (strings.TrimPrefix "/" $imgPath) "/img/ablauf/" "img/home/ablauf/") }}
+  {{ end }}
+  
+  {{ if $img }}
+    {{ $imgDesktop := $img.Resize (printf "1200x q%d" 85) }}
+    {{ $defaultImageSrc = $imgDesktop.RelPermalink }}
+    
+    {{ $imgMobile := $img.Fill (printf "800x800 Top q%d" 85) }}
+    {{ $defaultImageSrcMobile = $imgMobile.RelPermalink }}
+  {{ else }}
+    <!-- If resource processing fails, use the raw path -->
+    {{ $defaultImageSrc = $imgPath }}
+    {{ $defaultImageSrcMobile = $imgPath }}
+  {{ end }}
+{{ end }}
+
+{{/* Define unique ID for this accordion instance */}}
+{{ $accordionID := print "accordion-" (.File.ContentBaseName | urlize) }}
+
+<section class="sv-section sv-accordion-section">
+  <div class="sv-bg-canvas" style="background-color: {{ $bgColor }}; color: {{ $textColor }};">
+    <div class="container">
+      <div class="sv-layout-wrapper sv-layout-split">
+        <!-- Left side - Image (2/5) -->
+        <div class="sv-content-2-5 sv-grid-image">
+          <div class="sv-desktop-image-outer">
+            <div class="sv-desktop-image-inner">
+              <!-- Default image (shown initially) -->
+              <img src="{{ $defaultImageSrc }}" alt="{{ .Title }}" class="sv-desktop-image {{ .Params.image_shadow }} sv-accordion-image" id="{{ $accordionID }}-default-image" style="max-width: 100%; height: auto; object-fit: contain;">
+              
+              <!-- Images for each accordion item (hidden initially) -->
+              {{ range $index, $page := .Pages }}
+                {{ $imgSrc := "" }}
+                {{ if $page.Params.image }}
+                  {{ $imgPath := $page.Params.image }}
+                  
+                  <!-- Try to get the image resource -->
+                  {{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+                  {{ if not $img }}
+                    <!-- Fallback - try with path correction for the SwissVital structure -->
+                    {{ $img = resources.Get (replace (strings.TrimPrefix "/" $imgPath) "/img/ablauf/" "img/home/ablauf/") }}
+                  {{ end }}
+                  
+                  {{ if $img }}
+                    {{ $imgDesktop := $img.Resize (printf "1200x q%d" 85) }}
+                    {{ $imgSrc = $imgDesktop.RelPermalink }}
+                  {{ else }}
+                    <!-- If resource processing fails, use the raw path -->
+                    {{ $imgSrc = $imgPath }}
+                  {{ end }}
+                {{ else }}
+                  {{ $imgSrc = $defaultImageSrc }}
+                {{ end }}
+                
+                <img src="{{ $imgSrc }}" alt="{{ $page.Title }}" class="sv-desktop-image {{ $.Params.image_shadow }} sv-accordion-image" id="{{ $accordionID }}-image-{{ $page.File.ContentBaseName | urlize }}" style="max-width: 100%; height: auto; object-fit: contain; display: none;">
+              {{ end }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side - Accordion content (3/5) -->
+        <div class="sv-content-3-5 sv-text-column" style="text-align: {{ $bodyTextAlign }};">
+          <!-- Heading (visible on both desktop and mobile) -->
+          <div class="sv-heading">
+            {{ if $preHeadline }}
+              <p class="sv-pre-headline">{{ $preHeadline }}</p>
+            {{ end }}
+            <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
+              {{ .Title }}
+            </h2>
+          </div>
+
+          <!-- Mobile image (visible only on mobile) - dynamic version -->
+          <div class="sv-mobile-image">
+            <!-- Default mobile image (shown initially) -->
+            <img src="{{ $defaultImageSrcMobile }}" alt="{{ .Title }}" class="{{ .Params.image_shadow }} sv-mobile-accordion-image" id="{{ $accordionID }}-mobile-default-image" style="max-width: 100%; height: auto; object-fit: contain;">
+            
+            <!-- Mobile images for each accordion item (hidden initially) -->
+            {{ range $index, $page := .Pages }}
+              {{ $imgSrcMobile := "" }}
+              {{ if $page.Params.image }}
+                {{ $imgPath := $page.Params.image }}
+                
+                <!-- Try to get the image resource -->
+                {{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+                {{ if not $img }}
+                  <!-- Fallback - try with path correction for the SwissVital structure -->
+                  {{ $img = resources.Get (replace (strings.TrimPrefix "/" $imgPath) "/img/ablauf/" "img/home/ablauf/") }}
+                {{ end }}
+                
+                {{ if $img }}
+                  {{ $imgMobile := $img.Fill (printf "800x800 Top q%d" 85) }}
+                  {{ $imgSrcMobile = $imgMobile.RelPermalink }}
+                {{ else }}
+                  <!-- If resource processing fails, use the raw path -->
+                  {{ $imgSrcMobile = $imgPath }}
+                {{ end }}
+              {{ else }}
+                {{ $imgSrcMobile = $defaultImageSrcMobile }}
+              {{ end }}
+              
+              <img src="{{ $imgSrcMobile }}" alt="{{ $page.Title }}" class="{{ $.Params.image_shadow }} sv-mobile-accordion-image" id="{{ $accordionID }}-mobile-image-{{ $page.File.ContentBaseName | urlize }}" style="max-width: 100%; height: auto; object-fit: contain; display: none;">
+            {{ end }}
+          </div>
+
+          <!-- Introduction text if any -->
+          {{ if .Content }}
+            <div class="sv-text-content">
+              <div class="sv-accordion-intro">
+                {{ .Content | safeHTML }}
+              </div>
+            </div>
+          {{ end }}
+
+          <!-- Accordion Component -->
+          <div class="sv-accordion-container" style="background-color: transparent; padding: 0; border-radius: 0.25rem;">
+            <div class="sv-accordion accordion" id="{{ $accordionID }}">
+              {{ range $index, $page := .Pages }}
+                <div class="accordion-item" data-image-id="{{ $page.File.ContentBaseName | urlize }}">
+                  <h3 class="accordion-header" id="heading-{{ $page.File.ContentBaseName | urlize }}">
+                    <button class="accordion-button collapsed" 
+                            type="button" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapse-{{ $page.File.ContentBaseName | urlize }}" 
+                            aria-expanded="false" 
+                            aria-controls="collapse-{{ $page.File.ContentBaseName | urlize }}">
+                      {{ $page.Title }}
+                    </button>
+                  </h3>
+                  <div id="collapse-{{ $page.File.ContentBaseName | urlize }}" 
+                       class="accordion-collapse collapse" 
+                       aria-labelledby="heading-{{ $page.File.ContentBaseName | urlize }}" 
+                       data-bs-parent="#{{ $accordionID }}">
+                    <div class="accordion-body" style="background-color: {{ $accordionContentBgColor }};">
+                      {{ $page.Content | safeHTML }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Base accordion item styling */
+  #{{ $accordionID }} .accordion-item {
+    background-color: {{ $accordionBgColor }} !important;
+    border: 1px solid {{ $accordionAccentColor }} !important;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    border-radius: 0 !important;
+  }
+  
+  /* EXPLICITLY TARGET THE REDDISH BACKGROUND AND OVERRIDE IT */
+  #{{ $accordionID }} .accordion-item,
+  #{{ $accordionID }} .accordion-header,
+  #{{ $accordionID }} .accordion-collapse,
+  #{{ $accordionID }} .accordion-body,
+  #{{ $accordionID }} .accordion-button {
+    background-color: {{ $accordionBgColor }} !important;
+  }
+  
+  /* First and last item border radius */
+  #{{ $accordionID }} .accordion-item:first-of-type {
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+  }
+  
+  #{{ $accordionID }} .accordion-item:last-of-type {
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+  }
+  
+  /* Prevent double borders */
+  #{{ $accordionID }} .accordion-item:not(:first-of-type) {
+    border-top: none !important;
+  }
+  
+  /* RESET ALL BACKGROUND COLORS TO DEFAULT */
+  .sv-accordion-container {
+    background-color: transparent !important;
+  }
+  
+  /* Explicitly define collapsed state */
+  #{{ $accordionID }} .accordion-button.collapsed {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+  }
+  
+  /* Default button styling */
+  #{{ $accordionID }} .accordion-button {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    padding: 1rem;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0 !important;
+    transition: background-color 0.3s ease !important;
+  }
+
+  /* Hover state */
+  #{{ $accordionID }} .accordion-button:hover {
+    background-color: {{ $accordionAccentColor }} !important;
+    color: {{ $textColor }} !important;
+  }
+
+  /* Focus state */
+  #{{ $accordionID }} .accordion-button:focus {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  
+  /* Accordion body */
+  #{{ $accordionID }} .accordion-body {
+    background-color: {{ $accordionContentBgColor }} !important;
+    padding: 1rem;
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+  
+  /* Active/expanded state - only apply to non-collapsed */
+  #{{ $accordionID }} .accordion-button:not(.collapsed) {
+    background-color: {{ $accordionAccentColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* Arrow styling */
+  #{{ $accordionID }} .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='{{ $textColor | replaceRE "^var\\(--(.+)\\)$" "${1}" | replaceRE "^#" "%23" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  /* Arrow for non-collapsed state */
+  #{{ $accordionID }} .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='{{ $textColor | replaceRE "^var\\(--(.+)\\)$" "${1}" | replaceRE "^#" "%23" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+  }
+  
+  /* Remove all borders from collapse element */
+  #{{ $accordionID }} .accordion-item .accordion-collapse {
+    border: none !important;
+  }
+  
+  /* Fix border colors */
+  #{{ $accordionID }} .accordion-item,
+  #{{ $accordionID }} .accordion-header,
+  #{{ $accordionID }} .accordion-collapse,
+  #{{ $accordionID }} .accordion-body {
+    border-color: {{ $accordionAccentColor }} !important;
+  }
+  
+  /* Remove borders from shown collapse */
+  #{{ $accordionID }} .accordion-collapse.show {
+    border: none !important;
+  }
+  
+  /* Ensure proper border radius on first/last items */
+  #{{ $accordionID }} .accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+  }
+  
+  #{{ $accordionID }} .accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+  }
+  
+  /* IMPORTANT: Fix for persistent background color issues */
+  /* Target any item with a background color that isn't the default */
+  #{{ $accordionID }} .accordion-item[style*="background"],
+  #{{ $accordionID }} .accordion-header[style*="background"],
+  #{{ $accordionID }} .accordion-button[style*="background"] {
+    background-color: {{ $accordionBgColor }} !important;
+  }
+  
+  /* Only the active button should have the accent color */
+  #{{ $accordionID }} .accordion-button:not(.collapsed) {
+    background-color: {{ $accordionAccentColor }} !important;
+  }
+  
+  /* Style for accordion images - proper transitions */
+  .sv-accordion-image, .sv-mobile-accordion-image {
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionId = '{{ $accordionID }}';
+    const accordion = document.getElementById(accordionId);
+    
+    if (accordion) {
+      // Function to hide all images
+      function hideAllImages() {
+        // Hide all desktop images
+        document.querySelectorAll(`#${accordionId}-default-image, .sv-accordion-image[id^="${accordionId}-image-"]`).forEach(img => {
+          img.style.display = 'none';
+        });
+        
+        // Hide all mobile images
+        document.querySelectorAll(`#${accordionId}-mobile-default-image, .sv-mobile-accordion-image[id^="${accordionId}-mobile-image-"]`).forEach(img => {
+          img.style.display = 'none';
+        });
+      }
+      
+      // Function to show default image
+      function showDefaultImage() {
+        hideAllImages();
+        const defaultImage = document.getElementById(`${accordionId}-default-image`);
+        if (defaultImage) defaultImage.style.display = 'block';
+        
+        const mobileDefaultImage = document.getElementById(`${accordionId}-mobile-default-image`);
+        if (mobileDefaultImage) mobileDefaultImage.style.display = 'block';
+      }
+      
+      // Function to show image for specific accordion item
+      function showImage(itemId) {
+        hideAllImages();
+        const image = document.getElementById(`${accordionId}-image-${itemId}`);
+        if (image) image.style.display = 'block';
+        
+        const mobileImage = document.getElementById(`${accordionId}-mobile-image-${itemId}`);
+        if (mobileImage) mobileImage.style.display = 'block';
+      }
+      
+      // Initialize with default image
+      showDefaultImage();
+      
+      // Listen for Bootstrap accordion events
+      accordion.addEventListener('shown.bs.collapse', function(e) {
+        const itemId = e.target.id.replace('collapse-', '');
+        showImage(itemId);
+      });
+      
+      accordion.addEventListener('hidden.bs.collapse', function(e) {
+        // Check if any accordion item is still open
+        const openItems = accordion.querySelectorAll('.accordion-collapse.show');
+        if (openItems.length === 0) {
+          // If no items are open, show default image
+          showDefaultImage();
+        } else {
+          // If another item is open, its 'shown' event will handle the image
+          const openItemId = openItems[0].id.replace('collapse-', '');
+          showImage(openItemId);
+        }
+      });
+    }
+  });
+</script>

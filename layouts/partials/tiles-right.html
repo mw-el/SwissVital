@@ -1,0 +1,351 @@
+{{/* 
+  =============================================================================
+  TILES WITH ICON BUTTONS PARTIAL DOCUMENTATION
+  =============================================================================
+  
+  OVERVIEW:
+  ---------
+  This partial creates a section with tiles containing titles, descriptions, and icon buttons.
+  The layout includes a full-width heading section at the top, followed by a split layout with 
+  an image on one side and tiles on the other side.
+  The partial is available in two versions:
+  - tiles-with-iconbuttons-left.html (tiles on left, image on right)
+  - tiles-with-iconbuttons-right.html (image on left, tiles on right)
+  
+  CONTENT STRUCTURE:
+  -----------------
+  - This partial expects to be called from a section content file (e.g., content/de/home/03-frageboegen/_index.md)
+  - The tiles come from child pages within that section
+  - Each child page (e.g., content/de/home/03-frageboegen/breite-vorsorge.md) becomes one tile
+  - The .Title of each child page becomes the tile title
+  - The .Params.description of each child page becomes the tile description
+  - The .Params.icon (optional) specifies a Material Icons name for the button
+  - Each tile links to its respective child page using .RelPermalink
+  
+  REQUIRED FRONTMATTER:
+  --------------------
+  In the section content file (_index.md) that calls this partial:
+  - layout: "section" (to ensure it's recognized as a section page)
+  - partial: "tiles-with-iconbuttons-left.html" or "tiles-with-iconbuttons-right.html"
+  
+  OPTIONAL FRONTMATTER:
+  --------------------
+  - background_color: CSS color value or variable (default: var(--sv-offwhite))
+  - text_color: CSS color value or variable (default: var(--sv-richblack))
+  - pre_headline: Text that appears above the main headline
+  - headline_alignment: Text alignment for headline (default: "left")
+  - body_text_alignment: Text alignment for body text (default: "left")
+  - item_background-color: CSS color value for tile background (default: transparent)
+  - item_background-color-hover: CSS color value for tile background on hover
+  - item_border-color: CSS color value for tile border (default: var(--sv-defaultgray-400))
+  - item_shadow: CSS class to apply shadow effect to tiles (if needed)
+  - item_text-alignment: Text alignment within tiles (default: "left")
+  - item_button-alignment: Button alignment within tiles (default: "left")
+  - primary_button_class: CSS class for the button (default: "sv-btn-prussianblue btn-cap")
+  - image: "/path/to/image.jpg" (with leading slash, relative to assets directory)
+  
+  Child page frontmatter requirements:
+  - description: Short text description to show in the tile
+  - icon: Material Icons name (e.g., "credit_card" or "medical_services")
+  
+  IMAGE PREPROCESSING:
+  ------------------
+  1. The image path is retrieved from frontmatter using .Params.image
+  2. Path is normalized to always have a leading slash
+  3. Image is loaded using resources.Get from the assets directory
+  4. Two versions are processed:
+     - Desktop: Resized to 1200px width with 85% quality
+     - Mobile: Cropped to 800x800px square (top aligned) with 85% quality
+  5. If image can't be found in resources, fallback to the raw path
+  
+  LAYOUT STRUCTURE:
+  ---------------
+  - Full-width heading section at the top
+  - Below that, a 3/5 : 2/5 split layout (60% for tiles, 40% for image)
+  - In the left variant: left side has tiles, right side has image
+  - In the right variant: left side has image, right side has tiles
+  - On mobile devices: heading at top, then image, then tiles
+  
+  RESPONSIVE BEHAVIOR:
+  ------------------
+  - Desktop: Full-width heading followed by side-by-side layout with image and tiles
+  - Mobile: Stacked layout with heading at top, followed by image, then tiles
+  - Desktop image is hidden on mobile
+  - Mobile image is hidden on desktop
+  - Tile grid adjusts from 2 columns to 1 column on smaller screens
+  
+  EXTERNAL DEPENDENCIES:
+  --------------------
+  - Material Icons: Loaded from Google Fonts CDN
+  - Uses "Material Symbols Outlined" with 300 weight
+  
+  USAGE EXAMPLE:
+  -------------
+  In content/de/home/03-frageboegen/_index.md:
+  ```
+  ---
+  title: "Wie können wir helfen?"
+  layout: "section"
+  partial: "tiles-with-iconbuttons-right.html"
+  pre_headline: "Ein persönliches Vorsorgegespräch klärt Ihren Bedarf."
+  image: "/img/home/man-with-overlay.webp"
+  background_color: "var(--sv-offwhite)"
+  text_color: "var(--sv-richblack)"
+  headline_alignment: "center"
+  body_text_alignment: "center"
+  item_text-alignment: "left"
+  item_button-alignment: "left"
+  ---
+  
+  Optional introduction text that appears above the tiles.
+  ```
+  
+  Then in child page content/de/home/03-frageboegen/breite-vorsorge.md:
+  ```
+  ---
+  title: "Breite Vorsorge"
+  description: "Breite Vorsorge für die wichtigsten Risiken"
+  icon: "medical_services"
+  ---
+  
+  Full content of the page here...
+  ```
+*/}}
+
+{{/* Access frontmatter values with safeCSS */}}
+{{ $bgColor := .Params.background_color | safeCSS }}
+{{ $textColor := .Params.text_color | safeCSS }}
+{{ $preHeadline := .Params.pre_headline }}
+{{ $headlineAlign := .Params.headline_alignment | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_alignment | safeCSS }}
+
+{{/* Item styling from frontmatter */}}
+{{ $itemBgColor := index .Params "item_background-color" | safeCSS }}
+{{ $itemBgColorHover := index .Params "item_background-color-hover" | safeCSS }}
+{{ $itemBorderColor := index .Params "item_border-color" | safeCSS }}
+{{ $itemShadow := .Params.item_shadow }}
+{{ $buttonClass := .Params.primary_button_class | safeCSS }}
+
+{{/* Fix hyphenated parameter names */}}
+{{ $itemTextAlign := index .Params "item_text-alinment" | safeCSS }}
+{{ $itemButtonAlign := index .Params "item_button-alinment" | safeCSS }}
+
+{{/* Process image */}}
+{{ $imageSrc := "" }}
+{{ $imageSrcMobile := "" }}
+
+{{ if .Params.image }}
+  {{ $imgPath := .Params.image }}
+  {{ if not (hasPrefix $imgPath "/") }}
+    {{ $imgPath = print "/" $imgPath }}
+  {{ end }}
+  
+  {{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+  {{ if $img }}
+    {{ $imgDesktop := $img.Resize (printf "1200x q%d" 85) }}
+    {{ $imageSrc = $imgDesktop.RelPermalink }}
+    
+    {{ $imgMobile := $img.Fill (printf "800x800 Top q%d" 85) }}
+    {{ $imageSrcMobile = $imgMobile.RelPermalink }}
+  {{ else }}
+    {{ $imageSrc = $imgPath }}
+    {{ $imageSrcMobile = $imgPath }}
+  {{ end }}
+{{ end }}
+
+{{/* Define unique ID */}}
+{{ $iconizedID := print "iconized-" (.File.ContentBaseName | urlize) }}
+
+
+<section class="sv-section sv-iconized-section" id="{{ $iconizedID }}">
+  <div class="sv-bg-canvas" style="background-color: {{ $bgColor }}; color: {{ $textColor }};">
+    <div class="container">
+      <!-- Full-width heading section -->
+      <div class="sv-full-width-heading" style="text-align: {{ $headlineAlign }};">
+        {{ if $preHeadline }}
+          <p class="sv-pre-headline">{{ $preHeadline }}</p>
+        {{ end }}
+        <h2 id="{{ .Params.id | default (.Title | urlize) }}" class="sv-spacer">
+          {{ .Title }}
+        </h2>
+      </div>
+      
+      <!-- Introduction text if any -->
+      {{ if .Content }}
+        <div class="sv-text-content sv-intro" style="text-align: {{ $bodyTextAlign }};">
+          <div class="sv-iconized-intro">
+            {{ .Content | safeHTML }}
+          </div>
+        </div>
+      {{ end }}
+
+      <div class="sv-layout-wrapper sv-layout-split">
+        <!-- Left side - Image (2/5) -->
+        <div class="sv-content-2-5 sv-grid-image">
+          <!-- Desktop image -->
+          {{ if .Params.image }}
+            <div class="sv-desktop-image-outer">
+              <div class="sv-desktop-image-inner">
+                <img src="{{ $imageSrc }}" alt="{{ .Title }}" class="sv-desktop-image {{ $itemShadow }}" style="max-width: 100%; height: auto; object-fit: contain;">
+              </div>
+            </div>
+          {{ end }}
+        </div>
+
+        <!-- Right side - Tiles (3/5) -->
+        <div class="sv-content-3-5 sv-text-column" style="text-align: {{ $bodyTextAlign }};">
+          <!-- Mobile image (visible only on mobile) -->
+          {{ if .Params.image }}
+            <div class="sv-mobile-image">
+              <img src="{{ $imageSrcMobile }}" alt="{{ .Title }}" class="{{ $itemShadow }}" style="max-width: 100%; height: auto; object-fit: contain;">
+            </div>
+          {{ end }}
+
+          <!-- Load Material Icons -->
+          <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+          
+          <!-- Uniform tile grid -->
+          <div class="sv-tile-grid">
+            {{ range $index, $page := .Pages }}
+              <div class="sv-tile-grid-item">
+                <a href="{{ $page.RelPermalink }}" class="sv-tile-link">
+                  <div class="sv-tile-equal {{ $itemShadow }}">
+                    <div class="sv-tile-title" style="text-align: {{ $itemTextAlign }};">
+                      <h3 class="h4 m-0">{{ $page.Title | safeHTML }}</h3>
+                    </div>
+                    <div class="sv-tile-description" style="text-align: {{ $itemTextAlign }};">
+                      <p>{{ $page.Params.description | safeHTML }}</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Full-width heading styling */
+  .sv-full-width-heading {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  /* Intro section styling */
+  .sv-intro {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  /* Tile grid styling (unique to this partial) */
+  .sv-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .sv-tile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Tile styling */
+  .sv-tile-grid-item {
+    min-height: 100%;
+  }
+  
+  .sv-tile-link {
+    display: block;
+    height: 100%;
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+  
+  .sv-tile-equal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: {{ $itemBgColor }};
+    border: 1px solid {{ $itemBorderColor }};
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .sv-tile-title {
+    margin-bottom: 0.75rem;
+  }
+  
+  .sv-tile-description {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+  
+  .sv-tile-button {
+    margin-top: auto;
+  }
+  
+  /* Hover effects */
+  .sv-tile-link:hover .sv-tile-equal {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    background-color: {{ $itemBgColorHover }};
+  }
+  
+  .sv-tile-link:hover,
+  .sv-tile-link:focus,
+  .sv-tile-link:active {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  
+  .sv-tile-link:hover h3,
+  .sv-tile-link:hover p,
+  .sv-tile-link:focus h3,
+  .sv-tile-link:focus p,
+  .sv-tile-link:active h3,
+  .sv-tile-link:active p {
+    color: inherit !important;
+  }
+  
+  /* Responsive behavior for mobile image */
+  @media (min-width: 993px) {
+    .sv-mobile-image {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .sv-desktop-image-outer {
+      display: none;
+    }
+  }
+  
+  /* Image styling */
+  .sv-desktop-image-outer {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .sv-desktop-image-inner {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .sv-desktop-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+
+<script>
+// No JavaScript fallback - intentionally removed to see if the partial fails
+</script>

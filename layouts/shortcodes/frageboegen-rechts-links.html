@@ -1,0 +1,6 @@
+{{ partial "iconized-buttons.html" (dict 
+    "params" $.Page.Params 
+    "section" "frageboegen" 
+    "context" $ 
+    "contentRight" (.Inner | markdownify) 
+) }}

@@ -1,0 +1,513 @@
+{{/* Access frontmatter values with safeCSS */}}
+{{ $bgColor := .Params.background_color | default "var(--sv-imperialred)" | safeCSS }}
+{{ $textColor := .Params.text_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionBgColor := .Params.accordion_background_color | default $bgColor | safeCSS }}
+{{ $accordionContentBgColor := .Params.accordion_content_background_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionAccentColor := .Params.accordion_accent_color | default "var(--sv-pumpkin)" | safeCSS }}
+{{ $preHeadline := .Params.pre_headline }}
+{{ $headlineAlign := .Params.headline_align | default "left" | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_align | default "left" | safeCSS }}
+
+{{/* Extract RGB values for the accent color if an RGB variable isn't provided */}}
+{{ $accordionAccentColorRGB := .Params.accordion_accent_color_rgb | default "248, 119, 30" | safeCSS }}
+
+{{/* Button parameters */}}
+{{ $buttonPlacement := .Params.button_placement | default "" }}
+{{ $buttonAlignment := .Params.button_alignment | default "left" }}
+{{ $primaryButtonClass := .Params.primary_button_class | default "" }}
+{{ $primaryButtonLink := .Params.primary_button_link | default "#" }}
+{{ $primaryButtonText := .Params.primary_button_text | default "" }}
+{{ $secondaryButtonClass := .Params.secondary_button_class | default "" }}
+{{ $secondaryButtonLink := .Params.secondary_button_link | default "#" }}
+{{ $secondaryButtonText := .Params.secondary_button_text | default "" }}
+
+{{/* Process default image with proper resource handling */}}
+{{ $defaultImageSrc := "" }}
+
+{{ if .Params.default_image }}
+  {{ $imgPath := .Params.default_image }}
+  
+  <!-- get the image resource -->
+  {{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+  
+  {{ $imgResponsive := $img.Resize (printf "800x q%d" 85) }}
+  {{ $defaultImageSrc = $imgResponsive.RelPermalink }}
+  
+{{ end }}
+
+{{/* Define unique ID for this accordion instance */}}
+{{ $accordionID := print "accordion-" (.File.ContentBaseName | urlize) }}
+
+<section class="sv-section sv-accordion-section">
+  <div class="sv-bg-canvas" style="background-color: {{ $bgColor }}; color: {{ $textColor }};">
+    <div class="container">
+      <!-- Full-width heading section at the top -->
+      <div class="sv-full-width-heading" style="text-align: {{ $headlineAlign }};">
+        {{ if $preHeadline }}
+          <p class="sv-pre-headline">{{ $preHeadline }}</p>
+        {{ end }}
+        <h2 id="{{ .Params.id | default (.Title | urlize) }}" class="sv-spacer">
+          {{ .Title }}
+        </h2>
+      </div>
+      
+      <!-- Introduction text if any - full width -->
+      {{ if .Content }}
+        <div class="sv-text-content sv-intro" style="text-align: {{ $bodyTextAlign }};">
+          <div class="sv-accordion-intro">
+            {{ .Content | safeHTML }}
+          </div>
+        </div>
+      {{ end }}
+
+      <div class="sv-layout-wrapper sv-layout-split">
+        <!-- Left side - Accordion Image (2/5) -->
+        <div class="sv-content-2-5 sv-grid-image">
+          <div class="sv-accordion-image-container">
+            <!-- Image wrapper for wipe effect -->
+            <div class="sv-image-wiper" id="{{ $accordionID }}-image-wiper">
+              <!-- Default accordion image (shown initially) -->
+              <img src="{{ $defaultImageSrc }}" alt="{{ .Title }}" 
+                  class="{{ .Params.image_shadow }} sv-accordion-image sv-active-image" 
+                  id="{{ $accordionID }}-default-image">
+              
+              <!-- Images for each accordion item (hidden initially) -->
+              {{ range $index, $page := .Pages }}
+                {{ $imgSrc := "" }}
+                {{ if $page.Params.image }}
+                  {{ $imgPath := $page.Params.image }}
+                  
+                  <!-- Try to get the image resource -->
+                  {{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+                  {{ if not $img }}
+                    <!-- Fallback - try with path correction for the SwissVital structure -->
+                    {{ $img = resources.Get (replace (strings.TrimPrefix "/" $imgPath) "/img/ablauf/" "img/home/ablauf/") }}
+                  {{ end }}
+                  
+                  {{ if $img }}
+                    {{ $imgResized := $img.Resize (printf "800x q%d" 85) }}
+                    {{ $imgSrc = $imgResized.RelPermalink }}
+                  {{ else }}
+                    <!-- If resource processing fails, use the raw path -->
+                    {{ $imgSrc = $imgPath }}
+                  {{ end }}
+                {{ else }}
+                  {{ $imgSrc = $defaultImageSrc }}
+                {{ end }}
+                
+                <img src="{{ $imgSrc }}" alt="{{ $page.Title }}" 
+                    class="{{ $.Params.image_shadow }} sv-accordion-image" 
+                    id="{{ $accordionID }}-image-{{ $page.File.ContentBaseName | urlize }}">
+              {{ end }}
+            </div>
+          </div>
+          
+          <!-- Buttons under image if button_placement is "image" -->
+          {{ if eq $buttonPlacement "image" }}
+            {{ if or $primaryButtonText $secondaryButtonText }}
+              <div class="sv-button-wrapper">
+                <div class="sv-buttons" style="justify-content: {{ $buttonAlignment }};">
+                  {{ if $primaryButtonText }}
+                    <a href="{{ $primaryButtonLink }}" class="sv-btn {{ $primaryButtonClass }}">
+                      {{ $primaryButtonText }}
+                    </a>
+                  {{ end }}
+                  {{ if $secondaryButtonText }}
+                    <a href="{{ $secondaryButtonLink }}" class="sv-btn {{ $secondaryButtonClass }}">
+                      {{ $secondaryButtonText }}
+                    </a>
+                  {{ end }}
+                </div>
+              </div>
+            {{ end }}
+          {{ end }}
+        </div>
+
+        <!-- Right side - Accordion content (3/5) -->
+        <div class="sv-content-3-5 sv-text-column" style="text-align: {{ $bodyTextAlign }};">
+          <!-- Accordion Component -->
+          <div class="sv-accordion-container" style="background-color: transparent; padding: 0; border-radius: 0.25rem;">
+            <div class="sv-accordion accordion" id="{{ $accordionID }}">
+              {{ range $index, $page := .Pages }}
+                <div class="accordion-item" data-image-id="{{ $page.File.ContentBaseName | urlize }}">
+                  <h3 class="accordion-header" id="heading-{{ $page.File.ContentBaseName | urlize }}">
+                    <button class="accordion-button collapsed" 
+                            type="button" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapse-{{ $page.File.ContentBaseName | urlize }}" 
+                            aria-expanded="false" 
+                            aria-controls="collapse-{{ $page.File.ContentBaseName | urlize }}">
+                      {{ $page.Title }}
+                    </button>
+                  </h3>
+                  <div id="collapse-{{ $page.File.ContentBaseName | urlize }}" 
+                       class="accordion-collapse collapse" 
+                       aria-labelledby="heading-{{ $page.File.ContentBaseName | urlize }}" 
+                       data-bs-parent="#{{ $accordionID }}">
+                    <div class="accordion-body" style="background-color: {{ $accordionContentBgColor }};">
+                      {{ $page.Content | safeHTML }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </div>
+          
+          <!-- Buttons under accordion if button_placement is "accordion" -->
+          {{ if eq $buttonPlacement "accordion" }}
+            {{ if or $primaryButtonText $secondaryButtonText }}
+              <div class="sv-button-wrapper">
+                <div class="sv-buttons" style="justify-content: {{ $buttonAlignment }};">
+                  {{ if $primaryButtonText }}
+                    <a href="{{ $primaryButtonLink }}" class="sv-btn {{ $primaryButtonClass }}">
+                      {{ $primaryButtonText }}
+                    </a>
+                  {{ end }}
+                  {{ if $secondaryButtonText }}
+                    <a href="{{ $secondaryButtonLink }}" class="sv-btn {{ $secondaryButtonClass }}">
+                      {{ $secondaryButtonText }}
+                    </a>
+                  {{ end }}
+                </div>
+              </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Full-width heading styling */
+  .sv-full-width-heading {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  /* Intro section styling - full width */
+  .sv-intro {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  
+  /* Base accordion item styling */
+  #{{ $accordionID }} .accordion-item {
+    background-color: {{ $accordionBgColor }} !important;
+    border: 1px solid {{ $accordionAccentColor }} !important;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    border-radius: 0 !important;
+  }
+  
+  /* EXPLICITLY TARGET THE REDDISH BACKGROUND AND OVERRIDE IT */
+  #{{ $accordionID }} .accordion-item,
+  #{{ $accordionID }} .accordion-header,
+  #{{ $accordionID }} .accordion-collapse,
+  #{{ $accordionID }} .accordion-body,
+  #{{ $accordionID }} .accordion-button {
+    background-color: {{ $accordionBgColor }} !important;
+  }
+  
+  /* First and last item border radius */
+  #{{ $accordionID }} .accordion-item:first-of-type {
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+  }
+  
+  #{{ $accordionID }} .accordion-item:last-of-type {
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+  }
+  
+  /* Prevent double borders */
+  #{{ $accordionID }} .accordion-item:not(:first-of-type) {
+    border-top: none !important;
+  }
+  
+  /* RESET ALL BACKGROUND COLORS TO DEFAULT */
+  .sv-accordion-container {
+    background-color: transparent !important;
+  }
+  
+  /* Explicitly define collapsed state */
+  #{{ $accordionID }} .accordion-button.collapsed {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+  }
+  
+  /* Default button styling */
+  #{{ $accordionID }} .accordion-button {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    padding: 1rem;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0 !important;
+    transition: background-color 0.3s ease !important;
+  }
+
+  /* Hover state */
+  #{{ $accordionID }} .accordion-button:hover {
+    background-color: {{ $accordionAccentColor }} !important;
+    color: {{ $textColor }} !important;
+  }
+
+  /* Focus state */
+  #{{ $accordionID }} .accordion-button:focus {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  
+  /* Accordion body */
+  #{{ $accordionID }} .accordion-body {
+    background-color: {{ $accordionContentBgColor }} !important;
+    padding: 1rem;
+    border-top: none !important;
+    border-bottom: none !important;
+  }
+  
+  /* Active/expanded state - only apply to non-collapsed */
+  #{{ $accordionID }} .accordion-button:not(.collapsed) {
+    background-color: {{ $accordionAccentColor }} !important;
+    color: {{ $textColor }} !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* Arrow styling */
+  #{{ $accordionID }} .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='{{ $textColor | replaceRE "^var\\(--(.+)\\)$" "${1}" | replaceRE "^#" "%23" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  /* Arrow for non-collapsed state */
+  #{{ $accordionID }} .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='{{ $textColor | replaceRE "^var\\(--(.+)\\)$" "${1}" | replaceRE "^#" "%23" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+  }
+  
+  /* Remove all borders from collapse element */
+  #{{ $accordionID }} .accordion-item .accordion-collapse {
+    border: none !important;
+  }
+  
+  /* Fix border colors */
+  #{{ $accordionID }} .accordion-item,
+  #{{ $accordionID }} .accordion-header,
+  #{{ $accordionID }} .accordion-collapse,
+  #{{ $accordionID }} .accordion-body {
+    border-color: {{ $accordionAccentColor }} !important;
+  }
+  
+  /* Remove borders from shown collapse */
+  #{{ $accordionID }} .accordion-collapse.show {
+    border: none !important;
+  }
+  
+  /* Ensure proper border radius on first/last items */
+  #{{ $accordionID }} .accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: 0.25rem !important;
+    border-top-right-radius: 0.25rem !important;
+  }
+  
+  #{{ $accordionID }} .accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-left-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+  }
+  
+  /* IMPORTANT: Fix for persistent background color issues */
+  /* Target any item with a background color that isn't the default */
+  #{{ $accordionID }} .accordion-item[style*="background"],
+  #{{ $accordionID }} .accordion-header[style*="background"],
+  #{{ $accordionID }} .accordion-button[style*="background"] {
+    background-color: {{ $accordionBgColor }} !important;
+  }
+  
+  /* Only the active button should have the accent color */
+  #{{ $accordionID }} .accordion-button:not(.collapsed) {
+    background-color: {{ $accordionAccentColor }} !important;
+  }
+  
+  /* Wipe effect container and image styling */
+  .sv-accordion-image-container {
+    width: 100%;
+    max-width: 98%;
+    margin-bottom: clamp(1rem, 4vw, 3rem);
+    position: relative;
+    overflow: hidden;
+    border-radius: 2rem;
+  }
+  
+  .sv-image-wiper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    border-radius: 2rem;
+  }
+  
+  .sv-accordion-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2rem;
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.8s ease-in-out;
+  }
+  
+  .sv-accordion-image.sv-active-image {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    z-index: 1;
+  }
+  
+  .sv-accordion-image.sv-exiting-image {
+    opacity: 1;
+    clip-path: inset(0 0 0 100%);
+    z-index: 0;
+    transition: clip-path 0.8s ease-in-out;
+  }
+  
+  /* Responsive adjustments specific to accordion */
+  @media (max-width: 768px) {
+    /* Reorder the layout for mobile */
+    .sv-layout-split {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Move image after text content but before accordion */
+    .sv-content-2-5 {
+      order: 2;
+      width: 100%;
+      margin-bottom: 1rem; /* Reduced from 2rem to 1rem */
+    }
+    
+    /* Move accordion after image */
+    .sv-content-3-5 {
+      order: 3;
+      width: 100%;
+    }
+    
+    /* Restore margin since we're controlling the order differently */
+    .sv-accordion-image-container {
+      margin-top: 0;
+      margin-bottom: 1rem; /* Reduced from 2rem to 1rem */
+    }
+  }
+  
+  /* Button styling */
+  .sv-button-wrapper {
+    margin-top: 1.5rem;
+  }
+  
+  .sv-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .sv-buttons[style*="justify-content: left"] {
+    justify-content: flex-start;
+  }
+  
+  .sv-buttons[style*="justify-content: right"] {
+    justify-content: flex-end;
+  }
+  
+  .sv-buttons[style*="justify-content: center"] {
+    justify-content: center;
+  }
+  
+  @media (max-width: 768px) {
+    .sv-buttons {
+      justify-content: center !important;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionId = '{{ $accordionID }}';
+    const accordion = document.getElementById(accordionId);
+    
+    if (accordion) {
+      let currentActive = document.getElementById(`${accordionId}-default-image`);
+      currentActive.classList.add('sv-active-image');
+      
+      // Function to show image for specific accordion item with wipe effect
+      function showImage(itemId) {
+        const newImage = document.getElementById(`${accordionId}-image-${itemId}`);
+        
+        if (newImage && newImage !== currentActive) {
+          // Add exiting class to current active image
+          if (currentActive) {
+            currentActive.classList.remove('sv-active-image');
+            currentActive.classList.add('sv-exiting-image');
+            
+            // Remove the exiting class after animation completes
+            setTimeout(() => {
+              currentActive.classList.remove('sv-exiting-image');
+            }, 800); // Match transition duration
+          }
+          
+          // Add active class to new image
+          newImage.classList.add('sv-active-image');
+          
+          // Update current active reference
+          currentActive = newImage;
+        }
+      }
+      
+      // Function to show default image with wipe effect
+      function showDefaultImage() {
+        const defaultImage = document.getElementById(`${accordionId}-default-image`);
+        
+        if (defaultImage && defaultImage !== currentActive) {
+          // Add exiting class to current active image
+          if (currentActive) {
+            currentActive.classList.remove('sv-active-image');
+            currentActive.classList.add('sv-exiting-image');
+            
+            // Remove the exiting class after animation completes
+            setTimeout(() => {
+              currentActive.classList.remove('sv-exiting-image');
+            }, 800); // Match transition duration
+          }
+          
+          // Add active class to default image
+          defaultImage.classList.add('sv-active-image');
+          
+          // Update current active reference
+          currentActive = defaultImage;
+        }
+      }
+      
+      // Listen for Bootstrap accordion events
+      accordion.addEventListener('shown.bs.collapse', function(e) {
+        const itemId = e.target.id.replace('collapse-', '');
+        showImage(itemId);
+      });
+      
+      accordion.addEventListener('hidden.bs.collapse', function(e) {
+        // Check if any accordion item is still open
+        const openItems = accordion.querySelectorAll('.accordion-collapse.show');
+        if (openItems.length === 0) {
+          // If no items are open, show default image
+          showDefaultImage();
+        } else {
+          // If another item is open, its 'shown' event will handle the image
+          const openItemId = openItems[0].id.replace('collapse-', '');
+          showImage(openItemId);
+        }
+      });
+    }
+  });
+</script>

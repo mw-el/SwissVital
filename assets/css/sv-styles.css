@@ -1,0 +1,741 @@
+/* ==================================================
+ *  SwissVital Responsive Stylesheet (sv-styles.css)
+ *  This stylesheet applies all responsive styles
+ *  based on config.toml values.
+ * ================================================== */
+/*********************************************
+ * 2️⃣ TYPOGRAFIE-STYLES (Überschriften & Text)
+ *********************************************/
+body {
+    font-family: var(--sv-body-font-family);
+    font-size: var(--sv-body-font-size);
+    font-weight: var(--sv-body-font-weight);
+    line-height: var(--sv-body-line-height);
+    color: var(--sv-body-color);
+    background-color: var(--sv-body-bg);
+}
+
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-family: var(--sv-headings-font-family);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+
+/*********************************************
+* 3️⃣ FULL-WIDTH BACKGROUND SECTIONS
+*********************************************/
+.sv-full-bg {
+  background-size: cover;
+  background-position: var(--sv-background-position-left);
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .sv-full-bg {
+      background-position: var(--sv-background-position-right);
+  }
+}
+
+/*********************************************
+* 4️⃣ SPLIT LAYOUT SECTIONS (2/5 - 3/5)
+*********************************************/
+.sv-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  padding: clamp(2rem, 5vw, 6rem) 0;
+}
+
+.sv-split-image {
+  width: 40%;
+  overflow: hidden;
+}
+
+.sv-split-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.sv-split-content {
+  width: 60%;
+  padding: var(--sv-section-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*********************************************
+* 5️⃣ MOBILE IMAGE PLACEMENT (BELOW HEADLINE)
+*********************************************/
+.sv-mobile-image {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .sv-container {
+      flex-direction: column;
+  }
+  .sv-split-image {
+      display: none;
+  }
+  .sv-mobile-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: center bottom;
+  }
+  .sv-split-content {
+      width: 100%;
+  }
+}
+
+/*********************************************
+* 6️⃣ SOLID COLOR SECTIONS
+*********************************************/
+.sv-section-color {
+  padding: clamp(1rem, 2vw, 4rem);
+}
+
+/*********************************************
+ * 3️⃣ THEME-ABHÄNGIGE SEKTIONEN & BUTTONS
+ *********************************************/
+.sv-section-light {
+  background-color: var(--sv-theme-light-bg);
+}
+.sv-section-dark {
+  background-color: var(--sv-theme-dark-bg);
+}
+.sv-section-gold {
+  background-color: var(--sv-theme-gold-bg);
+}
+
+.sv-section-light .sv-btn {
+  background-color: var(--sv-theme-light-btn-bg);
+  color: var(--sv-theme-light-btn-text);
+}
+.sv-section-dark .sv-btn {
+  background-color: var(--sv-theme-dark-btn-bg);
+  color: var(--sv-theme-dark-btn-text);
+}
+.sv-section-gold .sv-btn {
+  background-color: var(--sv-theme-gold-btn-bg);
+  color: var(--sv-theme-gold-btn-text);
+}
+
+/*********************************************
+ * 4️⃣ LAYOUT-ANPASSUNGEN
+ *********************************************/
+.sv-main-content {
+  max-width: var(--sv-content-max-width);
+  margin: 0 auto;
+  padding: var(--sv-section-padding);
+}
+
+/*********************************************
+ * 5️⃣ BILDGRÖSSEN & HINTERGRÜNDE
+ *********************************************/
+.sv-image-container {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 992px) {
+  .sv-image-container {
+    height: var(--sv-mobile-image-size);
+  }
+}
+
+/*********************************************
+* 7️⃣ BUTTONS & CALL-TO-ACTIONS
+*********************************************/
+
+
+.min-vh-100 {
+  min-height: auto !important;
+}
+
+/* ##################
+   Section Styles  
+   ##################*/
+
+/* Dynamic button margin */
+.section-button {
+  margin-bottom: 15px; /* Default spacing */
+}
+
+/* Extra margin on smaller screens */
+@media (max-width: 575px) {
+  .section-button {
+      margin-bottom: 25px;
+  }
+}
+
+/* Moderate margin on medium screens */
+@media (min-width: 576px) and (max-width: 991px) {
+  .section-button {
+      margin-bottom: 20px;
+  }
+}
+
+/* Rounded image with shadow */
+.rounded-image {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 5vw; /* Match text width */
+  overflow: hidden;
+  border-radius: 40px; /* Larger rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Standard shadow */
+}
+/*************************************************/
+/* Shared styling for all .sv-bg-canvas sections */
+/*************************************************/
+  .sv-bg-canvas {
+    width: 100%;
+    box-sizing: border-box;
+    padding: clamp(2rem, 5vw, 6rem);
+    color: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .sv-layout-wrapper {
+    display: flex;
+    gap: clamp(2rem, 4vw, 5rem);
+    flex-wrap: nowrap;
+    align-items: stretch; /* ensures columns get equal height */
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .sv-layout-full {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sv-layout-split {
+    flex-direction: row;
+  }
+
+  /* Fixed flex-basis for 2/5 & 3/5 layouts */
+  .sv-content-2-5,
+  .sv-content-3-5 {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .sv-content-2-5 { flex: 0 0 40%; }
+  .sv-content-3-5 { flex: 0 0 60%; }
+
+  /* For equal half layouts */
+  .sv-content-half {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sv-layout-wrapper h1 {
+    font-size: clamp(1.75rem, 5.0vw, 2.9rem)!important;
+    margin-bottom: clamp(1rem, 4vw, 3rem);
+    color: inherit;
+}
+
+.sv-layout-wrapper h2 {
+    font-size: clamp(1.75rem, 5.0vw, 2.9rem)!important;
+    margin-bottom: clamp(1rem, 4vw, 3rem);
+    color: inherit;
+}
+
+.sv-layout-wrapper p {
+    font-size: clamp(0.8rem, 1.6vw, 1.2rem)!important;
+    color: inherit;
+}
+
+
+.sv-layout-wrapper li {
+    font-size: clamp(0.8rem, 1.6vw, 1.2rem);
+    margin-bottom: clamp(0.1rem, 0.4vw, 0.3rem);
+    color: inherit;
+}
+
+  /* For the image column: allow shadow to show */
+  .sv-grid-image {
+    position: relative;
+  }
+
+
+  html {
+    scroll-padding-top: clamp(100px, 13vw, 140px);
+  }
+  
+
+  @media (min-width: 769px) {
+    .sv-grid-image { overflow: visible; }
+  }
+
+  .sv-buttons {
+    display: flex;
+    gap: clamp(0.5rem, 1vw, 1.5rem);
+    margin-top: clamp(1rem, 4vw, 3rem);
+    flex-wrap: wrap;
+  }
+
+  
+  .sv-full-bg:first-of-type {
+    margin-top: calc(60px + 2rem);
+  }
+  .sv-mobile-image {
+    display: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  /* Container width for single column layouts */
+  .sv-layout-wrapper.sv-layout-full {
+    width: 100%;
+    margin: auto;
+  }
+  @media (max-width: 992px) { .sv-layout-wrapper.sv-layout-full { width: 90%; } }
+  @media (max-width: 768px) { .sv-layout-wrapper.sv-layout-full { width: 100%; } }
+
+  /* Rounded edges (Bootstrap style) */
+  .sv-desktop-image,
+  .sv-mobile-image img,
+  .sv-grid-image {
+    border-radius: 2rem;
+  }
+
+  /* Desktop image wrappers */
+  .sv-desktop-image-outer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    overflow: visible; /* allow shadow to show */
+  }
+  .sv-desktop-image-outer > .sv-desktop-image-inner {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow: hidden;
+    border-radius: inherit; /* match outer container */
+  }
+  .sv-desktop-image-inner > .sv-desktop-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 10%;
+  }
+
+  /* Mobile image styling */
+  @media (max-width: 768px) {
+    .sv-mobile-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 98%; /* limits image container width */
+      margin-bottom: clamp(1rem, 4vw, 3rem);
+    }
+    .sv-mobile-image img {
+      width: 100%;
+      aspect-ratio: 1/1; /* forces a square */
+      object-fit: cover;
+    }
+  }
+
+  .sv-spacer { margin-bottom: clamp(1rem, 4vw, 3rem); }
+
+  /* --- New: Mobile reordering for half/half segments --- */
+  @media (max-width: 768px) {
+    .sv-layout-wrapper.sv-layout-split {
+      flex-direction: column;
+    }
+    /* In the "i2/5, c3/5" and "i3/5, c2/5" segments, we move the mobile image into the text column.
+       We'll assign classes "sv-text-column" and "sv-image-column" in those segments below.
+       Then within the text column, we use two wrappers:
+         .sv-heading for the h2, and .sv-text-content for the remaining content.
+    */
+    .sv-text-column { order: -1; }
+    .sv-image-column { order: 0; }
+  }
+
+
+/*************************************************/
+/*        styling for angebot section            */
+/*************************************************/
+
+  .sv-angebot {
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 0;
+    color: white;
+  }
+
+  .sv-angebot-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .sv-angebot-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* 30% darkness */
+  }
+
+  .sv-angebot-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .sv-angebot-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sv-angebot-icon {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+
+  .sv-angebot-icon img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .sv-angebot h2, .sv-angebot h3, .sv-angebot p {
+    color: white;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+  
+  .sv-angebot-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .sv-angebot-item {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .sv-angebot-item-inner {
+    display: inline-block;
+    text-align: center;
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 768px) {
+    .sv-angebot-icon {
+      width: 170px;
+      height: 170px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .sv-angebot-icon {
+      width: 210px;
+      height: 210px;
+    }
+  }
+
+  /* Mobile layout adjustments */
+  @media (max-width: 767px) {
+    .sv-angebot {
+      padding: 3rem 0;
+    }
+    
+    .sv-angebot-heading {
+      margin-bottom: 2rem;
+    }
+  }
+
+
+/*--------------------------------
+  Buttons
+---------------------------------*/
+
+/* Base button class */
+.sv-btn {
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+  padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 2vw, 2rem) !important;
+  border-radius: 2rem;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin: 0;
+  font-weight: 600; /* bolder text */
+}
+
+/* Make text appear in all-caps when used in combination with .sv-btn (or any element). */
+.btn-cap {
+  text-transform: uppercase;
+}
+
+
+/*--------------------------------
+  Solid (Full-Color) Buttons
+---------------------------------*/
+
+.sv-btn-imperialred {
+  background-color: var(--sv-imperialred);
+  border: 1px solid var(--sv-imperialred);
+  color: var(--sv-offwhite);
+}
+.sv-btn-imperialred:hover {
+  background-color: rgba(249, 65, 67, 0.7);
+}
+
+.sv-btn-pumpkin {
+  background-color: var(--sv-pumpkin);
+  border: 1px solid var(--sv-pumpkin);
+  color: var(--sv-offwhite);
+}
+.sv-btn-pumpkin:hover {
+  background-color: rgba(248, 119, 30, 0.7);
+  color: var(--sv-offwhite);
+}
+
+.sv-btn-viridian {
+  background-color: var(--sv-viridian);
+  border: 1px solid var(--sv-viridian);
+  color: var(--sv-offwhite);
+}
+.sv-btn-viridian:hover {
+  background-color: rgba(94, 143, 120, 0.7);
+  color: var(--sv-offwhite);
+}
+
+.sv-btn-mossgreen {
+  background-color: var(--sv-mossgreen);
+  border: 1px solid var(--sv-mossgreen);
+  color: var(--sv-offwhite);
+}
+.sv-btn-mossgreen:hover {
+  background-color: rgba(156, 169, 109, 0.7);
+  color: var(--sv-offwhite);
+}
+
+.sv-btn-hookersgreen {
+  background-color: var(--sv-hookersgreen);
+  border: 1px solid var(--sv-hookersgreen);
+  color: var(--sv-offwhite);
+}
+.sv-btn-hookersgreen:hover {
+  background-color: rgba(94, 126, 125, 0.7);
+  color: var(--sv-offwhite);
+}
+
+.sv-btn-prussianblue {
+  background-color: var(--sv-prussianblue);
+  border: 1px solid var(--sv-prussianblue);
+  color: var(--sv-offwhite);
+}
+.sv-btn-prussianblue:hover {
+  background-color: rgba(16, 46, 74, 0.7);
+  color: var(--sv-offwhite);
+}
+
+.sv-btn-richblack {
+background-color: var(--sv-richblack);
+border: 1px solid var(--sv-richblack);
+color: var(--sv-offwhite);
+}
+.sv-btn-richblack:hover {
+background-color: rgba(2, 17, 27, 0.7);
+}
+
+  /* offwhite (the "white" button) – #f8f9fa */
+  .sv-btn-offwhite {
+    background-color: var(--sv-offwhite);
+    border: 1px solid var(--sv-richblack);
+    color: var(--sv-richblack);
+  }
+  .sv-btn-offwhite:hover {
+    background-color: rgba(248, 249, 250, 0.7);
+  }
+
+/*--------------------------------
+  Skeleton Buttons (All White Border)
+---------------------------------*/
+/* 
+  - Background is 30% on default, 70% on hover.
+  - Border is always offwhite.
+  - Text-shadow matches main color (except offwhite).
+*/
+
+.sv-btn-imperialred-sk {
+  background-color: rgba(249, 65, 67, 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-imperialred);
+}
+.sv-btn-imperialred-sk:hover {
+  background-color: rgba(249, 65, 67, 0.7);
+  color: var(--sv-offwhite)
+}
+
+.sv-btn-pumpkin-sk {
+  background-color: rgba(248, 119, 30, 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-pumpkin);
+}
+.sv-btn-pumpkin-sk:hover {
+  background-color: rgba(248, 119, 30, 0.7);
+}
+
+.sv-btn-viridian-sk {
+  background-color: rgba(94, 143, 120, 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-viridian);
+}
+.sv-btn-viridian-sk:hover {
+  background-color: rgba(94, 143, 120, 0.7);
+}
+
+.sv-btn-mossgreen-sk {
+  background-color: rgba(156, 169, 109, 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-mossgreen);
+}
+.sv-btn-mossgreen-sk:hover {
+  background-color: rgba(156, 169, 109, 0.7);
+}
+
+.sv-btn-hookersgreen-sk {
+  background-color: rgba(94, 126, 125, 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-hookersgreen);
+}
+.sv-btn-hookersgreen-sk:hover {
+  background-color: rgba(94, 126, 125, 0.7);
+}
+
+.sv-btn-prussianblue-sk {
+  background-color: rgba(16, 46, 74, 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-prussianblue);
+}
+.sv-btn-prussianblue-sk:hover {
+  background-color: rgba(16, 46, 74, 0.7);
+}
+
+.sv-btn-richblack-sk {
+  background-color: rgba(2, 17, 27, 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-richblack);
+}
+.sv-btn-richblack-sk:hover {
+  background-color: rgba(2, 17, 27, 0.7);
+}
+
+.sv-btn-offwhite-sk {
+  background-color: rgb(248, 249, 250, 0.3);
+  border: 1px solid var(--sv-richblack);
+  color: var(--sv-richblack);
+  text-shadow: 1px 1px 2px var(--sv-offwhite);
+}
+.sv-btn-offwhite-sk:hover {
+  background-color: rgba(248, 249, 250, 0.7);
+}
+
+/*--------------------------------
+  Iconized styles
+---------------------------------*/
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-size: 32px; /* Slightly smaller for buttons */
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+    /* Tile styling */
+.iconized-item {
+  display: flex;
+  height: 100%;
+}
+
+.iconized-item-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 30px;
+  padding: 25px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.iconized-title {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.iconized-description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.iconized-description p {
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .iconized-title {
+    min-height: auto;
+  }
+}
