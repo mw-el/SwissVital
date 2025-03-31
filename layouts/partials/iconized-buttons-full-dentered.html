@@ -1,0 +1,55 @@
+{{/*
+  This partial expects a dictionary with:
+    - params: the front matter parameters of the calling page
+    - section: the content section to iterate over (e.g. "frageboegen")
+    - context: the global context ($) that includes Site and Page data
+*/}}
+
+{{ $params := .params }}
+{{ $bg := index $params "item_background-color" }}
+{{ if not $bg }}{{ errorf "Missing item_background-color in calling page's front matter" }}{{ end }}
+{{ $brd := index $params "item_border-color" }}
+{{ if not $brd }}{{ errorf "Missing item_border-color in calling page's front matter" }}{{ end }}
+
+{{ $btnClass := $params.primary_button_class }}
+{{ if not $btnClass }}{{ errorf "Missing primary_button_class in calling page's front matter" }}{{ end }}
+
+{{ $shadow := index $params "item_shadow" | default "" }}
+
+<section id="iconized">
+  <!-- Load Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+  <div class="container px-4 px-lg-5">
+
+    {{ $items := sort (where .context.Site.RegularPages "Section" .section) ".Weight" }}
+    <div class="row gx-4 gx-lg-4 justify-content-center">
+ 
+      {{ range $index, $page := $items }}
+      {{ if eq (mod $index 3) 0 }}
+      <!-- Start new row for every 3rd item -->
+      <div class="w-100"></div>
+      {{ end }}
+      <div class="col-lg-4 col-md-6 text-center mb-4">
+        <div class="iconized-item">
+          <div class="iconized-item-inner {{ $shadow | safeCSS }}" style="background-color: {{ $bg | safeCSS }};border: 1px solid {{ $brd | safeCSS }};">
+            <div class="iconized-title">
+              <h3 class="h2 m-0">{{ $page.Title | safeHTML }}</h3>
+            </div>
+            <div class="iconized-description">
+              <p>{{ $page.Params.description | safeHTML }}</p>
+              <!-- Button with icon below the description -->
+              <div>
+                <a href="{{ $page.RelPermalink }}" class="sv-btn {{ $btnClass | safeCSS }}">
+                  <span class="material-symbols-outlined">
+                    {{ with $page.Params.icon }}{{ . | safeHTML }}{{ else }}arrow_forward{{ end }}
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

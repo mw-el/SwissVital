@@ -1,124 +1,319 @@
-{{/*
-  This partial expects a dictionary with:
-    - context: the parent context (e.g., .)
-    - section: the content section to iterate over (e.g., "quality", "services")
+{{/* 
+  =============================================================================
+  ICONIZED BUTTONS PARTIAL DOCUMENTATION
+  =============================================================================
+  
+  OVERVIEW:
+  ---------
+  This partial creates a grid of uniform tiles with icons, titles, descriptions, and buttons.
+  Each tile links to a child page and displays its title, description, and an optional custom icon.
+  
+  CONTENT STRUCTURE:
+  -----------------
+  - This partial expects to be called from a section content file (e.g., content/de/home/03-services/_index.md)
+  - The tiles come from child pages within that section
+  - Each child page (e.g., content/de/home/03-services/service1.md) becomes one tile
+  - The .Title of each child page becomes the tile title
+  - The .Params.description of each child page becomes the tile description
+  - The .Params.icon (optional) specifies a Material Icons name for the button
+  - Each tile links to its respective child page using .RelPermalink
+  
+  REQUIRED FRONTMATTER:
+  --------------------
+  In the section content file (_index.md) that calls this partial:
+  - layout: iconized-buttons (to use this specific partial)
+  
+  OPTIONAL FRONTMATTER:
+  --------------------
+  - background_color: CSS color value or variable (default: var(--sv-offwhite))
+  - text_color: CSS color value or variable (default: var(--sv-richblack))
+  - pre_headline: Text that appears above the main headline
+  - headline_align: Text alignment for headline (default: "center")
+  - body_text_align: Text alignment for body text (default: "center")
+  - item_background_color: CSS color value for tile background (default: transparent)
+  - item_border_color: CSS color value for tile border (default: var(--sv-defaultgray-400))
+  - image_shadow: CSS class to apply shadow effect to tiles (if needed)
+  - primary_button_class: CSS class for the button (default: "sv-btn-prussianblue btn-cap")
+  - image: "/path/to/image.jpg" (with leading slash, relative to assets directory, optional header image)
+  
+  Child page frontmatter requirements:
+  - description: Short text description to show in the tile
+  - icon: Material Icons name (e.g., "credit_card" or "medical_services")
+  
+  IMAGE PREPROCESSING:
+  ------------------
+  1. The image path is retrieved from frontmatter using .Params.image (optional)
+  2. Path is normalized to always have a leading slash
+  3. Image is loaded using resources.Get from the assets directory
+  4. Two versions are processed:
+     - Desktop: Resized to 1200px width with 85% quality
+     - Mobile: Cropped to 800x800px square (top aligned) with 85% quality
+  5. If image can't be found in resources, fallback to the raw path
+  
+  UNIQUE IDs:
+  ----------
+  - Each iconized-buttons instance gets a unique ID based on the content file name
+  - Format: iconized-[filename-urlized]
+  - This prevents conflicts when multiple instances appear on the same page
+  
+  LAYOUT STRUCTURE:
+  ---------------
+  - Uses a responsive CSS grid layout
+  - Desktop: 3 columns
+  - Tablet: 2 columns
+  - Mobile: 1 column
+  - Each tile has uniform height within its row
+  - Flexbox is used within tiles for vertical alignment and equal height
+  
+  CSS STYLING:
+  -----------
+  - Tiles have hover effects (slight elevation and shadow)
+  - Text colors are preserved on hover for consistency
+  - Material Icons are used for the button icons
+  - Responsive design adjusts grid columns based on screen size
+  
+  HUGO FUNCTIONS & METHODS USED:
+  ----------------------------
+  - .Params: Accesses frontmatter variables from the content file
+  - default: Provides default values when frontmatter variables aren't set
+  - safeCSS: Marks string as safe CSS to prevent escaping
+  - safeHTML: Marks string as safe HTML to prevent escaping
+  - resources.Get: Loads image from assets directory as a resource
+  - .Resize: Processes image to specific dimensions/quality
+  - .Fill: Crops image to specific dimensions/quality
+  - .RelPermalink: Gets relative URL path for processed images and links
+  - .File.ContentBaseName: Gets filename without extension for ID generation
+  - urlize: Converts string to URL-friendly format
+  - print: Concatenates strings
+  - range: Iterates over child pages (.Pages)
+  - hasPrefix: Checks if string starts with specified prefix
+  - strings.TrimPrefix: Removes prefix from string
+  
+  EXTERNAL DEPENDENCIES:
+  --------------------
+  - Material Icons: Loaded from Google Fonts CDN
+  - Uses "Material Symbols Outlined" with 300 weight
+  
+  DATA FLOW:
+  ---------
+  1. Partial receives the current context (.) which is the section page
+  2. Frontmatter values are extracted with fallbacks
+  3. Optional image is processed if provided
+  4. Unique ID is generated for the section
+  5. Material Icons are loaded via external CSS
+  6. Grid layout is created
+  7. Child pages (.Pages) are iterated to create tiles
+  8. Each tile links to its respective child page
+  
+  USAGE EXAMPLE:
+  -------------
+  In content/de/home/03-services/_index.md:
+  ```
+  ---
+  title: "Unsere Dienstleistungen"
+  layout: iconized-buttons
+  background_color: "var(--sv-offwhite)"
+  text_color: "var(--sv-richblack)"
+  pre_headline: "Was wir anbieten"
+  item_background_color: "var(--sv-babyblue)"
+  item_border_color: "var(--sv-prussianblue)"
+  primary_button_class: "sv-btn-prussianblue btn-cap"
+  image: "/de/home/03-services/header-image.jpg"
+  ---
+  
+  Hier finden Sie eine Übersicht über unsere Dienstleistungen.
+  ```
+  
+  Then in child page content/de/home/03-services/service1.md:
+  ```
+  ---
+  title: "Radiologie"
+  description: "Modernste radiologische Diagnostik mit MRI und CT"
+  icon: "medical_services"
+  ---
+  
+  Full content of the service page here...
+  ```
 */}}
 
-<section id="iconized">
-    <!-- Load Material Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+{{/* Access frontmatter values with safeCSS */}}
+{{ $bgColor := .Params.background_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $textColor := .Params.text_color | default "var(--sv-richblack)" | safeCSS }}
+{{ $preHeadline := .Params.pre_headline }}
+{{ $headlineAlign := .Params.headline_align | default "center" | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_align | default "center" | safeCSS }}
+
+{{/* Item styling from frontmatter */}}
+{{ $itemBgColor := .Params.item_background_color | default "transparent" | safeCSS }}
+{{ $itemBorderColor := .Params.item_border_color | default "var(--sv-defaultgray-400)" | safeCSS }}
+{{ $itemShadow := .Params.image_shadow | default "" }}
+{{ $buttonClass := .Params.primary_button_class | default "sv-btn-prussianblue btn-cap" | safeCSS }}
+
+{{/* Process image */}}
+{{ $imageSrc := "" }}
+{{ $imageSrcMobile := "" }}
+
+{{ if .Params.image }}
+  {{ $imgPath := .Params.image }}
+  {{ if not (hasPrefix $imgPath "/") }}
+    {{ $imgPath = print "/" $imgPath }}
+  {{ end }}
   
-    <style>
-      /* Ensure the Material Icons font is applied correctly */
-      .material-symbols-outlined {
-        font-family: 'Material Symbols Outlined' !important;
-        font-size: 32px; /* Slightly smaller for buttons */
-        font-weight: normal;
-        font-style: normal;
-        display: inline-block;
-        line-height: 1;
-        text-transform: none;
-        letter-spacing: normal;
-        word-wrap: normal;
-        white-space: nowrap;
-        direction: ltr;
-        -webkit-font-feature-settings: 'liga';
-        -webkit-font-smoothing: antialiased;
-        vertical-align: middle;
-        margin: 0 10px;
-      }
-      
-      /* Button styling */
-      .sv-btn {
-        background-color: var(--sv-primary); 
-        color: var(--sv-offwhite); 
-        border: 1px solid var(--sv-primary);
-        padding-left: 10px;
-        transition: all 0.3s ease;
-      }
-      
-      .sv-btn:hover {
-        background-color: rgba(var(--sv-primary-rgb), 0.8);
-      }
-      
-      /* Tile styling */
-      .iconized-item {
-        display: flex;
-        height: 100%;
-      }
-      
-      .iconized-item-inner {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        background-color: white;
-        border-radius: 30px;
-        padding: 25px 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-      
-      .iconized-title {
-        min-height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-      }
-      
-      .iconized-description {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      
-      .iconized-description p {
-        margin-bottom: 1.5rem;
-      }
-      
-      /* Responsive adjustments */
-      @media (max-width: 767px) {
-        .iconized-title {
-          min-height: auto;
-        }
-      }
-    </style>
-  
-    <div class="container px-4 px-lg-5">
-      {{ $items := sort (where .context.Site.RegularPages "Section" .section) ".Weight" }}
-      {{ $count := len $items }}
-  
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        {{ range $index, $page := $items }}
-        {{ if eq (mod $index 3) 0 }}
-        <!-- Start new row for every 3rd item -->
-        <div class="w-100"></div>
+  {{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+  {{ if $img }}
+    {{ $imgDesktop := $img.Resize (printf "1200x q%d" 85) }}
+    {{ $imageSrc = $imgDesktop.RelPermalink }}
+    
+    {{ $imgMobile := $img.Fill (printf "800x800 Top q%d" 85) }}
+    {{ $imageSrcMobile = $imgMobile.RelPermalink }}
+  {{ else }}
+    {{ $imageSrc = $imgPath }}
+    {{ $imageSrcMobile = $imgPath }}
+  {{ end }}
+{{ end }}
+
+{{/* Define unique ID */}}
+{{ $iconizedID := print "iconized-" (.File.ContentBaseName | urlize) }}
+
+<section class="sv-section sv-iconized-section" id="{{ $iconizedID }}">
+  <div class="sv-bg-canvas" style="background-color: {{ $bgColor }}; color: {{ $textColor }};">
+    <div class="container">
+      <!-- Section heading -->
+      <div class="sv-heading text-center mb-4">
+        {{ if $preHeadline }}
+          <p class="sv-pre-headline">{{ $preHeadline }}</p>
         {{ end }}
-        
-        <div class="col-lg-4 col-md-6 text-center mb-4">
-          <div class="iconized-item">
-            <div class="iconized-item-inner">
-              <div class="iconized-title">
-                <h3 class="h2 m-0">{{ $page.Title | safeHTML }}</h3>
-              </div>
-              
-              <div class="iconized-description">
-                <p>{{ $page.Params.description | safeHTML }}</p>
-                
-                <!-- Button with icon below the description -->
-                <div>
-                  <a href="{{ $page.RelPermalink }}" class="sv-btn">
+        <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
+          {{ .Title }}
+        </h2>
+      </div>
+
+      <!-- Optional image if provided -->
+      {{ if $imageSrc }}
+        <div class="text-center mb-4">
+          <img src="{{ $imageSrc }}" alt="{{ .Title }}" class="{{ $itemShadow }}" style="max-width: 100%; height: auto; object-fit: contain;">
+        </div>
+      {{ end }}
+      
+      <!-- Introduction text if any -->
+      {{ if .Content }}
+        <div class="sv-text-content text-center mb-4">
+          <div class="sv-iconized-intro">
+            {{ .Content | safeHTML }}
+          </div>
+        </div>
+      {{ end }}
+
+      <!-- Load Material Icons -->
+      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300" rel="stylesheet">
+      
+      <!-- Uniform tile grid -->
+      <div class="sv-tile-grid">
+        {{ range $index, $page := .Pages }}
+          <div class="sv-tile-grid-item">
+            <a href="{{ $page.RelPermalink }}" class="sv-tile-link">
+              <div class="sv-tile-equal {{ $itemShadow }}">
+                <div class="sv-tile-title">
+                  <h3 class="h4 m-0">{{ $page.Title | safeHTML }}</h3>
+                </div>
+                <div class="sv-tile-description">
+                  <p>{{ $page.Params.description | safeHTML }}</p>
+                </div>
+                <div class="sv-tile-button">
+                  <span class="sv-btn {{ $buttonClass }}">
                     <span class="material-symbols-outlined">
                       {{ with $page.Params.icon }}{{ . | safeHTML }}{{ else }}arrow_forward{{ end }}
                     </span>
-                  </a>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
-        </div>
         {{ end }}
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  /* Uniform grid layout */
+  .sv-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+  
+  /* Responsive grid */
+  @media (max-width: 992px) {
+    .sv-tile-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .sv-tile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Tile styling */
+  .sv-tile-grid-item {
+    min-height: 100%;
+  }
+  
+  .sv-tile-link {
+    display: block;
+    height: 100%;
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+  
+  .sv-tile-equal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: {{ $itemBgColor }};
+    border: 1px solid {{ $itemBorderColor }};
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    text-align: {{ $bodyTextAlign }};
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .sv-tile-title {
+    margin-bottom: 0.75rem;
+  }
+  
+  .sv-tile-description {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+  
+  .sv-tile-button {
+    margin-top: auto;
+  }
+  
+  /* Hover effect - only changes elevation and shadow, not text color */
+  .sv-tile-link:hover .sv-tile-equal {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* Force text color to remain consistent even on hover */
+  .sv-tile-link:hover,
+  .sv-tile-link:focus,
+  .sv-tile-link:active {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  
+  .sv-tile-link:hover h3,
+  .sv-tile-link:hover p,
+  .sv-tile-link:focus h3,
+  .sv-tile-link:focus p,
+  .sv-tile-link:active h3,
+  .sv-tile-link:active p {
+    color: inherit !important;
+  }
+</style>

@@ -1,65 +1,119 @@
-{{/*
-----------------------------------------------------------------------------------
-  Hugo `list.html` Template for the Homepage
-----------------------------------------------------------------------------------
-
-  **Purpose:** This file dynamically builds the homepage using content from 
-  `/content/home/` and ensures:
-  - **Segment-1** is treated as the topmost section with `<h1>`.
-  - **Segment-2 & Segment-3** render as normal sections with `<h2>`.
-  - Special partials (`iconized.html`, `imagized.html`, `contact.html`) are injected 
-    between the segments.
-
-  **Expected Folder Structure**
-/content/home/ ├── segment-1/ │ ├── _index.md # Main homepage content (H1 section) │ ├── 01-bleiben-sie-gesund.md │ ├── segment-2/ │ ├── 02-wissen-macht-gesund.md │ ├── 04-uebersicht-schaffen-das-ganzkoerper-mrt.md │ ├── 05-selbsttest-ihr-erster-schritt—ohne-kosten.md │ ├── 06-mrt-untersuchung-so-laeuft-es-ab.md │ ├── segment-3/ │ ├── 07-datenschutz.md │ ├── 09-standorte.md │ ├── 10-partner.md
-
-
-
-**How It Works:**
-- Retrieves **all `.md` files** inside each segment recursively.
-- Ensures `segment-1` is displayed **first and with `<h1>`**.
-- Ensures all other segments display **normally with `<h2>`**.
-- Inserts `imagized.html` **between segment-2 and segment-3**.
-- Inserts `iconized.html` and `contact.html` **at the end**.
-
-----------------------------------------------------------------------------------
-*/}}
 {{ define "main" }}
 
-  {{/* Collect all pages under "home" */}}
-  {{ $allPages := where .Site.Pages "Section" "home" }}
-  {{ $hasFile := where $allPages "File" "!=" nil }}
-  {{ $sortedPages := sort $hasFile ".File.LogicalName" }}
-
-  {{/* Filter sub-segments correctly */}}
-  {{ $segment1 := where $sortedPages "File.Dir" "home/segment-1/" }}
-  {{ $segment2 := where $sortedPages "File.Dir" "home/segment-2/" }}
-  {{ $segment3 := where $sortedPages "File.Dir" "home/segment-3/" }}
-
-  {{/* Render Segment-1's first item with <h2> to <h1> transformation */}}
-  {{ with index $segment1 0 }}
-    {{ $raw := partial "full-bg.html" . }}
-    {{ $updated := replaceRE "<h2(.*?)>" "<h1$1>" $raw | replaceRE "</h2>" "</h1>" }}
-    {{ $updated | safeHTML }}
-  {{ end }}
-  {{ partial "angebot.html" . }}
-  {{/* Render remaining Segment-1 items sequentially */}}
-  {{ range (after 1 $segment1) }}
-    {{ partial "full-bg.html" . }}
+  <!-- 1) Wissen macht gesund -->
+  {{ $wissen := .Site.GetPage "/home/01-wissen-macht-gesund" }}
+  {{ if $wissen }}
+    {{ $partialName := $wissen.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $wissen }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $wissen.Title }}&quot;</div>
+    {{ end }}
   {{ end }}
 
-  {{/* Render Segment-2 sequentially */}}
-  {{ range $segment2 }}
-    {{ partial "full-bg.html" . }}
+  <!-- 2) Leistungen Accordion Section -->
+  {{ $leistungen := .Site.GetPage "/home/02-leistungen" }}
+  {{ if $leistungen }}
+    {{ $partialName := $leistungen.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $leistungen }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $leistungen.Title }}&quot;</div>
+    {{ end }}
+  {{ else }}
+    <div class="alert alert-danger">Section not found: /home/02-leistungen</div>
   {{ end }}
 
-  {{/* Insert Imagized Partial before Segment-3 */}}
-  
-  {{/* Render Segment-3 sequentially */}}
-  {{ range $segment3 }}
-    {{ partial "full-bg.html" . }}
+  <!-- 3) Frageboegen iconized -->
+  {{ $frageboegen := .Site.GetPage "/home/03-frageboegen" }}
+  {{ if $frageboegen }}
+    {{ $partialName := $frageboegen.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $frageboegen }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $frageboegen.Title }}&quot;</div>
+    {{ end }}
+  {{ else }}
+    <div>Section not found: /home/03-frageboegen</div>
   {{ end }}
 
-  {{/* Final Special Partials */}}
-  
+  <!-- 4) Ablauf -->
+  {{ $ablauf := .Site.GetPage "/home/04-ablauf" }}
+  {{ if $ablauf }}
+    {{ $partialName := $ablauf.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $ablauf }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $ablauf.Title }}&quot;</div>
+    {{ end }}
+  {{ else }}
+    <div>Section not found: /home/04-ablauf</div>
+  {{ end }}
+
+  <!-- 5) Selbsttest Ihr erster Schritt -->
+  {{ $selbsttest := .Site.GetPage "/home/05-selbsttest-ihr-erster-schritt-ohne-kosten" }}
+  {{ if $selbsttest }}
+    {{ $partialName := $selbsttest.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $selbsttest }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $selbsttest.Title }}&quot;</div>
+    {{ end }}
+  {{ end }}
+
+  <!-- 6) MRT-Untersuchung so laeuft es ab -->
+  {{ $mrt := .Site.GetPage "/home/06-umfassend-vorgesorgt" }}
+  {{ if $mrt }}
+    {{ $partialName := $mrt.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $mrt }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $mrt.Title }}&quot;</div>
+    {{ end }}
+  {{ end }}
+
+  <!-- 7) Datenschutz -->
+  {{ $datenschutz := .Site.GetPage "/home/07-datenschutz" }}
+  {{ if $datenschutz }}
+    {{ $partialName := $datenschutz.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $datenschutz }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $datenschutz.Title }}&quot;</div>
+    {{ end }}
+  {{ end }}
+
+  <!-- 8) Termin buchen -->
+  {{ $termin := .Site.GetPage "/home/09-termin-buchen" }}
+  {{ if $termin }}
+    {{ $partialName := $termin.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $termin }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $termin.Title }}&quot;</div>
+    {{ end }}
+  {{ end }}
+
+  <!-- 9) Standorte -->
+  {{ $standorte := .Site.GetPage "/home/10-standorte" }}
+  {{ if $standorte }}
+    {{ $partialName := $standorte.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $standorte }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $standorte.Title }}&quot;</div>
+    {{ end }}
+  {{ end }}
+
+  <!-- 10) Partner -->
+  {{ $partner := .Site.GetPage "/home/11-partner" }}
+  {{ if $partner }}
+    {{ $partialName := $partner.Params.partial }}
+    {{ if $partialName }}
+      {{ partial $partialName $partner }}
+    {{ else }}
+      <div>No partial found in front matter for &quot;{{ $partner.Title }}&quot;</div>
+    {{ end }}
+  {{ end }}
+
 {{ end }}

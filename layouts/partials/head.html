@@ -26,10 +26,16 @@
     console.error('Font loading failed:', error);
   });
 </script>
+
 <!-- SimpleLightbox plugin CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet">
 
 <!-- Core Theme CSS (Bootstrap included) -->
-<link href="{{ "css/styles.css" | relURL }}" rel="stylesheet">
-<!--<link href="{{ "css/sv-styles.css" | relURL }}" rel="stylesheet">-->
+{{ $styles := resources.Get "css/root.css" | resources.ExecuteAsTemplate "css/root.css" . | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 
+{{ $styles := resources.Get "css/styles.css" | resources.ExecuteAsTemplate "css/styles.css" . | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+
+{{ $svStyles := resources.Get "css/sv-styles.css" | resources.ExecuteAsTemplate "css/sv-styles.css" . | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $svStyles.RelPermalink }}">
