@@ -1,6 +1,6 @@
 ---
-background_color: ""
-background_image: "var(--sv-prussianblue)"
+background_color: "var(--sv-moonstone)"
+background_image: ""
 body_text_alignment: "left"
 button_alignment: "left"
 button_placement: "content"
@@ -10,25 +10,25 @@ id: "patner"
 image: "/img/home/partner.jpg"
 image-shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
 layout: "section"
-text_color: "var(--sv-offwhite)"
+text_color: ""
 pre_headline: "Wir haben ein gewachsenes Netzwerk von Partnern, denen wir vertrauen." 
 title: "Unsere Partner"
-
 # ------------------------------------------------------------------------------
 # Available button classes (solid & skeleton):
-#   sv-btn-imperialred    | sv-btn-imperialred-sk
+#   sv-btn-red            | sv-btn-red-sk
 #   sv-btn-pumpkin        | sv-btn-pumpkin-sk
-#   sv-btn-viridian       | sv-btn-viridian-sk
-#   sv-btn-mossgreen      | sv-btn-mossgreen-sk
-#   sv-btn-hookersgreen   | sv-btn-hookersgreen-sk
-#   sv-btn-prussianblue   | sv-btn-prussianblue-sk
+#   sv-btn-green          | sv-btn-green-sk
+#   sv-btn-lightblue      | sv-btn-lightblue-sk
+#   sv-btn-moonstone      | sv-btn-moonstone-sk
+#   sv-btn-royalblue      | sv-btn-royalblue-sk
 #   sv-btn-richblack      | sv-btn-richblack-sk
 #   sv-btn-offwhite       | sv-btn-offwhite-sk
+#   sv-btn-rose           | sv-btn-rose-sk
+#   sv-btn-yellow         | sv-btn-yellow-sk
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-
-primary_button_class: "sv-btn-pumpkin btn-cap"
+primary_button_class: "sv-btn-royalblue btn-cap"
 primary_button_link: "#termin-buchen"
 primary_button_text: "Vorsorge buchen"
 
