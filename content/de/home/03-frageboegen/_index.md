@@ -1,5 +1,5 @@
 ---
-background_color: "var(--sv-offwhite)"
+background_color: "var(--sv-moonstone-light)"
 background_image: ""
 body_text_alignment: "left"
 grid_layout: "c1/1"
@@ -11,28 +11,28 @@ layout: "section"
 text_color: "var(--sv-richblack)"
 pre_headline: "Sprechen wir über Ihren Bedarf." 
 title: "Wie können wir helfen?"
-item_background-color: "var(--sv-offwhite-dark)"
-item_background-color-hover: "var(--sv-offwhite-darker)"
-item_border-color: "var(--sv-defaultgray-400)"
+item_background-color: "var(--sv-moonstone-lightest)"
+item_background-color-hover: "var(--sv-moonstone-lighter)"
+item_border-color: "var(--sv-moodefaultgray-400)"
 item_shadow: "shadow"
 item_text-alignment: "left"
 item_button-alginment: "left"
-
 # ------------------------------------------------------------------------------
 # Available button classes (solid & skeleton):
-#   sv-btn-imperialred    | sv-btn-imperialred-sk
+#   sv-btn-red            | sv-btn-red-sk
 #   sv-btn-pumpkin        | sv-btn-pumpkin-sk
-#   sv-btn-viridian       | sv-btn-viridian-sk
-#   sv-btn-mossgreen      | sv-btn-mossgreen-sk
-#   sv-btn-hookersgreen   | sv-btn-hookersgreen-sk
-#   sv-btn-prussianblue   | sv-btn-prussianblue-sk
+#   sv-btn-green          | sv-btn-green-sk
+#   sv-btn-lightblue      | sv-btn-lightblue-sk
+#   sv-btn-moonstone      | sv-btn-moonstone-sk
+#   sv-btn-royalblue      | sv-btn-royalblue-sk
 #   sv-btn-richblack      | sv-btn-richblack-sk
 #   sv-btn-offwhite       | sv-btn-offwhite-sk
+#   sv-btn-rose           | sv-btn-rose-sk
+#   sv-btn-yellow         | sv-btn-yellow-sk
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-
-primary_button_class: "sv-btn-prussianblue btn-cap"
+primary_button_class: "sv-btn-royalblue btn-cap"
 primary_button_link: ""
 primary_button_text: ""
 

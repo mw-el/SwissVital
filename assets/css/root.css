@@ -18,36 +18,172 @@
    1) ROOT VARIABLES
    ========================================= */
 :root {
-  --sv-imperialred: #f94143; /* rgb(249, 65, 67) */
-  --sv-giantsorange: #f3602c; /* rgb(243, 96, 44) */
-  --sv-pumpkin: #f8771e; /* rgb(248, 119, 30) */
-  --sv-coral: #f9754a; /* rgb(249, 117, 74) */
-  --sv-sandybrown: #f9a84f; /* rgb(249, 168, 79) */
-  --sv-viridian: #5e8f78; /* rgb(94, 143, 120) */
-  --sv-mossgreen: #9ca96d; /* rgb(156, 169, 109) */
-  --sv-mossgreen-light: #c1d0a0; /* rgb(193, 208, 160) */
-  --sv-mossgreen-lighter: #dce6b6; /* rgb(220, 230, 182) */
-  --sv-hookersgreen: #5e7e7d; /* rgb(94, 126, 125) */
-  --sv-prussianblue: #102e4a; /* rgb(16, 46, 74) */
-  --sv-offwhite: 	#fffff2;	/* rgb(255,255,242) */
-  --sv-offwhite-dark: #fafae3; /* 3% darker version */
-  --sv-offwhite-darker: #e6e6da; /* 10% darker version */
-  --sv-richblack: 	#02111b;	/* rgb(2,17,27) */
+  /* New Color Palette */
+  --sv-red: #ff4000; /* rgba(255, 64, 0, 1) - formerly coquelicot */
+  --sv-red-light: #ff6333;
+  --sv-red-lighter: #ff8666;
+  --sv-red-lightest: #ffa999;
+  --sv-red-dark: #cc3300; /* 80% of red */
+  --sv-red-darker: #992600; /* 60% of red */
+  --sv-red-darkest: #661900; /* 40% of red */
+  
+  --sv-rose: #faaa8d; /* rgba(250, 170, 141, 1) - formerly atomic-tangerine */
+  --sv-rose-light: #fbbda5;
+  --sv-rose-lighter: #fcd0be;
+  --sv-rose-lightest: #fee3d6;
+  --sv-rose-dark: #c88871; /* 80% of rose */
+  --sv-rose-darker: #966655; /* 60% of rose */
+  --sv-rose-darkest: #644439; /* 40% of rose */
+  
+  --sv-offwhite: #feefdd; /* rgba(254, 239, 221, 1) - formerly antique-white */
+  --sv-offwhite-light: #fff7ea; /* 3% lighter version */
+  --sv-offwhite-lighter: #fffbf3; /* 6% lighter version */
+  --sv-offwhite-dark: #f5e6d4; /* 3% darker version */
+  --sv-offwhite-darker: #e5d7c6; /* 10% darker version */
+  
+  --sv-moonstone: #50b2c0; /* rgba(80, 178, 192, 1) */
+  --sv-moonstone-light: #7ac5d0; /* lighter version */
+  --sv-moonstone-lighter: #a4d8e0; /* lightest version */
+  --sv-moonstone-lightest: #cfeaef; /* very lightest version */
+  --sv-moonstone-dark: #408e9a; /* 80% of moonstone */
+  --sv-moonstone-darker: #306a73; /* 60% of moonstone */
+  --sv-moonstone-darkest: #204549; /* 40% of moonstone */
+  
+  --sv-royalblue: #0a2463; /* rgb(10, 36, 99) - formerly royal-blue */
+  --sv-royalblue-light: #0d2d79; /* lighter version */
+  --sv-royalblue-lighter: #1139a3; /* lighter version */
+  --sv-royalblue-lightest: #1545cf; /* lightest version */
+  --sv-royalblue-dark: #081d4f; /* 80% of royalblue */
+  --sv-royalblue-darker: #06163b; /* 60% of royalblue */
+  --sv-royalblue-darkest: #040f27; /* darkest version */
+  
+  --sv-lightblue: #3da5d9; /* rgb(61, 165, 217) - formerly picton-blue */
+  --sv-lightblue-light: #63b7e0; /* lighter version */
+  --sv-lightblue-lighter: #89c9e7; /* lighter version */
+  --sv-lightblue-lightest: #afdbef; /* lightest version */
+  --sv-lightblue-dark: #3184ad; /* 80% of lightblue */
+  --sv-lightblue-darker: #256382; /* 60% of lightblue */
+  --sv-lightblue-darkest: #194256; /* darkest version */
+  
+  --sv-green: #87ce7f; /* rgb(135, 206, 127) - formerly pistachio */
+  --sv-green-light: #a1d89b; /* lighter version */
+  --sv-green-lighter: #bbe3b7; /* lighter version */
+  --sv-green-lightest: #d5eed2; /* lightest version */
+  --sv-green-dark: #6ca565; /* 80% of green */
+  --sv-green-darker: #517c4c; /* 60% of green */
+  --sv-green-darkest: #365332; /* darkest version */
+  
+  --sv-yellow: #fec601; /* rgb(254, 198, 1) - formerly mikado-yellow */
+  --sv-yellow-light: #fed134; /* lighter version */
+  --sv-yellow-lighter: #fedc67; /* lighter version */
+  --sv-yellow-lightest: #fee899; /* lightest version */
+  --sv-yellow-dark: #cb9e01; /* 80% of yellow */
+  --sv-yellow-darker: #987701; /* 60% of yellow */
+  --sv-yellow-darkest: #654f00; /* darkest version */
+  
+  --sv-pumpkin: #ea7317; /* rgb(234, 115, 23) */
+  --sv-pumpkin-light: #ee8c45; /* lighter version */
+  --sv-pumpkin-lighter: #f1a673; /* lighter version */
+  --sv-pumpkin-lightest: #f5c09e; /* lightest version */
+  --sv-pumpkin-dark: #bb5c12; /* 80% of pumpkin */
+  --sv-pumpkin-darker: #8c450e; /* 60% of pumpkin */
+  --sv-pumpkin-darkest: #5d2e09; /* darkest version */
 
-  /* RGB Variants of Primary Colors */
-  --sv-imperialred-rgb: 249, 65, 67;
-  --sv-giantsorange-rgb: 243, 96, 44;
-  --sv-pumpkin-rgb: 248, 119, 30;
-  --sv-coral-rgb: 249, 117, 74;
-  --sv-sandybrown-rgb: 249, 168, 79;
-  --sv-viridian-rgb: 94, 143, 120;
-  --sv-mossgreen-rgb: 156, 169, 109;
-  --sv-hookersgreen-rgb: 94, 126, 125;
-  --sv-prussianblue-rgb: 16, 46, 74;
-  --sv-offwhite-rgb: 255,255,242;
-  --sv-richblack-rgb: 2,17,27;
+  /* Legacy Colors (marked with neon pink for identification) */
+  --sv-imperialred: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-giantsorange: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-coral: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-sandybrown: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-viridian: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-mossgreen: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-mossgreen-light: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-mossgreen-lighter: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-hookersgreen: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-prussianblue: #ff00ff; /* Neon pink to identify old color usage */
+  --sv-richblack: #02111b; /* rgb(2,17,27) */
 
-  /* Monochrome Colors */color
+  /* RGB Variants of Colors */
+  --sv-red-rgb: 255, 64, 0;
+  --sv-red-light-rgb: 255, 99, 51;
+  --sv-red-lighter-rgb: 255, 134, 102;
+  --sv-red-lightest-rgb: 255, 169, 153;
+  --sv-red-dark-rgb: 204, 51, 0;
+  --sv-red-darker-rgb: 153, 38, 0;
+  --sv-red-darkest-rgb: 102, 25, 0;
+  
+  --sv-rose-rgb: 250, 170, 141;
+  --sv-rose-light-rgb: 251, 189, 165;
+  --sv-rose-lighter-rgb: 252, 208, 190;
+  --sv-rose-lightest-rgb: 254, 227, 214;
+  --sv-rose-dark-rgb: 200, 136, 113;
+  --sv-rose-darker-rgb: 150, 102, 85;
+  --sv-rose-darkest-rgb: 100, 68, 57;
+  
+  --sv-offwhite-rgb: 254, 239, 221;
+  --sv-offwhite-light-rgb: 255, 247, 234;
+  --sv-offwhite-lighter-rgb: 255, 251, 243;
+  --sv-offwhite-dark-rgb: 245, 230, 212;
+  --sv-offwhite-darker-rgb: 229, 215, 198;
+  
+  --sv-moonstone-rgb: 80, 178, 192;
+  --sv-moonstone-light-rgb: 122, 197, 208;
+  --sv-moonstone-lighter-rgb: 164, 216, 224;
+  --sv-moonstone-lightest-rgb: 207, 234, 239;
+  --sv-moonstone-dark-rgb: 64, 142, 154;
+  --sv-moonstone-darker-rgb: 48, 106, 115;
+  --sv-moonstone-darkest-rgb: 32, 69, 73;
+  
+  --sv-royalblue-rgb: 10, 36, 99;
+  --sv-royalblue-light-rgb: 13, 45, 121;
+  --sv-royalblue-lighter-rgb: 17, 57, 163;
+  --sv-royalblue-lightest-rgb: 21, 69, 207;
+  --sv-royalblue-dark-rgb: 8, 29, 79;
+  --sv-royalblue-darker-rgb: 6, 22, 59;
+  --sv-royalblue-darkest-rgb: 4, 15, 39;
+  
+  --sv-lightblue-rgb: 61, 165, 217;
+  --sv-lightblue-light-rgb: 99, 183, 224;
+  --sv-lightblue-lighter-rgb: 137, 201, 231;
+  --sv-lightblue-lightest-rgb: 175, 219, 239;
+  --sv-lightblue-dark-rgb: 49, 132, 173;
+  --sv-lightblue-darker-rgb: 37, 99, 130;
+  --sv-lightblue-darkest-rgb: 25, 66, 86;
+  
+  --sv-green-rgb: 135, 206, 127;
+  --sv-green-light-rgb: 161, 216, 155;
+  --sv-green-lighter-rgb: 187, 227, 183;
+  --sv-green-lightest-rgb: 213, 238, 210;
+  --sv-green-dark-rgb: 108, 165, 101;
+  --sv-green-darker-rgb: 81, 124, 76;
+  --sv-green-darkest-rgb: 54, 83, 50;
+  
+  --sv-yellow-rgb: 254, 198, 1;
+  --sv-yellow-light-rgb: 254, 209, 52;
+  --sv-yellow-lighter-rgb: 254, 220, 103;
+  --sv-yellow-lightest-rgb: 254, 232, 153;
+  --sv-yellow-dark-rgb: 203, 158, 1;
+  --sv-yellow-darker-rgb: 152, 119, 1;
+  --sv-yellow-darkest-rgb: 101, 79, 0;
+  
+  --sv-pumpkin-rgb: 234, 115, 23;
+  --sv-pumpkin-light-rgb: 238, 140, 69;
+  --sv-pumpkin-lighter-rgb: 241, 166, 115;
+  --sv-pumpkin-lightest-rgb: 245, 192, 158;
+  --sv-pumpkin-dark-rgb: 187, 92, 18;
+  --sv-pumpkin-darker-rgb: 140, 69, 14;
+  --sv-pumpkin-darkest-rgb: 93, 46, 9;
+  
+  --sv-imperialred-rgb: 255, 0, 255;
+  --sv-giantsorange-rgb: 255, 0, 255;
+  --sv-coral-rgb: 255, 0, 255;
+  --sv-sandybrown-rgb: 255, 0, 255;
+  --sv-viridian-rgb: 255, 0, 255;
+  --sv-mossgreen-rgb: 255, 0, 255;
+  --sv-hookersgreen-rgb: 255, 0, 255;
+  --sv-prussianblue-rgb: 255, 0, 255;
+  --sv-richblack-rgb: 2, 17, 27;
+
+  /* Monochrome Colors */
   --sv-defaultgray: #6c757d; /* rgb(108, 117, 125) */
   --sv-defaultgray-dark: #495057; /* rgb(73, 80, 87) */
 
@@ -62,34 +198,32 @@
   --sv-defaultgray-800: #343a40;
   --sv-defaultgray-900: #212529;
 
-  /* Theme Colors */
-  --sv-primary: var(--sv-imperialred);
-  --sv-primary-darker: rgb(187, 49, 50); /* ~75% of var(--sv-imperialred) */
+  /* Theme Colors - Updated with new color palette */
+  --sv-primary: var(--sv-red);
+  --sv-primary-darker: var(--sv-red-dark);
   --sv-secondary: var(--sv-pumpkin);
-  --sv-success: var(--sv-viridian);
-  --sv-info: var(--sv-viridian);
-  --sv-warning: var(--sv-coral);
-  --sv-danger: var(--sv-giantsorange);
+  --sv-success: var(--sv-green);
+  --sv-info: var(--sv-moonstone);
+  --sv-warning: var(--sv-yellow);
+  --sv-danger: var(--sv-red);
   --sv-light: var(--sv-offwhite);
   --sv-dark: var(--sv-richblack);
 
   /* RGB Variants */
-  --sv-primary-rgb: 249, 65, 67;
-  --sv-primary-darker-rgb: 187, 49, 50;
-  --sv-secondary-rgb: 248, 119, 30;
-  --sv-success-rgb: 94, 143, 120;
-  --sv-info-rgb: 94, 143, 120;
-  --sv-warning-rgb: 249, 117, 74;
-  --sv-danger-rgb: 243, 96, 44;
-  --sv-light-rgb: 248, 249, 250;
+  --sv-primary-rgb: 255, 64, 0;
+  --sv-primary-darker-rgb: 204, 51, 0;
+  --sv-secondary-rgb: 234, 115, 23;
+  --sv-success-rgb: 135, 206, 127;
+  --sv-info-rgb: 80, 178, 192;
+  --sv-warning-rgb: 254, 198, 1;
+  --sv-danger-rgb: 255, 64, 0;
+  --sv-light-rgb: 254, 239, 221;
   --sv-dark-rgb: 2, 17, 27;
-  --sv-offwhite-rgb: 248, 249, 250;
-  --sv-richblack-rgb: 2, 17, 27;
 
   /* Typography */
   --sv-body-font-family: "Proza Libre", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   /*--sv-headings-font-family: "Cormorant Garamond", Times, "Times New Roman", serif;*/
-  --sv-headings-font-family: "Proza Libre", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --sv-headings-font-family: "Questrial", "Proza Libre", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   --sv-body-font-size: 0,85rem;
   --sv-btn-font-size: 1.1rem;
   --sv-body-lead-font-size: 1.1rem;
@@ -102,8 +236,8 @@
   /* Borders */
   --sv-border-width: 1px;
   --sv-border-style: solid;
-  --sv-border-color: var(--sv-viridian);
-  --sv-border-color-translucent: rgba(var(--sv-viridian-rgb), 0.5);
+  --sv-border-color: var(--sv-moonstone);
+  --sv-border-color-translucent: rgba(var(--sv-moonstone-rgb), 0.5);
   --sv-border-radius: 0.375rem;
   --sv-border-radius-sm: 0.25rem;
   --sv-border-radius-lg: 0.5rem;
@@ -111,14 +245,14 @@
   --sv-border-radius-2xl: 2rem;
   --sv-border-radius-pill: 50rem;
 
-  /* Backgrounds & Gradients */
+  /* Backgrounds & Gradients - Updated with new color palette */
   --bg-lightgrey: radial-gradient(circle, rgba(173,181,189,0.3), rgba(206,212,218,0.2));
-  --bg-lightgrey-warm: radial-gradient(circle, rgba(248,119,30,0.1), rgba(222,226,230,0.7));
-  --bg-lightgrey-cold: radial-gradient(circle, rgba(16,46,74,0.1), rgba(222,226,230,0.7));
+  --bg-lightgrey-warm: radial-gradient(circle, rgba(234,115,23,0.1), rgba(254,239,221,0.7));
+  --bg-lightgrey-cold: radial-gradient(circle, rgba(80,178,192,0.1), rgba(254,239,221,0.7));
   --bg-footer-gradient: radial-gradient(circle, rgba(2,17,27,0.9), rgba(16,46,74,0.8));
   --bg-copyright-gradient: radial-gradient(circle, rgba(2,17,27,1), rgba(16,46,74,1));
-  --bg-white-gradient: radial-gradient(circle, rgba(248,249,250,1), rgba(222,226,230,0.4));
-  --bg-warm-dark-gradient: radial-gradient(circle,  #6f0000,  #200122);
+  --bg-white-gradient: radial-gradient(circle, rgba(254,239,221,1), rgba(254,239,221,0.4));
+  --bg-warm-dark-gradient: radial-gradient(circle, #ff4000, #02111b);
 
   /* Buttons */
   --bs-btn-padding-x: 0.75rem;
@@ -136,16 +270,16 @@
   --bs-btn-disabled-opacity: 0.65;
   --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
 
-  /* Links & Code */
-  --sv-link-color: var(--sv-prussianblue);
-  --sv-link-hover-color: var(--sv-viridian);
-  --sv-code-color: var(--sv-viridian);
-  --sv-highlight-bg: #f9a84f;
+  /* Links & Code - Updated with new color palette */
+  --sv-link-color: var(--sv-royalblue);
+  --sv-link-hover-color: var(--sv-moonstone);
+  --sv-code-color: var(--sv-moonstone);
+  --sv-highlight-bg: var(--sv-yellow);
 
-  /* Additional Gradients */
+  /* Additional Gradients - Updated with new color palette */
   --sv-gradient: linear-gradient(
     180deg,
-    rgba(var(--sv-prussianblue-rgb), 0.15),
+    rgba(var(--sv-moonstone-rgb), 0.15),
     rgba(var(--sv-richblack-rgb), 0)
   );
 }
@@ -175,6 +309,12 @@
   font-family: 'Cormorant Garamond';
   src: url('../fonts/CormorantGaramond-Bold.ttf') format('truetype');
   font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Questrial';
+  src: url('../fonts/Questrial-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -312,4 +452,3 @@ a:not([href]):not([class]):hover {
   color: inherit;
   text-decoration: none;
 }
-

@@ -33,7 +33,7 @@
   - item_background_color: CSS color value for tile background (default: transparent)
   - item_border_color: CSS color value for tile border (default: var(--sv-defaultgray-400))
   - image_shadow: CSS class to apply shadow effect to tiles (if needed)
-  - primary_button_class: CSS class for the button (default: "sv-btn-prussianblue btn-cap")
+  - primary_button_class: CSS class for the button (default: "sv-btn-royalblue btn-cap")
   - image: "/path/to/image.jpg" (with leading slash, relative to assets directory, optional header image)
   
   Child page frontmatter requirements:
@@ -117,7 +117,7 @@
   pre_headline: "Was wir anbieten"
   item_background_color: "var(--sv-babyblue)"
   item_border_color: "var(--sv-prussianblue)"
-  primary_button_class: "sv-btn-prussianblue btn-cap"
+  primary_button_class: "sv-btn-royalblue btn-cap"
   image: "/de/home/03-services/header-image.jpg"
   ---
   
@@ -147,7 +147,7 @@
 {{ $itemBgColor := .Params.item_background_color | default "transparent" | safeCSS }}
 {{ $itemBorderColor := .Params.item_border_color | default "var(--sv-defaultgray-400)" | safeCSS }}
 {{ $itemShadow := .Params.image_shadow | default "" }}
-{{ $buttonClass := .Params.primary_button_class | default "sv-btn-prussianblue btn-cap" | safeCSS }}
+{{ $buttonClass := .Params.primary_button_class | default "sv-btn-royalblue btn-cap" | safeCSS }}
 
 {{/* Process image */}}
 {{ $imageSrc := "" }}

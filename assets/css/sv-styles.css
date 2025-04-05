@@ -507,13 +507,13 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   Solid (Full-Color) Buttons
 ---------------------------------*/
 
-.sv-btn-imperialred {
-  background-color: var(--sv-imperialred);
-  border: 1px solid var(--sv-imperialred);
+.sv-btn-red {
+  background-color: var(--sv-red);
+  border: 1px solid var(--sv-red);
   color: var(--sv-offwhite);
 }
-.sv-btn-imperialred:hover {
-  background-color: rgba(249, 65, 67, 0.7);
+.sv-btn-red:hover {
+  background-color: rgba(var(--sv-red-rgb), 0.7);
 }
 
 .sv-btn-pumpkin {
@@ -522,68 +522,87 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   color: var(--sv-offwhite);
 }
 .sv-btn-pumpkin:hover {
-  background-color: rgba(248, 119, 30, 0.7);
+  background-color: rgba(var(--sv-pumpkin-rgb), 0.7);
   color: var(--sv-offwhite);
 }
 
-.sv-btn-viridian {
-  background-color: var(--sv-viridian);
-  border: 1px solid var(--sv-viridian);
+.sv-btn-green {
+  background-color: var(--sv-green);
+  border: 1px solid var(--sv-green);
   color: var(--sv-offwhite);
 }
-.sv-btn-viridian:hover {
-  background-color: rgba(94, 143, 120, 0.7);
-  color: var(--sv-offwhite);
-}
-
-.sv-btn-mossgreen {
-  background-color: var(--sv-mossgreen);
-  border: 1px solid var(--sv-mossgreen);
-  color: var(--sv-offwhite);
-}
-.sv-btn-mossgreen:hover {
-  background-color: rgba(156, 169, 109, 0.7);
+.sv-btn-green:hover {
+  background-color: rgba(var(--sv-green-rgb), 0.7);
   color: var(--sv-offwhite);
 }
 
-.sv-btn-hookersgreen {
-  background-color: var(--sv-hookersgreen);
-  border: 1px solid var(--sv-hookersgreen);
+.sv-btn-lightblue {
+  background-color: var(--sv-lightblue);
+  border: 1px solid var(--sv-lightblue);
   color: var(--sv-offwhite);
 }
-.sv-btn-hookersgreen:hover {
-  background-color: rgba(94, 126, 125, 0.7);
+.sv-btn-lightblue:hover {
+  background-color: rgba(var(--sv-lightblue-rgb), 0.7);
   color: var(--sv-offwhite);
 }
 
-.sv-btn-prussianblue {
-  background-color: var(--sv-prussianblue);
-  border: 1px solid var(--sv-prussianblue);
+.sv-btn-moonstone {
+  background-color: var(--sv-moonstone);
+  border: 1px solid var(--sv-moonstone);
   color: var(--sv-offwhite);
 }
-.sv-btn-prussianblue:hover {
-  background-color: rgba(16, 46, 74, 0.7);
+.sv-btn-moonstone:hover {
+  background-color: rgba(var(--sv-moonstone-rgb), 0.7);
+  color: var(--sv-offwhite);
+}
+
+.sv-btn-royalblue {
+  background-color: var(--sv-royalblue);
+  border: 1px solid var(--sv-royalblue);
+  color: var(--sv-offwhite);
+}
+.sv-btn-royalblue:hover {
+  background-color: rgba(var(--sv-royalblue-rgb), 0.7);
   color: var(--sv-offwhite);
 }
 
 .sv-btn-richblack {
-background-color: var(--sv-richblack);
-border: 1px solid var(--sv-richblack);
-color: var(--sv-offwhite);
+  background-color: var(--sv-richblack);
+  border: 1px solid var(--sv-richblack);
+  color: var(--sv-offwhite);
 }
 .sv-btn-richblack:hover {
-background-color: rgba(2, 17, 27, 0.7);
+  background-color: rgba(var(--sv-richblack-rgb), 0.7);
 }
 
-  /* offwhite (the "white" button) – #f8f9fa */
-  .sv-btn-offwhite {
-    background-color: var(--sv-offwhite);
-    border: 1px solid var(--sv-richblack);
-    color: var(--sv-richblack);
-  }
-  .sv-btn-offwhite:hover {
-    background-color: rgba(248, 249, 250, 0.7);
-  }
+/* offwhite (the "white" button) */
+.sv-btn-offwhite {
+  background-color: var(--sv-offwhite);
+  border: 1px solid var(--sv-richblack);
+  color: var(--sv-richblack);
+}
+.sv-btn-offwhite:hover {
+  background-color: rgba(var(--sv-offwhite-rgb), 0.7);
+}
+
+/* Additional colors from new palette */
+.sv-btn-rose {
+  background-color: var(--sv-rose);
+  border: 1px solid var(--sv-rose);
+  color: var(--sv-richblack);
+}
+.sv-btn-rose:hover {
+  background-color: rgba(var(--sv-rose-rgb), 0.7);
+}
+
+.sv-btn-yellow {
+  background-color: var(--sv-yellow);
+  border: 1px solid var(--sv-yellow);
+  color: var(--sv-richblack);
+}
+.sv-btn-yellow:hover {
+  background-color: rgba(var(--sv-yellow-rgb), 0.7);
+}
 
 /*--------------------------------
   Skeleton Buttons (All White Border)
@@ -594,87 +613,107 @@ background-color: rgba(2, 17, 27, 0.7);
   - Text-shadow matches main color (except offwhite).
 */
 
-.sv-btn-imperialred-sk {
-  background-color: rgba(249, 65, 67, 0.3);
+.sv-btn-red-sk {
+  background-color: rgba(var(--sv-red-rgb), 0.3);
   border: 1px solid var(--sv-offwhite);
   color: var(--sv-offwhite);
-  text-shadow: 1px 1px 2px var(--sv-imperialred);
+  text-shadow: 1px 1px 2px var(--sv-red);
 }
-.sv-btn-imperialred-sk:hover {
-  background-color: rgba(249, 65, 67, 0.7);
+.sv-btn-red-sk:hover {
+  background-color: rgba(var(--sv-red-rgb), 0.7);
   color: var(--sv-offwhite)
 }
 
 .sv-btn-pumpkin-sk {
-  background-color: rgba(248, 119, 30, 0.3);
+  background-color: rgba(var(--sv-pumpkin-rgb), 0.3);
   border: 1px solid var(--sv-offwhite);
   color: var(--sv-offwhite);
   text-shadow: 1px 1px 2px var(--sv-pumpkin);
 }
 .sv-btn-pumpkin-sk:hover {
-  background-color: rgba(248, 119, 30, 0.7);
+  background-color: rgba(var(--sv-pumpkin-rgb), 0.7);
 }
 
-.sv-btn-viridian-sk {
-  background-color: rgba(94, 143, 120, 0.3);
+.sv-btn-green-sk {
+  background-color: rgba(var(--sv-green-rgb), 0.3);
   border: 1px solid var(--sv-offwhite);
   color: var(--sv-offwhite);
-  text-shadow: 1px 1px 2px var(--sv-viridian);
+  text-shadow: 1px 1px 2px var(--sv-green);
 }
-.sv-btn-viridian-sk:hover {
-  background-color: rgba(94, 143, 120, 0.7);
+.sv-btn-green-sk:hover {
+  background-color: rgba(var(--sv-green-rgb), 0.7);
 }
 
-.sv-btn-mossgreen-sk {
-  background-color: rgba(156, 169, 109, 0.3);
+.sv-btn-lightblue-sk {
+  background-color: rgba(var(--sv-lightblue-rgb), 0.3);
   border: 1px solid var(--sv-offwhite);
   color: var(--sv-offwhite);
-  text-shadow: 1px 1px 2px var(--sv-mossgreen);
+  text-shadow: 1px 1px 2px var(--sv-lightblue);
 }
-.sv-btn-mossgreen-sk:hover {
-  background-color: rgba(156, 169, 109, 0.7);
+.sv-btn-lightblue-sk:hover {
+  background-color: rgba(var(--sv-lightblue-rgb), 0.7);
 }
 
-.sv-btn-hookersgreen-sk {
-  background-color: rgba(94, 126, 125, 0.3);
+.sv-btn-moonstone-sk {
+  background-color: rgba(var(--sv-moonstone-rgb), 0.3);
   border: 1px solid var(--sv-offwhite);
   color: var(--sv-offwhite);
-  text-shadow: 1px 1px 2px var(--sv-hookersgreen);
+  text-shadow: 1px 1px 2px var(--sv-moonstone);
 }
-.sv-btn-hookersgreen-sk:hover {
-  background-color: rgba(94, 126, 125, 0.7);
+.sv-btn-moonstone-sk:hover {
+  background-color: rgba(var(--sv-moonstone-rgb), 0.7);
 }
 
-.sv-btn-prussianblue-sk {
-  background-color: rgba(16, 46, 74, 0.3);
+.sv-btn-royalblue-sk {
+  background-color: rgba(var(--sv-royalblue-rgb), 0.3);
   border: 1px solid var(--sv-offwhite);
   color: var(--sv-offwhite);
-  text-shadow: 1px 1px 2px var(--sv-prussianblue);
+  text-shadow: 1px 1px 2px var(--sv-royalblue);
 }
-.sv-btn-prussianblue-sk:hover {
-  background-color: rgba(16, 46, 74, 0.7);
+.sv-btn-royalblue-sk:hover {
+  background-color: rgba(var(--sv-royalblue-rgb), 0.7);
 }
 
 .sv-btn-richblack-sk {
-  background-color: rgba(2, 17, 27, 0.3);
+  background-color: rgba(var(--sv-richblack-rgb), 0.3);
   border: 1px solid var(--sv-offwhite);
   color: var(--sv-offwhite);
   text-shadow: 1px 1px 2px var(--sv-richblack);
 }
 .sv-btn-richblack-sk:hover {
-  background-color: rgba(2, 17, 27, 0.7);
+  background-color: rgba(var(--sv-richblack-rgb), 0.7);
 }
 
 .sv-btn-offwhite-sk {
-  background-color: rgb(248, 249, 250, 0.3);
+  background-color: rgba(var(--sv-offwhite-rgb), 0.3);
   border: 1px solid var(--sv-richblack);
   color: var(--sv-richblack);
   text-shadow: 1px 1px 2px var(--sv-offwhite);
 }
 .sv-btn-offwhite-sk:hover {
-  background-color: rgba(248, 249, 250, 0.7);
+  background-color: rgba(var(--sv-offwhite-rgb), 0.7);
 }
 
+/* Additional skeleton buttons from new palette */
+.sv-btn-rose-sk {
+  background-color: rgba(var(--sv-rose-rgb), 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-rose);
+}
+.sv-btn-rose-sk:hover {
+  background-color: rgba(var(--sv-rose-rgb), 0.7);
+}
+
+.sv-btn-yellow-sk {
+  background-color: rgba(var(--sv-yellow-rgb), 0.3);
+  border: 1px solid var(--sv-offwhite);
+  color: var(--sv-offwhite);
+  text-shadow: 1px 1px 2px var(--sv-yellow);
+}
+.sv-btn-yellow-sk:hover {
+  background-color: rgba(var(--sv-yellow-rgb), 0.7);
+}
 /*--------------------------------
   Iconized styles
 ---------------------------------*/

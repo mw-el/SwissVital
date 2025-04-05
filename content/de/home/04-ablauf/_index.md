@@ -4,30 +4,31 @@ layout: "accordion-right"
 weight: 4
 default_image: "/img/home/ablauf/5-steps-with-doctor.webp"
 image_shadow: "shadow"
-background_color: "var(--sv-mossgreen-light)"
-accordion_background_color: "var(--sv-mossgreen-lighter)"
-accordion_content_background_color: "var(--sv-mossgreen-lighter)"
-accordion_accent_color: "var(--sv-mossgreen)"
+background_color: "var(--sv-offwhite)"    # Background color for the section
+accordion_background_color: "var(--sv-offwhite-lighter)"    # Background color for the accordion
+accordion_content_background_color: "var(--sv-offwhite-lighter)"
+accordion_accent_color: "var(--sv-offwhite-darker)"
 text_color: "var(--sv-body-color)"
 pre_headline: "So läuft Ihr Check-up ab"
 
-button_alignment: "center"
+button_alignment: "left"
 button_placement: "accordion"
 # ------------------------------------------------------------------------------
 # Available button classes (solid & skeleton):
-#   sv-btn-imperialred    | sv-btn-imperialred-sk
+#   sv-btn-red            | sv-btn-red-sk
 #   sv-btn-pumpkin        | sv-btn-pumpkin-sk
-#   sv-btn-viridian       | sv-btn-viridian-sk
-#   sv-btn-mossgreen      | sv-btn-mossgreen-sk
-#   sv-btn-hookersgreen   | sv-btn-hookersgreen-sk
-#   sv-btn-prussianblue   | sv-btn-prussianblue-sk
+#   sv-btn-green          | sv-btn-green-sk
+#   sv-btn-lightblue      | sv-btn-lightblue-sk
+#   sv-btn-moonstone      | sv-btn-moonstone-sk
+#   sv-btn-royalblue      | sv-btn-royalblue-sk
 #   sv-btn-richblack      | sv-btn-richblack-sk
 #   sv-btn-offwhite       | sv-btn-offwhite-sk
+#   sv-btn-rose           | sv-btn-rose-sk
+#   sv-btn-yellow         | sv-btn-yellow-sk
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-
-primary_button_class: "sv-btn-mossgreen btn-cap"
+primary_button_class: "sv-btn-pumpkin btn-cap"
 primary_button_link: "#termin-buchen"
 primary_button_text: "Scan buchen"
 

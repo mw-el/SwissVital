@@ -1,5 +1,6 @@
 ---
-background_color: "var(--sv-pumpkin)"
+background_color: "var(--sv-moonstone
+)"
 background_image: ""
 body_text_alignment: "left"
 button_alignment: "left"
@@ -13,22 +14,22 @@ layout: "section"
 text_color: "var(--sv-richblack)"
 pre_headline: "Gesundheit schützen mit Ganzköper-MRI" 
 title: "Wissen macht gesund."
-
 # ------------------------------------------------------------------------------
 # Available button classes (solid & skeleton):
-#   sv-btn-imperialred    | sv-btn-imperialred-sk
+#   sv-btn-red            | sv-btn-red-sk
 #   sv-btn-pumpkin        | sv-btn-pumpkin-sk
-#   sv-btn-viridian       | sv-btn-viridian-sk
-#   sv-btn-mossgreen      | sv-btn-mossgreen-sk
-#   sv-btn-hookersgreen   | sv-btn-hookersgreen-sk
-#   sv-btn-prussianblue   | sv-btn-prussianblue-sk
+#   sv-btn-green          | sv-btn-green-sk
+#   sv-btn-lightblue      | sv-btn-lightblue-sk
+#   sv-btn-moonstone      | sv-btn-moonstone-sk
+#   sv-btn-royalblue      | sv-btn-royalblue-sk
 #   sv-btn-richblack      | sv-btn-richblack-sk
 #   sv-btn-offwhite       | sv-btn-offwhite-sk
+#   sv-btn-rose           | sv-btn-rose-sk
+#   sv-btn-yellow         | sv-btn-yellow-sk
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-
-primary_button_class: "sv-btn-prussianblue btn-cap"
+primary_button_class: "sv-btn-royalblue btn-cap"
 primary_button_link: "#termin-buchen"
 primary_button_text: "Scan buchen"
 

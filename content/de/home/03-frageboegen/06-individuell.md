@@ -9,7 +9,7 @@ title: "Individuelle Vorsorge"
 #   sv-btn-viridian       | sv-btn-viridian-sk
 #   sv-btn-mossgreen      | sv-btn-mossgreen-sk
 #   sv-btn-hookersgreen   | sv-btn-hookersgreen-sk
-#   sv-btn-prussianblue   | sv-btn-prussianblue-sk
+#   sv-btn-royalblue   | sv-btn-royalblue-sk
 #   sv-btn-richblack      | sv-btn-richblack-sk
 #   sv-btn-offwhite       | sv-btn-offwhite-sk
 #
