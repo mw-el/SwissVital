@@ -1,0 +1,953 @@
+lang;filename;key;original;translated
+en;Untersuchungen/05-gentest.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Gentest-Verfahren erklären.
+";"Here is the translated text:
+
+ Soon follows a text that explains our genetic test procedures."
+en;Untersuchungen/05-gentest.md;title;Analyse genetischer Marker;Genetic Marker Analysis
+en;Untersuchungen/02-hormontest.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Hormontest-Verfahren erklären.
+";"Here is the translated text:
+
+An explanation of our hormone test methods will follow shortly."
+en;Untersuchungen/02-hormontest.md;title;Hormontest;Hormone Test
+en;Untersuchungen/03-stoffwechselanalyse.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Stoffwechselanalyse-Verfahren erklären.
+";"Here is the translated text:
+
+Here follows a text where we explain our metabolic analysis methods."
+en;Untersuchungen/03-stoffwechselanalyse.md;title;Stoffwechselanalyse;Metabolic Analysis
+en;Untersuchungen/04-vitalstoff-check.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Vitalstoff-Test-Verfahren erklären.
+";"Here is the translated text:
+
+[Soon comes a text explaining our vital nutrient testing methods.]"
+en;Untersuchungen/04-vitalstoff-check.md;title;Vitalstoff-Test;Essential Nutrient Test
+en;Untersuchungen/01-blutanalyse.md;main_content;"Hier folgt in Kürze eine Beschreibung zu unserer Blutanalyse.
+";"Here is the translated text:
+
+[Soon follows a description of our blood analysis.]"
+en;Untersuchungen/01-blutanalyse.md;title;Blutanalyse;Blood test
+en;geraete/mrt.md;main_content;"Die Magnetresonanztomographie (MRT), auch als Kernspintomographie oder MRI bezeichnet, ist ein bildgebendes Verfahren, das ohne den Einsatz von Röntgenstrahlen funktioniert und auf einem starken Magnetfeld sowie Radiowellen basiert. Diese Technologie ermöglicht es, detaillierte Schnittbilder von Organen und Geweben im Körper zu erstellen, wodurch eine präzise Diagnose vieler Erkrankungen möglich ist.
+
+Das Verfahren ist besonders schonend, da es keine ionisierende Strahlung verwendet. Stattdessen erzeugt das Magnetfeld Bilder, die von einem Computer verarbeitet und von Radiologen analysiert werden. Die Magnetresonanztomographie eignet sich für die Untersuchung des gesamten Körpers, einschließlich der Muskulatur, des Skeletts, des Gehirns, der Organe und der Blutgefäße.
+
+Zu den häufig durchgeführten MRI-Untersuchungen gehören:
+
+- **Muskoloskeletale Untersuchungen:** MRTs der Wirbelsäule, Gelenke (wie Hüfte, Knie, Schulter, Handgelenk), Weichteile und Sehnen.
+- **Neuroradiologische Untersuchungen:** MRI von Gehirn, Rückenmark, Nervensträngen sowie spezielle Verfahren wie MR-Angiographie und Myelografie.
+- **Thorax, Abdomen und Becken:** Untersuchung der Lunge, Leber, Pankreas, Prostata und anderer Organe. Auch MR-Angiographien sind möglich.
+- **Kardiale Untersuchungen:** MRT des Herzens, inklusive Perfusions- und Funktionsanalysen.
+- **Spezielle Verfahren:** MR-Arthrografien, MRCP für die Darstellung der Gallenwege, MR-Spektroskopie zur Gewebecharakterisierung.
+
+Während der Untersuchung liegen Sie auf einer Liege, die in die MRT-Röhre geschoben wird. Der Durchmesser beträgt meist 60 bis 70 cm, die Länge 150 bis 200 cm. Für Patienten mit Platzangst stehen oft offene Geräte zur Verfügung. Über einen Meldeschalter können Sie jederzeit mit dem Personal kommunizieren.
+
+Die MRT ist eine nicht-invasive, strahlungsfreie Methode, um präzise Diagnosen zu stellen.
+";"The Magnetic Resonance Tomography (MRT), also known as Nuclear Magnetic Resonance (NMR) or MRI, is an imaging procedure that functions without the use of X-rays and relies on a strong magnetic field and radio waves. This technology enables the creation of detailed cross-sectional images of organs and tissues in the body, thereby making precise diagnoses possible for many diseases.
+
+The procedure is particularly gentle since it does not use ionizing radiation. Instead, the magnetic field generates images that are processed by a computer and analyzed by radiologists. Magnetic Resonance Tomography is suitable for examining the entire body, including muscle, skeleton, brain, organs, and blood vessels.
+
+Common MRI examinations include:
+
+- **Musculoskeletal examinations:** MRTs of the spine, joints (such as hips, knees, shoulders, and wrist), soft tissues, and tendons.
+- **Neuroradiological examinations:** MRI of the brain, spinal cord, nerve strands, and specialized procedures like MR angiography and myelography.
+- **Thorax, Abdomen, and Pelvis:** Examination of the lung, liver, pancreas, prostate, and other organs. MR angiograms are also possible.
+- **Cardiac examinations:** MRT of the heart, including perfusion and functional analyses.
+- **Special procedures:** MR arthrograms, MRCP for gallbladder imaging, MR spectroscopy for tissue characterization.
+
+During the examination, you will lie on a table that is inserted into the MRT tube. The diameter is usually 60 to 70 cm, and the length is 150 to 200 cm. For patients with claustrophobia, open devices are often available. You can communicate with staff at any time using a call button.
+
+The MRI is a non-invasive, radiation-free method for making precise diagnoses."
+en;geraete/mrt.md;title;Magnetresonanztomographie (MRT);Magnetic Resonance Tomography (MRI)
+en;geraete/roentgen.md;main_content;"Das klassische Röntgen ist eines der ältesten bildgebenden Verfahren und wird vor allem zur schnellen Diagnose von Knochenbrüchen und Lungenerkrankungen eingesetzt. Während der Untersuchung werden Röntgenstrahlen durch den Körper geschickt, die je nach Gewebe unterschiedlich absorbiert werden. Dadurch entstehen kontrastreiche Bilder, auf denen Knochen, Organe und Gewebe sichtbar werden.
+
+Typische Einsatzgebiete:
+
+- **Knochen:** Erkennung von Brüchen und Fehlstellungen.
+- **Brustkorb:** Untersuchung der Lunge und des Herzens.
+- **Gelenke:** Feststellung von Arthrose oder Entzündungen.
+- **Zähne:** Kontrolle von Zahn- und Kieferstrukturen.
+
+Die Untersuchung dauert nur wenige Minuten und ist schmerzfrei. Moderne Geräte minimieren die Strahlenbelastung bestmöglich.
+";"The classic X-ray is one of the oldest imaging procedures and is primarily used for rapid diagnosis of bone fractures and lung diseases. During the examination, X-rays are guided through the body, which are absorbed differently depending on the tissue. This results in contrast-rich images, showing bones, organs, and tissue.
+
+Typical applications:
+
+- **Bones:** Detection of fractures and misalignments.
+- **Chest:** Examination of the lungs and heart.
+- **Joints:** Determination of arthritis or inflammation.
+- **Teeth:** Control of tooth and jaw structures.
+
+The examination only takes a few minutes and is pain-free. Modern equipment minimizes radiation exposure as much as possible."
+en;geraete/roentgen.md;title;Klassisches Röntgen;Classic X-ray
+en;geraete/ct.md;main_content;"Die Computertomographie (CT) ist ein bildgebendes Verfahren, das mithilfe von Röntgenstrahlen detaillierte Querschnittsbilder Ihres Körpers erstellt. Im Gegensatz zum klassischen Röntgen werden bei der CT viele Einzelbilder aus verschiedenen Winkeln aufgenommen, die ein Computer zu einem Gesamtbild zusammensetzt.
+
+Anwendungsgebiete:
+
+- **Thorax:** Erkennung von Lungenkrankheiten, Tumoren, Embolien.
+- **Abdomen/Becken:** Diagnose von Leber-, Nieren- und Darmerkrankungen.
+- **Kopf:** Feststellung von Schlaganfällen, Blutungen, Schädelverletzungen.
+- **Gefäße:** CT-Angiographie zur Gefäßdarstellung.
+- **Knochen:** Detaillierte Analyse von Frakturen.
+
+Die Untersuchung ist schnell, effizient und besonders in Notfällen unverzichtbar. Moderne Geräte reduzieren die Strahlenbelastung auf ein Minimum.
+";"The computed tomography (CT) is an imaging procedure that creates detailed cross-sectional images of your body using X-ray radiation. Unlike traditional X-ray, CT uses many individual images taken from different angles, which a computer combines into a single image.
+
+Applications:
+
+- **Chest:** Detection of lung diseases, tumors, and embolisms.
+- **Abdomen/Pelvis:** Diagnosis of liver, kidney, and bowel diseases.
+- **Head:** Determination of strokes, bleeding, and skull injuries.
+- **Vessels:** CT angiography for vessel display.
+- **Bones:** Detailed analysis of fractures.
+
+The examination is quick, efficient, and especially crucial in emergency situations. Modern devices minimize radiation exposure to a minimum."
+en;geraete/ct.md;title;Computertomographie (CT);Computed Tomography (CT)
+en;geraete/ultraschall.md;main_content;"Der Ultraschall, auch als Sonographie bekannt, ist ein bildgebendes Verfahren, das zur Diagnose zahlreicher Erkrankungen dient. Anders als die MRT oder CT nutzt Ultraschall keine Röntgenstrahlen, sondern hochfrequente Schallwellen. Diese Methode ist schmerzfrei, sicher und wird vor allem zur Untersuchung von Weichteilen eingesetzt.
+
+Während der Untersuchung wird ein Gel auf die Haut aufgetragen, um die Schallwellenübertragung zu verbessern. Der Schallkopf sendet Wellen aus, die vom Körpergewebe reflektiert werden. Ein Computer wandelt diese Signale in Bilder um, die in Echtzeit betrachtet werden können.
+
+Typische Anwendungen sind:
+
+- **Abdomen:** Untersuchung von Leber, Nieren, Gallenblase, Bauchspeicheldrüse.
+- **Becken:** Beurteilung von Blase, Gebärmutter, Eierstöcken, Prostata.
+- **Gefäße:** Doppler-Ultraschall zur Analyse von Blutfluss und Gefäßverengungen.
+- **Muskuloskelettales System:** Diagnostik an Gelenken, Sehnen, Muskeln.
+
+Ultraschall ist flexibel, schnell einsetzbar und birgt keine Strahlenrisiken – ideal auch für Schwangere und Kinder.
+";"The Ultrasound, also known as Sonography, is an imaging procedure that serves to diagnose numerous diseases. Unlike MRI or CT scans, Ultrasound does not use X-rays but rather high-frequency sound waves. This method is pain-free, safe, and primarily used for examining soft tissues.
+
+During the examination, a gel is applied to the skin to improve ultrasound transmission. The transducer sends out waves that are reflected by bodily tissue. A computer converts these signals into images that can be viewed in real-time.
+
+Common applications include:
+
+- **Abdomen:** Examination of liver, kidneys, gallbladder, pancreas.
+- **Pelvis:** Evaluation of bladder, uterus, ovaries, prostate.
+- **Vessels:** Doppler Ultrasound for analyzing blood flow and vessel narrowing.
+- **Musculoskeletal System:** Diagnostic evaluation at joints, tendons, muscles.
+
+Ultrasound is flexible, quickly deployable, and carries no radiation risks – ideal for pregnant women and children as well."
+en;geraete/ultraschall.md;title;Ultraschall / Sonographie (US);Ultrasonography / Sonography (US)
+en;standorte/04-genf.md;main_content;"In Genf werden die Untersuchungen bei unserem Partner durchgeführt.
+
+**Die Adresse lautet:**
+
+In Genf haben wir mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+";"The investigations are carried out by our partner in Geneva.
+
+**The address is:**
+
+We have several partners in Geneva. You will receive the address with your appointment confirmation."
+en;standorte/04-genf.md;title;Genf;Geneva
+en;standorte/03-basel.md;main_content;"In Basel werden die Untersuchungen bei unserem Partner durchgeführt. 
+
+**Die Adresse lautet:**
+
+In Basel haben wir mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+";"The investigations are carried out by our partner in Basel.
+
+**The address is:**
+
+We have several partners in Basel. You will receive the address with your appointment confirmation."
+en;standorte/03-basel.md;title;Basel;English
+en;standorte/01-zuerich.md;main_content;"In Zürich werden die Untersuchungen in der Praxis Rimed durchgeführt. 
+
+**Die Adresse lautet:**
+
+Mühlebachstrasse 7
+8008 Zürich
+";"The Investigations are carried out at the practice Rimed in Zurich.
+
+**The address is:**
+
+Mühlebachstrasse 7
+8008 Zurich"
+en;standorte/01-zuerich.md;title;Zürich;Zurich
+en;standorte/02-bern.md;main_content;"In Bern werden die Untersuchungen bei MRI-Bern durchgeführt. 
+
+**Die Adresse lautet:**
+
+Schwanengasse 5/7
+
+3011 Bern
+";"The examinations are performed at MRI-Bern in Bern.
+
+**The address is:**
+
+Schwanengasse 5/7
+
+3011 Bern"
+en;standorte/02-bern.md;title;Bern;"English version:
+
+Please"
+en;indikationen/01-familiaere-vorbelastung.md;title;Familiäre Vorbelastung;Family History
+en;indikationen/01-familiaere-vorbelastung.md;description;Menschen mit einer genetischen Prädisposition zum Beispiel für Krebs oder Aneurysmen möchten sicher gehen, dass bei Ihnen noch alles in Ordnung ist.;People with a genetic predisposition to conditions such as cancer or aneurysms want to make sure that everything is still okay with them.
+en;indikationen/05-strahlenangst.md;title;Strahlenbelastung;Radiation Exposure
+en;indikationen/05-strahlenangst.md;description;Das MRT liefert oft (aber nicht immer) gleichwertige oder bessere Bilder als Röntgen und Computertomografie (CT), ohne den Körper mit Strahlen zu belasten.;The MRI delivers often (but not always) equivalent or better images than X-ray and computed tomography (CT), without exposing the body to radiation.
+en;indikationen/02-sportler-koerperliche-belastung.md;title;Sportler;Athlete
+en;indikationen/02-sportler-koerperliche-belastung.md;description;Mikroverletzungen, Gelenkprobleme oder Muskelverletzungen sollen frühzeitig erkannt werden.;Microtrauma, joint problems or muscle injuries should be detected early on.
+en;indikationen/03-chronische-beschwerden.md;title;Chronische Beschwerden;Chronic Complaints
+en;indikationen/03-chronische-beschwerden.md;description;Erschöpfung, Schmerzen, Schwindel oder Schlafstörungen: Eine umfassende Bildgebung Verdachtsmomente ausschliessen oder die Diagnose erleichtern.;Fatigue, Pain, Dizziness or Sleep Disturbances: A comprehensive imaging examination to rule out suspicious findings or facilitate diagnosis.
+en;indikationen/04-stressbelastung.md;title;Menschen mit viel Stress;People with a lot of stress
+en;indikationen/04-stressbelastung.md;description;Chronischer Stress ist eine Belastung für den gesamten Körper. Wer den Stress nicht reduzieren kann, möchte sich durch optimale Vorsorge vor gesundheitlichen Folgeschäden schützen.;Chronic stress is a burden for the entire body. Whoever cannot reduce stress wants to protect themselves from potential health consequences by optimal prevention.
+en;indikationen/06-umfassend.md;title;Umfassende Vorsorge;Comprehensive Precaution
+en;indikationen/06-umfassend.md;description;Wer einfach nur mit einer einzigen Untersuchung eine breit angelegte Vorsorge möchte, trifft mit einem MRT eine gute Wahl, weil es viele verschiedene Risiken abdeckt.;For a single comprehensive preventive measure, an MRI is a good choice because it covers many different risks.
+en;home/09-termin-buchen.md;main_content;"Hier kommen Sie ganz einfach zu Ihrem Termin. 
+
+**E-Mail eintragen**, Standort wählen, ab die Post.
+
+{{< spacer >}}   
+
+{{< bookingFormMultilanguage >}}";"Here is the translated text:
+
+Come to your appointment easily. Enter email, select location, after that post.
+
+Placeholder 0
+
+Placeholder 1"
+en;home/09-termin-buchen.md;title;Termin buchen;Book Your Appointment
+en;home/07-datenschutz.md;main_content;Auf Ihre Daten haben nur Sie und Ihre Betreuer bei SwissVital Zugriff. Wir erhöhen nicht die Prämien oder schränken den Versicherungsschutz ein, wenn wir irgendwo ein Risiko entdecken. Wir zeigen Ihnen, wo Sie stehen und helfen Ihnen, die richtigen Schlüsse daraus zu ziehen. Sie haben die volle Kontrolle.;On your data, only you and your advisors at SwissVital have access. We don't increase premiums or restrict insurance coverage if we discover a risk anywhere. We show you where you stand and help you draw the right conclusions from it. You have full control.
+en;home/07-datenschutz.md;pre_headline;Wer liest mit?;Who reads with me?
+en;home/07-datenschutz.md;title;Ihre Daten bleiben privat;Your data remains private.
+en;home/07-datenschutz.md;primary_button_text;Scan buchen;Book scan
+en;home/01-wissen-macht-gesund.md;main_content;"Seit hochauflösende MRT-Untersuchungen des ganzen Körpers möglich sind, ist ein neues Zeitalter der **Früherkennung** angebrochen. Vor allem bei Krebserkrankungen haben MRT-Scans tausende Leben gerettet.
+
+**Und das ist nur der Anfang** 
+";"Since the language code is ""en"", I will translate the text into English:
+
+""With high-resolution whole-body MRI scans now possible, a new era of **early detection** has begun. Especially in cancer cases, MRI scans have saved thousands of lives.
+
+And that's just the beginning."""
+en;home/01-wissen-macht-gesund.md;pre_headline;Gesundheit schützen mit Ganzköper-MRI;Protect Your Health with Whole-Body MRI
+en;home/01-wissen-macht-gesund.md;title;Wissen macht gesund.;Knowledge makes healthy.
+en;home/01-wissen-macht-gesund.md;primary_button_text;Scan buchen;Book a Scan
+en;home/11-partner.md;main_content;"Wohin geht ein Arzt, wenn er mal zum Arzt muss? 
+Die meisten Ärzte doktern erst einmal selbst an sich herum. Aber wenn sie doch Hilfe brauchen, haben sie ein Netzwerk aus guten Leuten, die sie vom Studium kennen oder von der gemeinschaftlichen Betreuung einiger Patient:innen. Zu so einer Person gehen sie, wenn sie mal einen Arzt oder eine Ärztin brauchen. Unsere Partner sind nicht nur approbiert und gut ausgebildet; sie haben ihre Fähigkeiten auch im persönlichen Kontakt mit SwissVital bewiesen. 
+";"WHERE does a doctor go when they need to see a doctor? Most doctors examine themselves first. But if they do need help, they have a network of good people who know them from their studies or shared patient care. They turn to someone like that person if they ever need a doctor or a female doctor. Our partners are not only licensed and well-trained; they've also demonstrated their skills in personal contact with SwissVital."
+en;home/11-partner.md;pre_headline;Wir haben ein gewachsenes Netzwerk von Partnern, denen wir vertrauen.;We have a well-established network of partners that we trust.
+en;home/11-partner.md;title;Unsere Partner;Our Partners
+en;home/11-partner.md;primary_button_text;Vorsorge buchen;Book ahead
+en;home/03-frageboegen/_index.md;main_content;"Von der Stange gibt es bei uns nicht. Wir stimmen jede Untersuchung auf die Bedürfnisse unserer Klienten ab. Beginnen Sie, indem Sie das Feld auswählen, das Ihren Bedarf am besten trifft.  {{< spacer >}}
+";There is no charge for us. We tailor each examination to the needs of our clients. Start by selecting the field that best meets your requirements.
+en;home/03-frageboegen/_index.md;pre_headline;Sprechen wir über Ihren Bedarf.;Let's Talk About Your Needs.
+en;home/03-frageboegen/_index.md;title;Wie können wir helfen?;How can we help you?
+en;home/03-frageboegen/06-individuell.md;title;Individuelle Vorsorge;Personal Preventive Care
+en;home/03-frageboegen/06-individuell.md;description;Vorsorgestrategie für genau festgelegte Risiken;Preventive strategy for precisely defined risks.
+en;home/03-frageboegen/01-familiaere-vorbelastung.md;title;Familiäre Vorbelastung;Family History
+en;home/03-frageboegen/01-familiaere-vorbelastung.md;description;Krankheiten aufgrund vererbter Anlagen vorbeugen;Preventing diseases due to inherited predispositions.
+en;home/03-frageboegen/02-sportler-koerperliche-belastung.md;title;Sportler;Athlete
+en;home/03-frageboegen/02-sportler-koerperliche-belastung.md;description;Beschwerden durch Überlastung vorbeugen;Preventing complaints due to overload.
+en;home/03-frageboegen/05-breite-vorsorge.md;title;Breite Vorsorge;BROAD PREVENTION
+en;home/03-frageboegen/05-breite-vorsorge.md;description;Breite Vorsorge für die wichtigtsten Risiken;Broad Protection Against the Most Important Risks
+en;home/03-frageboegen/03-chronische-beschwerden.md;title;Chronische Beschwerden;Chronic Complaints
+en;home/03-frageboegen/03-chronische-beschwerden.md;description;Erschöpfung, Schmerzen, Schwindel, Schlafstörungen ...;Fatigue, Pain, Dizziness, Sleep Disorders...
+en;home/03-frageboegen/04-stressbelastung.md;title;Menschen mit Stress;People with stress
+en;home/03-frageboegen/04-stressbelastung.md;description;Risiken aus hoher Stressbelastung vorbeugen;Prevent risks from high stress exposure.
+en;home/04-ablauf/_index.md;main_content;"Wir begleiten Sie persönlich durch den gesamten Prozess - von der ersten Beratung bis zur ausführlichen Besprechung Ihrer Ergebnisse. Dabei legen wir Wert auf eine transparente und verständliche Kommunikation. Hier sehen Sie, wie Ihr Check-up bei Swiss Vital abläuft.
+{{< spacer >}}";We personally accompany you throughout the entire process - from your initial consultation to a detailed discussion of your results. In this process, we place great value on transparent and understandable communication. Here's how your check-up at Swiss Vital unfolds.
+en;home/04-ablauf/_index.md;pre_headline;So läuft Ihr Check-up ab;How Your Check-up Works
+en;home/04-ablauf/_index.md;title;Ihr Check-up Schritt für Schritt;Your Health Screening Step by Step
+en;home/04-ablauf/_index.md;primary_button_text;Scan buchen;Book a scan
+en;home/04-ablauf/schritt-4.md;main_content;Sie erhalten einen kommentierten Befundbericht, der die Resultate Ihrer Untersuchungen verständlich zusammenfasst. Sollten Sie vorab spezielle Anliegen benannt haben, gehen wir auf diese besonders detailliert ein.;You will receive a commented report summarizing the results of your examination. If you have specified special requests beforehand, we will go into these in detail.
+en;home/04-ablauf/schritt-4.md;title;Schritt 4: Ihre Ergebnisse;Step 4: Your Results
+en;home/04-ablauf/schritt-2.md;main_content;Einer unserer Präventionsärzte schaut sich Ihren Fragebogen an und bespricht mit Ihnen telefonisch die für Sie am besten passende Vorsorgestrategie. Wenn das für Sie passt, müssen Sie nur noch einen Termin festlegen.;One of our preventive medicine specialists reviews your questionnaire and discusses the best suitable preventative strategy with you by phone. If that works for you, all you have to do is schedule an appointment.
+en;home/04-ablauf/schritt-2.md;title;Schritt 2: Ihre persönliche Vorsorgestrategie;Step 2: Your Personal Preventive Strategy
+en;home/04-ablauf/schritt-1.md;main_content;Zur Vorbereitung haben wir Fragebögen erstellt, die auf unterschiedliche Lebenssituationen abgestimmt sind. Wählen Sie den für Sie passenden Fragebogen aus und senden Sie ihn uns zu. Anschliessend melden wir uns bei Ihnen für die Vereinbarung eines Beratungstermins.;We have prepared questionnaires tailored to different life situations. Choose the one that suits you best and send it to us. We will then contact you to schedule a consultation appointment.
+en;home/04-ablauf/schritt-1.md;title;Schritt 1: Lassen Sie sich von uns zur Vorsorge beraten;Step 1: Let us advise you on preventative care.
+en;home/04-ablauf/schritt-5.md;main_content;In einem persönlichen Gespräch klären wir alle offenen Fragen, die sich aus den Untersuchungsergebnissen ergeben haben. Falls nötig, besprechen wir auch mögliche therapeutische Schritte oder Massnahmen, um Ihre Gesundheit zu erhalten oder wiederherzustellen.;In a personal conversation, we clarify all open questions that arise from the test results. If necessary, we also discuss possible therapeutic steps or measures to preserve or restore your health.
+en;home/04-ablauf/schritt-5.md;title;Schritt 5: Ihre Nachbesprechung;Step 5: Your Follow-up Meeting
+en;home/04-ablauf/schritt-3.md;main_content;Am vereinbarten Termin führen wir die Untersuchungen durch. Falls auch Bluttests vorgesehen sind, empfehlen wir, nüchtern zu erscheinen, um die Ergebnisse nicht zu verfälschen. Was im Detail für Ihre Untersuchung wichtig ist, erklären wir Ihnen in Ruhe vor Ort.;We will conduct the examinations at the agreed-upon time. If blood tests are also scheduled, we recommend arriving fasting to avoid influencing the results. We will explain what is important for your examination in detail when you arrive.
+en;home/04-ablauf/schritt-3.md;title;Schritt 3: Ihr Check-up in der Swiss Vital Praxis;Step 3: Your check-up at Swiss Vital Practice
+en;home/02-leistungen/ganzkoerper-scan.md;main_content;"Ein Ganzkörperscan erzeugt durch Magnetfelder und Radiowellen hochaflösende Schnittbilder des gesamten Körpers. 
+
+Der Ganzkörper-Scan, insbesondere in Verbindung mit anderen diagnostischen Verfahren, ermöglicht eine umfassende Beurteilung Ihres Gesundheitszustandes und kann frühzeitig auffällige Veränderungen erkennen. Dies ermöglicht eine präventive Behandlung, bevor Symptome auftreten. 
+
+Der Scan ist besonders empfehlenswert für Personen ab 40 Jahren, bei familiärer Vorbelastung oder bei hartnäckigen Beschwerden, deren Ursache unbekannt ist. Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+";"A whole-body MRI scan generates high-resolution sectional images of the entire body using magnetic fields and radio waves.
+
+The full-body scan, particularly when combined with other diagnostic procedures, enables a comprehensive assessment of your health status and can detect noticeable changes at an early stage. This allows for preventive treatment before symptoms appear.
+
+The scan is particularly recommended for individuals over 40 years old, those with a family history or those experiencing persistent complaints without known causes. Our prevention doctors analyze all findings and explain the results in a personal consultation."
+en;home/02-leistungen/ganzkoerper-scan.md;title;Ganzkörper-Scan;Whole-Body Scan
+en;home/02-leistungen/_index.md;main_content;"Wir verbinden diagnostische Verfahren aus verschiedenen Disziplinen, um für Sie ein umfassendes Gesamtbild zu erzeugen. Gestützt auf die Empehlungen der medizinischen Fachgesellschaften und  abgestimmt auf Ihre Lebenssituation, Ihre Vorgeschichte und Ihren Bedarf.
+{{< spacer >}}
+";We combine diagnostic procedures from various disciplines to generate a comprehensive overall picture for you. Based on the recommendations of medical professional associations and tailored to your life situation, your medical history, and your needs.
+en;home/02-leistungen/_index.md;pre_headline;Vernetzte Diagnostik;Networked Diagnosis
+en;home/02-leistungen/_index.md;title;Unser Angebot;Our Offer
+en;home/02-leistungen/sportvorsorge.md;main_content;"Die Sportvorsorge ist ein speziell für Sportler und aktive Menschen konzipiertes Untersuchungsprogramm. Es kombiniert bildgebende Verfahren, Labor- und Leistungsdiagnostik, um Ihre sportliche Gesundheit umfassend zu beurteilen und Ihr Leistungspotenzial zu optimieren.
+
+Im Fokus der MRI-Untersuchung stehen besonders die Strukturen, die beim Sport stark beansprucht werden: Gelenke, Muskeln, Sehnen und Bänder sowie das Herz-Kreislauf-System. Dadurch können wir frühzeitig Überlastungserscheinungen oder Verschleissschäden erkennen und gezielte Gegenmassnahmen einleiten, bevor ernsthafte Verletzungen entstehen.
+
+Die ergänzende Laboranalyse gibt Aufschluss über Ihren Stoffwechsel, Nährstoffversorgung und Entzündungsmarker. Wir bestimmen wichtige Parameter wie Hämoglobin, Ferritin (Eisenspeicher), Vitamin D, Magnesium und bei Bedarf spezifische Hormone, die für die sportliche Leistungsfähigkeit relevant sind.
+
+Die Sportvorsorge ist ideal für Hobby- und Leistungssportler jeder Altersklasse, besonders vor dem Start intensiver Trainingsphasen, bei Leistungsplateaus oder nach Verletzungen.
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+
+
+";"THE SPORTS SCREENING IS A SPECIAL PROGRAM DESIGNED FOR ATHLETES AND ACTIVE PEOPLE. IT COMBINES IMAGING PROCEDURES, LABORATORY DIAGNOSTICS, AND FUNCTIONAL TESTS TO THOROUGHLY ASSESS YOUR ATHLETIC HEALTH AND OPTIMIZE YOUR PERFORMANCE POTENTIAL.
+
+THE FOCUS OF THE MRI EXAMINATION IS ON STRUCTURES THAT ARE STRENUOUSLY DEMANDED BY SPORT: JOINTS, MUSCLES, TENDONS, AND LIGAMENTS, AS WELL AS THE CARDIOVASCULAR SYSTEM. THIS ALLOWS US TO IDENTIFY EARLY SIGNS OF OVERLOAD OR DEGENERATION AND INITIATE TARGETED COUNTERMEASURES BEFORE SERIOUS INJURIES OCCUR.
+
+THE ADDITIONAL LABORATORY ANALYSIS PROVIDES INSIGHT INTO YOUR METABOLISM, NUTRIENT SUPPLY, AND MARKERS OF INFLAMMATION. WE DETERMINE IMPORTANT PARAMETERS SUCH AS HEMOGLOBIN, FERRITIN (IRON STORAGE), VITAMIN D, MAGNESIUM, AND SPECIFIC HORMONES THAT ARE RELEVANT FOR ATHLETIC PERFORMANCE.
+
+THE SPORTS SCREENING IS IDEAL FOR AMATEUR AND PROFESSIONAL ATHLETES OF ALL AGES, ESPECIALLY BEFORE THE START OF INTENSE TRAINING PHASES, AT LEISTUNGSPLATEAUS, OR AFTER INJURIES.
+
+OUR PREVENTIVE PHYSICIANS ANALYZE ALL FINDINGS AND EXPLAIN THE RESULTS TO YOU IN A PERSONAL CONVERSATION."
+en;home/02-leistungen/sportvorsorge.md;title;Sportvorsorge;Preventive Care
+en;home/02-leistungen/individual-scan.md;main_content;"Der Individual-Scan ist eine massgeschneiderte MRI-Untersuchung, die sich gezielt auf bestimmte Körperregionen konzentriert, die für Sie von besonderem Interesse sind. Im Gegensatz zum Ganzkörper-Scan ermöglicht dieser fokussierte Ansatz eine noch detailliertere Betrachtung spezifischer Bereiche.
+
+Wir beginnen mit einer ausführlichen Anamnese, bei der wir gemeinsam die zu untersuchenden Bereiche festlegen. Je nach Ihren persönlichen Bedürfnissen oder Beschwerden können wir beispielsweise das Gehirn, die Wirbelsäule, die Gelenke oder die inneren Organe genauer betrachten. Die Untersuchungszeit variiert je nach Umfang zwischen 20 und 40 Minuten.
+
+Der Individual-Scan eignet sich besonders für Personen mit spezifischen Beschwerden, nach Unfällen oder Operationen, bei chronischen Erkrankungen oder zur Verlaufskontrolle bekannter gesundheitlicher Probleme. Die höhere Auflösung und spezifische Ausrichtung ermöglichen eine noch präzisere Diagnostik für denAusschnitt, der Sie besonders interessiert. 
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+";"THE INDIVIDUAL SCAN IS A CUSTOMIZED MRI EXAMINATION THAT FOCUSES ON SPECIFIC BODY REGIONS OF INTEREST TO YOU. IN CONTRAST TO THE FULL-BODY SCAN, THIS TARGETED APPROACH ENABLES A MORE DETAILED EXAMINATION OF SPECIFIC AREAS.
+
+WE BEGIN WITH A THOROUGH ANAMNESIS, WHERE WE WORK TOGETHER TO IDENTIFY THE AREAS TO BE EXAMINED. DEPENDING ON YOUR PERSONAL NEEDS OR SYMPTOMS, WE MAY FOR EXAMPLE, EXAMINE THE BRAIN, SPINE, JOINTS, OR INTERNAL ORGANS MORE CLOSELY. THE EXAMINATION TIME Varies ACCORDINGLY BETWEEN 20 AND 40 MINUTES.
+
+THE INDIVIDUAL SCAN IS PARTICULARLY SUITABLE FOR INDIVIDUALS WITH SPECIFIC COMPLAINTS, FOLLOWING INJURIES OR SURGERY, WITH CHRONIC ILLNESSES, OR FOR MONITORING THE PROGRESS OF KNOWN HEALTH PROBLEMS. THE HIGHER RESOLUTION AND TARGETED APPROACH ALLOW FOR A MORE PRECISE DIAGNOSIS FOR THE SECTION THAT INTERESTS YOU MOST.
+
+OUR PREVENTIVE PHYSICIANS ANALYZE ALL RESULTS AND EXPLAIN THE FINDINGS TO YOU IN A PERSONAL CONSULTATION."
+en;home/02-leistungen/individual-scan.md;title;Individual-Scan;Personalized Scan
+en;home/02-leistungen/laboranalyse.md;main_content;"Unsere umfassende Laboranalyse bietet einen detaillierten Einblick in Ihre Stoffwechselprozesse und inneren Körperfunktionen. Durch eine Blutanalyse können wir wichtige Gesundheitsparameter bestimmen und frühzeitig Risiken erkennen, lange bevor klinische Symptome auftreten.
+
+Die Standardanalyse umfasst über 40 verschiedene Parameter, darunter Blutbild, Leber- und Nierenwerte, Elektrolyte, Blutzucker, Cholesterin und weitere Fettwerte, Entzündungsmarker, Schilddrüsenwerte sowie Vitamine und Mineralstoffe. Je nach Ihrer persönlichen Situation können zusätzliche spezifische Tests durchgeführt werden, wie Hormonstatus, Allergietests, genetische Analysen oder spezielle Tumormarker.
+
+Die Laboranalyse kann ideal mit einem MRI-Scan kombiniert werden, um ein umfassendes Bild Ihrer Gesundheit zu erhalten. Dieses ganzheitliche Screening ermöglicht eine präzise Gesundheitsvorsorge auf höchstem Niveau. Die Blutentnahme erfolgt dann in unserem Zentrum, in der Regel a dem Tag, an dem auch das MRI durchgeführt wird. Je nach Umfang der Analysen liegen die Ergebnisse innerhalb von 1-3 Werktagen vor.
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+
+
+";"Our comprehensive laboratory analysis provides a detailed insight into your metabolic processes and internal bodily functions. Through blood testing, we can determine important health parameters and recognize risks early on, long before clinical symptoms appear.
+
+The standard analysis includes over 40 different parameters, including blood count, liver and kidney values, electrolytes, blood sugar, cholesterol, and other fatty acid values, inflammation markers, thyroid hormone levels, as well as vitamins and minerals. Depending on your individual situation, additional specific tests can be performed, such as hormone status, allergy testing, genetic analysis, or special tumor markers.
+
+The laboratory analysis can be ideally combined with an MRI scan to obtain a comprehensive picture of your health. This holistic screening enables precise health prevention at the highest level. The blood draw takes place in our center, usually on the day when the MRI is also performed. Depending on the scope of the analyses, the results are available within 1-3 working days.
+
+Our preventive physicians analyze all test results and explain the outcome to you in a personal consultation."
+en;home/02-leistungen/laboranalyse.md;title;Laboranalyse;Laboratory Analysis
+fr;Untersuchungen/05-gentest.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Gentest-Verfahren erklären.
+";"Voici le texte traduit en français :
+
+[[[Voici bientôt un texte qui expliquera nos procédures d'analyse génétique.]]]"
+fr;Untersuchungen/05-gentest.md;title;Analyse genetischer Marker;Analyse des marqueurs génétiques
+fr;Untersuchungen/02-hormontest.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Hormontest-Verfahren erklären.
+";Voici un texte qui explique nos méthodes d'épreuve hormonale.
+fr;Untersuchungen/02-hormontest.md;title;Hormontest;Étude hormonale
+fr;Untersuchungen/03-stoffwechselanalyse.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Stoffwechselanalyse-Verfahren erklären.
+";"Voici le texte traduit en français :
+
+[[[Voici bientôt un texte dans lequel nous expliquerons nos méthodes d'analyse métabolique.]]]"
+fr;Untersuchungen/03-stoffwechselanalyse.md;title;Stoffwechselanalyse;Analyse du métabolisme
+fr;Untersuchungen/04-vitalstoff-check.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Vitalstoff-Test-Verfahren erklären.
+";Nous allons vous présenter prochainement un texte expliquant nos méthodes de test de vitamines.
+fr;Untersuchungen/04-vitalstoff-check.md;title;Vitalstoff-Test;Examens de vitamine
+fr;Untersuchungen/01-blutanalyse.md;main_content;"Hier folgt in Kürze eine Beschreibung zu unserer Blutanalyse.
+";La suite d'une description sur notre analyse sanguine bientôt.
+fr;Untersuchungen/01-blutanalyse.md;title;Blutanalyse;Analyse sanguine
+fr;geraete/mrt.md;main_content;"Die Magnetresonanztomographie (MRT), auch als Kernspintomographie oder MRI bezeichnet, ist ein bildgebendes Verfahren, das ohne den Einsatz von Röntgenstrahlen funktioniert und auf einem starken Magnetfeld sowie Radiowellen basiert. Diese Technologie ermöglicht es, detaillierte Schnittbilder von Organen und Geweben im Körper zu erstellen, wodurch eine präzise Diagnose vieler Erkrankungen möglich ist.
+
+Das Verfahren ist besonders schonend, da es keine ionisierende Strahlung verwendet. Stattdessen erzeugt das Magnetfeld Bilder, die von einem Computer verarbeitet und von Radiologen analysiert werden. Die Magnetresonanztomographie eignet sich für die Untersuchung des gesamten Körpers, einschließlich der Muskulatur, des Skeletts, des Gehirns, der Organe und der Blutgefäße.
+
+Zu den häufig durchgeführten MRI-Untersuchungen gehören:
+
+- **Muskoloskeletale Untersuchungen:** MRTs der Wirbelsäule, Gelenke (wie Hüfte, Knie, Schulter, Handgelenk), Weichteile und Sehnen.
+- **Neuroradiologische Untersuchungen:** MRI von Gehirn, Rückenmark, Nervensträngen sowie spezielle Verfahren wie MR-Angiographie und Myelografie.
+- **Thorax, Abdomen und Becken:** Untersuchung der Lunge, Leber, Pankreas, Prostata und anderer Organe. Auch MR-Angiographien sind möglich.
+- **Kardiale Untersuchungen:** MRT des Herzens, inklusive Perfusions- und Funktionsanalysen.
+- **Spezielle Verfahren:** MR-Arthrografien, MRCP für die Darstellung der Gallenwege, MR-Spektroskopie zur Gewebecharakterisierung.
+
+Während der Untersuchung liegen Sie auf einer Liege, die in die MRT-Röhre geschoben wird. Der Durchmesser beträgt meist 60 bis 70 cm, die Länge 150 bis 200 cm. Für Patienten mit Platzangst stehen oft offene Geräte zur Verfügung. Über einen Meldeschalter können Sie jederzeit mit dem Personal kommunizieren.
+
+Die MRT ist eine nicht-invasive, strahlungsfreie Methode, um präzise Diagnosen zu stellen.
+";"La tomographie par résonance magnétique (TRM) ou imagerie par résonance magnétique (IRM), est un procédé d'imagerie qui fonctionne sans l'utilisation de rayons X et repose sur un champ magnétique puissant ainsi que des ondes radio. Cette technologie permet de créer des images détaillées d'organes et de tissus dans le corps, ce qui permet une diagnose précise de nombreuses maladies.
+
+Ce procédé est particulièrement précaire car il ne utilise pas de radiation ionisante. Au lieu de cela, le champ magnétique génère des images que le ordinateur traite et que les radiologues analysent. La tomographie par résonance magnétique convient pour l'étude du corps entier, y compris la musculature, le squelette, le cerveau, les organes et les vaisseaux sanguins.
+
+Parmi les examens MRI couramment pratiqués figurent :
+
+* **Examens musculosquelettiques** : MRT de la colonne vertébrale, des articulations (comme la hanche, le genou, l'épaule, le coude) et des tissus mous et tendineux.
+* **Examens neuroradiologiques** : IRM du cerveau, de la moelle épinière, des nerfs et des filaments nerveux ainsi que des procédures spéciales comme l'angiographie àIRM et la myélographie.
+* **Thorax, abdomen et bassin** : Examen des poumons, du foie, du pancréas, de la prostate et d'autres organes. Des angiographies àIRM sont également possibles.
+* **Examens cardiaques** : MRT du cœur, y compris les analyses de perfusion et de fonction.
+* **Procédures spéciales** : Arthrographies àIRM, cholangiographie par RM pour la représentation des voies biliaires, spectroscopie àRM pour la caractérisation tissulaire.
+
+Pendant l'examen, vous êtes placé sur un lit qui est introduit dans le tube MRI. Le diamètre est généralement de 60 à 70 cm et la longueur de 150 à 200 cm. Pour les patients souffrant d'angoraphobie, des appareils ouverts sont souvent disponibles. Vous pouvez communiquer avec le personnel à tout moment via un système de communication.
+
+La TMRI est une méthode non invasive et sans rayonnement pour établir des diagnostics précis."
+fr;geraete/mrt.md;title;Magnetresonanztomographie (MRT);Tommographie à échographie magnétique (TEMM)
+fr;geraete/roentgen.md;main_content;"Das klassische Röntgen ist eines der ältesten bildgebenden Verfahren und wird vor allem zur schnellen Diagnose von Knochenbrüchen und Lungenerkrankungen eingesetzt. Während der Untersuchung werden Röntgenstrahlen durch den Körper geschickt, die je nach Gewebe unterschiedlich absorbiert werden. Dadurch entstehen kontrastreiche Bilder, auf denen Knochen, Organe und Gewebe sichtbar werden.
+
+Typische Einsatzgebiete:
+
+- **Knochen:** Erkennung von Brüchen und Fehlstellungen.
+- **Brustkorb:** Untersuchung der Lunge und des Herzens.
+- **Gelenke:** Feststellung von Arthrose oder Entzündungen.
+- **Zähne:** Kontrolle von Zahn- und Kieferstrukturen.
+
+Die Untersuchung dauert nur wenige Minuten und ist schmerzfrei. Moderne Geräte minimieren die Strahlenbelastung bestmöglich.
+";"Le classique rayon X est l'un des procédés d'imagerie les plus anciens et il est principalement utilisé pour une diagnose rapide de fractures osseuses et de maladies pulmonaires. Pendant l'examen, des rayons X sont injectés dans le corps qui absorbent différemment en fonction du tissu. Cela produit des images contrastées sur lesquelles les os, les organes et les tissus deviennent visibles.
+
+Domaines d'application typiques :
+
+- **Os** : Détection de fractures et de malformations.
+- **Cage thoracique** : Exploration du poumon et du cœur.
+- **Articulations** : Détecter l'arthrose ou des inflammation.
+- **Dents** : Contrôle des structures dentaires et faciales.
+
+L'examen ne dure que quelques minutes et est indolore. Les équipements modernes minimisent la charge ionisante au maximum."
+fr;geraete/roentgen.md;title;Klassisches Röntgen;Imagerie classique
+fr;geraete/ct.md;main_content;"Die Computertomographie (CT) ist ein bildgebendes Verfahren, das mithilfe von Röntgenstrahlen detaillierte Querschnittsbilder Ihres Körpers erstellt. Im Gegensatz zum klassischen Röntgen werden bei der CT viele Einzelbilder aus verschiedenen Winkeln aufgenommen, die ein Computer zu einem Gesamtbild zusammensetzt.
+
+Anwendungsgebiete:
+
+- **Thorax:** Erkennung von Lungenkrankheiten, Tumoren, Embolien.
+- **Abdomen/Becken:** Diagnose von Leber-, Nieren- und Darmerkrankungen.
+- **Kopf:** Feststellung von Schlaganfällen, Blutungen, Schädelverletzungen.
+- **Gefäße:** CT-Angiographie zur Gefäßdarstellung.
+- **Knochen:** Detaillierte Analyse von Frakturen.
+
+Die Untersuchung ist schnell, effizient und besonders in Notfällen unverzichtbar. Moderne Geräte reduzieren die Strahlenbelastung auf ein Minimum.
+";"La tomographie computed (CT) est une méthode d'imagerie qui utilise des rayons X pour créer des images détaillées de votre corps en coupe. À la différence du classique rayon X, la CT prend de nombreux clichés à partir de différents angles que le ordinateur assemble en une image complète.
+
+Domaines d'application :
+
+- **Thorax** : detection de maladies pulmonaires, tumeurs, embolies.
+- **Abdomen/ Bassin** : diagnostic des affections hépatiques, rénales et intestinales.
+- **Tête** : établissement de crises cardiaques, hémorragies, traumatismes crâniens.
+- **Artères** : angiographie CT pour l'imagerie vasculaire.
+- **Os** : analyse détaillée des fractures.
+
+L'examen est rapide, efficace et particulièrement essentiel en cas d'urgence. Les équipements modernes réduisent au minimum la charge de rayons X."
+fr;geraete/ct.md;title;Computertomographie (CT);Tomographie computed (TC)
+fr;geraete/ultraschall.md;main_content;"Der Ultraschall, auch als Sonographie bekannt, ist ein bildgebendes Verfahren, das zur Diagnose zahlreicher Erkrankungen dient. Anders als die MRT oder CT nutzt Ultraschall keine Röntgenstrahlen, sondern hochfrequente Schallwellen. Diese Methode ist schmerzfrei, sicher und wird vor allem zur Untersuchung von Weichteilen eingesetzt.
+
+Während der Untersuchung wird ein Gel auf die Haut aufgetragen, um die Schallwellenübertragung zu verbessern. Der Schallkopf sendet Wellen aus, die vom Körpergewebe reflektiert werden. Ein Computer wandelt diese Signale in Bilder um, die in Echtzeit betrachtet werden können.
+
+Typische Anwendungen sind:
+
+- **Abdomen:** Untersuchung von Leber, Nieren, Gallenblase, Bauchspeicheldrüse.
+- **Becken:** Beurteilung von Blase, Gebärmutter, Eierstöcken, Prostata.
+- **Gefäße:** Doppler-Ultraschall zur Analyse von Blutfluss und Gefäßverengungen.
+- **Muskuloskelettales System:** Diagnostik an Gelenken, Sehnen, Muskeln.
+
+Ultraschall ist flexibel, schnell einsetzbar und birgt keine Strahlenrisiken – ideal auch für Schwangere und Kinder.
+";"L'écoulement ultrasonique, également connue sous le nom de sonographie, est une méthode d'imagerie qui vise à diagnostiquer de nombreuses affections. Différemment des IRM ou CT, l'écoulement ultrasonique ne utilise pas de rayons X, mais plutôt des ondes sonores à haute fréquence. Cette méthode est douce, sûre et est principalement utilisée pour examiner les tissus mous.
+
+Pendant l'examen, une crème est appliquée sur la peau pour améliorer la transmission des ondes sonores. Le capteur d'onde envoie des signaux qui sont reflétés par le tissu conjonctif. Un ordinateur transforme ces signaux en images que l'on peut consulter en temps réel.
+
+Les applications typiques incluent :
+
+- **Abdomen** : examen de la rate, des reins, de la vesse urinaire, du pancréas.
+- **Basin** : évaluation de la vessie, de l'utérus, des ovaires, de la prostate.
+- **Vaisseaux** : écoulement Doppler pour analyser le flux sanguin et les sténoses vasculaires.
+- **Système musculosquelettique** : diagnostic des articulations, des tendons, des muscles.
+
+L'écoulement ultrasonique est flexible, rapide à mettre en œuvre et ne présente aucun risque de rayonnement – idéale également pour les femmes enceintes et les enfants."
+fr;geraete/ultraschall.md;title;Ultraschall / Sonographie (US);Échographie / Ultrasonographie (US)
+fr;standorte/04-genf.md;main_content;"In Genf werden die Untersuchungen bei unserem Partner durchgeführt.
+
+**Die Adresse lautet:**
+
+In Genf haben wir mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+";"Les examens sont effectués par notre partenaire à Genève.
+
+L'adresse est la suivante :
+
+Nous avons plusieurs partenaires à Genève. L'adresse vous sera fournie avec la confirmation de votre rendez-vous."
+fr;standorte/04-genf.md;title;Genf;Génève
+fr;standorte/03-basel.md;main_content;"In Basel werden die Untersuchungen bei unserem Partner durchgeführt. 
+
+**Die Adresse lautet:**
+
+In Basel haben wir mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+";"Dans le canton de Bâle, les examens sont réalisés par notre partenaire.
+
+**L'adresse est:**
+
+Nous avons plusieurs partenaires à Bâle. Vous obtiendrez l'adresse avec la confirmation du rendez-vous."
+fr;standorte/03-basel.md;title;Basel;Bâle
+fr;standorte/01-zuerich.md;main_content;"In Zürich werden die Untersuchungen in der Praxis Rimed durchgeführt. 
+
+**Die Adresse lautet:**
+
+Mühlebachstrasse 7
+8008 Zürich
+";"Dans le canton de Zurich, les examens sont réalisés par la clinique Rimed.
+
+L'adresse est :
+
+Rue du Mühlebach 7
+8008 Zurich"
+fr;standorte/01-zuerich.md;title;Zürich;Genève
+fr;standorte/02-bern.md;main_content;"In Bern werden die Untersuchungen bei MRI-Bern durchgeführt. 
+
+**Die Adresse lautet:**
+
+Schwanengasse 5/7
+
+3011 Bern
+";"Dans le canton de Berne, les examens sont réalisés à l'hôpital MRI-Berthe.
+
+**L'adresse est:**
+
+Rue des Cygnes 5/7
+
+3011 Berne"
+fr;standorte/02-bern.md;title;Bern;[[[Protection de votre santé]]]
+fr;indikationen/01-familiaere-vorbelastung.md;title;Familiäre Vorbelastung;Charge génétique familliale
+fr;indikationen/01-familiaere-vorbelastung.md;description;Menschen mit einer genetischen Prädisposition zum Beispiel für Krebs oder Aneurysmen möchten sicher gehen, dass bei Ihnen noch alles in Ordnung ist.;Les gens ayant une prédilection génétique par exemple pour le cancer ou les anévrismes veulent être sûrs que tout se passe bien avec eux.
+fr;indikationen/05-strahlenangst.md;title;Strahlenbelastung;Exposition ionisante
+fr;indikationen/05-strahlenangst.md;description;Das MRT liefert oft (aber nicht immer) gleichwertige oder bessere Bilder als Röntgen und Computertomografie (CT), ohne den Körper mit Strahlen zu belasten.;"Le MRT fournit souvent (mais pas toujours) des images équivalentes ou meilleures que les rayons X et la tomodensitométrie informatique (TDM), sans charger le corps de rayons.
+
+(FR)"
+fr;indikationen/02-sportler-koerperliche-belastung.md;title;Sportler;Joueur
+fr;indikationen/02-sportler-koerperliche-belastung.md;description;Mikroverletzungen, Gelenkprobleme oder Muskelverletzungen sollen frühzeitig erkannt werden.;Les micro-lésions, les problèmes articulaires ou les lésions musculaires devraient être détectées à temps.
+fr;indikationen/03-chronische-beschwerden.md;title;Chronische Beschwerden;Troubles chroniques
+fr;indikationen/03-chronische-beschwerden.md;description;Erschöpfung, Schmerzen, Schwindel oder Schlafstörungen: Eine umfassende Bildgebung Verdachtsmomente ausschliessen oder die Diagnose erleichtern.;Épuisement, douleurs, vertiges ou troubles du sommeil : une imagerie exhaustive permet d'éliminer les soupçons ou de faciliter le diagnostic.
+fr;indikationen/04-stressbelastung.md;title;Menschen mit viel Stress;Les personnes souffrant de beaucoup de stress.
+fr;indikationen/04-stressbelastung.md;description;Chronischer Stress ist eine Belastung für den gesamten Körper. Wer den Stress nicht reduzieren kann, möchte sich durch optimale Vorsorge vor gesundheitlichen Folgeschäden schützen.;Le stress chronique est une charge pour tout le corps. Qui ne peut réduire le stress voudrait se protéger contre les conséquences négatives sur la santé en faisant preuve de prévention optimale.
+fr;indikationen/06-umfassend.md;title;Umfassende Vorsorge;Prévention intégrale
+fr;indikationen/06-umfassend.md;description;Wer einfach nur mit einer einzigen Untersuchung eine breit angelegte Vorsorge möchte, trifft mit einem MRT eine gute Wahl, weil es viele verschiedene Risiken abdeckt.;Quand on souhaite simplement une enquête unique pour une prévention large, le MRI est une bonne option car il couvre de nombreux risques différents.
+fr;home/09-termin-buchen.md;main_content;"Hier kommen Sie ganz einfach zu Ihrem Termin. 
+
+**E-Mail eintragen**, Standort wählen, ab die Post.
+
+{{< spacer >}}   
+
+{{< bookingFormMultilanguage >}}";"[[[Vous arrivez simplement à votre rendez-vous. 
+
+Adresse e-mail, choix de centre médical, après le courrier.
+
+{{< spacer >}}   
+
+{{< bookingFormMultilanguage >}}]]]"
+fr;home/09-termin-buchen.md;title;Termin buchen;Réservation
+fr;home/07-datenschutz.md;main_content;Auf Ihre Daten haben nur Sie und Ihre Betreuer bei SwissVital Zugriff. Wir erhöhen nicht die Prämien oder schränken den Versicherungsschutz ein, wenn wir irgendwo ein Risiko entdecken. Wir zeigen Ihnen, wo Sie stehen und helfen Ihnen, die richtigen Schlüsse daraus zu ziehen. Sie haben die volle Kontrolle.;Sur vos données, seul vous et vos tuteurs à SwissVital ont accès. Nous n'augmentons pas les primes ni ne restreignons la couverture assurance si nous découvrons un risque quelque part. Nous vous montrez où vous en êtes et nous vous aiderons à tirer des conclusions justes à partir de cela. Vous avez le contrôle total.
+fr;home/07-datenschutz.md;pre_headline;Wer liest mit?;Qui lit avec nous ?
+fr;home/07-datenschutz.md;title;Ihre Daten bleiben privat;Vos données restent privées
+fr;home/07-datenschutz.md;primary_button_text;Scan buchen;Réserver un scan
+fr;home/01-wissen-macht-gesund.md;main_content;"Seit hochauflösende MRT-Untersuchungen des ganzen Körpers möglich sind, ist ein neues Zeitalter der **Früherkennung** angebrochen. Vor allem bei Krebserkrankungen haben MRT-Scans tausende Leben gerettet.
+
+**Und das ist nur der Anfang** 
+";"Depuis que des examens MRI à haute résolution du corps entier sont possibles, un nouvel âge d'**anticipation** est en cours. En particulier pour les cancers, les examens MRI ont sauvé des milliers de vies.
+
+Et cela ne fait que commencer."
+fr;home/01-wissen-macht-gesund.md;pre_headline;Gesundheit schützen mit Ganzköper-MRI;Protéger la santé avec TDM des membres
+fr;home/01-wissen-macht-gesund.md;title;Wissen macht gesund.;Connaître fait être en bonne santé.
+fr;home/01-wissen-macht-gesund.md;primary_button_text;Scan buchen;Réserver un scan
+fr;home/11-partner.md;main_content;"Wohin geht ein Arzt, wenn er mal zum Arzt muss? 
+Die meisten Ärzte doktern erst einmal selbst an sich herum. Aber wenn sie doch Hilfe brauchen, haben sie ein Netzwerk aus guten Leuten, die sie vom Studium kennen oder von der gemeinschaftlichen Betreuung einiger Patient:innen. Zu so einer Person gehen sie, wenn sie mal einen Arzt oder eine Ärztin brauchen. Unsere Partner sind nicht nur approbiert und gut ausgebildet; sie haben ihre Fähigkeiten auch im persönlichen Kontakt mit SwissVital bewiesen. 
+";"Où va un médecin quand il a besoin d'un médecin ? 
+La plupart des médecins se soignent d'abord eux-mêmes. Mais si ils ont besoin d'aide, ils ont un réseau de bonnes personnes qui sont leurs confrères ou leurs collègues issus d'une communauté de patients. À l'une de ces personnes, ils vont quand ils ont besoin d'un médecin ou d'une femme médecin. Nos partenaires ne sont pas seulement agréés et bien formés ; ils ont également démontré leurs compétences au cours de contacts personnels avec SwissVital."
+fr;home/11-partner.md;pre_headline;Wir haben ein gewachsenes Netzwerk von Partnern, denen wir vertrauen.;Nous avons un réseau élargi de partenaires dont nous faisons confiance.
+fr;home/11-partner.md;title;Unsere Partner;Nos partenaires
+fr;home/11-partner.md;primary_button_text;Vorsorge buchen;Réservation de prévention
+fr;home/03-frageboegen/_index.md;main_content;"Von der Stange gibt es bei uns nicht. Wir stimmen jede Untersuchung auf die Bedürfnisse unserer Klienten ab. Beginnen Sie, indem Sie das Feld auswählen, das Ihren Bedarf am besten trifft.  {{< spacer >}}
+";Il n'y a pas de frais supplémentaires avec nous. Nous ajustons chaque examen à la demande de nos patients. Commencez en sélectionnant le champ qui correspondra le mieux à vos besoins.
+fr;home/03-frageboegen/_index.md;pre_headline;Sprechen wir über Ihren Bedarf.;Parléons de vos besoins.
+fr;home/03-frageboegen/_index.md;title;Wie können wir helfen?;Comment puis-je vous aider ?
+fr;home/03-frageboegen/06-individuell.md;title;Individuelle Vorsorge;Prévention individuelle
+fr;home/03-frageboegen/06-individuell.md;description;Vorsorgestrategie für genau festgelegte Risiken;Stratégie de prévention pour des risques précisément définis
+fr;home/03-frageboegen/01-familiaere-vorbelastung.md;title;Familiäre Vorbelastung;Antécédents familiaux
+fr;home/03-frageboegen/01-familiaere-vorbelastung.md;description;Krankheiten aufgrund vererbter Anlagen vorbeugen;Prévenir les maladies liées à des anomalies génétiques héréditaires.
+fr;home/03-frageboegen/02-sportler-koerperliche-belastung.md;title;Sportler;Jeune athlète
+fr;home/03-frageboegen/02-sportler-koerperliche-belastung.md;description;Beschwerden durch Überlastung vorbeugen;Prévenir les soucis liés à la surcharge
+fr;home/03-frageboegen/05-breite-vorsorge.md;title;Breite Vorsorge;Prévention large échelle
+fr;home/03-frageboegen/05-breite-vorsorge.md;description;Breite Vorsorge für die wichtigtsten Risiken;Prévention étendue pour les risques les plus importants.
+fr;home/03-frageboegen/03-chronische-beschwerden.md;title;Chronische Beschwerden;Problèmes chroniques
+fr;home/03-frageboegen/03-chronische-beschwerden.md;description;Erschöpfung, Schmerzen, Schwindel, Schlafstörungen ...;Épuisement, douleurs, vertiges, troubles du sommeil...
+fr;home/03-frageboegen/04-stressbelastung.md;title;Menschen mit Stress;Les personnes souffrant de stress.
+fr;home/03-frageboegen/04-stressbelastung.md;description;Risiken aus hoher Stressbelastung vorbeugen;Prévenir les risques liés à une charge élevée de stress.
+fr;home/04-ablauf/_index.md;main_content;"Wir begleiten Sie persönlich durch den gesamten Prozess - von der ersten Beratung bis zur ausführlichen Besprechung Ihrer Ergebnisse. Dabei legen wir Wert auf eine transparente und verständliche Kommunikation. Hier sehen Sie, wie Ihr Check-up bei Swiss Vital abläuft.
+{{< spacer >}}";Nous vous accompagnons personnellement tout au long du processus - de la première consultation jusqu'à une discussion détaillée de vos résultats. En ce cours, nous mettons l'accent sur une communication transparente et compréhensible. Voici comment votre contrôle médical se déroule à Swiss Vital.
+fr;home/04-ablauf/_index.md;pre_headline;So läuft Ihr Check-up ab;Ainsi fonctionne votre examen de routine.
+fr;home/04-ablauf/_index.md;title;Ihr Check-up Schritt für Schritt;Votre examen étape par étape
+fr;home/04-ablauf/_index.md;primary_button_text;Scan buchen;Réserver un scan
+fr;home/04-ablauf/schritt-4.md;main_content;Sie erhalten einen kommentierten Befundbericht, der die Resultate Ihrer Untersuchungen verständlich zusammenfasst. Sollten Sie vorab spezielle Anliegen benannt haben, gehen wir auf diese besonders detailliert ein.;Vous obtiendrez un rapport de résultats commenté qui résume les résultats de vos examens de manière claire. Si vous avez spécifié des préoccupations particulières à l'avance, nous allons y apporter une attention détaillée.
+fr;home/04-ablauf/schritt-4.md;title;Schritt 4: Ihre Ergebnisse;Étape 4 : vos résultats
+fr;home/04-ablauf/schritt-2.md;main_content;Einer unserer Präventionsärzte schaut sich Ihren Fragebogen an und bespricht mit Ihnen telefonisch die für Sie am besten passende Vorsorgestrategie. Wenn das für Sie passt, müssen Sie nur noch einen Termin festlegen.;Un de nos médecins de prévention passe en revue votre formulaire d'enquête et discute avec vous au téléphone pour déterminer la stratégie de prévention la plus adaptée à vos besoins. Si cela vous convient, il ne vous reste plus qu'à fixer un rendez-vous.
+fr;home/04-ablauf/schritt-2.md;title;Schritt 2: Ihre persönliche Vorsorgestrategie;Étape 2 : Stratégie personnelle de prévention
+fr;home/04-ablauf/schritt-1.md;main_content;Zur Vorbereitung haben wir Fragebögen erstellt, die auf unterschiedliche Lebenssituationen abgestimmt sind. Wählen Sie den für Sie passenden Fragebogen aus und senden Sie ihn uns zu. Anschliessend melden wir uns bei Ihnen für die Vereinbarung eines Beratungstermins.;Pouvez-vous préparer des questionnaires qui sont adaptés à différentes situations de vie. Sélectionnez le questionnaire approprié pour vous et Envoyez-le-nous. Ensuite, nous nous contacterons avec vous pour fixer un rendez-vous de consultation.
+fr;home/04-ablauf/schritt-1.md;title;Schritt 1: Lassen Sie sich von uns zur Vorsorge beraten;Étape 1 : Nous vous conseillerons en matière de prévention.
+fr;home/04-ablauf/schritt-5.md;main_content;In einem persönlichen Gespräch klären wir alle offenen Fragen, die sich aus den Untersuchungsergebnissen ergeben haben. Falls nötig, besprechen wir auch mögliche therapeutische Schritte oder Massnahmen, um Ihre Gesundheit zu erhalten oder wiederherzustellen.;Dans un entretien personnel, nous clarifions toutes les questions ouvertes résultant des résultats d'examen. Si nécessaire, nous discutons également de possibles étapes thérapeutiques ou mesures pour préserver ou restaurer votre santé.
+fr;home/04-ablauf/schritt-5.md;title;Schritt 5: Ihre Nachbesprechung;Étape 5 : Votre réunion suivante
+fr;home/04-ablauf/schritt-3.md;main_content;Am vereinbarten Termin führen wir die Untersuchungen durch. Falls auch Bluttests vorgesehen sind, empfehlen wir, nüchtern zu erscheinen, um die Ergebnisse nicht zu verfälschen. Was im Detail für Ihre Untersuchung wichtig ist, erklären wir Ihnen in Ruhe vor Ort.;[[[Nous allons effectuer les examens à l'heure convenue. Si également des tests de sang sont prévus, nous vous recommandons d'apparaître sans avoir mangé pour ne pas altérer les résultats. Ce qui est important pour votre examen, nous le vous expliquerons en détail sur place.]]]
+fr;home/04-ablauf/schritt-3.md;title;Schritt 3: Ihr Check-up in der Swiss Vital Praxis;Étape 3 : Votre examen de santé à la Swiss Vital Praxis
+fr;home/02-leistungen/ganzkoerper-scan.md;main_content;"Ein Ganzkörperscan erzeugt durch Magnetfelder und Radiowellen hochaflösende Schnittbilder des gesamten Körpers. 
+
+Der Ganzkörper-Scan, insbesondere in Verbindung mit anderen diagnostischen Verfahren, ermöglicht eine umfassende Beurteilung Ihres Gesundheitszustandes und kann frühzeitig auffällige Veränderungen erkennen. Dies ermöglicht eine präventive Behandlung, bevor Symptome auftreten. 
+
+Der Scan ist besonders empfehlenswert für Personen ab 40 Jahren, bei familiärer Vorbelastung oder bei hartnäckigen Beschwerden, deren Ursache unbekannt ist. Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+";"Un scanner du corps entier génère des images de haute résolution du corps tout entier à l'aide de champs magnétiques et d'ondes radio.
+
+Le scanner du corps entier, en particulier en combinaison avec d'autres procédures diagnostiques, permet une évaluation exhaustive de votre état de santé et peut détecter des modifications anormales précocement. Cela permet un traitement préventif avant que les symptômes ne surgissent.
+
+Le scanner est particulièrement recommandé pour les personnes âgées de 40 ans ou plus, en cas d'hérédité familiale ou en présence de plaintes persistantes dont l'origine est inconnue. Nos médecins de prévention examinent tous les rapports et vous expliquent les résultats dans une conversation personnelle."
+fr;home/02-leistungen/ganzkoerper-scan.md;title;Ganzkörper-Scan;Échographie intégrale
+fr;home/02-leistungen/_index.md;main_content;"Wir verbinden diagnostische Verfahren aus verschiedenen Disziplinen, um für Sie ein umfassendes Gesamtbild zu erzeugen. Gestützt auf die Empehlungen der medizinischen Fachgesellschaften und  abgestimmt auf Ihre Lebenssituation, Ihre Vorgeschichte und Ihren Bedarf.
+{{< spacer >}}
+";Nous lions des procédures diagnostiques provenant de différentes disciplines pour vous offrir un panorama global. S'appuyant sur les recommandations des sociétés médicales spécialisées et adapté à votre situation de vie, votre histoire médicale et vos besoins.
+fr;home/02-leistungen/_index.md;pre_headline;Vernetzte Diagnostik;Diagnostic intégré
+fr;home/02-leistungen/_index.md;title;Unser Angebot;Notre offre
+fr;home/02-leistungen/sportvorsorge.md;main_content;"Die Sportvorsorge ist ein speziell für Sportler und aktive Menschen konzipiertes Untersuchungsprogramm. Es kombiniert bildgebende Verfahren, Labor- und Leistungsdiagnostik, um Ihre sportliche Gesundheit umfassend zu beurteilen und Ihr Leistungspotenzial zu optimieren.
+
+Im Fokus der MRI-Untersuchung stehen besonders die Strukturen, die beim Sport stark beansprucht werden: Gelenke, Muskeln, Sehnen und Bänder sowie das Herz-Kreislauf-System. Dadurch können wir frühzeitig Überlastungserscheinungen oder Verschleissschäden erkennen und gezielte Gegenmassnahmen einleiten, bevor ernsthafte Verletzungen entstehen.
+
+Die ergänzende Laboranalyse gibt Aufschluss über Ihren Stoffwechsel, Nährstoffversorgung und Entzündungsmarker. Wir bestimmen wichtige Parameter wie Hämoglobin, Ferritin (Eisenspeicher), Vitamin D, Magnesium und bei Bedarf spezifische Hormone, die für die sportliche Leistungsfähigkeit relevant sind.
+
+Die Sportvorsorge ist ideal für Hobby- und Leistungssportler jeder Altersklasse, besonders vor dem Start intensiver Trainingsphasen, bei Leistungsplateaus oder nach Verletzungen.
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+
+
+";"La prévention sportive est un programme d'examen spécialement conçu pour les sportifs et les personnes actives. Il combine des procédures d'imagerie, de laboratoire et de diagnostic fonctionnel pour évaluer votre santé sportive globalement et optimiser votre potentiel performances.
+
+L'enfant de l'examen par imagerie en tant que tel se concentre sur les structures qui sont particulièrement sollicitées au cours du sport : articulations, muscles, tendons et ligaments ainsi que le système cardio-vasculaire. Cela nous permet de détecter précocement des manifestations d'hypercontraction ou des lésions causées par la fatigue et de prendre des mesures ciblées pour éviter les blessures graves.
+
+L'analyse complémentaire du laboratoire apporte des informations sur votre métabolisme, votre approvisionnement en nutriments et vos marqueurs d'inflammation. Nous déterminons des paramètres importants tels que l'hémoglobine, le ferritine (stockage d'énergie), la vitamine D, le magnésium et, si nécessaire, des hormones spécifiques qui sont pertinentes pour les performances sportives.
+
+La prévention sportive est idéale pour les sportifs de loisirs et les athlètes de compétition de tout âge, en particulier avant le démarrage de phases d'entraînement intensives, lors de plateaux de performance ou après des blessures."
+fr;home/02-leistungen/sportvorsorge.md;title;Sportvorsorge;Prévention sportive
+fr;home/02-leistungen/individual-scan.md;main_content;"Der Individual-Scan ist eine massgeschneiderte MRI-Untersuchung, die sich gezielt auf bestimmte Körperregionen konzentriert, die für Sie von besonderem Interesse sind. Im Gegensatz zum Ganzkörper-Scan ermöglicht dieser fokussierte Ansatz eine noch detailliertere Betrachtung spezifischer Bereiche.
+
+Wir beginnen mit einer ausführlichen Anamnese, bei der wir gemeinsam die zu untersuchenden Bereiche festlegen. Je nach Ihren persönlichen Bedürfnissen oder Beschwerden können wir beispielsweise das Gehirn, die Wirbelsäule, die Gelenke oder die inneren Organe genauer betrachten. Die Untersuchungszeit variiert je nach Umfang zwischen 20 und 40 Minuten.
+
+Der Individual-Scan eignet sich besonders für Personen mit spezifischen Beschwerden, nach Unfällen oder Operationen, bei chronischen Erkrankungen oder zur Verlaufskontrolle bekannter gesundheitlicher Probleme. Die höhere Auflösung und spezifische Ausrichtung ermöglichen eine noch präzisere Diagnostik für denAusschnitt, der Sie besonders interessiert. 
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+";"Le scan individuel est une investigation MRI personnalisée qui se concentre spécifiquement sur des régions du corps qui vous intéressent particulièrement. En contraste avec le scan intégral, cet approche ciblée permet une analyse plus détaillée de zones spécifiques.
+
+Nous commençons par une anamnèse approfondie au cours de laquelle nous déterminons ensemble les régions à examiner. Selon vos besoins personnels ou vos plaintes, nous pouvons, par exemple, étudier plus en détail le cerveau, la colonne vertébrale, les articulations ou les organes internes. Le temps d'investigation varie selon l'étendue entre 20 et 40 minutes.
+
+Le scan individuel se prête particulièrement aux personnes souffrant de symptômes spécifiques, après des accidents ou des opérations, atteintes de maladies chroniques ou pour le suivi du traitement d'un problème de santé connu. La résolution élevée et l'orientation spécifique permettent une diagnose plus précise pour la zone qui vous intéresse particulièrement.
+
+Les médecins de prévention examinent tous les résultats et vous expliquent le résultat dans un entretien personnalisé."
+fr;home/02-leistungen/individual-scan.md;title;Individual-Scan;Échographie individuelle
+fr;home/02-leistungen/laboranalyse.md;main_content;"Unsere umfassende Laboranalyse bietet einen detaillierten Einblick in Ihre Stoffwechselprozesse und inneren Körperfunktionen. Durch eine Blutanalyse können wir wichtige Gesundheitsparameter bestimmen und frühzeitig Risiken erkennen, lange bevor klinische Symptome auftreten.
+
+Die Standardanalyse umfasst über 40 verschiedene Parameter, darunter Blutbild, Leber- und Nierenwerte, Elektrolyte, Blutzucker, Cholesterin und weitere Fettwerte, Entzündungsmarker, Schilddrüsenwerte sowie Vitamine und Mineralstoffe. Je nach Ihrer persönlichen Situation können zusätzliche spezifische Tests durchgeführt werden, wie Hormonstatus, Allergietests, genetische Analysen oder spezielle Tumormarker.
+
+Die Laboranalyse kann ideal mit einem MRI-Scan kombiniert werden, um ein umfassendes Bild Ihrer Gesundheit zu erhalten. Dieses ganzheitliche Screening ermöglicht eine präzise Gesundheitsvorsorge auf höchstem Niveau. Die Blutentnahme erfolgt dann in unserem Zentrum, in der Regel a dem Tag, an dem auch das MRI durchgeführt wird. Je nach Umfang der Analysen liegen die Ergebnisse innerhalb von 1-3 Werktagen vor.
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+
+
+";"Notre analyse de laboratoire exhaustive offre un aperçu détaillé de vos processus métaboliques et des fonctions internes de votre corps. En analysant votre sang, nous pouvons déterminer les paramètres de santé importantes et détecter les risques à long terme, même avant que les symptômes cliniques ne surgissent.
+
+L'analyse standard couvre plus de 40 paramètres, notamment le profil sanguin, les valeurs hépatiques et rénales, les électrolytes, la glycémie, le cholestérol et d'autres valeurs lipidiques, des marqueurs d'inflammation, les valeurs thyroidiennes ainsi que les vitamines et minéraux. Selon votre situation personnelle, des tests spécifiques supplémentaires peuvent être effectués, tels que l'état hormonal, les tests d'allergie, les analyses génétiques ou les marqueurs tumoraux spécifiques.
+
+L'analyse de laboratoire peut idéalement être combinée avec un scanner MRI pour obtenir une image globale de votre santé. Ce screening global permet une prudence sanitaire précise au niveau le plus élevé. La prise de sang a lieu dans notre centre, généralement le jour où l'on réalise également le scanner MRI. Selon l'étendue des analyses, les résultats sont disponibles dans les 1-3 jours ouvrables.
+
+Nos médecins de prévention examinent tous les rapports et vous expliquent le résultat dans une conversation personnelle."
+fr;home/02-leistungen/laboranalyse.md;title;Laboranalyse;Analyse de laboratoire
+it;Untersuchungen/05-gentest.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Gentest-Verfahren erklären.
+";"Ecco il testo tradotto in italiano:
+
+[[[Questo è un testo che spiega i nostri metodi di esami genetici.]]]"
+it;Untersuchungen/05-gentest.md;title;Analyse genetischer Marker;Analisi dei marcatori genetici
+it;Untersuchungen/02-hormontest.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Hormontest-Verfahren erklären.
+";"Ecco il testo tradotto:
+
+[[[Seguirà un testo nel quale spiegheremo i nostri metodi di test di ormoni.]]]"
+it;Untersuchungen/02-hormontest.md;title;Hormontest;Esame dei hormoni
+it;Untersuchungen/03-stoffwechselanalyse.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Stoffwechselanalyse-Verfahren erklären.
+";"Ecco il testo tradotto in IT:
+
+[[[In seguito verrà fornito un testo che spiega i nostri metodi di analisi del metabolismo.]]]"
+it;Untersuchungen/03-stoffwechselanalyse.md;title;Stoffwechselanalyse;Analisi del metabolismo
+it;Untersuchungen/04-vitalstoff-check.md;main_content;"Hier folgt bald ein Text, in dem wir unsere Vitalstoff-Test-Verfahren erklären.
+";Seguirà presto un testo che spiegherà i nostri metodi di valutazione delle vitamine e dei minerali.
+it;Untersuchungen/04-vitalstoff-check.md;title;Vitalstoff-Test;Esame di sostanze vitali
+it;Untersuchungen/01-blutanalyse.md;main_content;"Hier folgt in Kürze eine Beschreibung zu unserer Blutanalyse.
+";Ecco una descrizione breve sulla nostra analisi del sangue.
+it;Untersuchungen/01-blutanalyse.md;title;Blutanalyse;Analisi ematica
+it;geraete/mrt.md;main_content;"Die Magnetresonanztomographie (MRT), auch als Kernspintomographie oder MRI bezeichnet, ist ein bildgebendes Verfahren, das ohne den Einsatz von Röntgenstrahlen funktioniert und auf einem starken Magnetfeld sowie Radiowellen basiert. Diese Technologie ermöglicht es, detaillierte Schnittbilder von Organen und Geweben im Körper zu erstellen, wodurch eine präzise Diagnose vieler Erkrankungen möglich ist.
+
+Das Verfahren ist besonders schonend, da es keine ionisierende Strahlung verwendet. Stattdessen erzeugt das Magnetfeld Bilder, die von einem Computer verarbeitet und von Radiologen analysiert werden. Die Magnetresonanztomographie eignet sich für die Untersuchung des gesamten Körpers, einschließlich der Muskulatur, des Skeletts, des Gehirns, der Organe und der Blutgefäße.
+
+Zu den häufig durchgeführten MRI-Untersuchungen gehören:
+
+- **Muskoloskeletale Untersuchungen:** MRTs der Wirbelsäule, Gelenke (wie Hüfte, Knie, Schulter, Handgelenk), Weichteile und Sehnen.
+- **Neuroradiologische Untersuchungen:** MRI von Gehirn, Rückenmark, Nervensträngen sowie spezielle Verfahren wie MR-Angiographie und Myelografie.
+- **Thorax, Abdomen und Becken:** Untersuchung der Lunge, Leber, Pankreas, Prostata und anderer Organe. Auch MR-Angiographien sind möglich.
+- **Kardiale Untersuchungen:** MRT des Herzens, inklusive Perfusions- und Funktionsanalysen.
+- **Spezielle Verfahren:** MR-Arthrografien, MRCP für die Darstellung der Gallenwege, MR-Spektroskopie zur Gewebecharakterisierung.
+
+Während der Untersuchung liegen Sie auf einer Liege, die in die MRT-Röhre geschoben wird. Der Durchmesser beträgt meist 60 bis 70 cm, die Länge 150 bis 200 cm. Für Patienten mit Platzangst stehen oft offene Geräte zur Verfügung. Über einen Meldeschalter können Sie jederzeit mit dem Personal kommunizieren.
+
+Die MRT ist eine nicht-invasive, strahlungsfreie Methode, um präzise Diagnosen zu stellen.
+";"La magnetorisonanztomografia (MRT), anche conosciuta come risonanza magnetica o imaging per risonanza magnetica (IRM), è un procedimento di immaginistica che funziona senza l'impiego di raggi X e si basa su un forte campo magnetico e sulle onde radio. Questa tecnologia consente di creare immagini dettagliate degli organi e dei tessuti nel corpo, il che rende possibile una diagnosi precisa di molte malattie.
+
+Il procedimento è particolarmente gentile poiché non utilizza radiazioni ionizzanti. Invece, il campo magnetico crea immagini che vengono elaborate da un computer e analizzate da radiologi. La magnetorisonanztomografia si presta per l'esame del corpo intero, inclusi la muscolatura, lo scheletro, il cervello, gli organi e le vie sanguigne.
+
+Tra le indagini MRI più frequentemente eseguite ci sono:
+
+- **Indagini osteo-muscolari:** MRT della colonna vertebrale, articolazioni (ad esempio, fianchi, ginocchia, spalle, caviglie) e tessuti molli.
+- **Indagini neurologiche:** MRI del cervello, midollo spinale, nervi e specifiche tecniche come angiografia per risonanza magnetica e mioelografia.
+- **Torace, addome e pelvi:** Indagine dei polmoni, fegato, pancreas, prostata e altri organi. Sono anche possibili angiografie per risonanza magnetica.
+- **Indagini cardiache:** MRT del cuore, incluse analisi di perfusione e funzionalità.
+- **Tecniche speciali:** Arthrografia per risonanza magnetica, MRCP per visualizzare le vie biliari, spettrosopia per caratterizzare i tessuti.
+
+Durante l'esame, saranno sistemati sulla lettiga che verrà spinta all'interno della camera MRT. Il diametro è generalmente di 60-70 cm e la lunghezza di 150-200 cm. I pazienti con ansia spaziale possono avere accesso a dispositivi aperti. È possibile comunicare con il personale attraverso un interfono in ogni momento.
+
+La MRT è una metodica non invasiva e libera da radiazioni per stabilire diagnosi precise."
+it;geraete/mrt.md;title;Magnetresonanztomographie (MRT);Tomografia a risonanza magnetica (TROM)
+it;geraete/roentgen.md;main_content;"Das klassische Röntgen ist eines der ältesten bildgebenden Verfahren und wird vor allem zur schnellen Diagnose von Knochenbrüchen und Lungenerkrankungen eingesetzt. Während der Untersuchung werden Röntgenstrahlen durch den Körper geschickt, die je nach Gewebe unterschiedlich absorbiert werden. Dadurch entstehen kontrastreiche Bilder, auf denen Knochen, Organe und Gewebe sichtbar werden.
+
+Typische Einsatzgebiete:
+
+- **Knochen:** Erkennung von Brüchen und Fehlstellungen.
+- **Brustkorb:** Untersuchung der Lunge und des Herzens.
+- **Gelenke:** Feststellung von Arthrose oder Entzündungen.
+- **Zähne:** Kontrolle von Zahn- und Kieferstrukturen.
+
+Die Untersuchung dauert nur wenige Minuten und ist schmerzfrei. Moderne Geräte minimieren die Strahlenbelastung bestmöglich.
+";"Il classico raggi X è uno dei più antichi metodi di imaging e viene utilizzato principalmente per una diagnosi rapida delle fratture ossee e delle malattie polmonari. Durante l'esame, i raggi X vengono fatti passare nel corpo, che li assorbe in modo diverso a seconda del tessuto. Ciò genera immagini contrastanti sulle quali si possono vedere ossa, organi e tessuti.
+
+Zone di applicazione tipiche:
+
+- **Ossa:** rilevamento delle fratture e dei difetti.
+- **Torace:** esame delle vie aeree e del cuore.
+- **Articolazioni:** determinazione dell'artrosi o delle infiammazioni.
+- **Denti:** controllo delle strutture dentarie e mascellari.
+
+L'esame dura solo pochi minuti e è indolore. Gli strumenti moderni minimizzano al massimo la esposizione ai raggi X."
+it;geraete/roentgen.md;title;Klassisches Röntgen;Risonanza magnetica classica
+it;geraete/ct.md;main_content;"Die Computertomographie (CT) ist ein bildgebendes Verfahren, das mithilfe von Röntgenstrahlen detaillierte Querschnittsbilder Ihres Körpers erstellt. Im Gegensatz zum klassischen Röntgen werden bei der CT viele Einzelbilder aus verschiedenen Winkeln aufgenommen, die ein Computer zu einem Gesamtbild zusammensetzt.
+
+Anwendungsgebiete:
+
+- **Thorax:** Erkennung von Lungenkrankheiten, Tumoren, Embolien.
+- **Abdomen/Becken:** Diagnose von Leber-, Nieren- und Darmerkrankungen.
+- **Kopf:** Feststellung von Schlaganfällen, Blutungen, Schädelverletzungen.
+- **Gefäße:** CT-Angiographie zur Gefäßdarstellung.
+- **Knochen:** Detaillierte Analyse von Frakturen.
+
+Die Untersuchung ist schnell, effizient und besonders in Notfällen unverzichtbar. Moderne Geräte reduzieren die Strahlenbelastung auf ein Minimum.
+";"LA TOMografia computerizzata (CT) è una procedura di imaging che, utilizzando raggi X, produce immagini a sezione trasversale dettagliate del tuo corpo. A differenza della radiologia classica, la CT prende molti frame singoli da angolazioni diverse e li elabora un computer in un'immagine generale.
+
+Aree di applicazione:
+
+- **Torace:** rilevamento di malattie polmonari, tumori, embolie.
+- **Addome/regione pelvica:** diagnosi di malattie epatiche, renali e intestinali.
+- **Testa:** stabilimento di attacchi cerebrovascolari, emorragie, lesioni craniche.
+- **Vasi:** angiografia CT per la rappresentazione dei vasi.
+- **Ossicini:** analisi dettagliata delle fratture."
+it;geraete/ct.md;title;Computertomographie (CT);Tomografia assiale (CT)
+it;geraete/ultraschall.md;main_content;"Der Ultraschall, auch als Sonographie bekannt, ist ein bildgebendes Verfahren, das zur Diagnose zahlreicher Erkrankungen dient. Anders als die MRT oder CT nutzt Ultraschall keine Röntgenstrahlen, sondern hochfrequente Schallwellen. Diese Methode ist schmerzfrei, sicher und wird vor allem zur Untersuchung von Weichteilen eingesetzt.
+
+Während der Untersuchung wird ein Gel auf die Haut aufgetragen, um die Schallwellenübertragung zu verbessern. Der Schallkopf sendet Wellen aus, die vom Körpergewebe reflektiert werden. Ein Computer wandelt diese Signale in Bilder um, die in Echtzeit betrachtet werden können.
+
+Typische Anwendungen sind:
+
+- **Abdomen:** Untersuchung von Leber, Nieren, Gallenblase, Bauchspeicheldrüse.
+- **Becken:** Beurteilung von Blase, Gebärmutter, Eierstöcken, Prostata.
+- **Gefäße:** Doppler-Ultraschall zur Analyse von Blutfluss und Gefäßverengungen.
+- **Muskuloskelettales System:** Diagnostik an Gelenken, Sehnen, Muskeln.
+
+Ultraschall ist flexibel, schnell einsetzbar und birgt keine Strahlenrisiken – ideal auch für Schwangere und Kinder.
+";"Il ultrasonografo, noto anche come ecografia, è un procedimento d'immagine che serve per diagnosticare molte patologie. A differenza della Risonanza magnetica (MRT) o del Tomografo a emissione di raggi X (CT), l'ultrasonografia non utilizza raggi X, ma onde sonore ad alta frequenza. Questa tecnica è indolore, sicura e viene utilizzata soprattutto per lo studio dei tessuti molli.
+
+Durante la procedura, un gel viene applicato sulla pelle per migliorare la trasmissione delle onde sonore. La testina dell'ultrasonografo emette onde che vengono riflesse dal tessuto corporeo. Un computer converte questi segnali in immagini che possono essere visualizzate in tempo reale.
+
+Le applicazioni tipiche sono:
+
+- **Addome:** esame della milza, dei reni, della bile, del pancreas.
+- **Pelvi:** valutazione dell'uretra, dell'utero, degli ovari, della prostata.
+- **Vasi:** ecografia Doppler per l'analisi del flusso sanguigno e delle stenosi vascolari.
+- **Sistema muscolo-scheletrico:** diagnosi di articolazioni, tendini, muscoli.
+
+L'ultrasonografia è flessibile, rapidamente applicabile e non presenta rischi da radiazioni – ideale anche per donne in stato di gravidanza e bambini."
+it;geraete/ultraschall.md;title;Ultraschall / Sonographie (US);Ecografia
+it;standorte/04-genf.md;main_content;"In Genf werden die Untersuchungen bei unserem Partner durchgeführt.
+
+**Die Adresse lautet:**
+
+In Genf haben wir mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+";"Il lavoro di esame viene effettuato presso nostro partner a Ginevra.
+
+**L'indirizzo è:**
+
+A Ginevra abbiamo diversi partner. L'indirizzo lo riceverete con la conferma del appuntamento."
+it;standorte/04-genf.md;title;Genf;Genova
+it;standorte/03-basel.md;main_content;"In Basel werden die Untersuchungen bei unserem Partner durchgeführt. 
+
+**Die Adresse lautet:**
+
+In Basel haben wir mehrere Partner. Die Adresse erhalten Sie mit der Terminbestätigung.
+";"Nel nostro partner di Basilea vengono eseguite le indagini.
+
+**L'indirizzo è:**
+
+A Basilea abbiamo diversi partner. L'indirizzo lo riceverete con la conferma del appuntamento."
+it;standorte/03-basel.md;title;Basel;[Basa]
+it;standorte/01-zuerich.md;main_content;"In Zürich werden die Untersuchungen in der Praxis Rimed durchgeführt. 
+
+**Die Adresse lautet:**
+
+Mühlebachstrasse 7
+8008 Zürich
+";"Nell'area di Zürich, gli esami vengono effettuati nella pratica Rimed. L'indirizzo è:
+
+Mühlebachstrasse 7
+8008 Zürich"
+it;standorte/01-zuerich.md;title;Zürich;Zurigo
+it;standorte/02-bern.md;main_content;"In Bern werden die Untersuchungen bei MRI-Bern durchgeführt. 
+
+**Die Adresse lautet:**
+
+Schwanengasse 5/7
+
+3011 Bern
+";"Nella città di Berna le esami sono effettuati presso l'MRI-Berna.
+
+**L'indirizzo è:**
+
+Schwanengasse 5/7
+
+3011 Bern"
+it;standorte/02-bern.md;title;Bern;Contesto medico: Tutela della salute e protezione dei dati medici
+it;indikationen/01-familiaere-vorbelastung.md;title;Familiäre Vorbelastung;Carico familiare
+it;indikationen/01-familiaere-vorbelastung.md;description;Menschen mit einer genetischen Prädisposition zum Beispiel für Krebs oder Aneurysmen möchten sicher gehen, dass bei Ihnen noch alles in Ordnung ist.;Gli uomini con una predisposizione genetica ad esempio per il cancro o gli aneurismi desiderano essere sicuri che tutto stia andando bene con loro.
+it;indikationen/05-strahlenangst.md;title;Strahlenbelastung;Esposizione ionizzante
+it;indikationen/05-strahlenangst.md;description;Das MRT liefert oft (aber nicht immer) gleichwertige oder bessere Bilder als Röntgen und Computertomografie (CT), ohne den Körper mit Strahlen zu belasten.;Il MRT fornisce spesso (ma non sempre) immagini equivalenti o migliori rispetto alle radiografie e alla tomografia computale (TC), senza carichiare il corpo con raggi X.
+it;indikationen/02-sportler-koerperliche-belastung.md;title;Sportler;Atleta
+it;indikationen/02-sportler-koerperliche-belastung.md;description;Mikroverletzungen, Gelenkprobleme oder Muskelverletzungen sollen frühzeitig erkannt werden.;Ipnosi microscopiche, lesioni articolari o lesioni muscolari dovrebbero essere riconosciute in modo precoce.
+it;indikationen/03-chronische-beschwerden.md;title;Chronische Beschwerden;Dipendenze croniche
+it;indikationen/03-chronische-beschwerden.md;description;Erschöpfung, Schmerzen, Schwindel oder Schlafstörungen: Eine umfassende Bildgebung Verdachtsmomente ausschliessen oder die Diagnose erleichtern.;Esaurimento, dolori, vertigini o disturbi del sonno: una imaging completa esclude ipotetiche diagnosi o ne facilita la diagnosi.
+it;indikationen/04-stressbelastung.md;title;Menschen mit viel Stress;Persone con molti stress
+it;indikationen/04-stressbelastung.md;description;Chronischer Stress ist eine Belastung für den gesamten Körper. Wer den Stress nicht reduzieren kann, möchte sich durch optimale Vorsorge vor gesundheitlichen Folgeschäden schützen.;Il stress cronico è un carico per tutto il corpo. Chi non riesce a ridurre lo stress desidera proteggersi contro lesioni alla salute mediante una prevenzione ottimale.
+it;indikationen/06-umfassend.md;title;Umfassende Vorsorge;Prevenzione integrale
+it;indikationen/06-umfassend.md;description;Wer einfach nur mit einer einzigen Untersuchung eine breit angelegte Vorsorge möchte, trifft mit einem MRT eine gute Wahl, weil es viele verschiedene Risiken abdeckt.;Chi vuole una sola indagine per una prevenzione ampia, sceglie un buon MRi perché copre molti rischi diversi.
+it;home/09-termin-buchen.md;main_content;"Hier kommen Sie ganz einfach zu Ihrem Termin. 
+
+**E-Mail eintragen**, Standort wählen, ab die Post.
+
+{{< spacer >}}   
+
+{{< bookingFormMultilanguage >}}";"Vieni semplicemente al tuo appuntamento.
+
+**Inserisci e-mail**, scegli il luogo, dalla posta.
+
+{{< spacer >}}   
+
+{{< bookingFormMultilanguage >}}"
+it;home/09-termin-buchen.md;title;Termin buchen;Riserva ora
+it;home/07-datenschutz.md;main_content;Auf Ihre Daten haben nur Sie und Ihre Betreuer bei SwissVital Zugriff. Wir erhöhen nicht die Prämien oder schränken den Versicherungsschutz ein, wenn wir irgendwo ein Risiko entdecken. Wir zeigen Ihnen, wo Sie stehen und helfen Ihnen, die richtigen Schlüsse daraus zu ziehen. Sie haben die volle Kontrolle.;Il tuo accesso ai tuoi dati è il solo e unico punto di riferimento per te e i tuoi curatori presso SwissVital. Non aumentiamo le premiazioni o limitiamo la copertura assicurativa se scopriamo un rischio altrove. Ti mostreremo dove sei e ti aiuteremo a trarre conclusioni giuste da ciò. Hai il controllo totale.
+it;home/07-datenschutz.md;pre_headline;Wer liest mit?;Chi legge con noi?
+it;home/07-datenschutz.md;title;Ihre Daten bleiben privat;I dati rimangono privati
+it;home/07-datenschutz.md;primary_button_text;Scan buchen;Riserva il raggio X
+it;home/01-wissen-macht-gesund.md;main_content;"Seit hochauflösende MRT-Untersuchungen des ganzen Körpers möglich sind, ist ein neues Zeitalter der **Früherkennung** angebrochen. Vor allem bei Krebserkrankungen haben MRT-Scans tausende Leben gerettet.
+
+**Und das ist nur der Anfang** 
+";"Dopo che è possibile eseguire esami MRI a alta risoluzione su tutto il corpo, è iniziato un nuovo tempo dell'**anticipazione**. In particolare, per le malattie tumorali, gli scanner MRI hanno salvato migliaia di vite.
+
+E questo è solo l'inizio"
+it;home/01-wissen-macht-gesund.md;pre_headline;Gesundheit schützen mit Ganzköper-MRI;Proteggere la salute con RM whole-body.
+it;home/01-wissen-macht-gesund.md;title;Wissen macht gesund.;La conoscenza è salutare.
+it;home/01-wissen-macht-gesund.md;primary_button_text;Scan buchen;Riserva lo scanner
+it;home/11-partner.md;main_content;"Wohin geht ein Arzt, wenn er mal zum Arzt muss? 
+Die meisten Ärzte doktern erst einmal selbst an sich herum. Aber wenn sie doch Hilfe brauchen, haben sie ein Netzwerk aus guten Leuten, die sie vom Studium kennen oder von der gemeinschaftlichen Betreuung einiger Patient:innen. Zu so einer Person gehen sie, wenn sie mal einen Arzt oder eine Ärztin brauchen. Unsere Partner sind nicht nur approbiert und gut ausgebildet; sie haben ihre Fähigkeiten auch im persönlichen Kontakt mit SwissVital bewiesen. 
+";"Dove va un medico quando deve andare dal medico?
+La maggior parte dei medici si prendono cura di sé stessi per primi. Ma quando hanno bisogno di aiuto, hanno una rete di persone discrete che conoscono dallo studio o dalla comune gestione di alcuni pazienti. A una simile persona vanno se hanno bisogno di un medico o di una medica. I nostri partner non sono solo approvati e bene formati; hanno anche dimostrato le loro capacità nel contatto personale con SwissVital."
+it;home/11-partner.md;pre_headline;Wir haben ein gewachsenes Netzwerk von Partnern, denen wir vertrauen.;Abbiamo un network di partner cresciuto che ci fidiamo.
+it;home/11-partner.md;title;Unsere Partner;I nostri partner
+it;home/11-partner.md;primary_button_text;Vorsorge buchen;Prenotazioni preventivo
+it;home/03-frageboegen/_index.md;main_content;"Von der Stange gibt es bei uns nicht. Wir stimmen jede Untersuchung auf die Bedürfnisse unserer Klienten ab. Beginnen Sie, indem Sie das Feld auswählen, das Ihren Bedarf am besten trifft.  {{< spacer >}}
+";Non c'è nulla in serbo per noi. Adattiamo ogni esame alle esigenze dei nostri clienti. Inizia selezionando il campo che meglio si adatta alle tue esigenze.
+it;home/03-frageboegen/_index.md;pre_headline;Sprechen wir über Ihren Bedarf.;Parliamo del vostro bisogno.
+it;home/03-frageboegen/_index.md;title;Wie können wir helfen?;Come possiamo aiutare?
+it;home/03-frageboegen/06-individuell.md;title;Individuelle Vorsorge;Prevenzione individuale
+it;home/03-frageboegen/06-individuell.md;description;Vorsorgestrategie für genau festgelegte Risiken;"""Stategy di prevenzione per rischi specifici e ben definiti"""
+it;home/03-frageboegen/01-familiaere-vorbelastung.md;title;Familiäre Vorbelastung;Carico familiare pregressa
+it;home/03-frageboegen/01-familiaere-vorbelastung.md;description;Krankheiten aufgrund vererbter Anlagen vorbeugen;Prevenire le malattie a causa di strutture ereditarie
+it;home/03-frageboegen/02-sportler-koerperliche-belastung.md;title;Sportler;Atletica
+it;home/03-frageboegen/02-sportler-koerperliche-belastung.md;description;Beschwerden durch Überlastung vorbeugen;Prevenire sintomi di sovraffollamento
+it;home/03-frageboegen/05-breite-vorsorge.md;title;Breite Vorsorge;Prevenzione Integrata
+it;home/03-frageboegen/05-breite-vorsorge.md;description;Breite Vorsorge für die wichtigtsten Risiken;Previsione ampia per i rischi più importanti
+it;home/03-frageboegen/03-chronische-beschwerden.md;title;Chronische Beschwerden;Danni croniche
+it;home/03-frageboegen/03-chronische-beschwerden.md;description;Erschöpfung, Schmerzen, Schwindel, Schlafstörungen ...;Stanchezza, dolori, vertigini, disturbi del sonno...
+it;home/03-frageboegen/04-stressbelastung.md;title;Menschen mit Stress;Persone con stress
+it;home/03-frageboegen/04-stressbelastung.md;description;Risiken aus hoher Stressbelastung vorbeugen;Prevenire i rischi derivanti da una maggiore stressione.
+it;home/04-ablauf/_index.md;main_content;"Wir begleiten Sie persönlich durch den gesamten Prozess - von der ersten Beratung bis zur ausführlichen Besprechung Ihrer Ergebnisse. Dabei legen wir Wert auf eine transparente und verständliche Kommunikation. Hier sehen Sie, wie Ihr Check-up bei Swiss Vital abläuft.
+{{< spacer >}}";NOI vi accompagniamo personalmente attraverso tutto il processo - dalla prima consulenza alla dettagliata discussione dei vostri risultati. Nel frattempo, poniamo grande valore su una comunicazione trasparente e comprensibile. Ecco come si svolge la vostra ricognizione presso Swiss Vital.
+it;home/04-ablauf/_index.md;pre_headline;So läuft Ihr Check-up ab;Così va il vostro check-up
+it;home/04-ablauf/_index.md;title;Ihr Check-up Schritt für Schritt;Tuo controllo passo dopo passo
+it;home/04-ablauf/_index.md;primary_button_text;Scan buchen;Riserva il mio scanner
+it;home/04-ablauf/schritt-4.md;main_content;Sie erhalten einen kommentierten Befundbericht, der die Resultate Ihrer Untersuchungen verständlich zusammenfasst. Sollten Sie vorab spezielle Anliegen benannt haben, gehen wir auf diese besonders detailliert ein.;Ricevete un rapporto di esito commentato che sintetizza i risultati delle vostre indagini in modo chiaro. Se avete specifiche preoccupazioni prima dell'esame, ci concentreremo su queste con maggiore dettaglio.
+it;home/04-ablauf/schritt-4.md;title;Schritt 4: Ihre Ergebnisse;Passaggio 4: I vostri risultati
+it;home/04-ablauf/schritt-2.md;main_content;Einer unserer Präventionsärzte schaut sich Ihren Fragebogen an und bespricht mit Ihnen telefonisch die für Sie am besten passende Vorsorgestrategie. Wenn das für Sie passt, müssen Sie nur noch einen Termin festlegen.;Uno dei nostri medici di prevenzione esamina il vostro questionario e discute con voi al telefono la strategia di screening più adatta per voi. Se va bene, dovete solo fissare un appuntamento.
+it;home/04-ablauf/schritt-2.md;title;Schritt 2: Ihre persönliche Vorsorgestrategie;Passo 2: la tua strategia di prevenzione personale
+it;home/04-ablauf/schritt-1.md;main_content;Zur Vorbereitung haben wir Fragebögen erstellt, die auf unterschiedliche Lebenssituationen abgestimmt sind. Wählen Sie den für Sie passenden Fragebogen aus und senden Sie ihn uns zu. Anschliessend melden wir uns bei Ihnen für die Vereinbarung eines Beratungstermins.;Abbiamo creato questionari di preparazione adattati a diverse situazioni di vita. Scegliete il questionario che si adatta meglio alle vostre esigenze e inviateloci. In seguito ci contatteremo per concordare un termine di consulenza.
+it;home/04-ablauf/schritt-1.md;title;Schritt 1: Lassen Sie sich von uns zur Vorsorge beraten;Passo 1: Chiediamo un parere preventivo da noi.
+it;home/04-ablauf/schritt-5.md;main_content;In einem persönlichen Gespräch klären wir alle offenen Fragen, die sich aus den Untersuchungsergebnissen ergeben haben. Falls nötig, besprechen wir auch mögliche therapeutische Schritte oder Massnahmen, um Ihre Gesundheit zu erhalten oder wiederherzustellen.;In un colloquio personale chiariremo tutte le domande aperte che si sono generate a seguito degli esiti delle indagini. Se necessario, discuteremo anche possibili passaggi terapeutici o misure per preservare o ripristinare la sua salute.
+it;home/04-ablauf/schritt-5.md;title;Schritt 5: Ihre Nachbesprechung;Passaggio 5: La tua discussione successiva
+it;home/04-ablauf/schritt-3.md;main_content;Am vereinbarten Termin führen wir die Untersuchungen durch. Falls auch Bluttests vorgesehen sind, empfehlen wir, nüchtern zu erscheinen, um die Ergebnisse nicht zu verfälschen. Was im Detail für Ihre Untersuchung wichtig ist, erklären wir Ihnen in Ruhe vor Ort.;Eseguiamo le indagini nel termine concordato. Se sono previsti anche test ematici, ti consigliamo di presentarti nello stato naturale per non alterare i risultati. Ci spiegheremo in dettaglio ciò che è importante per la tua indagine prima dell'esecuzione.
+it;home/04-ablauf/schritt-3.md;title;Schritt 3: Ihr Check-up in der Swiss Vital Praxis;Passo 3: Il tuo check-up nella pratica Swiss Vital
+it;home/02-leistungen/ganzkoerper-scan.md;main_content;"Ein Ganzkörperscan erzeugt durch Magnetfelder und Radiowellen hochaflösende Schnittbilder des gesamten Körpers. 
+
+Der Ganzkörper-Scan, insbesondere in Verbindung mit anderen diagnostischen Verfahren, ermöglicht eine umfassende Beurteilung Ihres Gesundheitszustandes und kann frühzeitig auffällige Veränderungen erkennen. Dies ermöglicht eine präventive Behandlung, bevor Symptome auftreten. 
+
+Der Scan ist besonders empfehlenswert für Personen ab 40 Jahren, bei familiärer Vorbelastung oder bei hartnäckigen Beschwerden, deren Ursache unbekannt ist. Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+";"Il rilevamento del corpo intero mediante campi magnetici e onde radio produce immagini di alta risoluzione del corpo intero.
+
+Lo scan del corpo intero, soprattutto quando è combinato con altri metodi diagnostici, consente un'analisi completa dello stato della sua salute e può identificare modifiche anomale precoci. Ciò consente una terapia preventiva prima che gli sintomi compaiano.
+
+Lo scan è particolarmente raccomandato per le persone a partire dai 40 anni, in caso di antecedenti familiari o di segni persistenti il cui esito sconosciuto. Gli specialisti del prevenzione valutano tutti i dati e spiegano gli risultati in un colloquio personale con voi."
+it;home/02-leistungen/ganzkoerper-scan.md;title;Ganzkörper-Scan;Scans del corpo integrale
+it;home/02-leistungen/_index.md;main_content;"Wir verbinden diagnostische Verfahren aus verschiedenen Disziplinen, um für Sie ein umfassendes Gesamtbild zu erzeugen. Gestützt auf die Empehlungen der medizinischen Fachgesellschaften und  abgestimmt auf Ihre Lebenssituation, Ihre Vorgeschichte und Ihren Bedarf.
+{{< spacer >}}
+";NOI uniamo procedimenti diagnostici da diverse discipline per creare un quadro completo. Sostenuto dalle raccomandazioni delle società mediche specializzate e adattato alla vostra situazione di vita, storia medica e bisogni.
+it;home/02-leistungen/_index.md;pre_headline;Vernetzte Diagnostik;Diagnosi Connessione
+it;home/02-leistungen/_index.md;title;Unser Angebot;Nostro Offerta
+it;home/02-leistungen/sportvorsorge.md;main_content;"Die Sportvorsorge ist ein speziell für Sportler und aktive Menschen konzipiertes Untersuchungsprogramm. Es kombiniert bildgebende Verfahren, Labor- und Leistungsdiagnostik, um Ihre sportliche Gesundheit umfassend zu beurteilen und Ihr Leistungspotenzial zu optimieren.
+
+Im Fokus der MRI-Untersuchung stehen besonders die Strukturen, die beim Sport stark beansprucht werden: Gelenke, Muskeln, Sehnen und Bänder sowie das Herz-Kreislauf-System. Dadurch können wir frühzeitig Überlastungserscheinungen oder Verschleissschäden erkennen und gezielte Gegenmassnahmen einleiten, bevor ernsthafte Verletzungen entstehen.
+
+Die ergänzende Laboranalyse gibt Aufschluss über Ihren Stoffwechsel, Nährstoffversorgung und Entzündungsmarker. Wir bestimmen wichtige Parameter wie Hämoglobin, Ferritin (Eisenspeicher), Vitamin D, Magnesium und bei Bedarf spezifische Hormone, die für die sportliche Leistungsfähigkeit relevant sind.
+
+Die Sportvorsorge ist ideal für Hobby- und Leistungssportler jeder Altersklasse, besonders vor dem Start intensiver Trainingsphasen, bei Leistungsplateaus oder nach Verletzungen.
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+
+
+";"Il programma di prevenzione sportiva è un'indagine specificamente concepita per atleti e persone attive. Combinando metodologie di immagini, analisi del sangue e valutazione delle prestazioni, può verificare la tua salute sportiva in modo approfondito e ottimizzare il tuo potenziale di prestazione.
+
+Nel centro dell'esame MRI sono poste strutture particolarmente esposte allo stress durante lo sport: articolazioni, muscoli, tendini e legamenti insieme al sistema cardiocircolatorio. In questo modo possiamo rilevare early signs of overload o danni strutturali e implementare strategie precise per prevenire lesioni gravi.
+
+L'analisi del sangue aggiuntiva ci dà informazioni sulla tua metabolismo, approvvigionamento nutrizionale e indicatori di infiammazione. Determiniamo parametri importanti come emoglobinemia, ferritina (riserva di ferro), vitamina D, magnesio e, se necessario, specifiche ormoni rilevanti per la prestazione sportiva.
+
+Il programma di prevenzione sportiva è ideale per atleti dilettanti e professionisti di ogni età, specialmente prima dello start di fasi intensificate di allenamento, a un plateau di prestazioni o dopo lesioni.
+
+Gli specialisti in prevenzione valuteranno tutti i risultati e ti spiegheranno il tuo esito in un colloquio personale."
+it;home/02-leistungen/sportvorsorge.md;title;Sportvorsorge;Prevenzione sportiva
+it;home/02-leistungen/individual-scan.md;main_content;"Der Individual-Scan ist eine massgeschneiderte MRI-Untersuchung, die sich gezielt auf bestimmte Körperregionen konzentriert, die für Sie von besonderem Interesse sind. Im Gegensatz zum Ganzkörper-Scan ermöglicht dieser fokussierte Ansatz eine noch detailliertere Betrachtung spezifischer Bereiche.
+
+Wir beginnen mit einer ausführlichen Anamnese, bei der wir gemeinsam die zu untersuchenden Bereiche festlegen. Je nach Ihren persönlichen Bedürfnissen oder Beschwerden können wir beispielsweise das Gehirn, die Wirbelsäule, die Gelenke oder die inneren Organe genauer betrachten. Die Untersuchungszeit variiert je nach Umfang zwischen 20 und 40 Minuten.
+
+Der Individual-Scan eignet sich besonders für Personen mit spezifischen Beschwerden, nach Unfällen oder Operationen, bei chronischen Erkrankungen oder zur Verlaufskontrolle bekannter gesundheitlicher Probleme. Die höhere Auflösung und spezifische Ausrichtung ermöglichen eine noch präzisere Diagnostik für denAusschnitt, der Sie besonders interessiert. 
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+";"Il rilevamento individuale è una scansione MRI personalizzata che si concentra su specifiche regioni del corpo interessanti per te. A differenza della scansione completa del corpo, questo approccio focalizzato consente un esame più dettagliato di aree specifiche.
+
+Iniziamo con una anamnesi dettagliata, insieme la stabiliremo quali sono le zone da esaminare. In base ai tuoi bisogni personali o problemi si possono esaminare ad esempio il cervello, la colonna vertebrale, gli articolazioni o gli organi interni in modo più approfondito. Il tempo di esame varia a seconda delle dimensioni tra 20 e 40 minuti.
+
+Il rilevamento individuale si presta particolarmente per le persone con problemi specifici, dopo un incidente o una operazione, per le patologie croniche o per la monitoraggio del corso di problemi di salute noti. La maggiore risoluzione e l'orientamento specifico consentono una diagnosi più precisa per il settore che ti interessa particolarmente.
+
+I nostri medici di prevenzione esaminano tutti i risultati e ti spiegheranno il risultato in un colloquio personale."
+it;home/02-leistungen/individual-scan.md;title;Individual-Scan;Scans individuali
+it;home/02-leistungen/laboranalyse.md;main_content;"Unsere umfassende Laboranalyse bietet einen detaillierten Einblick in Ihre Stoffwechselprozesse und inneren Körperfunktionen. Durch eine Blutanalyse können wir wichtige Gesundheitsparameter bestimmen und frühzeitig Risiken erkennen, lange bevor klinische Symptome auftreten.
+
+Die Standardanalyse umfasst über 40 verschiedene Parameter, darunter Blutbild, Leber- und Nierenwerte, Elektrolyte, Blutzucker, Cholesterin und weitere Fettwerte, Entzündungsmarker, Schilddrüsenwerte sowie Vitamine und Mineralstoffe. Je nach Ihrer persönlichen Situation können zusätzliche spezifische Tests durchgeführt werden, wie Hormonstatus, Allergietests, genetische Analysen oder spezielle Tumormarker.
+
+Die Laboranalyse kann ideal mit einem MRI-Scan kombiniert werden, um ein umfassendes Bild Ihrer Gesundheit zu erhalten. Dieses ganzheitliche Screening ermöglicht eine präzise Gesundheitsvorsorge auf höchstem Niveau. Die Blutentnahme erfolgt dann in unserem Zentrum, in der Regel a dem Tag, an dem auch das MRI durchgeführt wird. Je nach Umfang der Analysen liegen die Ergebnisse innerhalb von 1-3 Werktagen vor.
+
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
+
+
+";"Il nostro esame del sangue offre una visione dettagliata dei processi metabolici e delle funzioni fisiche interne. Attraverso un esame di laboratorio, possiamo determinare parametri importanti della salute e rilevare rischi precoziamente, molto prima che manifestino sintomi clinici.
+
+L'analisi standard include più di 40 diversi parametri, tra cui il profilo ematico, valori epatici e renali, elettroliti, zucchero nel sangue, colesterolo e altri valori grassi, indicatori infiammatori, valori tireoidiani e vitamine e minerali. Secondo la vostra situazione personale, possono essere eseguite analisi specifiche aggiuntive, come lo status ormonico, test allergici, analisi genetiche o marker tumorigenici.
+
+L'esame del sangue può essere combinato idealemente con un TAC per ottenere un quadro globale della vostra salute. Questo screening integrato consente una prevenzione sanitaria precisa a livello di alta gamma. L'asportazione del sangue avviene nel nostro centro, generalmente lo stesso giorno in cui si effettua il TAC. A seconda dell'entità degli esami, i risultati sono disponibili entro 1-3 giorni lavorativi.
+
+I nostri medici di prevenzione analizzano tutti i dati e spiegano i risultati in un colloquio personale."
+it;home/02-leistungen/laboranalyse.md;title;Laboranalyse;Analisi del lavoro

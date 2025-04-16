@@ -1,8 +1,13 @@
 ---
+type: "must-have"
+layout: "single"
 date: "2025-02-08"
 title: "Impressum"
-url: "/impressum/"
+url: "/de/impressum/"
+automatic_translate: "no"
 ---
+
+# Impressum
 
 SwissVital ist ein Unternehmen der Metarad AG  
 

@@ -1,18 +1,17 @@
 ---
+type: "must-have"
+layout: "single"
 date: "2025-02-08"
 title: "AGB"
-url: "/agb/"
+url: "/de/agb/"
+automatic_translate: "no"
 ---
 
 *This document is available in multiple languages: [Deutsch](#deutsch), [English](#english), [Français](#francais), [Italiano](#italiano).*
 
-{{< spacer >}}
-
-
-
 Diese Allgemeinen Geschäftsbedingungen sind in mehreren Sprachen verfügbar. **Die deutsche Version ist die einzig rechtsverbindliche Fassung.** Die Übersetzungen dienen lediglich der Information. Bei Abweichungen oder Unklarheiten gilt ausschließlich die deutsche Version.
 
-## Allgemeine Geschäftsbedingungen – Deutsch (Rechtsverbindliche Version){#deutsch}
+# Allgemeine Geschäftsbedingungen – Deutsch (Rechtsverbindliche Version){#deutsch}
 
 *Zuletzt aktualisiert: 08. Februar 2025*
 

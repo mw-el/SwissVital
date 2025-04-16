@@ -22,7 +22,6 @@ secondary_button_text: ""
 secondary_button_text_color: ""
 text_color: ""
 title: "Magnetresonanztomographie (MRT)"
-url: "/mrt/"
 ---
 
 Die Magnetresonanztomographie (MRT), auch als Kernspintomographie oder MRI bezeichnet, ist ein bildgebendes Verfahren, das ohne den Einsatz von Röntgenstrahlen funktioniert und auf einem starken Magnetfeld sowie Radiowellen basiert. Diese Technologie ermöglicht es, detaillierte Schnittbilder von Organen und Geweben im Körper zu erstellen, wodurch eine präzise Diagnose vieler Erkrankungen möglich ist.

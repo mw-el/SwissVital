@@ -22,7 +22,6 @@ secondary_button_text: ""
 secondary_button_text_color: ""
 text_color: ""
 title: "Klassisches Röntgen"
-url: "/roentgen/"
 ---
 
 Das klassische Röntgen ist eines der ältesten bildgebenden Verfahren und wird vor allem zur schnellen Diagnose von Knochenbrüchen und Lungenerkrankungen eingesetzt. Während der Untersuchung werden Röntgenstrahlen durch den Körper geschickt, die je nach Gewebe unterschiedlich absorbiert werden. Dadurch entstehen kontrastreiche Bilder, auf denen Knochen, Organe und Gewebe sichtbar werden.

@@ -1,0 +1,186 @@
+[page_title]
+other = "Modulo di Prenotazione"
+
+[label_firstname]
+other = "Nome *"
+
+[label_lastname]
+other = "Cognome *"
+
+[label_email]
+other = "Indirizzo Email *"
+
+[label_phone]
+other = "Telefono *"
+
+[label_birthyear]
+other = "Anno di Nascita *"
+
+[label_street]
+other = "Via *"
+
+[label_zip]
+other = "CAP *"
+
+[label_city]
+other = "Città *"
+
+[button_next]
+other = "Avanti"
+
+[button_back]
+other = "Indietro"
+
+[button_submit]
+other = "Invia"
+
+[option_select]
+other = "Seleziona"
+
+[honeypot_label]
+other = "Si prega di non compilare:"
+
+[tooltip_birthyear]
+other = "Inserisci qui il tuo anno di nascita."
+
+[alert_phone_invalid]
+other = "Si prega di inserire un numero di telefono valido con 10 cifre."
+
+[placeholder_email]
+other = "name@example.com"
+
+[bookingform.step1_title]
+other = "Fase 1 di 3: Email & Località"
+
+[bookingform.step2_title]
+other = "Fase 2 di 3: Dettagli Personali"
+
+[bookingform.step3_title]
+other = "Fase 3 di 3: Completamento"
+
+[bookingform.label_location]
+other = "Località *"
+
+[bookingform.label_exam]
+other = "Esame *"
+
+[bookingform.label_appointment]
+other = "Preferenza Appuntamento *"
+
+[bookingform.option_urgent]
+other = "Urgente"
+
+[bookingform.option_6weeks]
+other = "Entro le prossime sei settimane (invia una proposta di appuntamento via e-mail)"
+
+[bookingform.option_3months]
+other = "Entro i prossimi tre mesi (invia una proposta di appuntamento via e-mail)"
+
+[bookingform.option_callback]
+other = "Per favore chiamami per fissare un appuntamento (la chiamata avviene solitamente entro 60 minuti)"
+
+[bookingform.dataprotection_consent_short]
+other = "Acconsento al trattamento dei dati."
+
+[bookingform.terms_agreement]
+other = "Accetto i <a href=\"/agb\">Termini e Condizioni</a>."
+
+[bookingform.privacy_agreement]
+other = "Accetto l'<a href=\"/datenschutzerklaerung\">Informativa sulla Privacy</a>."
+
+[bookingform.submit_button]
+other = "Prenota Appuntamento"
+
+[bookingform.location_zurich]
+other = "Zurigo"
+
+[bookingform.location_bern]
+other = "Berna"
+
+[bookingform.location_basel]
+other = "Basilea"
+
+[bookingform.product1]
+other = "Prodotto 1 - CHF 1970.-"
+
+[bookingform.product2]
+other = "Prodotto 2 - CHF 2350.-"
+
+[bookingform.product3]
+other = "Prodotto 3 - CHF 850.-"
+
+[success.icon_text]
+other = "check_circle"
+
+[success.heading]
+other = "Grazie per la tua registrazione!"
+
+[success.summary_intro]
+other = "Hai comunicato le seguenti informazioni:"
+
+[success.email_confirmation]
+other = "Riceverai a breve un'email di conferma all'indirizzo:"
+
+[summary.firstname]
+other = "Nome:"
+
+[summary.lastname]
+other = "Cognome:"
+
+[summary.birthyear]
+other = "Anno di Nascita:"
+
+[summary.street]
+other = "Via:"
+
+[summary.zip]
+other = "CAP:"
+
+[summary.city]
+other = "Città:"
+
+[summary.email]
+other = "Indirizzo Email:"
+
+[summary.phone]
+other = "Telefono:"
+
+[summary.location]
+other = "Località Selezionata:"
+
+[summary.appointment]
+other = "Preferenza Appuntamento:"
+
+[summary.exam]
+other = "Esame:"
+
+[email.subject]
+other = "Conferma di prenotazione: per"
+
+[email.greeting]
+other = "Buongiorno"
+
+[email.confirmation_intro]
+other = "Questa è una conferma automatica della tua prenotazione presso SwissVital a"
+
+[email.data_intro]
+other = "Abbiamo annotato le seguenti informazioni da te:"
+
+[email.personal_data_title]
+other = "Dati personali:"
+
+[email.appointment_details_title]
+other = "Dettagli dell'appuntamento:"
+
+[email.confirmation_question]
+other = "Va bene così per te? In caso contrario rispondi a questo messaggio con la tua richiesta di correzione."
+
+[email.callback_note]
+other = "Ti chiameremo comunque per fissare l'appuntamento desiderato. Sistemeremo rapidamente la questione - puoi contare su questo."
+
+[email.goodbye]
+other = "Cordiali saluti e a presto."
+
+[email.sender]
+other = "La reception pazienti di SwissVital"
+

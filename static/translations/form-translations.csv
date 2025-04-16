@@ -1,0 +1,68 @@
+key,de,en,fr,it
+# Allgemeine Formularelemente,,,,
+page_title,Buchungsformular,Booking Form,Formulaire de Réservation,Modulo di Prenotazione
+label_firstname,Vorname *,First Name *,Prénom *,Nome *
+label_lastname,Nachname *,Last Name *,Nom *,Cognome *
+label_email,E-Mail-Adresse *,Email Address *,Adresse e-mail *,Indirizzo Email *
+label_phone,Telefon *,Phone *,Téléphone *,Telefono *
+label_birthyear,Geburtsjahr *,Year of Birth *,Année de naissance *,Anno di Nascita *
+label_street,Strasse *,Street *,Rue *,Via *
+label_zip,PLZ *,ZIP Code *,Code postal *,CAP *
+label_city,Ort *,City *,Ville *,Città *
+button_next,Weiter,Next,Suivant,Avanti
+button_back,Zurück,Back,Retour,Indietro
+button_submit,Absenden,Submit,Envoyer,Invia
+option_select,Bitte wählen,Please choose,Veuillez choisir,Seleziona
+honeypot_label,Bitte nicht ausfüllen:,Please do not fill in:,Veuillez ne pas remplir :,Si prega di non compilare:
+tooltip_birthyear,Bitte tragen Sie hier Ihr Geburtsjahr ein.,Please enter your year of birth here.,Veuillez saisir votre année de naissance ici.,Inserisci qui il tuo anno di nascita.
+alert_phone_invalid,Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.,Please enter a valid phone number with 10 digits.,Veuillez saisir un numéro de téléphone valide comportant 10 chiffres.,Si prega di inserire un numero di telefono valido con 10 cifre.
+placeholder_email,name@example.com,name@example.com,name@example.com,name@example.com
+# Spezifisch für das Buchungsformular,,,,
+bookingform.step1_title,Schritt 1 von 3: E-Mail & Standort,Step 1 of 3: Email & Location,Étape 1 sur 3 : E-mail & Emplacement,Fase 1 di 3: Email & Località
+bookingform.step2_title,Schritt 2 von 3: Persönliche Angaben,Step 2 of 3: Personal Details,Étape 2 sur 3 : Informations personnelles,Fase 2 di 3: Dettagli Personali
+bookingform.step3_title,Schritt 3 von 3: Abschluss,Step 3 of 3: Completion,Étape 3 sur 3 : Finalisation,Fase 3 di 3: Completamento
+bookingform.label_location,Standort *,Location *,Emplacement *,Località *
+bookingform.label_exam,Untersuchung *,Examination *,Examen *,Esame *
+bookingform.label_appointment,Terminwunsch *,Preferred Appointment *,Créneau souhaité *,Preferenza Appuntamento *
+bookingform.option_urgent,Dringend,Urgent,Urgent,Urgente
+bookingform.option_6weeks,In den nächsten sechs Wochen,Within the next six weeks (Please send an appointment suggestion by email),Dans les six prochaines semaines (veuillez envoyer une proposition de rendez-vous par e-mail),Entro le prossime sei settimane (invia una proposta di appuntamento via e-mail)
+bookingform.option_3months,In den nächsten drei Monaten,Within the next three months (Please send an appointment suggestion by email),Dans les trois prochains mois (veuillez envoyer une proposition de rendez-vous par e-mail),Entro i prossimi tre mesi (invia una proposta di appuntamento via e-mail)
+bookingform.option_callback,Bitte rufen Sie mich zur Terminvereinbarung an.,Please call me to schedule an appointment (Usually calls are made within 60 minutes),Veuillez m'appeler pour fixer un rendez-vous (les appels sont généralement passés dans les 60 minutes),Per favore chiamami per fissare un appuntamento (la chiamata avviene solitamente entro 60 minuti)
+bookingform.dataprotection_consent_short,Ich stimme der Datenverarbeitung zu.,I agree to the data processing.,J'accepte le traitement des données.,Acconsento al trattamento dei dati.
+bookingform.terms_agreement,"Ich stimme den <a href=""/agb"">AGB</a> zu.","I agree to the <a href=""/agb"">Terms and Conditions</a>.","J'accepte les <a href=""/agb"">Conditions générales</a>.","Accetto i <a href=""/agb"">Termini e Condizioni</a>."
+bookingform.privacy_agreement,"Ich stimme der <a href=""/privacy"">Datenschutzerklärung</a> zu.","I agree to the <a href=""/datenschutzerklaerung"">Privacy Policy</a>.","J'accepte la <a href=""/datenschutzerklaerung"">Politique de confidentialité</a>.","Accetto l'<a href=""/datenschutzerklaerung"">Informativa sulla Privacy</a>."
+bookingform.submit_button,Termin buchen,Book Appointment,Réserver un rendez-vous,Prenota Appuntamento
+bookingform.location_zurich,Zürich,Zurich,Zurich,Zurigo
+bookingform.location_bern,Bern,Bern,Berne,Berna
+bookingform.location_basel,Basel,Basel,Bâle,Basilea
+bookingform.product1,Produkt 1 - CHF 1970.-,Product 1 - CHF 1970.-,Produit 1 - CHF 1970.-,Prodotto 1 - CHF 1970.-
+bookingform.product2,Produkt 2 - CHF 2350.-,Product 2 - CHF 2350.-,Produit 2 - CHF 2350.-,Prodotto 2 - CHF 2350.-
+bookingform.product3,Produkt 3 - CHF 850.-,Product 3 - CHF 850.-,Produit 3 - CHF 850.-,Prodotto 3 - CHF 850.-
+# Erfolgsmeldung nach Formular-Absendung,,,,
+success.icon_text,check_circle,check_circle,check_circle,check_circle
+success.heading,Vielen Dank für Ihre Anmeldung!,Thank you for your registration!,Merci pour votre inscription !,Grazie per la tua registrazione!
+success.summary_intro,Sie haben uns das Folgende mitgeteilt:,You have told us the following:,Vous nous avez communiqué les informations suivantes :,Hai comunicato le seguenti informazioni:
+success.email_confirmation,Sie erhalten in Kürze eine Bestätigungs-E-Mail an:,You will soon receive a confirmation email at:,Vous recevrez bientôt un e-mail de confirmation à l'adresse :,Riceverai a breve un'email di conferma all'indirizzo:
+# Labels für die Zusammenfassung,,,,
+summary.firstname,Vorname:,First Name:,Prénom :,Nome:
+summary.lastname,Nachname:,Last Name:,Nom :,Cognome:
+summary.birthyear,Geburtsjahr:,Year of Birth:,Année de naissance :,Anno di Nascita:
+summary.street,Strasse:,Street:,Rue :,Via:
+summary.zip,PLZ:,ZIP Code:,Code postal :,CAP:
+summary.city,Ort:,City:,Ville :,Città:
+summary.email,E-Mail:,Email:,Adresse e-mail :,Indirizzo Email:
+summary.phone,Telefon:,Phone:,Téléphone :,Telefono:
+summary.location,Gewählter Praxis-Standort:,Chosen Location:,Emplacement choisi :,Località Selezionata:
+summary.appointment,Terminwunsch:,Preferred Appointment:,Créneau souhaité :,Preferenza Appuntamento:
+summary.exam,Untersuchung:,Examination:,Examen :,Esame:
+# E-Mail-Bestätigung (aus sendConfirmation.js),,,,
+email.subject,Buchungsbestätigung: für,Booking Confirmation: for,Confirmation de réservation : pour,Conferma di prenotazione: per
+email.greeting,Guten Tag,Hello,Bonjour,Buongiorno
+email.confirmation_intro,Dies ist eine automatische Empfangsbestätigung Ihrer Terminbuchung bei SwisVital in,This is an automatic confirmation of your booking at SwissVital in,Ceci est une confirmation automatique de votre réservation chez SwissVital à,Questa è una conferma automatica della tua prenotazione presso SwissVital a
+email.data_intro,Wir haben die folgenden Angaben von Ihnen notiert:,We have noted the following information from you:,Nous avons noté les informations suivantes de votre part:,Abbiamo annotato le seguenti informazioni da te:
+email.personal_data_title,Persönliche Daten:,Personal Data:,Données personnelles:,Dati personali:
+email.appointment_details_title,Termindetails:,Appointment Details:,Détails du rendez-vous:,Dettagli dell'appuntamento:
+email.confirmation_question,Stimmt das so für Sie? Falls nicht antworten Sie einfach mit Ihrem Korrekturwunsch auf diese Nachricht.,Is this correct for you? If not please reply to this message with your correction request.,Est-ce correct pour vous? Si non veuillez répondre à ce message avec votre demande de correction.,Va bene così per te? In caso contrario rispondi a questo messaggio con la tua richiesta di correzione.
+email.callback_note,Wir werden Sie aber ohnehin noch anrufen um Ihren Wunschtermin zu fixieren. Dann bringen wir das rasch in Ordnung – verlassen Sie sich darauf.,We will call you anyway to fix your desired appointment. Then we will quickly sort it out - you can rely on that.,Nous vous appellerons de toute façon pour fixer votre rendez-vous souhaité. Nous réglerons alors rapidement le problème - vous pouvez compter sur nous.,Ti chiameremo comunque per fissare l'appuntamento desiderato. Sistemeremo rapidamente la questione - puoi contare su questo.
+email.goodbye,Freundliche Grüsse und bis bald.,Kind regards and see you soon.,Meilleures salutations et à bientôt.,Cordiali saluti e a presto.
+email.sender,Der Patientenempfang von SwissVital,The Patient Reception of SwissVital,L'accueil des patients de SwissVital,La reception pazienti di SwissVital

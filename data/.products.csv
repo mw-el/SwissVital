@@ -1,0 +1,10 @@
+product_id,de,en,fr,it
+product1_name,Produkt 1,Product 1,Produit 1,Prodotto 1
+product1_description,Umfassende Ganzkörperuntersuchung mit detaillierter Analyse aller Organsysteme.,Comprehensive full-body examination with detailed analysis of all organ systems.,Examen complet du corps avec analyse détaillée de tous les systèmes d'organes.,Esame completo del corpo con analisi dettagliata di tutti i sistemi di organi.
+product1_price,1970,1970,1970,1970
+product2_name,Produkt 2,Product 2,Produit 2,Prodotto 2
+product2_description,Premium-Diagnostikpaket mit erweiterter Bildgebung und spezialisierten Laboruntersuchungen.,Premium diagnostic package with advanced imaging and specialized laboratory tests.,Forfait de diagnostic premium avec imagerie avancée et tests de laboratoire spécialisés.,Pacchetto diagnostico premium con imaging avanzato e test di laboratorio specializzati.
+product2_price,2350,2350,2350,2350
+product3_name,Produkt 3,Product 3,Produit 3,Prodotto 3
+product3_description,Basis-Gesundheitscheck mit Fokus auf kardiovaskuläre Risikofaktoren.,Basic health check focusing on cardiovascular risk factors.,Bilan de santé de base axé sur les facteurs de risque cardiovasculaire.,Check-up sanitario di base incentrato sui fattori di rischio cardiovascolare.
+product3_price,850,850,850,850

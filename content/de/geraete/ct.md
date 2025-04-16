@@ -22,7 +22,6 @@ secondary_button_text: ""
 secondary_button_text_color: ""
 text_color: ""
 title: "Computertomographie (CT)"
-url: "/ct/"
 ---
 
 

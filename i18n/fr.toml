@@ -1,0 +1,186 @@
+[page_title]
+other = "Formulaire de Réservation"
+
+[label_firstname]
+other = "Prénom *"
+
+[label_lastname]
+other = "Nom *"
+
+[label_email]
+other = "Adresse e-mail *"
+
+[label_phone]
+other = "Téléphone *"
+
+[label_birthyear]
+other = "Année de naissance *"
+
+[label_street]
+other = "Rue *"
+
+[label_zip]
+other = "Code postal *"
+
+[label_city]
+other = "Ville *"
+
+[button_next]
+other = "Suivant"
+
+[button_back]
+other = "Retour"
+
+[button_submit]
+other = "Envoyer"
+
+[option_select]
+other = "Veuillez choisir"
+
+[honeypot_label]
+other = "Veuillez ne pas remplir :"
+
+[tooltip_birthyear]
+other = "Veuillez saisir votre année de naissance ici."
+
+[alert_phone_invalid]
+other = "Veuillez saisir un numéro de téléphone valide comportant 10 chiffres."
+
+[placeholder_email]
+other = "name@example.com"
+
+[bookingform.step1_title]
+other = "Étape 1 sur 3 : E-mail & Emplacement"
+
+[bookingform.step2_title]
+other = "Étape 2 sur 3 : Informations personnelles"
+
+[bookingform.step3_title]
+other = "Étape 3 sur 3 : Finalisation"
+
+[bookingform.label_location]
+other = "Emplacement *"
+
+[bookingform.label_exam]
+other = "Examen *"
+
+[bookingform.label_appointment]
+other = "Créneau souhaité *"
+
+[bookingform.option_urgent]
+other = "Urgent"
+
+[bookingform.option_6weeks]
+other = "Dans les six prochaines semaines (veuillez envoyer une proposition de rendez-vous par e-mail)"
+
+[bookingform.option_3months]
+other = "Dans les trois prochains mois (veuillez envoyer une proposition de rendez-vous par e-mail)"
+
+[bookingform.option_callback]
+other = "Veuillez m'appeler pour fixer un rendez-vous (les appels sont généralement passés dans les 60 minutes)"
+
+[bookingform.dataprotection_consent_short]
+other = "J'accepte le traitement des données."
+
+[bookingform.terms_agreement]
+other = "J'accepte les <a href=\"/agb\">Conditions générales</a>."
+
+[bookingform.privacy_agreement]
+other = "J'accepte la <a href=\"/datenschutzerklaerung\">Politique de confidentialité</a>."
+
+[bookingform.submit_button]
+other = "Réserver un rendez-vous"
+
+[bookingform.location_zurich]
+other = "Zurich"
+
+[bookingform.location_bern]
+other = "Berne"
+
+[bookingform.location_basel]
+other = "Bâle"
+
+[bookingform.product1]
+other = "Produit 1 - CHF 1970.-"
+
+[bookingform.product2]
+other = "Produit 2 - CHF 2350.-"
+
+[bookingform.product3]
+other = "Produit 3 - CHF 850.-"
+
+[success.icon_text]
+other = "check_circle"
+
+[success.heading]
+other = "Merci pour votre inscription !"
+
+[success.summary_intro]
+other = "Vous nous avez communiqué les informations suivantes :"
+
+[success.email_confirmation]
+other = "Vous recevrez bientôt un e-mail de confirmation à l'adresse :"
+
+[summary.firstname]
+other = "Prénom :"
+
+[summary.lastname]
+other = "Nom :"
+
+[summary.birthyear]
+other = "Année de naissance :"
+
+[summary.street]
+other = "Rue :"
+
+[summary.zip]
+other = "Code postal :"
+
+[summary.city]
+other = "Ville :"
+
+[summary.email]
+other = "Adresse e-mail :"
+
+[summary.phone]
+other = "Téléphone :"
+
+[summary.location]
+other = "Emplacement choisi :"
+
+[summary.appointment]
+other = "Créneau souhaité :"
+
+[summary.exam]
+other = "Examen :"
+
+[email.subject]
+other = "Confirmation de réservation : pour"
+
+[email.greeting]
+other = "Bonjour"
+
+[email.confirmation_intro]
+other = "Ceci est une confirmation automatique de votre réservation chez SwissVital à"
+
+[email.data_intro]
+other = "Nous avons noté les informations suivantes de votre part:"
+
+[email.personal_data_title]
+other = "Données personnelles:"
+
+[email.appointment_details_title]
+other = "Détails du rendez-vous:"
+
+[email.confirmation_question]
+other = "Est-ce correct pour vous? Si non veuillez répondre à ce message avec votre demande de correction."
+
+[email.callback_note]
+other = "Nous vous appellerons de toute façon pour fixer votre rendez-vous souhaité. Nous réglerons alors rapidement le problème - vous pouvez compter sur nous."
+
+[email.goodbye]
+other = "Meilleures salutations et à bientôt."
+
+[email.sender]
+other = "L'accueil des patients de SwissVital"
+

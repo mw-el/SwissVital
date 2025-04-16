@@ -22,7 +22,6 @@ secondary_button_text: ""
 secondary_button_text_color: ""
 text_color: ""
 title: "Ultraschall / Sonographie (US)"
-url: "/ultraschall/"
 ---
 
 Der Ultraschall, auch als Sonographie bekannt, ist ein bildgebendes Verfahren, das zur Diagnose zahlreicher Erkrankungen dient. Anders als die MRT oder CT nutzt Ultraschall keine Röntgenstrahlen, sondern hochfrequente Schallwellen. Diese Methode ist schmerzfrei, sicher und wird vor allem zur Untersuchung von Weichteilen eingesetzt.

@@ -1,0 +1,15 @@
+{{- $file := .Get "file" -}}
+{{- $isMarkdown := eq (.Get "markdown") "true" -}}
+{{- $content := readFile $file -}}
+
+{{/* Strip frontmatter */}}
+{{- $content := replaceRE `(?s)^---\s*(.+?)\s*---\s*` "" $content -}}
+
+{{/* Also strip any remaining frontmatter-like content that might appear at the beginning */}}
+{{- $content := replaceRE `(?s)^type:\s*"must-have".*?automatic_translate:\s*"no"\s*` "" $content -}}
+
+{{- if $isMarkdown -}}
+  {{ $content | markdownify }}
+{{- else -}}
+  {{ $content }}
+{{- end -}}
