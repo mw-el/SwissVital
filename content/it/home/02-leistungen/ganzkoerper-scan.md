@@ -1,10 +1,10 @@
 ---
-title: "Scans del corpo integrale"
+title: "Scansione del corpo intero"
 weight: 1
 ---
 
-Il rilevamento del corpo intero mediante campi magnetici e onde radio produce immagini di alta risoluzione del corpo intero.
+La scansione del corpo intero produce immagini in sezione ad alta risoluzione dell'intero corpo utilizzando campi magnetici e onde radio.
 
-Lo scan del corpo intero, soprattutto quando è combinato con altri metodi diagnostici, consente un'analisi completa dello stato della sua salute e può identificare modifiche anomale precoci. Ciò consente una terapia preventiva prima che gli sintomi compaiano.
+La scansione del corpo intero, in particolare se combinata con altre procedure diagnostiche, consente una valutazione completa del vostro stato di salute e può rilevare precocemente eventuali alterazioni. Ciò permette un trattamento preventivo prima che compaiano i sintomi.
 
-Lo scan è particolarmente raccomandato per le persone a partire dai 40 anni, in caso di antecedenti familiari o di segni persistenti il cui esito sconosciuto. Gli specialisti del prevenzione valutano tutti i dati e spiegano gli risultati in un colloquio personale con voi.
+La scansione è particolarmente raccomandata per le persone oltre i 40 anni, per quelle con una predisposizione familiare o con disturbi persistenti di causa sconosciuta. I nostri medici di prevenzione analizzano tutti i risultati e vi illustrano i risultati in una consultazione personale.

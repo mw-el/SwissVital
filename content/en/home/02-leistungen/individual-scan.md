@@ -3,10 +3,10 @@ title: "Personalized Scan"
 weight: 2
 ---
 
-THE INDIVIDUAL SCAN IS A CUSTOMIZED MRI EXAMINATION THAT FOCUSES ON SPECIFIC BODY REGIONS OF INTEREST TO YOU. IN CONTRAST TO THE FULL-BODY SCAN, THIS TARGETED APPROACH ENABLES A MORE DETAILED EXAMINATION OF SPECIFIC AREAS.
+The individual scan is a customized MRI examination that focuses on specific body regions of interest to you. In contrast to the full-body scan, this targeted approach enables a more detailed examination of specific areas.
 
-WE BEGIN WITH A THOROUGH ANAMNESIS, WHERE WE WORK TOGETHER TO IDENTIFY THE AREAS TO BE EXAMINED. DEPENDING ON YOUR PERSONAL NEEDS OR SYMPTOMS, WE MAY FOR EXAMPLE, EXAMINE THE BRAIN, SPINE, JOINTS, OR INTERNAL ORGANS MORE CLOSELY. THE EXAMINATION TIME Varies ACCORDINGLY BETWEEN 20 AND 40 MINUTES.
+We begin with a thorough anamnesis, where we work together to identify the areas to be examined. Depending on your personal needs or symptoms, we may for example, examine the brain, spine, joints, or internal organs more closely. The examination time varies accordingly between 20 and 40 minutes.
 
-THE INDIVIDUAL SCAN IS PARTICULARLY SUITABLE FOR INDIVIDUALS WITH SPECIFIC COMPLAINTS, FOLLOWING INJURIES OR SURGERY, WITH CHRONIC ILLNESSES, OR FOR MONITORING THE PROGRESS OF KNOWN HEALTH PROBLEMS. THE HIGHER RESOLUTION AND TARGETED APPROACH ALLOW FOR A MORE PRECISE DIAGNOSIS FOR THE SECTION THAT INTERESTS YOU MOST.
+The individual scan is particularly suitable for individuals with specific complaints, following injuries or surgery, with chronic illnesses, or for monitoring the progress of known health problems. The higher resolution and targeted approach allow for a more precise diagnosis for the section that interests you most.
 
-OUR PREVENTIVE PHYSICIANS ANALYZE ALL RESULTS AND EXPLAIN THE FINDINGS TO YOU IN A PERSONAL CONSULTATION.
+Our preventive physicians analyze all results and explain the findings to you in a personal consultation.

@@ -3,12 +3,12 @@ title: "Preventive Care"
 weight: 4
 ---
 
-THE SPORTS SCREENING IS A SPECIAL PROGRAM DESIGNED FOR ATHLETES AND ACTIVE PEOPLE. IT COMBINES IMAGING PROCEDURES, LABORATORY DIAGNOSTICS, AND FUNCTIONAL TESTS TO THOROUGHLY ASSESS YOUR ATHLETIC HEALTH AND OPTIMIZE YOUR PERFORMANCE POTENTIAL.
+The sports screening is a special program designed for athletes and active people. It combines imaging procedures, laboratory diagnostics, and functional tests to thoroughly assess your athletic health and optimize your performance potential.
 
-THE FOCUS OF THE MRI EXAMINATION IS ON STRUCTURES THAT ARE STRENUOUSLY DEMANDED BY SPORT: JOINTS, MUSCLES, TENDONS, AND LIGAMENTS, AS WELL AS THE CARDIOVASCULAR SYSTEM. THIS ALLOWS US TO IDENTIFY EARLY SIGNS OF OVERLOAD OR DEGENERATION AND INITIATE TARGETED COUNTERMEASURES BEFORE SERIOUS INJURIES OCCUR.
+The focus of the MRI examination is on structures that are strenuously demanded by sport: joints, muscles, tendons, and ligaments, as well as the cardiovascular system. This allows us to identify early signs of overload or degeneration and initiate targeted countermeasures before serious injuries occur.
 
-THE ADDITIONAL LABORATORY ANALYSIS PROVIDES INSIGHT INTO YOUR METABOLISM, NUTRIENT SUPPLY, AND MARKERS OF INFLAMMATION. WE DETERMINE IMPORTANT PARAMETERS SUCH AS HEMOGLOBIN, FERRITIN (IRON STORAGE), VITAMIN D, MAGNESIUM, AND SPECIFIC HORMONES THAT ARE RELEVANT FOR ATHLETIC PERFORMANCE.
+The additional laboratory analysis provides insight into your metabolism, nutrient supply, and markers of inflammation. We determine important parameters such as hemoglobin, ferritin (iron storage), vitamin D, magnesium, and specific hormones that are relevant for athletic performance.
 
-THE SPORTS SCREENING IS IDEAL FOR AMATEUR AND PROFESSIONAL ATHLETES OF ALL AGES, ESPECIALLY BEFORE THE START OF INTENSE TRAINING PHASES, AT LEISTUNGSPLATEAUS, OR AFTER INJURIES.
+The sports screening is ideal for amateur and professional athletes of all ages, especially before the start of intense training phases, at leistungsplateaus, or after injuries.
 
-OUR PREVENTIVE PHYSICIANS ANALYZE ALL FINDINGS AND EXPLAIN THE RESULTS TO YOU IN A PERSONAL CONVERSATION.
+Our preventive physicians analyze all findings and explain the results to you in a personal conversation.
