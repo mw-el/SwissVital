@@ -1,493 +1,172 @@
 {{/*
-  partials/full-bg.html
-  --------------------
-  1) Shared styles 
-  2) Each section’s dynamic background (gradient + $bgImageURL) is done inline.
-  3) Avoids overwriting images when multiple sections appear on the same page.
-
-  In this version:
-    - We use simpler button definitions via .Params.primary_button_class, etc.
-    - We have a new .Params.pre_headline, which is displayed as a normal paragraph
-      directly above the main headline, inside the same container (sv-heading).
-    - If .Params.pre_headline is empty, no extra space or markup is created.
-    - All other functionality remains the same.
+  full-bg.html – Bootstrap md breakpoint, content_width/image_width/image_position
+  Desktop image ≥768px; mobile image <768px
 */}}
 
-{{/* 1. Get $bgImageURL before we generate inline style */}}
-{{ $bgImageURL := "" }}
-{{ if .Params.background_image }}
-  {{ $bg := resources.Get .Params.background_image }}
-  {{ if $bg }}
-    {{ $bgRes := $bg.Resize (printf "1920x q%d" 90) }}
-    {{ $bgImageURL = $bgRes.RelPermalink }}
+{{/* GRID CONFIG */}}
+{{ $cwStr := .Params.content_width | default "12" }}
+{{ $iwStr := .Params.image_width   | default "0" }}
+{{ $pos  := .Params.image_position | default "right" | lower }}
+{{ $cw := int $cwStr }}  {{/* 1–12 */}}
+{{ $iw := int $iwStr }}  {{/* 0–12 */}}
+
+{{ $full := eq $iw 0 }}
+{{ $startsWithImage := and (not $full) (eq $pos "left") }}
+
+{{/* clamp to 12 */}}
+{{ $cw = cond (gt $cw 12) 12 $cw }}
+{{ $iw = cond (gt $iw 12) 12 $iw }}
+
+{{ $contentCol := printf "col-md-%d" $cw }}
+{{ $imageCol := "" }}
+{{ if not $full }}{{ $imageCol = printf "col-md-%d" $iw }}{{ end }}
+
+{{/* ASSETS */}}
+{{ $bgURL := "" }}
+{{ with resources.Get .Params.background_image }}
+  {{ $bgURL = (.Resize "1920x q90").RelPermalink }}
+{{ end }}
+{{ $desk := "" }}{{ $mob := "" }}
+{{ with resources.Get .Params.image }}
+  {{ $desk = (.Resize "1400x q85").RelPermalink }}
+  {{ $mob  = (.Fill   "800x800 Top q85").RelPermalink }}
+  {{/* The mobile image is already square with 800x800 dimensions and "Top" positioning */}}
+{{ end }}
+{{ $shadow := index .Params "image-shadow" | default "" }}
+
+{{/* STYLES & ALIGNMENTS */}}
+{{ $bgColor := .Params.background_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $txtColor := .Params.text_color     | default "#222"               | safeCSS }}
+
+{{ $bgStyle := printf "background:%s;" $bgColor | safeCSS }}
+{{ if and (ne (default "" .Params.background_image) "") (strings.HasPrefix .Params.background_image "var(--") }}
+  {{ $bgStyle = printf "background:%s;" .Params.background_image | safeCSS }}
+{{ else if $bgURL }}
+  {{ $bgStyle = printf "background:url('%s');background-size:cover;background-repeat:no-repeat;background-position:15%% 15%%;" $bgURL | safeCSS }}
+{{ end }}
+
+{{/* Get alignment raw values - now checking ALL related params */}}
+{{ $hAlignRaw := "" }}
+{{ range $key, $value := .Params }}
+  {{ if or (eq $key "headline_alignment") (eq $key "headline_align") (eq $key "headline-alignment") (eq $key "headline-align") (eq $key "HeadlineAlignment") (eq $key "headlineAlignment") }}
+    {{ $hAlignRaw = $value }}
   {{ end }}
 {{ end }}
+{{ $hAlignRaw = $hAlignRaw | default "left" | lower }}
 
-{{/* 2. Get optional foreground images */}}
-{{ $fgImageDesktop := "" }}
-{{ $fgImageMobile := "" }}
-{{ $shadowClass := index .Params "image-shadow" | default "" }}
-
-{{ if .Params.image }}
-  {{ $fg := resources.Get .Params.image }}
-  {{ if $fg }}
-    {{/* Full-size image for desktop */}}
-    {{ $fgDesktop := $fg.Resize (printf "1200x q%d" 85) }}
-    {{ $fgImageDesktop = $fgDesktop.RelPermalink }}
-
-    {{/* Cropped square image for mobile (Favoring top) */}}
-    {{ $fgMobile := $fg.Fill (printf "800x800 Top q%d" 85) }}
-    {{ $fgImageMobile = $fgMobile.RelPermalink }}
+{{ $bAlignRaw := "" }}
+{{ range $key, $value := .Params }}
+  {{ if or (eq $key "body_text_alignment") (eq $key "body_text_align") (eq $key "body-text-alignment") (eq $key "body-text-align") (eq $key "bodyTextAlignment") (eq $key "BodyTextAlignment") }}
+    {{ $bAlignRaw = $value }}
   {{ end }}
 {{ end }}
+{{ $bAlignRaw = $bAlignRaw | default "left" | lower }}
 
-{{/* 3. Collect front matter values */}}
-{{ $bgColor       := .Params.background_color      | default "var(--sv-offwhite)" | safeCSS }}
-{{ $textColor     := .Params.text_color            | default "#222"               | safeCSS }}
-{{ $gridLayout    := .Params.grid_layout           | default "c1/1" }}
-{{ $headlineAlign := .Params.headline_alignment    | default "left" | safeCSS }}
-{{ $bodyTextAlign := .Params.body_text_alignment   | default "left" | safeCSS }}
-{{ $buttonAlign   := .Params.button_alignment      | default "center" | safeCSS }}
-
-{{/* New simpler button approach */}}
-{{ $primaryBtnClass := .Params.primary_button_class | default "" }}
-{{ $primaryBtnLink  := .Params.primary_button_link  | default "" }}
-{{ $primaryBtnLabel := .Params.primary_button_text  | default "" }}
-
-{{ $secondaryBtnClass := .Params.secondary_button_class | default "" }}
-{{ $secondaryBtnLink  := .Params.secondary_button_link  | default "" }}
-{{ $secondaryBtnLabel := .Params.secondary_button_text  | default "" }}
-
-{{/* New: text shown above the main headline */}}
-{{ $preHeadline := .Params.pre_headline | default "" }}
-
-{{/* Determine final background style (revised) */}}
-{{ $bgImage := .Params.background_image | default "" }}
-{{ $useBgColor := and (isset .Params "background_color") (ne .Params.background_color "") }}
-{{ $useBgVariable := and (ne $bgImage "") (strings.HasPrefix $bgImage "var(--") }}
-{{ $finalBgStyle := "" }}
-
-{{ if $useBgColor }}
-  {{ $finalBgStyle = print "background: " .Params.background_color ";" | safeCSS }}
-
-{{ else if $useBgVariable }}
-  {{ $finalBgStyle = print "background: " $bgImage ";" | safeCSS }}
-
-{{ else if $bgImageURL }}
-  {{/*
-     Wir verwenden `print` statt `printf`, damit wir die %-Zeichen normal
-     setzen können und nicht doppelt escapen müssen.
-  */}}
-  {{ $finalBgStyle = print 
-      "background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%), url('" 
-      $bgImageURL 
-      "'); background-position: 15% 15%; background-size: cover; background-repeat: no-repeat;"
-      | safeCSS 
-  }}
+{{ $btnRaw := "" }}
+{{ range $key, $value := .Params }}
+  {{ if or (eq $key "button_alignment") (eq $key "button_align") (eq $key "button-alignment") (eq $key "button-align") (eq $key "buttonAlignment") (eq $key "ButtonAlignment") }}
+    {{ $btnRaw = $value }}
+  {{ end }}
 {{ end }}
+{{ $btnRaw = $btnRaw | default "center" | lower }}
+
+{{/* Convert to text alignment classes */}}
+{{ $hAlignClass := "" }}
+{{ if eq $hAlignRaw "center" }}
+  {{ $hAlignClass = "text-center" }}
+{{ else if eq $hAlignRaw "right" }}
+  {{ $hAlignClass = "text-end" }}
+{{ else }}
+  {{ $hAlignClass = "text-start" }}
+{{ end }}
+
+{{ $bAlignClass := "" }}
+{{ if eq $bAlignRaw "center" }}
+  {{ $bAlignClass = "text-center" }}
+{{ else if eq $bAlignRaw "right" }}
+  {{ $bAlignClass = "text-end" }}
+{{ else }}
+  {{ $bAlignClass = "text-start" }}
+{{ end }}
+
+{{ $btnMap := dict "left" "start" "center" "center" "right" "end" }}
+{{ $btnAlign := index $btnMap $btnRaw | default "center" }}
+
+{{ $pre     := .Params.pre_headline        | default "" }}
+{{ $pClass := .Params.primary_button_class   | default "" }}
+{{ $pLink  := .Params.primary_button_link    | default "" }}
+{{ $pLab   := .Params.primary_button_text    | default "" }}
+{{ $sClass := .Params.secondary_button_class | default "" }}
+{{ $sLink  := .Params.secondary_button_link  | default "" }}
+{{ $sLab   := .Params.secondary_button_text  | default "" }}
+
+{{/* Image top-position preference: favors top content to be maintained when scaling */}}
+{{ $imgTopPos := .Params.image_top_position | default "5%" }}
+
+{{/* Add data attributes for dynamic image positioning */}}
+{{ $dataImgPos := printf "data-img-position=\"%s\"" $imgTopPos }}
 
 <section class="sv-section sv-full-bg">
-  <div class="sv-bg-canvas" style="color: {{ $textColor }};{{ $finalBgStyle }}">
+  <div class="sv-bg-canvas" style="color:{{ $txtColor }};{{ $bgStyle }}">
+    <div class="container px-0">
+      <div class="row gx-md-5 h-100">
 
-    {{/* Layout based on grid_layout */}}
-
-    <!-- Content (2/5) left, Image (3/5) right -->
-    {{ if eq $gridLayout "c2/5, i3/5" }}
-    <div class="sv-layout-wrapper sv-layout-split">
-      <div class="sv-content-2-5" style="text-align: {{ $bodyTextAlign }};">
-
-        <div class="sv-heading">
-          {{ if $preHeadline }}
-            <p class="sv-pre-headline">{{ $preHeadline }}</p>
-          {{ end }}
-          <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
-            {{ .Title }}
-          </h2>
-        </div>
-
-        {{ if $fgImageMobile }}
-          <div class="sv-mobile-image">
-            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}" class="{{ $shadowClass }}">
-          </div>
-        {{ end }}
-
-        <div>{{ .Content | safeHTML }}</div>
-
-        {{ if or $primaryBtnLabel $secondaryBtnLabel }}
-          <div class="sv-button-wrapper">
-            <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
-              {{ if $primaryBtnLabel }}
-                <a href="{{ $primaryBtnLink }}" class="sv-btn {{ $primaryBtnClass }}">
-                  {{ $primaryBtnLabel }}
-                </a>
-              {{ end }}
-              {{ if $secondaryBtnLabel }}
-                <a href="{{ $secondaryBtnLink }}" class="sv-btn {{ $secondaryBtnClass }}">
-                  {{ $secondaryBtnLabel }}
-                </a>
-              {{ end }}
-            </div>
-          </div>
-        {{ end }}
-      </div>
-
-      <div class="sv-content-3-5 sv-grid-image">
-        {{ if $fgImageDesktop }}
-          <div class="sv-desktop-image-outer {{ $shadowClass }}">
-            <div class="sv-desktop-image-inner">
-              <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
-            </div>
-          </div>
-        {{ end }}
-      </div>
-    </div>
-
-    <!-- Content (3/5) left, Image (2/5) right -->
-    {{ else if eq $gridLayout "c3/5, i2/5" }}
-    <div class="sv-layout-wrapper sv-layout-split">
-      <div class="sv-content-3-5 sv-text-column" style="text-align: {{ $bodyTextAlign }};">
-
-        <div class="sv-heading">
-          {{ if $preHeadline }}
-            <p class="sv-pre-headline">{{ $preHeadline }}</p>
-          {{ end }}
-          <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
-            {{ .Title }}
-          </h2>
-        </div>
-
-        {{ if $fgImageMobile }}
-          <div class="sv-mobile-image">
-            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}" class="{{ $shadowClass }}">
-          </div>
-        {{ end }}
-
-        <div class="sv-text-content">
-          <div>{{ .Content | safeHTML }}</div>
-
-          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
-            <div class="sv-button-wrapper">
-              <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
-                {{ if $primaryBtnLabel }}
-                  <a href="{{ $primaryBtnLink }}" class="sv-btn {{ $primaryBtnClass }}">
-                    {{ $primaryBtnLabel }}
-                  </a>
-                {{ end }}
-                {{ if $secondaryBtnLabel }}
-                  <a href="{{ $secondaryBtnLink }}" class="sv-btn {{ $secondaryBtnClass }}">
-                    {{ $secondaryBtnLabel }}
-                  </a>
-                {{ end }}
+        {{ if and (not $full) $startsWithImage }}
+          <div class="{{ $imageCol }} d-flex flex-column">
+            <div class="d-none d-md-block sv-desktop-image-outer {{ $shadow }}" {{ $dataImgPos | safeHTMLAttr }}>
+              <div class="sv-desktop-image-inner">
+                {{ with $desk }}<img src="{{ . }}" alt="{{ $.Params.image_alt | default "" }}" class="sv-desktop-image" />{{ end }}
               </div>
             </div>
+            {{ with $mob }}
+            <div class="d-block d-md-none sv-mobile-image {{ $shadow }}" {{ $dataImgPos | safeHTMLAttr }}>
+              <img src="{{ . }}" alt="{{ $.Params.image_alt | default "" }}" />
+            </div>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        <div class="{{ $contentCol }} d-flex flex-column">
+          <div class="sv-heading {{ $hAlignClass }}">
+            {{ with $pre }}<p class="sv-pre-headline {{ $hAlignClass }}">{{ . }}</p>{{ end }}
+            <h2 id="{{ .Params.id | default (.Title | urlize) }}" class="sv-spacer {{ $hAlignClass }}">{{ .Title }}</h2>
+          </div>
+
+          {{ if and (not $full) (not $startsWithImage) $mob }}
+            <div class="d-block d-md-none sv-mobile-image {{ $shadow }}" {{ $dataImgPos | safeHTMLAttr }}>
+              <img src="{{ $mob }}" alt="{{ $.Params.image_alt | default "" }}" />
+            </div>
+          {{ end }}
+
+          {{ if eq $bAlignRaw "center" }}
+            <!-- Special wrapper for centered content -->
+            <div class="sv-text-content flex-grow-1 {{ $bAlignClass }}">
+              <div align="center">{{ .Content | safeHTML }}</div>
+            </div>
+          {{ else }}
+            <div class="sv-text-content flex-grow-1 {{ $bAlignClass }}">
+              {{ .Content | safeHTML }}
+            </div>
+          {{ end }}
+
+          {{ if or $pLab $sLab }}
+            <div class="mt-4 d-flex flex-wrap justify-content-{{ $btnAlign }}">
+              {{ with $pLab }}<a href="{{ $pLink }}" class="sv-btn {{ $pClass }} me-3 mb-3">{{ . }}</a>{{ end }}
+              {{ with $sLab }}<a href="{{ $sLink }}" class="sv-btn {{ $sClass }} mb-3">{{ . }}</a>{{ end }}
+            </div>
           {{ end }}
         </div>
-      </div>
 
-      <div class="sv-content-2-5 sv-grid-image">
-        {{ if $fgImageDesktop }}
-          <div class="sv-desktop-image-outer {{ $shadowClass }}">
-            <div class="sv-desktop-image-inner">
-              <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
-            </div>
-          </div>
-        {{ end }}
-      </div>
-    </div>
-
-    <!-- Image (2/5) left, Content (3/5) right -->
-    {{ else if eq $gridLayout "i2/5, c3/5" }}
-    <div class="sv-layout-wrapper sv-layout-split">
-      <div class="sv-content-2-5 sv-grid-image">
-        {{ if $fgImageDesktop }}
-          <div class="sv-desktop-image-outer {{ $shadowClass }}">
-            <div class="sv-desktop-image-inner">
-              <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
-            </div>
-          </div>
-        {{ end }}
-      </div>
-
-      <div class="sv-content-3-5 sv-text-column" style="text-align: {{ $bodyTextAlign }};">
-
-        <div class="sv-heading">
-          {{ if $preHeadline }}
-            <p class="sv-pre-headline">{{ $preHeadline }}</p>
-          {{ end }}
-          <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
-            {{ .Title }}
-          </h2>
-        </div>
-
-        {{ if $fgImageMobile }}
-          <div class="sv-mobile-image">
-            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}" class="{{ $shadowClass }}">
-          </div>
-        {{ end }}
-
-        <div class="sv-text-content">
-          <div>{{ .Content | safeHTML }}</div>
-
-          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
-            <div class="sv-button-wrapper">
-              <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
-                {{ if $primaryBtnLabel }}
-                  <a href="{{ $primaryBtnLink }}" class="sv-btn {{ $primaryBtnClass }}">
-                    {{ $primaryBtnLabel }}
-                  </a>
-                {{ end }}
-                {{ if $secondaryBtnLabel }}
-                  <a href="{{ $secondaryBtnLink }}" class="sv-btn {{ $secondaryBtnClass }}">
-                    {{ $secondaryBtnLabel }}
-                  </a>
-                {{ end }}
+        {{ if and (not $full) (not $startsWithImage) }}
+          <div class="{{ $imageCol }} d-flex flex-column">
+            <div class="d-none d-md-block sv-desktop-image-outer {{ $shadow }}" {{ $dataImgPos | safeHTMLAttr }}>
+              <div class="sv-desktop-image-inner">
+                {{ with $desk }}<img src="{{ . }}" alt="{{ $.Params.image_alt | default "" }}" class="sv-desktop-image" />{{ end }}
               </div>
             </div>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-
-    <!-- Image (3/5) left, Content (2/5) right -->
-    {{ else if eq $gridLayout "i3/5, c2/5" }}
-    <div class="sv-layout-wrapper sv-layout-split">
-      <div class="sv-content-3-5 sv-grid-image">
-        {{ if $fgImageDesktop }}
-          <div class="sv-desktop-image-outer {{ $shadowClass }}">
-            <div class="sv-desktop-image-inner">
-              <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
-            </div>
-          </div>
-        {{ end }}
-      </div>
-
-      <div class="sv-content-2-5 sv-text-column" style="text-align: {{ $bodyTextAlign }};">
-
-        <div class="sv-heading">
-          {{ if $preHeadline }}
-            <p class="sv-pre-headline">{{ $preHeadline }}</p>
-          {{ end }}
-          <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
-            {{ .Title }}
-          </h2>
-        </div>
-
-        {{ if $fgImageMobile }}
-          <div class="sv-mobile-image">
-            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}" class="{{ $shadowClass }}">
-          </div>
-        {{ end }}
-
-        <div class="sv-text-content">
-          <div>{{ .Content | safeHTML }}</div>
-
-          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
-            <div class="sv-button-wrapper">
-              <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
-                {{ if $primaryBtnLabel }}
-                  <a href="{{ $primaryBtnLink }}" class="sv-btn {{ $primaryBtnClass }}">
-                    {{ $primaryBtnLabel }}
-                  </a>
-                {{ end }}
-                {{ if $secondaryBtnLabel }}
-                  <a href="{{ $secondaryBtnLink }}" class="sv-btn {{ $secondaryBtnClass }}">
-                    {{ $secondaryBtnLabel }}
-                  </a>
-                {{ end }}
-              </div>
-            </div>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-
-    <!-- Content (1/2) left, Image (1/2) right -->
-    {{ else if eq $gridLayout "c1/2, i1/2" }}
-    <div class="sv-layout-wrapper sv-layout-split">
-      <div class="sv-content-2-5 sv-text-column" style="text-align: {{ $bodyTextAlign }}; flex: 1 1 50%;">
-
-        <div class="sv-heading">
-          {{ if $preHeadline }}
-            <p class="sv-pre-headline">{{ $preHeadline }}</p>
-          {{ end }}
-          <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
-            {{ .Title }}
-          </h2>
-        </div>
-
-        {{ if $fgImageMobile }}
-          <div class="sv-mobile-image">
-            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}" class="{{ $shadowClass }}">
-          </div>
-        {{ end }}
-
-        <div class="sv-text-content">
-          <div>{{ .Content | safeHTML }}</div>
-
-          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
-            <div class="sv-button-wrapper">
-              <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
-                {{ if $primaryBtnLabel }}
-                  <a href="{{ $primaryBtnLink }}" class="sv-btn {{ $primaryBtnClass }}">
-                    {{ $primaryBtnLabel }}
-                  </a>
-                {{ end }}
-                {{ if $secondaryBtnLabel }}
-                  <a href="{{ $secondaryBtnLink }}" class="sv-btn {{ $secondaryBtnClass }}">
-                    {{ $secondaryBtnLabel }}
-                  </a>
-                {{ end }}
-              </div>
-            </div>
-          {{ end }}
-        </div>
-      </div>
-
-      <div class="sv-content-3-5 sv-grid-image" style="flex: 1 1 50%;">
-        {{ if $fgImageDesktop }}
-          <div class="sv-desktop-image-outer {{ $shadowClass }}">
-            <div class="sv-desktop-image-inner">
-              <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
-            </div>
-          </div>
-        {{ else if $fgImageMobile }}
-          <div class="sv-mobile-image">
-            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}" class="{{ $shadowClass }}">
           </div>
         {{ end }}
       </div>
     </div>
-
-    <!-- Image (1/2) left, Content (1/2) right -->
-    {{ else if eq $gridLayout "i1/2, c1/2" }}
-    <div class="sv-layout-wrapper sv-layout-split">
-      <div class="sv-content-3-5 sv-grid-image" style="flex: 1 1 50%;">
-        {{ if $fgImageDesktop }}
-          <div class="sv-desktop-image-outer {{ $shadowClass }}">
-            <div class="sv-desktop-image-inner">
-              <img src="{{ $fgImageDesktop }}" alt="{{ .Params.image_alt }}" class="sv-desktop-image">
-            </div>
-          </div>
-        {{ else if $fgImageMobile }}
-          <div class="sv-mobile-image">
-            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}" class="{{ $shadowClass }}">
-          </div>
-        {{ end }}
-      </div>
-
-      <div class="sv-content-2-5 sv-text-column" style="text-align: {{ $bodyTextAlign }}; flex: 1 1 50%;">
-
-        <div class="sv-heading">
-          {{ if $preHeadline }}
-            <p class="sv-pre-headline">{{ $preHeadline }}</p>
-          {{ end }}
-          <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
-            {{ .Title }}
-          </h2>
-        </div>
-
-        {{ if $fgImageMobile }}
-          <div class="sv-mobile-image">
-            <img src="{{ $fgImageMobile }}" alt="{{ .Params.image_alt }}" class="{{ $shadowClass }}">
-          </div>
-        {{ end }}
-
-        <div class="sv-text-content">
-          <div>{{ .Content | safeHTML }}</div>
-
-          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
-            <div class="sv-button-wrapper">
-              <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
-                {{ if $primaryBtnLabel }}
-                  <a href="{{ $primaryBtnLink }}" class="sv-btn {{ $primaryBtnClass }}">
-                    {{ $primaryBtnLabel }}
-                  </a>
-                {{ end }}
-                {{ if $secondaryBtnLabel }}
-                  <a href="{{ $secondaryBtnLink }}" class="sv-btn {{ $secondaryBtnClass }}">
-                    {{ $secondaryBtnLabel }}
-                  </a>
-                {{ end }}
-              </div>
-            </div>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-
-    <!-- Full-width Content, no additional foreground image -->
-    {{ else if eq $gridLayout "c1/1" }}
-    <div class="sv-layout-wrapper sv-layout-full" style="text-align: {{ $bodyTextAlign }};">
-      <div class="sv-text-column">
-
-        <div class="sv-heading">
-          {{ if $preHeadline }}
-            <p class="sv-pre-headline">{{ $preHeadline }}</p>
-          {{ end }}
-          <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
-            {{ .Title }}
-          </h2>
-        </div>
-
-        <div class="sv-text-content">
-          <div>{{ .Content | safeHTML }}</div>
-
-          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
-            <div class="sv-button-wrapper">
-              <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
-                {{ if $primaryBtnLabel }}
-                  <a href="{{ $primaryBtnLink }}" class="sv-btn {{ $primaryBtnClass }}">
-                    {{ $primaryBtnLabel }}
-                  </a>
-                {{ end }}
-                {{ if $secondaryBtnLabel }}
-                  <a href="{{ $secondaryBtnLink }}" class="sv-btn {{ $secondaryBtnClass }}">
-                    {{ $secondaryBtnLabel }}
-                  </a>
-                {{ end }}
-              </div>
-            </div>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-
-    <!-- Fallback: Full-width Content - same as c1/1 -->
-    {{ else }}
-    <div class="sv-layout-wrapper sv-layout-full" style="text-align: {{ $bodyTextAlign }};">
-      <div class="sv-text-column">
-
-        <div class="sv-heading">
-          {{ if $preHeadline }}
-            <p class="sv-pre-headline">{{ $preHeadline }}</p>
-          {{ end }}
-          <h2 id="{{ .Params.id | default (.Title | urlize) }}" style="text-align: {{ $headlineAlign }};" class="sv-spacer">
-            {{ .Title }}
-          </h2>
-        </div>
-
-        <div class="sv-text-content">
-          <div>{{ .Content | safeHTML }}</div>
-
-          {{ if or $primaryBtnLabel $secondaryBtnLabel }}
-            <div class="sv-button-wrapper">
-              <div class="sv-buttons" style="justify-content: {{ $buttonAlign }};">
-                {{ if $primaryBtnLabel }}
-                  <a href="{{ $primaryBtnLink }}" class="sv-btn {{ $primaryBtnClass }}">
-                    {{ $primaryBtnLabel }}
-                  </a>
-                {{ end }}
-                {{ if $secondaryBtnLabel }}
-                  <a href="{{ $secondaryBtnLink }}" class="sv-btn {{ $secondaryBtnClass }}">
-                    {{ $secondaryBtnLabel }}
-                  </a>
-                {{ end }}
-              </div>
-            </div>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-    {{ end }}
   </div>
 </section>

@@ -19,6 +19,6 @@ title: "Les personnes souffrant de stress."
 # ------------------------------------------------------------------------------
 primary_button_link: "/fragebogen-stress/"
 
-weight: "1"
+weight: "4"
 ---
 

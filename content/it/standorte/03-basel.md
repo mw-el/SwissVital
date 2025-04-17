@@ -2,7 +2,7 @@
 date: "2025-01-25"
 fullimage: "img/standorte/_basel.webp"
 image: "img/standorte/basel.webp"
-title: "[Basa]"
+title: "Basilea"
 ---
 
 Nel nostro partner di Basilea vengono eseguite le indagini.

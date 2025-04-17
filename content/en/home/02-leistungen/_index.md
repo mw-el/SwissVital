@@ -1,17 +1,33 @@
 ---
 title: "Our Offer"         # Displayed title
-layout: "accordion-right"            # Layout template to use
-weight: 2                      # Position on homepage
+pre_headline: "Networked Diagnosis" 
+weight: 2
+
+# Bildpositionierung
+content_width: 7
+image_width: 5
+image_position: left
+
+# Standardbild (wird vor Interaktion angezeigt)
 image: "/img/home/man-with-overlay.webp"
-image_shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
-background_color: "var(--sv-offwhite)"    # Background color for the section
-accordion_background_color: "var(--sv-offwhite-lighter)"    # Background color for the accordion
+image_shadow: "shadow"
+
+# Farbschema
+background_color: "var(--sv-offwhite)"
+text_color: "var(--sv-body-color)"
+accordion_background_color: "var(--sv-offwhite-lighter)"
 accordion_content_background_color: "var(--sv-offwhite-lighter)"
 accordion_accent_color: "var(--sv-offwhite-darker)"
-text_color: "var(--sv-body-color)"
-pre_headline: "Networked Diagnosis" 
-partial: "accordion-right.html"
-# This file controls the "Unser Angebot" accordion section on the homepage 
+
+# Button unter dem Accordion
+button_placement: "accordion"
+button_alignment: "left"
+primary_button_class: "sv-btn-pumpkin btn-cap"
+primary_button_link: ""
+primary_button_text: ""
+
+# Nur nötig, wenn Sektion auf Startseite verlinkt wird:
+partial: "accordion.html"
 ---
 
 We combine diagnostic procedures from various disciplines to generate a comprehensive overall picture for you. Based on the recommendations of medical professional associations and tailored to your life situation, your medical history, and your needs.

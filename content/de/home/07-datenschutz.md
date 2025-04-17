@@ -1,16 +1,18 @@
 ---
-background_color: ""
-background_image: "var(--sv-pumpkin)"
+background_color: "var(--sv-moonstone-lighter)"
+background_image: ""
 body_text_alignment: "left"
 button_alignment: "left"
-button_placement: "content"
-grid_layout: "c3/5, i2/5"
+button_placement: content # Button under content or under image?
+content_width: "7"    # Anzahl Zwölftel
+image_width:   "5"    # Anzahl Zwölftel
+image_position: "right"  # "left" oder "right"
 headline_alignment: "left"
 id: "datenschutz"
-image: "/img/home/_fingerprint.webp"
-image-shadow: ""  # default to "shadow" for a simple drop-shadow effect
+image: "/img/home/_fingerprint.jpg"
+image-shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
 layout: "section"
-text_color: ""
+text_color: "var(--sv-richblack)"
 pre_headline: "Wer liest mit?" 
 title: "Ihre Daten bleiben privat"
 # ------------------------------------------------------------------------------
@@ -28,7 +30,7 @@ title: "Ihre Daten bleiben privat"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_class: "sv-btn-richblack btn-cap"
+primary_button_class: "sv-btn-royalblue btn-cap"
 primary_button_link: "#termin-buchen"
 primary_button_text: "Scan buchen"
 
@@ -37,5 +39,25 @@ secondary_button_link: ""
 secondary_button_text: ""
 partial: "full-bg.html"
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Auf Ihre Daten haben nur Sie und Ihre Betreuer bei SwissVital Zugriff. Wir erhöhen nicht die Prämien oder schränken den Versicherungsschutz ein, wenn wir irgendwo ein Risiko entdecken. Wir zeigen Ihnen, wo Sie stehen und helfen Ihnen, die richtigen Schlüsse daraus zu ziehen. Sie haben die volle Kontrolle.

@@ -1,0 +1,178 @@
+{{/* tiles.html – final version with mobile image between headline and content */}}
+
+{{ $cwStr := .Params.content_width | default "12" }}
+{{ $iwStr := .Params.image_width   | default "0" }}
+{{ $pos   := .Params.image_position | default "right" | lower }}
+{{ $cw := int $cwStr }}
+{{ $iw := int $iwStr }}
+{{ $full := eq $iw 0 }}
+{{ $startsWithImage := and (not $full) (eq $pos "left") }}
+{{ $cw = cond (gt $cw 12) 12 $cw }}
+{{ $iw = cond (gt $iw 12) 12 $iw }}
+{{ $contentCol := printf "col-md-%d" $cw }}
+{{ $imageCol := cond $full "" (printf "col-md-%d" $iw) }}
+
+{{ $imgPath := .Params.image | default "" }}
+{{ if not (hasPrefix $imgPath "/") }}
+  {{ $imgPath = print "/" $imgPath }}
+{{ end }}
+{{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+{{ $desk := "" }}{{ $mob := "" }}
+{{ if $img }}
+  {{ $desk = ($img.Resize "1400x q85").RelPermalink }}
+  {{ $mob  = ($img.Fill "800x800 Top q85").RelPermalink }}
+{{ else }}
+  {{ $desk = $imgPath }}{{ $mob = $imgPath }}
+{{ end }}
+{{ $shadow := .Params.image_shadow | default "" }}
+
+{{ $bgColor := .Params.background_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $textColor := .Params.text_color | default "#222" | safeCSS }}
+{{ $itemBgColor := .Params.item_background_color | default "transparent" | safeCSS }}
+{{ $itemBorderColor := .Params.item_border_color | default "var(--sv-defaultgray-400)" | safeCSS }}
+{{ $itemShadow := .Params.item_shadow | default "" }}
+{{ $itemTextAlign := .Params.item_text_alignment | default "left" | safeCSS }}
+{{ $itemButtonAlign := .Params.item_button_alignment | default "left" | safeCSS }}
+{{ $buttonClass := .Params.primary_button_class | default "sv-btn-royalblue btn-cap" | safeCSS }}
+
+{{ $preHeadline := .Params.pre_headline }}
+{{ $headlineAlign := .Params.headline_alignment | default "left" | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_alignment | default "left" | safeCSS }}
+
+{{ $iconizedID := print "iconized-" (.File.ContentBaseName | urlize) }}
+
+<section class="sv-section sv-iconized-section" id="{{ $iconizedID }}">
+  <div class="sv-bg-canvas" style="background-color: {{ $bgColor }}; color: {{ $textColor }};">
+    <div class="container">
+
+      <!-- FULL-WIDTH HEADERBLOCK -->
+      <div class="row">
+        <div class="col-12">
+          <div class="sv-heading" style="text-align: {{ $headlineAlign }};">
+            {{ with $preHeadline }}<p class="sv-pre-headline">{{ . }}</p>{{ end }}
+            <h2 id="{{ .Params.id | default (.Title | urlize) }}" class="sv-spacer">{{ .Title }}</h2>
+          </div>
+
+          {{ if and (not $full) $mob }}
+            <div class="d-block d-md-none rounded-4 overflow-hidden {{ $shadow }} mb-4">
+              <img src="{{ $mob }}" alt="{{ .Title }}" class="w-100" style="aspect-ratio:1/1;object-fit:cover;object-position:center bottom;" />
+            </div>
+          {{ end }}
+
+          {{ if .Content }}
+            <div class="sv-intro mb-3" style="text-align: {{ $bodyTextAlign }};">
+              {{ .Content | safeHTML }}
+            </div>
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- SPLIT LAYOUT -->
+      <div class="row gx-md-5 align-items-stretch mt-4">
+
+        {{ if and (not $full) $startsWithImage }}
+          <div class="{{ $imageCol }} h-100 d-none d-md-flex">
+            <div class="flex-fill rounded-4 overflow-hidden {{ $shadow }}">
+              <img src="{{ $desk }}" alt="{{ .Title }}" class="w-100 h-100" style="object-fit:cover;object-position:50% 10%;" />
+            </div>
+          </div>
+        {{ end }}
+
+        <div class="{{ $contentCol }} d-flex flex-column h-100" style="text-align: {{ $bodyTextAlign }};">
+
+          <!-- TILE GRID -->
+          <div class="sv-tile-grid">
+            {{ range .Pages }}
+              <div class="sv-tile-grid-item">
+                <a href="{{ .RelPermalink }}" class="sv-tile-link">
+                  <div class="sv-tile-equal {{ $itemShadow }}" style="background-color: {{ $itemBgColor }}; border: 1px solid {{ $itemBorderColor }};">
+                    <div class="sv-tile-title" style="text-align: {{ $itemTextAlign }};">
+                      <h3 class="h4 m-0">{{ .Title }}</h3>
+                    </div>
+                    <div class="sv-tile-description" style="text-align: {{ $itemTextAlign }};">
+                      <p>{{ .Params.description }}</p>
+                    </div>
+                    {{/*
+                    {{ with .Params.icon }}
+                      <div class="sv-tile-button d-flex justify-content-{{ $itemButtonAlign }}">
+                        <span class="material-symbols-outlined {{ $buttonClass }}">{{ . }}</span>
+                      </div>
+                    {{ end }}
+                    */}}
+                  </div>
+                </a>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+
+        {{ if and (not $full) (not $startsWithImage) }}
+          <div class="{{ $imageCol }} h-100 d-none d-md-flex">
+            <div class="flex-fill rounded-4 overflow-hidden {{ $shadow }}">
+              <img src="{{ $desk }}" alt="{{ .Title }}" class="w-100 h-100" style="object-fit:cover;object-position:50% 10%;" />
+            </div>
+          </div>
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sv-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .sv-tile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .sv-tile-grid-item {
+    min-height: 100%;
+  }
+
+  .sv-tile-link {
+    display: block;
+    height: 100%;
+    text-decoration: none !important;
+    color: inherit !important;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .sv-tile-equal {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .sv-tile-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .sv-tile-description {
+    flex-grow: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .sv-tile-button span {
+    font-size: 1.75rem;
+  }
+
+  .sv-tile-link:hover .sv-tile-equal,
+  .sv-tile-link:focus .sv-tile-equal,
+  .sv-tile-link:active .sv-tile-equal {
+    transform: scale(1.03);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+    z-index: 1;
+  }
+</style>

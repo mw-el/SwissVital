@@ -1,16 +1,18 @@
 ---
-background_color: ""
-background_image: "var(--sv-pumpkin)"
+background_color: "var(--sv-moonstone-lighter)"
+background_image: ""
 body_text_alignment: "left"
 button_alignment: "left"
-button_placement: "content"
-grid_layout: "c3/5, i2/5"
+button_placement: content # Button under content or under image?
+content_width: "7"    # Anzahl Zwölftel
+image_width:   "5"    # Anzahl Zwölftel
+image_position: "right"  # "left" oder "right"
 headline_alignment: "left"
 id: "datenschutz"
-image: "/img/home/_fingerprint.webp"
-image-shadow: ""  # default to "shadow" for a simple drop-shadow effect
+image: "/img/home/_fingerprint.jpg"
+image-shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
 layout: "section"
-text_color: ""
+text_color: "var(--sv-richblack)"
 pre_headline: "Chi legge con noi?" 
 title: "I dati rimangono privati"
 # ------------------------------------------------------------------------------
@@ -28,7 +30,7 @@ title: "I dati rimangono privati"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_class: "sv-btn-richblack btn-cap"
+primary_button_class: "sv-btn-royalblue btn-cap"
 primary_button_link: "#termin-buchen"
 primary_button_text: "Riserva il raggio X"
 

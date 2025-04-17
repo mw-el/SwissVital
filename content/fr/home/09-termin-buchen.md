@@ -16,10 +16,10 @@ title: "Réservation"
 partial: "full-bg.html"
 ---
 
-[[[Vous arrivez simplement à votre rendez-vous. 
+Vous arrivez simplement à votre rendez-vous. 
 
 **Adresse e-mail**, choix de centre médical, après le courrier.
 
 {{< spacer >}}   
 
-{{< bookingFormMultilanguage >}}]]]
+{{< bookingFormMultilanguage >}}

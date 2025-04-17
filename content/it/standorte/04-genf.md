@@ -2,7 +2,7 @@
 date: 2025-01-25
 fullimage: img/standorte/_genf.webp
 image: img/standorte/genf.webp
-title: "Genova"
+title: "Ginevra"
 ---
 
 Il lavoro di esame viene effettuato presso nostro partner a Ginevra.

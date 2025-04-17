@@ -1,16 +1,18 @@
 ---
-background_color: ""
-background_image: "var(--sv-pumpkin)"
+background_color: "var(--sv-moonstone-lighter)"
+background_image: ""
 body_text_alignment: "left"
 button_alignment: "left"
-button_placement: "content"
-grid_layout: "c3/5, i2/5"
+button_placement: content # Button under content or under image?
+content_width: "7"    # Anzahl Zwölftel
+image_width:   "5"    # Anzahl Zwölftel
+image_position: "right"  # "left" oder "right"
 headline_alignment: "left"
 id: "datenschutz"
-image: "/img/home/_fingerprint.webp"
-image-shadow: ""  # default to "shadow" for a simple drop-shadow effect
+image: "/img/home/_fingerprint.jpg"
+image-shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
 layout: "section"
-text_color: ""
+text_color: "var(--sv-richblack)"
 pre_headline: "Who reads with me?" 
 title: "Your data remains private."
 # ------------------------------------------------------------------------------
@@ -28,7 +30,7 @@ title: "Your data remains private."
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_class: "sv-btn-richblack btn-cap"
+primary_button_class: "sv-btn-royalblue btn-cap"
 primary_button_link: "#termin-buchen"
 primary_button_text: "Book scan"
 
@@ -37,5 +39,20 @@ secondary_button_link: ""
 secondary_button_text: ""
 partial: "full-bg.html"
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 On your data, only you and your advisors at SwissVital have access. We don't increase premiums or restrict insurance coverage if we discover a risk anywhere. We show you where you stand and help you draw the right conclusions from it. You have full control.

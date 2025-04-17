@@ -10,5 +10,4 @@ The examinations are performed at MRI-Bern in Bern.
 **The address is:**
 
 Schwanengasse 5/7
-
 3011 Bern

@@ -1,18 +1,35 @@
 ---
 title: "Unser Angebot"         # Displayed title
-layout: "accordion-right"            # Layout template to use
-weight: 2                      # Position on homepage
+pre_headline: "Vernetzte Diagnostik" 
+weight: 2
+
+# Bildpositionierung
+content_width: 7
+image_width: 5
+image_position: left
+
+# Standardbild (wird vor Interaktion angezeigt)
 image: "/img/home/man-with-overlay.webp"
-image_shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
-background_color: "var(--sv-offwhite)"    # Background color for the section
-accordion_background_color: "var(--sv-offwhite-lighter)"    # Background color for the accordion
+image_shadow: "shadow"
+
+# Farbschema
+background_color: "var(--sv-offwhite)"
+text_color: "var(--sv-body-color)"
+accordion_background_color: "var(--sv-offwhite-lighter)"
 accordion_content_background_color: "var(--sv-offwhite-lighter)"
 accordion_accent_color: "var(--sv-offwhite-darker)"
-text_color: "var(--sv-body-color)"
-pre_headline: "Vernetzte Diagnostik" 
-partial: "accordion-right.html"
-# This file controls the "Unser Angebot" accordion section on the homepage 
+
+
+
+# Button unter dem Accordion
+button_placement: "accordion"
+button_alignment: "left"
+primary_button_class: "sv-btn-pumpkin btn-cap"
+primary_button_link: "#termin-buchen"
+primary_button_text: "Scan buchen"
+
+# Nur nötig, wenn Sektion auf Startseite verlinkt wird:
+partial: "accordion.html"
 ---
 
 Wir verbinden diagnostische Verfahren aus verschiedenen Disziplinen, um für Sie ein umfassendes Gesamtbild zu erzeugen. Gestützt auf die Empehlungen der medizinischen Fachgesellschaften und  abgestimmt auf Ihre Lebenssituation, Ihre Vorgeschichte und Ihren Bedarf.
-{{< spacer >}}

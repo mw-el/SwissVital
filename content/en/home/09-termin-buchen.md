@@ -16,9 +16,7 @@ title: "Book Your Appointment"
 partial: "full-bg.html"
 ---
 
-Here is the translated text:
-
-Come to your appointment easily. **Enter email**, select location, after that post.
+Come to your appointment easily. **Enter email**, select location, done.
 
 {{< spacer >}}   
 

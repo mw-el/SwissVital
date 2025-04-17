@@ -19,7 +19,7 @@ title: "Breite Vorsorge"
 # ------------------------------------------------------------------------------
 primary_button_link: "/fragebogen-breite-vorsorge/"
 
-weight: "1"
+weight: "5"
 ---
 
 

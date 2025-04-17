@@ -1,16 +1,19 @@
 ---
 background_color: "var(--sv-moonstone)"
 background_image: ""
-body_text_alignment: "left"
-button_alignment: "left"
-button_placement: "content"
-grid_layout: "i2/5, c3/5"
+body_text_alignment: left
+button_alignment: left
+button_placement: content # Button under content or under image?
+headline_alignment: left
+content_width: "7"    # Anzahl Zwölftel
+image_width:   "5"    # Anzahl Zwölftel
+image_position: "right"  # "left" oder "right"
 headline_alignment: "left"
-id: "patner"
+id: "partner"
 image: "/img/home/partner.jpg"
 image-shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
 layout: "section"
-text_color: ""
+text_color: "var(--sv-richblack)"
 pre_headline: "Nous avons un réseau élargi de partenaires dont nous faisons confiance." 
 title: "Nos partenaires"
 # ------------------------------------------------------------------------------

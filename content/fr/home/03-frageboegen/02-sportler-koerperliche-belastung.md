@@ -19,6 +19,6 @@ title: "Jeune athlète"
 # ------------------------------------------------------------------------------
 primary_button_link: "/fragebogen-sportler/"
 
-weight: "1"
+weight: "2"
 ---
 

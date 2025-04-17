@@ -19,6 +19,6 @@ title: "Chronic Complaints"
 # ------------------------------------------------------------------------------
 primary_button_link: "/fragebogen-chronisch/"
 
-weight: "1"
+weight: "3"
 ---
 

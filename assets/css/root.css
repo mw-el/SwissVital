@@ -283,6 +283,7 @@
     rgba(var(--sv-richblack-rgb), 0)
   );
 }
+--nav-height: 120px; /* oder passe an .navbar’s tatsächliche Höhe an */
 
 /* =========================================
    2) FONT-FACE DECLARATIONS
@@ -344,7 +345,9 @@ body {
   text-align: var(--bs-body-text-align);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding-top: var(--nav-height); /* Immer Platz freihalten oberhalb des ersten Abschnitts */
 }
+
 
 /* =========================================
    4) HEADINGS & BASIC TYPOGRAPHY

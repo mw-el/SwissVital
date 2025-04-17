@@ -4,7 +4,9 @@ background_image: ""
 body_text_alignment: "left"
 button_alignment: "left"
 button_placement: "left"
-grid_layout: "c3/5, i2/5"
+content_width: "7"    # Anzahl Zwölftel
+image_width:   "5"    # Anzahl Zwölftel
+image_position: "right"  # "left" oder "right"
 headline_alignment: "left"
 id: "wissen-macht-gesund"
 image: "/img/home/macbook-mri.jpg"

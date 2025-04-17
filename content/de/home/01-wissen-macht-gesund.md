@@ -1,10 +1,13 @@
 ---
 background_color: "var(--sv-moonstone)"
 background_image: ""
-body_text_alignment: "left"
-button_alignment: "left"
-button_placement: "left"
-grid_layout: "c3/5, i2/5"
+body_text_alignment: left
+button_alignment: left
+button_placement: content # Button under content or under image?
+headline_alignment: left
+content_width: "7"    # Anzahl Zwölftel
+image_width:   "5"    # Anzahl Zwölftel
+image_position: "right"  # "left" oder "right"
 headline_alignment: "left"
 id: "wissen-macht-gesund"
 image: "/img/home/macbook-mri.jpg"

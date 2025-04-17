@@ -5,7 +5,9 @@ image: "img/standorte/zurich.webp"
 title: "Zurigo"
 ---
 
-Nell'area di Zürich, gli esami vengono effettuati nella pratica Rimed. L'indirizzo è:
+Nell'area di Zürich, gli esami vengono effettuati nella pratica Rimed. 
+
+L'indirizzo è:
 
 Mühlebachstrasse 7
 8008 Zürich

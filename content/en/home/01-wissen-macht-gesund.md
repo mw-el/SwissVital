@@ -4,7 +4,9 @@ background_image: ""
 body_text_alignment: "left"
 button_alignment: "left"
 button_placement: "left"
-grid_layout: "c3/5, i2/5"
+content_width: "7"    # Anzahl Zwölftel
+image_width:   "5"    # Anzahl Zwölftel
+image_position: "right"  # "left" oder "right"
 headline_alignment: "left"
 id: "wissen-macht-gesund"
 image: "/img/home/macbook-mri.jpg"
@@ -38,8 +40,6 @@ secondary_button_text: ""
 partial: "full-bg.html"
 ---
 
-Since the language code is "en", I will translate the text into English:
+With high-resolution whole-body MRI scans now possible, a new era of **early detection** has begun. Especially in cancer cases, MRI scans have saved thousands of lives.
 
-"With high-resolution whole-body MRI scans now possible, a new era of **early detection** has begun. Especially in cancer cases, MRI scans have saved thousands of lives.
-
-And that's just the beginning."
+And that's just the beginning.
