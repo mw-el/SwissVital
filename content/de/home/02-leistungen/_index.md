@@ -25,8 +25,8 @@ accordion_accent_color: "var(--sv-offwhite-darker)"
 button_placement: "accordion"
 button_alignment: "left"
 primary_button_class: "sv-btn-pumpkin btn-cap"
-primary_button_link: "#termin-buchen"
-primary_button_text: "Scan buchen"
+primary_button_link: ""
+primary_button_text: ""
 
 # Nur nötig, wenn Sektion auf Startseite verlinkt wird:
 partial: "accordion.html"
