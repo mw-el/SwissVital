@@ -8,7 +8,7 @@ image_width: 5
 image_position: right
 
 # Standardbild (wird vor Interaktion angezeigt)
-image: "/img/home/ablauf/5-steps-with-doctor.webp"
+image: "/img/sport/_full-body-xray.webp"
 image_shadow: "shadow"
 
 # Farbschema

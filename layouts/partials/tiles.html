@@ -84,7 +84,7 @@
           <div class="sv-tile-grid">
             {{ range .Pages }}
               <div class="sv-tile-grid-item">
-                <a href="{{ .RelPermalink }}" class="sv-tile-link">
+                <a href="{{ with .Params.primary_button_link }}{{ . | relLangURL }}{{ else }}{{ .RelPermalink }}{{ end }}" class="sv-tile-link">
                   <div class="sv-tile-equal {{ $itemShadow }}" style="background-color: {{ $itemBgColor }}; border: 1px solid {{ $itemBorderColor }};">
                     <div class="sv-tile-title" style="text-align: {{ $itemTextAlign }};">
                       <h3 class="h4 m-0">{{ .Title }}</h3>
