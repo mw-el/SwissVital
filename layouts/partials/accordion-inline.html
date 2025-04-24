@@ -1,0 +1,92 @@
+{{ $cwStr := .Params.content_width | default "12" }}
+{{ $iwStr := .Params.image_width | default "0" }}
+{{ $pos   := .Params.image_position | default "right" | lower }}
+{{ $cw := int $cwStr }}
+{{ $iw := int $iwStr }}
+{{ $full := eq $iw 0 }}
+{{ $startsWithImage := and (not $full) (eq $pos "left") }}
+{{ $cw = cond (gt $cw 12) 12 $cw }}
+{{ $iw = cond (gt $iw 12) 12 $iw }}
+{{ $contentCol := printf "col-md-%d" $cw }}
+{{ $imageCol := cond $full "" (printf "col-md-%d" $iw) }}
+
+{{ $imgPath := .Params.image | default "" }}
+{{ if not (hasPrefix $imgPath "/") }}
+  {{ $imgPath = print "/" $imgPath }}
+{{ end }}
+{{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+{{ $desk := "" }}{{ $mob := "" }}
+{{ if $img }}
+  {{ $desk = ($img.Resize "1400x q85").RelPermalink }}
+  {{ $mob  = ($img.Fill   "800x800 Top q85").RelPermalink }}
+{{ else }}
+  {{ $desk = $imgPath }}{{ $mob = $imgPath }}
+{{ end }}
+{{ $shadow := .Params.image_shadow | default "" }}
+
+{{ $bgColor := .Params.background_color | default "var(--sv-imperialred)" | safeCSS }}
+{{ $textColor := .Params.text_color | default "var(--sv-offwhite)" | safeCSS }}
+
+{{ $preHeadline := .Params.pre_headline }}
+{{ $headlineAlign := .Params.headline_align | default "left" | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_align | default "left" | safeCSS }}
+
+{{ $btnRaw := .Params.button_alignment | default "left" | lower }}
+{{ $btnMap := dict "left" "start" "center" "center" "right" "end" }}
+{{ $btnAlign := index $btnMap $btnRaw | default "start" }}
+
+<section class="sv-section sv-accordion-section">
+  <div class="sv-bg-canvas" style="background-color: {{ $bgColor }}; color: {{ $textColor }};">
+    <div class="container px-0">
+      <div class="row gx-md-5 align-items-stretch">
+
+        {{ if and (not $full) $startsWithImage }}
+          <div class="{{ $imageCol }} h-100 d-none d-md-flex">
+            <div class="flex-fill rounded-4 overflow-hidden {{ $shadow }}">
+              <img src="{{ $desk }}" alt="{{ .Title }}" class="w-100 h-100" style="object-fit:cover;object-position:50% 10%;" />
+            </div>
+          </div>
+        {{ end }}
+
+        <div class="{{ $contentCol }} d-flex flex-column h-100" style="text-align:{{ $bodyTextAlign }};">
+          <div class="sv-heading" style="text-align:{{ $headlineAlign }};">
+            {{ with $preHeadline }}<p class="sv-pre-headline">{{ . }}</p>{{ end }}
+            <h2 id="{{ .Params.id | default (.Title | urlize) }}" class="sv-spacer">{{ .Title }}</h2>
+          </div>
+
+          {{ if and (not $full) $mob }}
+            <div class="d-block d-md-none rounded-4 overflow-hidden {{ $shadow }} mb-4">
+              <img src="{{ $mob }}" alt="{{ .Title }}" class="w-100" style="aspect-ratio:1/1;object-fit:cover;object-position:center bottom;" />
+            </div>
+          {{ end }}
+
+          <div class="sv-text-content flex-grow-1">
+            {{ .Content }}
+          </div>
+
+          {{ if eq .Params.button_placement "accordion" }}
+            {{ if or .Params.primary_button_text .Params.secondary_button_text }}
+              <div class="mt-4 d-flex flex-wrap justify-content-{{ $btnAlign }}">
+                {{ with .Params.primary_button_text }}
+                  <a href="{{ $.Params.primary_button_link }}" class="sv-btn {{ $.Params.primary_button_class }} me-3 mb-3">{{ . }}</a>
+                {{ end }}
+                {{ with .Params.secondary_button_text }}
+                  <a href="{{ $.Params.secondary_button_link }}" class="sv-btn {{ $.Params.secondary_button_class }} mb-3">{{ . }}</a>
+                {{ end }}
+              </div>
+            {{ end }}
+          {{ end }}
+        </div>
+
+        {{ if and (not $full) (not $startsWithImage) }}
+          <div class="{{ $imageCol }} h-100 d-none d-md-flex">
+            <div class="flex-fill rounded-4 overflow-hidden {{ $shadow }}">
+              <img src="{{ $desk }}" alt="{{ .Title }}" class="w-100 h-100" style="object-fit:cover;object-position:50% 10%;" />
+            </div>
+          </div>
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</section>

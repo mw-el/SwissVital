@@ -1,12 +1,38 @@
 ---
-title: "Schritt 1: Lassen Sie sich von uns zur Vorsorge beraten"
-weight: 1
-image: "/img/home/ablauf/man-using-tablet.webp"
+title: "Wie Sportverletzungen entstehen"
+pre_headline: "Vorsorgen statt heilen" 
+weight: 2
+type: "pages"
+
+
+# Bildpositionierung
+content_width: 7
+image_width: 5
+image_position: left
+
+# Standardbild (wird vor Interaktion angezeigt)
+image: "/img/sport/_sportverletzung.webp"
+image_shadow: "shadow"
+
+# Farbschema
+background_color: "var(--sv-offwhite)"
+text_color: "var(--sv-body-color)"
+accordion_background_color: "var(--sv-offwhite-lighter)"
+accordion_content_background_color: "var(--sv-offwhite-lighter)"
+accordion_accent_color: "var(--sv-offwhite-darker)"
+
+# Button unter dem Accordion
+button_placement: "accordion"
+button_alignment: "left"
+primary_button_class: "sv-btn-pumpkin btn-cap"
+primary_button_link: ""
+primary_button_text: ""
+
+# Nur nötig, wenn Sektion auf Startseite verlinkt wird:
+partial: "accordion-inline.html"
 ---
 
-## **Sportverletzungen**
-
-### **Allgemeine Informationen**
+Am besten, Sie verletzen sich erst gar nicht. Damit Sie wissen, worauf Sie achten sollten, geben wir Ihnen hier einen Überblick über die häufigsten Ursachen für Sportverletzungen. Trainieren Sie vorsichtig, dann brauchen Sie unsere Hilfe nicht. Und wenn doch mal etwas passiert: **Wir sind für Sie da**.
 
 {{< inline-accordion >}}
 

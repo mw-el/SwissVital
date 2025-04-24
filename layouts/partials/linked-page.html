@@ -1,0 +1,46 @@
+{{/*
+  linked-page.html
+  
+  This partial allows you to include content from another page in your Hugo site
+  without duplicating the content. It's useful when you want to display the same
+  content in multiple locations while maintaining a single source of truth.
+
+  Usage:
+  1. Add this partial to your page's front matter:
+     partial: "linked-page.html"
+  
+  2. Specify the source page in the front matter:
+     source_page: "/path/to/source/page"
+  
+  3. The partial will render the source page using its specified partial
+  
+  Example front matter:
+  ---
+  title: "My Page"
+  partial: "linked-page.html"
+  source_page: "/de/home/09-termin-buchen"
+  ---
+  
+  Note: The source page must have a "partial" parameter defined in its front matter,
+  and that partial will be used to render the content.
+*/}}
+
+{{ with .Params.source_page }}
+  {{ with $.Site.GetPage . }}
+    {{ if .Params.partial }}
+      {{ partial .Params.partial . }}
+    {{ else }}
+      <div class="alert alert-warning">
+        The source page "{{ . }}" does not have a partial defined in its front matter.
+      </div>
+    {{ end }}
+  {{ else }}
+    <div class="alert alert-danger">
+      Could not find page with path: {{ . }}
+    </div>
+  {{ end }}
+{{ else }}
+  <div class="alert alert-danger">
+    No source_page parameter specified. Please add 'source_page: "/path/to/page"' to your front matter.
+  </div>
+{{ end }}

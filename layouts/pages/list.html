@@ -1,0 +1,12 @@
+{{ define "main" }}
+  {{ $home := .CurrentSection }}
+  {{ $sorted := sort $home.Pages "File.Path" "asc" }}
+
+  {{ range $sorted }}
+    {{- if .Params.partial -}}
+      {{ partial .Params.partial . }}
+    {{- else -}}
+      {{ .Content }}
+    {{- end -}}
+  {{ end }}
+{{ end }}

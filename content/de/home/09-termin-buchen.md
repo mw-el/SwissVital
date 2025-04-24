@@ -8,7 +8,7 @@ content_width: "12"    # Anzahl Zwölftel
 image_width:   "0"    # Anzahl Zwölftel
 image_position: ""  # "left" oder "right"
 headline_alignment: "center"
-id: "datenschutz"
+id: "termin-buchen"
 image: ""
 image-shadow: ""  # default to "shadow" for a simple drop-shadow effect
 layout: "section"

@@ -14,8 +14,8 @@ image: "/img/home/macbook-mri.jpg"
 image-shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
 layout: "section"
 text_color: "var(--sv-richblack)"
-pre_headline: "Gesundheit schützen mit Ganzköper-MRI" 
-title: "Wissen macht gesund."
+pre_headline: "" 
+title: ""
 # ------------------------------------------------------------------------------
 # Available button classes (solid & skeleton):
 #   sv-btn-red            | sv-btn-red-sk
@@ -40,6 +40,13 @@ secondary_button_link: ""
 secondary_button_text: ""
 partial: "full-bg.html"
 ---
+
+Gesundheit schützen mit Ganzköper-MRI
+# Wissen macht gesund.
+
+
+{{< spacer >}}
+
 
 Seit hochauflösende MRT-Untersuchungen des ganzen Körpers möglich sind, ist ein neues Zeitalter der **Früherkennung** angebrochen. Vor allem bei Krebserkrankungen haben MRT-Scans tausende Leben gerettet.
 

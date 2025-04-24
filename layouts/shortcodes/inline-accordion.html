@@ -1,14 +1,13 @@
 {{/* Inline accordion WRAPPER shortcode */}}
 
-{{/* Generate a unique ID for this accordion instance */}}
-{{ $accordionID := printf "accordion-%s" (now.UnixNano) }}
+{{/* Generate a unique ID for this accordion based on the page */}}
+{{ $accordionID := printf "accordion-%s" (.Page.File.ContentBaseName | urlize) }}
 
-{{/* Get optional parameters with same defaults as your existing partial */}}
-{{ $bgColor := .Get "bg_color" | default "var(--sv-imperialred)" | safeCSS }}
-{{ $textColor := .Get "text_color" | default "var(--sv-offwhite)" | safeCSS }}
-{{ $accordionBgColor := .Get "accordion_bg_color" | default $bgColor | safeCSS }}
-{{ $accordionContentBgColor := .Get "accordion_content_bg_color" | default "var(--sv-offwhite)" | safeCSS }}
-{{ $accordionAccentColor := .Get "accordion_accent_color" | default "var(--sv-pumpkin)" | safeCSS }}
+{{/* Get color parameters from front matter */}}
+{{ $bgColor := .Page.Params.accordion_background_color | default "var(--sv-offwhite-lighter)" | safeCSS }}
+{{ $textColor := .Page.Params.text_color | default "var(--sv-body-color)" | safeCSS }}
+{{ $accordionContentBgColor := .Page.Params.accordion_content_background_color | default "var(--sv-offwhite-lighter)" | safeCSS }}
+{{ $accordionAccentColor := .Page.Params.accordion_accent_color | default "var(--sv-offwhite-darker)" | safeCSS }}
 
 <div class="sv-accordion-container mt-4">
   <div class="accordion" id="{{ $accordionID }}">
@@ -18,12 +17,12 @@
 
 <style>
   #{{ $accordionID }} .accordion-item {
-    background-color: {{ $accordionBgColor }} !important;
+    background-color: {{ $bgColor }} !important;
     border: 1px solid {{ $accordionAccentColor }} !important;
   }
 
   #{{ $accordionID }} .accordion-button {
-    background-color: {{ $accordionBgColor }} !important;
+    background-color: {{ $bgColor }} !important;
     color: {{ $textColor }} !important;
   }
 
