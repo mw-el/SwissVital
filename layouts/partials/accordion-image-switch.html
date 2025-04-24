@@ -1,4 +1,5 @@
-{{/* accordion-image-switch.html – rebuilt from the working accordion.html, adding image‑swap only */}}
+
+{{/* accordion-image-switch.html | Combines the content of an entire Folder ito an Accordion with image switch*/}}
 
 {{ $cwStr := .Params.content_width | default "12" }}
 {{ $iwStr := .Params.image_width | default "0" }}
@@ -194,18 +195,6 @@
 
   #{{ $accordionID }} .accordion-button::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23{{ replace (replace $textColor "var(--" "" ) ")" "" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
-  }
-  
-  /* Additional styles for image switching */
-  .accordion-main-image,
-  .accordion-child-image {
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .accordion-main-image.active,
-  .accordion-child-image.active {
-    opacity: 1 !important;
-    z-index: 2;
   }
 </style>
 

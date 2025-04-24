@@ -1,0 +1,44 @@
+{{/* Inline accordion WRAPPER shortcode */}}
+
+{{/* Generate a unique ID for this accordion instance */}}
+{{ $accordionID := printf "accordion-%s" (now.UnixNano) }}
+
+{{/* Get optional parameters with same defaults as your existing partial */}}
+{{ $bgColor := .Get "bg_color" | default "var(--sv-imperialred)" | safeCSS }}
+{{ $textColor := .Get "text_color" | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionBgColor := .Get "accordion_bg_color" | default $bgColor | safeCSS }}
+{{ $accordionContentBgColor := .Get "accordion_content_bg_color" | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionAccentColor := .Get "accordion_accent_color" | default "var(--sv-pumpkin)" | safeCSS }}
+
+<div class="sv-accordion-container mt-4">
+  <div class="accordion" id="{{ $accordionID }}">
+    {{ .Inner }}
+  </div>
+</div>
+
+<style>
+  #{{ $accordionID }} .accordion-item {
+    background-color: {{ $accordionBgColor }} !important;
+    border: 1px solid {{ $accordionAccentColor }} !important;
+  }
+
+  #{{ $accordionID }} .accordion-button {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+  }
+
+  #{{ $accordionID }} .accordion-button:not(.collapsed),
+  #{{ $accordionID }} .accordion-button:hover {
+    background-color: {{ $accordionAccentColor }} !important;
+    color: {{ $textColor }} !important;
+  }
+
+  #{{ $accordionID }} .accordion-body {
+    background-color: {{ $accordionContentBgColor }} !important;
+    color: inherit;
+  }
+
+  #{{ $accordionID }} .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23{{ replace (replace $textColor "var(--" "" ) ")" "" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+  }
+</style>

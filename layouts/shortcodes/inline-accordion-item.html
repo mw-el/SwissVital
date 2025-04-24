@@ -1,0 +1,29 @@
+{{/* Inline accordion ITEM shortcode */}}
+
+{{/* Generate unique IDs for this accordion item */}}
+{{ $itemID := printf "item-%s" (now.UnixNano) }}
+{{ $headingID := printf "heading-%s" $itemID }}
+{{ $collapseID := printf "collapse-%s" $itemID }}
+
+{{/* Get the parent accordion ID from the context */}}
+{{ $parentID := .Parent.Scratch.Get "AccordionID" }}
+
+<div class="accordion-item">
+  <h3 class="accordion-header" id="{{ $headingID }}">
+    <button class="accordion-button collapsed" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#{{ $collapseID }}" 
+            aria-expanded="false" 
+            aria-controls="{{ $collapseID }}">
+      {{ .Get "title" }}
+    </button>
+  </h3>
+  <div id="{{ $collapseID }}" 
+       class="accordion-collapse collapse" 
+       aria-labelledby="{{ $headingID }}">
+    <div class="accordion-body">
+      {{ .Inner | markdownify }}
+    </div>
+  </div>
+</div>

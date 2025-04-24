@@ -778,3 +778,45 @@ margin-bottom: 1.5rem;
   min-height: auto;
 }
 }
+
+/* Base accordion styles for SwissVital */
+.sv-accordion-section .accordion-item {
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.sv-accordion-section .accordion-button {
+  font-weight: 600;
+  padding: 1rem 1.25rem;
+}
+
+.sv-accordion-section .accordion-button:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.sv-accordion-section .accordion-body {
+  padding: 1.25rem;
+}
+
+/* Image switching animation for accordion-image-switch */
+.accordion-main-image,
+.accordion-child-image {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.accordion-main-image.active,
+.accordion-child-image.active {
+  opacity: 1 !important;
+  z-index: 2;
+}
+
+/* Base structure overrides */
+.sv-accordion-section .accordion-button::after {
+  margin-left: auto;
+}
+
+.sv-accordion-section .accordion-button:not(.collapsed)::after {
+  transform: rotate(-180deg);
+}
