@@ -1,0 +1,529 @@
+<!-- Stress-Fragebogen — eindeutiger Präfix form-stress-survey -->
+<form id="form-stress-survey" class="sv-multistep-form"
+      name="fragebogen-stress" method="POST"
+      data-netlify="true" netlify-honeypot="bot-field">
+
+  <!-- Hidden -->
+  <input type="hidden" name="language" value="de">
+  <input type="hidden" name="form-name" value="fragebogen-stress">
+  <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+
+  <!-- ---------- Schritt 1 ---------- -->
+  <section id="form-stress-survey-step-1" class="sv-form-step active" data-step="1">
+    <h3 class="sv-step-title mb-4">Schritt 1 von 3: Persönliche Angaben</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-stress-survey-vorname"
+             name="vorname" placeholder="Vorname *" required>
+      <label for="form-stress-survey-vorname">Vorname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-stress-survey-nachname"
+             name="nachname" placeholder="Nachname *" required>
+      <label for="form-stress-survey-nachname">Nachname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-stress-survey-email" type="email"
+             name="email" placeholder="name@example.com" required>
+      <label for="form-stress-survey-email">E-Mail-Adresse *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-stress-survey-gebjahr"
+             name="geburtsjahr" placeholder="Geburtsjahr *" required>
+      <label for="form-stress-survey-gebjahr">Geburtsjahr *</label>
+    </div>
+
+    <p class="sv-tooltip-info mb-2">
+      Für diagnostische Zwecke – z.&nbsp;B. Laboruntersuchungen – ist das biologische
+      Geschlecht wichtig, unabhängig von Ihrer geschlechtlichen Identität.
+    </p>
+    
+    <!-- Custom Dropdown for Geschlecht (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-stress-survey-geschlecht-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-stress-survey-geschlecht-display">Biologisches Geschlecht *</label>
+      <div class="dropdown-menu p-3" id="form-stress-survey-geschlecht-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="männlich" id="geschlecht1" name="geschlecht">
+          <label class="form-check-label" for="geschlecht1">männlich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="weiblich" id="geschlecht2" name="geschlecht">
+          <label class="form-check-label" for="geschlecht2">weiblich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="möchte ich nicht angeben" id="geschlecht3" name="geschlecht">
+          <label class="form-check-label" for="geschlecht3">möchte ich nicht angeben</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-stress-survey-dsp1"
+             type="checkbox" name="datenschutz1" required>
+      <label class="form-check-label" for="form-stress-survey-dsp1">
+        Ich stimme der Datenverarbeitung zu.
+      </label>
+    </div>
+
+    <div class="d-grid sv-button-container">
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 2 ---------- -->
+  <section id="form-stress-survey-step-2" class="sv-form-step" data-step="2">
+    <h3 class="sv-step-title mb-4">Schritt 2 von 3: Stress-Auswirkungen</h3>
+
+    <!-- Custom Dropdown for Impairment (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-stress-survey-impairment-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-stress-survey-impairment-display">
+        1. Wie sehr beeinträchtigen Ihre Beschwerden Sie im Alltag?
+      </label>
+      <div class="dropdown-menu p-3" id="form-stress-survey-impairment-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Stark (z. B. Arbeitsunfähigkeit)" id="impairment1" name="stress_impairment">
+          <label class="form-check-label" for="impairment1">Stark (z. B. Arbeitsunfähigkeit)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Oft (reduzierte Leistungsfähigkeit)" id="impairment2" name="stress_impairment">
+          <label class="form-check-label" for="impairment2">Oft (reduzierte Leistungsfähigkeit)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Manchmal, aber ich komme zurecht" id="impairment3" name="stress_impairment">
+          <label class="form-check-label" for="impairment3">Manchmal, aber ich komme zurecht</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Selten oder kaum" id="impairment4" name="stress_impairment">
+          <label class="form-check-label" for="impairment4">Selten oder kaum</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Keine Beeinträchtigung" id="impairment5" name="stress_impairment">
+          <label class="form-check-label" for="impairment5">Keine Beeinträchtigung</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Symptoms (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-stress-survey-symptoms-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-stress-survey-symptoms-display">
+        2. Welche Symptome bemerken Sie durch Stress? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-stress-survey-symptoms-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Kopfschmerzen" id="symptom1" name="stress_symptoms[]">
+          <label class="form-check-label" for="symptom1">Kopfschmerzen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Schlafstörungen" id="symptom2" name="stress_symptoms[]">
+          <label class="form-check-label" for="symptom2">Schlafstörungen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Magen-Darm-Beschwerden" id="symptom3" name="stress_symptoms[]">
+          <label class="form-check-label" for="symptom3">Magen-Darm-Beschwerden</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Verspannungen / Muskelschmerzen" id="symptom4" name="stress_symptoms[]">
+          <label class="form-check-label" for="symptom4">Verspannungen / Muskelschmerzen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Keine der genannten" id="symptom5" name="stress_symptoms[]">
+          <label class="form-check-label" for="symptom5">Keine der genannten</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Frequency (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-stress-survey-frequency-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-stress-survey-frequency-display">
+        3. Wie oft treten stressbedingte Beschwerden auf?
+      </label>
+      <div class="dropdown-menu p-3" id="form-stress-survey-frequency-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Täglich" id="freq1" name="stress_frequency">
+          <label class="form-check-label" for="freq1">Täglich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Mehrmals pro Woche" id="freq2" name="stress_frequency">
+          <label class="form-check-label" for="freq2">Mehrmals pro Woche</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Selten" id="freq3" name="stress_frequency">
+          <label class="form-check-label" for="freq3">Selten</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nur in extremen Situationen" id="freq4" name="stress_frequency">
+          <label class="form-check-label" for="freq4">Nur in extremen Situationen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nie" id="freq5" name="stress_frequency">
+          <label class="form-check-label" for="freq5">Nie</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Medical Check (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-stress-survey-medcheck-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-stress-survey-medcheck-display">
+        4. Haben Sie bereits medizinische Untersuchungen aufgrund von Stress gemacht?
+      </label>
+      <div class="dropdown-menu p-3" id="form-stress-survey-medcheck-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja" id="medcheck1" name="stress_medical_check">
+          <label class="form-check-label" for="medcheck1">Ja</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nur bei akuten Beschwerden" id="medcheck2" name="stress_medical_check">
+          <label class="form-check-label" for="medcheck2">Nur bei akuten Beschwerden</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nein" id="medcheck3" name="stress_medical_check">
+          <label class="form-check-label" for="medcheck3">Nein</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Diagnosis (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-stress-survey-diagnosis-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-stress-survey-diagnosis-display">
+        5. Wurde bei Ihnen eine stressbedingte Gesundheitsstörung diagnostiziert? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-stress-survey-diagnosis-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Angststörung oder Depression" id="diagnosis1" name="stress_diagnoses[]">
+          <label class="form-check-label" for="diagnosis1">Angststörung oder Depression</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Herzerkrankung oder Bluthochdruck" id="diagnosis2" name="stress_diagnoses[]">
+          <label class="form-check-label" for="diagnosis2">Herzerkrankung oder Bluthochdruck</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Magen-Darm-Erkrankung (z. B. Reizmagen)" id="diagnosis3" name="stress_diagnoses[]">
+          <label class="form-check-label" for="diagnosis3">Magen-Darm-Erkrankung (z. B. Reizmagen)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Andere" id="diagnosis4" name="stress_diagnoses[]">
+          <label class="form-check-label" for="diagnosis4">Andere</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nein" id="diagnosis5" name="stress_diagnoses[]">
+          <label class="form-check-label" for="diagnosis5">Nein</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input field for "Andere" if selected -->
+    <div class="form-floating sv-form-floating mb-3" id="other-diagnosis-container" style="display: none;">
+      <input class="form-control" id="form-stress-survey-other-diagnosis"
+             name="other_diagnosis" placeholder="Andere Diagnose">
+      <label for="form-stress-survey-other-diagnosis">Andere Diagnose</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-4">
+      <textarea class="form-control" id="form-stress-survey-freetext"
+                name="freitext" style="height:150px"></textarea>
+      <label for="form-stress-survey-freetext">
+        Freitext – Was möchten Sie uns sonst noch mitteilen?
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 3 ---------- -->
+  <section id="form-stress-survey-step-3" class="sv-form-step" data-step="3">
+    <h3 class="sv-step-title mb-4">Schritt 3 von 3: Kontaktaufnahme</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-stress-survey-tel"
+             name="telefon" type="tel" placeholder="Ihre Telefonnummer" required>
+      <label for="form-stress-survey-tel">Ihre Telefonnummer</label>
+    </div>
+    <p class="sv-tooltip-info mb-3">
+      Bitte Mobilnummer mit Landesvorwahl angeben, z.&nbsp;B. +41 79 123 45 67
+    </p>
+
+    <!-- Custom Dropdown for Callback times (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-stress-survey-calltime-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-stress-survey-calltime-display">
+        Bevorzugte Rückrufzeiten (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-stress-survey-calltime-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Vormittags (08:00–12:00 Uhr)" id="calltime1" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime1">Vormittags (08:00–12:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Mittags (12:00–14:00 Uhr)" id="calltime2" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime2">Mittags (12:00–14:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nachmittags (14:00–18:00 Uhr)" id="calltime3" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime3">Nachmittags (14:00–18:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Abends (18:00–20:00 Uhr)" id="calltime4" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime4">Abends (18:00–20:00 Uhr)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <textarea class="form-control" id="form-stress-survey-extra"
+                name="zusatzinformationen" style="height:100px"></textarea>
+      <label for="form-stress-survey-extra">
+        Zusätzliche Informationen zur Erreichbarkeit (optional)
+      </label>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-stress-survey-privacy"
+             type="checkbox" name="datenschutz" required>
+      <label class="form-check-label" for="form-stress-survey-privacy">
+        Ich stimme der <a href="/privacy">Datenschutzerklärung</a> zu.
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="submit" class="btn btn-primary sv-btn-xl">Absenden</button>
+    </div>
+  </section>
+</form>
+
+<!-- Erfolgsnachricht -->
+<div id="form-stress-survey-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
+  <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
+  <div class="text-start" id="form-stress-survey-summary"></div>
+  <hr>
+  <p class="lead mt-3" id="form-stress-survey-emailConfirm"></p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-stress-survey');
+  const steps = form.querySelectorAll('.sv-form-step');
+  
+  // Navigation function
+  const show = n => { 
+    steps.forEach(s => s.classList.remove('active'));
+    steps[n-1].classList.add('active');
+    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
+  };
+
+  // Next button handlers
+  form.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber + 1);
+    });
+  });
+
+  // Previous button handlers
+  form.querySelectorAll('[data-prev]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber - 1);
+    });
+  });
+
+  // Telephone validation
+  const tel = document.getElementById('form-stress-survey-tel');
+  const fmt = n => n.replace(/\D/g,'').replace(/(\d{3})(\d{3})(\d{2})(\d{2})/,'$1 $2 $3 $4');
+  
+  tel.addEventListener('blur', () => {
+    const d = tel.value.replace(/\D/g,'');
+    if(d.length !== 10 || d[0] !== '0') { 
+      alert('Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.'); 
+      tel.value = ''; 
+      tel.focus();
+    } else {
+      tel.value = fmt(d);
+    }
+  });
+
+  // Custom dropdown functionality for all dropdowns
+  function initializeDropdown(displayId, dropdownId, checkboxName, isSingleChoice = false) {
+    const display = document.getElementById(displayId);
+    const dropdown = document.getElementById(dropdownId);
+    const checkboxes = dropdown.querySelectorAll(`input[name="${checkboxName}"]`);
+    
+    // Toggle dropdown on click
+    display.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && e.target !== display) {
+        dropdown.style.display = 'none';
+      }
+    });
+    
+    // Prevent dropdown from closing when clicking inside
+    dropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    // Update display when checkboxes change
+    function updateDisplay() {
+      const selected = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.parentElement.querySelector('label').textContent);
+      
+      if (selected.length > 0) {
+        display.textContent = selected.join(', ');
+      } else {
+        display.textContent = 'Bitte wählen';
+      }
+    }
+    
+    // Handle checkbox changes
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (isSingleChoice) {
+          // For single choice, uncheck all other checkboxes when one is selected
+          checkboxes.forEach(cb => {
+            if (cb !== checkbox) {
+              cb.checked = false;
+            }
+          });
+        }
+        updateDisplay();
+      });
+    });
+  }
+
+  // Initialize all dropdowns - single choice
+  initializeDropdown('form-stress-survey-geschlecht-display', 'form-stress-survey-geschlecht-dropdown', 'geschlecht', true);
+  initializeDropdown('form-stress-survey-impairment-display', 'form-stress-survey-impairment-dropdown', 'stress_impairment', true);
+  initializeDropdown('form-stress-survey-frequency-display', 'form-stress-survey-frequency-dropdown', 'stress_frequency', true);
+  initializeDropdown('form-stress-survey-medcheck-display', 'form-stress-survey-medcheck-dropdown', 'stress_medical_check', true);
+  
+  // Initialize all dropdowns - multiple choice
+  initializeDropdown('form-stress-survey-symptoms-display', 'form-stress-survey-symptoms-dropdown', 'stress_symptoms[]', false);
+  initializeDropdown('form-stress-survey-diagnosis-display', 'form-stress-survey-diagnosis-dropdown', 'stress_diagnoses[]', false);
+  initializeDropdown('form-stress-survey-calltime-display', 'form-stress-survey-calltime-dropdown', 'rueckruf_zeiten[]', false);
+
+  // Show/hide other fields based on checkbox selection
+  const diagnosisCheckboxes = document.querySelectorAll('input[name="stress_diagnoses[]"]');
+  const otherDiagnosisContainer = document.getElementById('other-diagnosis-container');
+  
+  diagnosisCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.value === 'Andere' && checkbox.checked) {
+        otherDiagnosisContainer.style.display = 'block';
+      } else if (checkbox.value === 'Andere' && !checkbox.checked) {
+        otherDiagnosisContainer.style.display = 'none';
+      }
+    });
+  });
+
+  // Submit handler
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    
+    const fd = new FormData(form);
+    const obj = Object.fromEntries(fd.entries());
+    obj.telefon = fmt(obj.telefon);
+
+    // Build summary
+    let html = '<ul class="list-group">';
+    
+    // Map variable names to display labels
+    const fieldLabels = {
+      'vorname': 'Vorname',
+      'nachname': 'Nachname',
+      'geburtsjahr': 'Geburtsjahr',
+      'email': 'Email',
+      'telefon': 'Telefon',
+      'geschlecht': 'Geschlecht',
+      'stress_impairment': 'Beeinträchtigung im Alltag',
+      'stress_frequency': 'Häufigkeit der Beschwerden',
+      'stress_medical_check': 'Medizinische Untersuchungen',
+      'other_diagnosis': 'Andere Diagnose'
+    };
+    
+    // Simple fields
+    const simple = ['vorname', 'nachname', 'geburtsjahr', 'email', 'telefon', 'geschlecht', 'stress_impairment', 'stress_frequency', 'stress_medical_check'];
+    simple.forEach(k => { 
+      if(obj[k]) html += `<li class="list-group-item"><strong>${fieldLabels[k] || k}:</strong> ${obj[k]}</li>`; 
+    });
+    
+    // Multiple selection fields with proper labels
+    const multi = [
+      { name: 'stress_symptoms[]', label: 'Stresssymptome' },
+      { name: 'stress_diagnoses[]', label: 'Stressbedingte Diagnosen' },
+      { name: 'rueckruf_zeiten[]', label: 'Rückrufzeiten' }
+    ];
+    
+    multi.forEach(item => {
+      const arr = fd.getAll(item.name);
+      if(arr.length) html += `<li class="list-group-item"><strong>${item.label}:</strong> ${arr.join(', ')}</li>`;
+    });
+
+    // Other fields
+    if(obj.other_diagnosis) html += `<li class="list-group-item"><strong>${fieldLabels.other_diagnosis}:</strong> ${obj.other_diagnosis}</li>`;
+    
+    // Free text
+    if(obj.freitext) html += `<li class="list-group-item"><strong>Freitext:</strong> ${obj.freitext}</li>`;
+    if(obj.zusatzinformationen) html += `<li class="list-group-item"><strong>Zusatzinformationen:</strong> ${obj.zusatzinformationen}</li>`;
+    
+    html += '</ul>';
+
+    // Update UI
+    document.getElementById('form-stress-survey-summary').innerHTML = html;
+    document.getElementById('form-stress-survey-emailConfirm').textContent = `Wir senden eine Bestätigung an: ${obj.email || ''}`;
+    form.classList.add('d-none');
+    document.getElementById('form-stress-survey-success').classList.remove('d-none');
+
+    // Send to netlify function
+    try {
+      const response = await fetch('/.netlify/functions/sendQuestionnaireConfirmation', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(obj)
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  });
+});
+</script>

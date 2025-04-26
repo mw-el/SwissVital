@@ -1,0 +1,664 @@
+<!-- Chronische Beschwerden-Fragebogen — eindeutiger Präfix form-chronic-survey -->
+<form id="form-chronic-survey" class="sv-multistep-form"
+      name="fragebogen-chronische-beschwerden" method="POST"
+      data-netlify="true" netlify-honeypot="bot-field">
+
+  <!-- Hidden -->
+  <input type="hidden" name="language" value="de">
+  <input type="hidden" name="form-name" value="fragebogen-chronische-beschwerden">
+  <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+
+  <!-- ---------- Schritt 1 ---------- -->
+  <section id="form-chronic-survey-step-1" class="sv-form-step active" data-step="1">
+    <h3 class="sv-step-title mb-4">Schritt 1 von 3: Persönliche Angaben</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-chronic-survey-vorname"
+             name="vorname" placeholder="Vorname *" required>
+      <label for="form-chronic-survey-vorname">Vorname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-chronic-survey-nachname"
+             name="nachname" placeholder="Nachname *" required>
+      <label for="form-chronic-survey-nachname">Nachname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-chronic-survey-email" type="email"
+             name="email" placeholder="name@example.com" required>
+      <label for="form-chronic-survey-email">E-Mail-Adresse *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-chronic-survey-gebjahr"
+             name="geburtsjahr" placeholder="Geburtsjahr *" required>
+      <label for="form-chronic-survey-gebjahr">Geburtsjahr *</label>
+    </div>
+
+    <p class="sv-tooltip-info mb-2">
+      Für diagnostische Zwecke – z.&nbsp;B. Laboruntersuchungen – ist das biologische
+      Geschlecht wichtig, unabhängig von Ihrer geschlechtlichen Identität.
+    </p>
+    
+    <!-- Custom Dropdown for Geschlecht (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-geschlecht-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-geschlecht-display">Biologisches Geschlecht *</label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-geschlecht-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="männlich" id="geschlecht1" name="geschlecht">
+          <label class="form-check-label" for="geschlecht1">männlich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="weiblich" id="geschlecht2" name="geschlecht">
+          <label class="form-check-label" for="geschlecht2">weiblich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="möchte ich nicht angeben" id="geschlecht3" name="geschlecht">
+          <label class="form-check-label" for="geschlecht3">möchte ich nicht angeben</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-chronic-survey-dsp1"
+             type="checkbox" name="datenschutz1" required>
+      <label class="form-check-label" for="form-chronic-survey-dsp1">
+        Ich stimme der Datenverarbeitung zu.
+      </label>
+    </div>
+
+    <div class="d-grid sv-button-container">
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 2 ---------- -->
+  <section id="form-chronic-survey-step-2" class="sv-form-step" data-step="2">
+    <h3 class="sv-step-title mb-4">Schritt 2 von 3: Chronische Beschwerden</h3>
+
+    <!-- Custom Dropdown for Complaints (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-complaints-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-complaints-display">
+        1. Welche Beschwerden haben Sie am häufigsten? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-complaints-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Rückenschmerzen" id="complaint1" name="chronic_complaints[]">
+          <label class="form-check-label" for="complaint1">Rückenschmerzen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Gelenkschmerzen" id="complaint2" name="chronic_complaints[]">
+          <label class="form-check-label" for="complaint2">Gelenkschmerzen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Kopfschmerzen/Migräne" id="complaint3" name="chronic_complaints[]">
+          <label class="form-check-label" for="complaint3">Kopfschmerzen/Migräne</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Magen-Darm-Probleme" id="complaint4" name="chronic_complaints[]">
+          <label class="form-check-label" for="complaint4">Magen-Darm-Probleme</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Sonstige" id="complaint5" name="chronic_complaints[]">
+          <label class="form-check-label" for="complaint5">Sonstige</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input field for "Sonstige" if selected -->
+    <div class="form-floating sv-form-floating mb-3" id="other-complaint-container" style="display: none;">
+      <input class="form-control" id="form-chronic-survey-other-complaint"
+             name="other_complaint" placeholder="Sonstige Beschwerden">
+      <label for="form-chronic-survey-other-complaint">Sonstige Beschwerden</label>
+    </div>
+
+    <!-- Custom Dropdown for Duration (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-duration-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-duration-display">
+        2. Seit wann bestehen Ihre Beschwerden?
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-duration-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Wenige Wochen" id="duration1" name="complaint_duration">
+          <label class="form-check-label" for="duration1">Wenige Wochen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="3–6 Monate" id="duration2" name="complaint_duration">
+          <label class="form-check-label" for="duration2">3–6 Monate</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="6–12 Monate" id="duration3" name="complaint_duration">
+          <label class="form-check-label" for="duration3">6–12 Monate</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="1–5 Jahre" id="duration4" name="complaint_duration">
+          <label class="form-check-label" for="duration4">1–5 Jahre</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Über 5 Jahre" id="duration5" name="complaint_duration">
+          <label class="form-check-label" for="duration5">Über 5 Jahre</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Pain intensity (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-pain-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-pain-display">
+        3. Wie stark sind Ihre Schmerzen/Beschwerden auf einer Skala von 1–10?
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-pain-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="1–3 (mild)" id="pain1" name="pain_intensity">
+          <label class="form-check-label" for="pain1">1–3 (mild)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="4–6 (mittel)" id="pain2" name="pain_intensity">
+          <label class="form-check-label" for="pain2">4–6 (mittel)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="7–8 (stark)" id="pain3" name="pain_intensity">
+          <label class="form-check-label" for="pain3">7–8 (stark)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="9–10 (sehr stark)" id="pain4" name="pain_intensity">
+          <label class="form-check-label" for="pain4">9–10 (sehr stark)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Schwankend" id="pain5" name="pain_intensity">
+          <label class="form-check-label" for="pain5">Schwankend</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Diagnoses (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-diagnoses-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-diagnoses-display">
+        4. Wurde bei Ihnen bereits eine chronische Erkrankung diagnostiziert? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-diagnoses-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, eine Gelenk- oder Muskelerkrankung (z. B. Arthrose, Rheuma)" id="diagnosis1" name="chronic_diagnoses[]">
+          <label class="form-check-label" for="diagnosis1">Ja, eine Gelenk- oder Muskelerkrankung (z. B. Arthrose, Rheuma)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, eine neurologische Erkrankung (z. B. Migräne, Polyneuropathie)" id="diagnosis2" name="chronic_diagnoses[]">
+          <label class="form-check-label" for="diagnosis2">Ja, eine neurologische Erkrankung (z. B. Migräne, Polyneuropathie)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, eine Magen-Darm-Erkrankung (z. B. Reizdarm, Morbus Crohn)" id="diagnosis3" name="chronic_diagnoses[]">
+          <label class="form-check-label" for="diagnosis3">Ja, eine Magen-Darm-Erkrankung (z. B. Reizdarm, Morbus Crohn)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, eine andere chronische Erkrankung" id="diagnosis4" name="chronic_diagnoses[]">
+          <label class="form-check-label" for="diagnosis4">Ja, eine andere chronische Erkrankung</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nein, keine bekannte chronische Erkrankung" id="diagnosis5" name="chronic_diagnoses[]">
+          <label class="form-check-label" for="diagnosis5">Nein, keine bekannte chronische Erkrankung</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input field for "andere chronische Erkrankung" if selected -->
+    <div class="form-floating sv-form-floating mb-3" id="other-diagnosis-container" style="display: none;">
+      <input class="form-control" id="form-chronic-survey-other-diagnosis"
+             name="other_diagnosis" placeholder="Andere Diagnose">
+      <label for="form-chronic-survey-other-diagnosis">Andere Diagnose</label>
+    </div>
+
+    <!-- Custom Dropdown for Measures taken (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-measures-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-measures-display">
+        5. Welche Massnahmen haben Sie bereits ergriffen? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-measures-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Medikamente" id="measure1" name="measures_taken[]">
+          <label class="form-check-label" for="measure1">Medikamente</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Physiotherapie" id="measure2" name="measures_taken[]">
+          <label class="form-check-label" for="measure2">Physiotherapie</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Alternative Heilmethoden" id="measure3" name="measures_taken[]">
+          <label class="form-check-label" for="measure3">Alternative Heilmethoden</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Operation" id="measure4" name="measures_taken[]">
+          <label class="form-check-label" for="measure4">Operation</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Noch nichts" id="measure5" name="measures_taken[]">
+          <label class="form-check-label" for="measure5">Noch nichts</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Daily impact (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-impact-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-impact-display">
+        6. Wie oft schränken die Beschwerden Ihren Alltag ein?
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-impact-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Gar nicht" id="impact1" name="daily_impact">
+          <label class="form-check-label" for="impact1">Gar nicht</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Gelegentlich" id="impact2" name="daily_impact">
+          <label class="form-check-label" for="impact2">Gelegentlich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Mehrmals wöchentlich" id="impact3" name="daily_impact">
+          <label class="form-check-label" for="impact3">Mehrmals wöchentlich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Täglich" id="impact4" name="daily_impact">
+          <label class="form-check-label" for="impact4">Täglich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Stark beeinträchtigend" id="impact5" name="daily_impact">
+          <label class="form-check-label" for="impact5">Stark beeinträchtigend</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Imaging (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-imaging-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-imaging-display">
+        7. Wurde bereits eine bildgebende Untersuchung (MRI/CT/Röntgen) gemacht?
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-imaging-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, vor weniger als 6 Monaten" id="imaging1" name="imaging_exams">
+          <label class="form-check-label" for="imaging1">Ja, vor weniger als 6 Monaten</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, vor 1 Jahr" id="imaging2" name="imaging_exams">
+          <label class="form-check-label" for="imaging2">Ja, vor 1 Jahr</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, vor mehr als 2 Jahren" id="imaging3" name="imaging_exams">
+          <label class="form-check-label" for="imaging3">Ja, vor mehr als 2 Jahren</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nein, aber empfohlen" id="imaging4" name="imaging_exams">
+          <label class="form-check-label" for="imaging4">Nein, aber empfohlen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nein, nicht notwendig" id="imaging5" name="imaging_exams">
+          <label class="form-check-label" for="imaging5">Nein, nicht notwendig</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Expectations (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-expectations-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-expectations-display">
+        8. Was erwarten Sie von einer Vorsorgeuntersuchung? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-expectations-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Schmerzursache finden" id="expect1" name="screening_expectations[]">
+          <label class="form-check-label" for="expect1">Schmerzursache finden</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Behandlungsmöglichkeiten ermitteln" id="expect2" name="screening_expectations[]">
+          <label class="form-check-label" for="expect2">Behandlungsmöglichkeiten ermitteln</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Schlimme Erkrankungen ausschliessen" id="expect3" name="screening_expectations[]">
+          <label class="form-check-label" for="expect3">Schlimme Erkrankungen ausschliessen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Lebensqualität verbessern" id="expect4" name="screening_expectations[]">
+          <label class="form-check-label" for="expect4">Lebensqualität verbessern</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Keine konkrete Erwartung" id="expect5" name="screening_expectations[]">
+          <label class="form-check-label" for="expect5">Keine konkrete Erwartung</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-4">
+      <textarea class="form-control" id="form-chronic-survey-freetext"
+                name="freitext" style="height:150px"></textarea>
+      <label for="form-chronic-survey-freetext">
+        Freitext – Was möchten Sie uns sonst noch mitteilen?
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 3 ---------- -->
+  <section id="form-chronic-survey-step-3" class="sv-form-step" data-step="3">
+    <h3 class="sv-step-title mb-4">Schritt 3 von 3: Kontaktaufnahme</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-chronic-survey-tel"
+             name="telefon" type="tel" placeholder="Ihre Telefonnummer" required>
+      <label for="form-chronic-survey-tel">Ihre Telefonnummer</label>
+    </div>
+    <p class="sv-tooltip-info mb-3">
+      Bitte Mobilnummer mit Landesvorwahl angeben, z.&nbsp;B. +41 79 123 45 67
+    </p>
+
+    <!-- Custom Dropdown for Callback times (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-chronic-survey-calltime-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-chronic-survey-calltime-display">
+        Bevorzugte Rückrufzeiten (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-chronic-survey-calltime-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Vormittags (08:00–12:00 Uhr)" id="calltime1" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime1">Vormittags (08:00–12:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Mittags (12:00–14:00 Uhr)" id="calltime2" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime2">Mittags (12:00–14:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nachmittags (14:00–18:00 Uhr)" id="calltime3" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime3">Nachmittags (14:00–18:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Abends (18:00–20:00 Uhr)" id="calltime4" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime4">Abends (18:00–20:00 Uhr)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <textarea class="form-control" id="form-chronic-survey-extra"
+                name="zusatzinformationen" style="height:100px"></textarea>
+      <label for="form-chronic-survey-extra">
+        Zusätzliche Informationen zur Erreichbarkeit (optional)
+      </label>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-chronic-survey-privacy"
+             type="checkbox" name="datenschutz" required>
+      <label class="form-check-label" for="form-chronic-survey-privacy">
+        Ich stimme der <a href="/privacy">Datenschutzerklärung</a> zu.
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="submit" class="btn btn-primary sv-btn-xl">Absenden</button>
+    </div>
+  </section>
+</form>
+
+<!-- Erfolgsnachricht -->
+<div id="form-chronic-survey-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
+  <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
+  <div class="text-start" id="form-chronic-survey-summary"></div>
+  <hr>
+  <p class="lead mt-3" id="form-chronic-survey-emailConfirm"></p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-chronic-survey');
+  const steps = form.querySelectorAll('.sv-form-step');
+  
+  // Navigation function
+  const show = n => { 
+    steps.forEach(s => s.classList.remove('active'));
+    steps[n-1].classList.add('active');
+    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
+  };
+
+  // Next button handlers
+  form.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber + 1);
+    });
+  });
+
+  // Previous button handlers
+  form.querySelectorAll('[data-prev]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber - 1);
+    });
+  });
+
+  // Telephone validation
+  const tel = document.getElementById('form-chronic-survey-tel');
+  const fmt = n => n.replace(/\D/g,'').replace(/(\d{3})(\d{3})(\d{2})(\d{2})/,'$1 $2 $3 $4');
+  
+  tel.addEventListener('blur', () => {
+    const d = tel.value.replace(/\D/g,'');
+    if(d.length !== 10 || d[0] !== '0') { 
+      alert('Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.'); 
+      tel.value = ''; 
+      tel.focus();
+    } else {
+      tel.value = fmt(d);
+    }
+  });
+
+  // Custom dropdown functionality for all dropdowns
+  function initializeDropdown(displayId, dropdownId, checkboxName, isSingleChoice = false) {
+    const display = document.getElementById(displayId);
+    const dropdown = document.getElementById(dropdownId);
+    const checkboxes = dropdown.querySelectorAll(`input[name="${checkboxName}"]`);
+    
+    // Toggle dropdown on click
+    display.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && e.target !== display) {
+        dropdown.style.display = 'none';
+      }
+    });
+    
+    // Prevent dropdown from closing when clicking inside
+    dropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    // Update display when checkboxes change
+    function updateDisplay() {
+      const selected = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.parentElement.querySelector('label').textContent);
+      
+      if (selected.length > 0) {
+        display.textContent = selected.join(', ');
+      } else {
+        display.textContent = 'Bitte wählen';
+      }
+    }
+    
+    // Handle checkbox changes
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (isSingleChoice) {
+          // For single choice, uncheck all other checkboxes when one is selected
+          checkboxes.forEach(cb => {
+            if (cb !== checkbox) {
+              cb.checked = false;
+            }
+          });
+        }
+        updateDisplay();
+      });
+    });
+  }
+
+  // Initialize all dropdowns - single choice
+  initializeDropdown('form-chronic-survey-geschlecht-display', 'form-chronic-survey-geschlecht-dropdown', 'geschlecht', true);
+  initializeDropdown('form-chronic-survey-duration-display', 'form-chronic-survey-duration-dropdown', 'complaint_duration', true);
+  initializeDropdown('form-chronic-survey-pain-display', 'form-chronic-survey-pain-dropdown', 'pain_intensity', true);
+  initializeDropdown('form-chronic-survey-impact-display', 'form-chronic-survey-impact-dropdown', 'daily_impact', true);
+  initializeDropdown('form-chronic-survey-imaging-display', 'form-chronic-survey-imaging-dropdown', 'imaging_exams', true);
+  
+  // Initialize all dropdowns - multiple choice
+  initializeDropdown('form-chronic-survey-complaints-display', 'form-chronic-survey-complaints-dropdown', 'chronic_complaints[]', false);
+  initializeDropdown('form-chronic-survey-diagnoses-display', 'form-chronic-survey-diagnoses-dropdown', 'chronic_diagnoses[]', false);
+  initializeDropdown('form-chronic-survey-measures-display', 'form-chronic-survey-measures-dropdown', 'measures_taken[]', false);
+  initializeDropdown('form-chronic-survey-expectations-display', 'form-chronic-survey-expectations-dropdown', 'screening_expectations[]', false);
+  initializeDropdown('form-chronic-survey-calltime-display', 'form-chronic-survey-calltime-dropdown', 'rueckruf_zeiten[]', false);
+
+  // Show/hide other fields based on checkbox selection
+  const complaintCheckboxes = document.querySelectorAll('input[name="chronic_complaints[]"]');
+  const otherComplaintContainer = document.getElementById('other-complaint-container');
+  
+  complaintCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.value === 'Sonstige' && checkbox.checked) {
+        otherComplaintContainer.style.display = 'block';
+      } else if (checkbox.value === 'Sonstige' && !checkbox.checked) {
+        otherComplaintContainer.style.display = 'none';
+      }
+    });
+  });
+
+  const diagnosisCheckboxes = document.querySelectorAll('input[name="chronic_diagnoses[]"]');
+  const otherDiagnosisContainer = document.getElementById('other-diagnosis-container');
+  
+  diagnosisCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.value === 'Ja, eine andere chronische Erkrankung' && checkbox.checked) {
+        otherDiagnosisContainer.style.display = 'block';
+      } else if (checkbox.value === 'Ja, eine andere chronische Erkrankung' && !checkbox.checked) {
+        otherDiagnosisContainer.style.display = 'none';
+      }
+    });
+  });
+
+  // Submit handler
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    
+    const fd = new FormData(form);
+    const obj = Object.fromEntries(fd.entries());
+    obj.telefon = fmt(obj.telefon);
+
+    // Build summary
+    let html = '<ul class="list-group">';
+    
+    // Map variable names to display labels
+    const fieldLabels = {
+      'vorname': 'Vorname',
+      'nachname': 'Nachname',
+      'geburtsjahr': 'Geburtsjahr',
+      'email': 'Email',
+      'telefon': 'Telefon',
+      'geschlecht': 'Geschlecht',
+      'complaint_duration': 'Dauer der Beschwerden',
+      'pain_intensity': 'Schmerzintensität',
+      'daily_impact': 'Alltagseinschränkung',
+      'imaging_exams': 'Bildgebende Untersuchungen',
+      'other_complaint': 'Andere Beschwerden',
+      'other_diagnosis': 'Andere Diagnose'
+    };
+    
+    // Simple fields
+    const simple = ['vorname', 'nachname', 'geburtsjahr', 'email', 'telefon', 'geschlecht', 'complaint_duration', 'pain_intensity', 'daily_impact', 'imaging_exams'];
+    simple.forEach(k => { 
+      if(obj[k]) html += `<li class="list-group-item"><strong>${fieldLabels[k] || k}:</strong> ${obj[k]}</li>`; 
+    });
+    
+    // Multiple selection fields with proper labels
+    const multi = [
+      { name: 'chronic_complaints[]', label: 'Chronische Beschwerden' },
+      { name: 'chronic_diagnoses[]', label: 'Chronische Diagnosen' },
+      { name: 'measures_taken[]', label: 'Ergriffene Massnahmen' },
+      { name: 'screening_expectations[]', label: 'Erwartungen an Vorsorge' },
+      { name: 'rueckruf_zeiten[]', label: 'Rückrufzeiten' }
+    ];
+    
+    multi.forEach(item => {
+      const arr = fd.getAll(item.name);
+      if(arr.length) html += `<li class="list-group-item"><strong>${item.label}:</strong> ${arr.join(', ')}</li>`;
+    });
+
+    // Other fields
+    if(obj.other_complaint) html += `<li class="list-group-item"><strong>${fieldLabels.other_complaint}:</strong> ${obj.other_complaint}</li>`;
+    if(obj.other_diagnosis) html += `<li class="list-group-item"><strong>${fieldLabels.other_diagnosis}:</strong> ${obj.other_diagnosis}</li>`;
+    
+    // Free text
+    if(obj.freitext) html += `<li class="list-group-item"><strong>Freitext:</strong> ${obj.freitext}</li>`;
+    if(obj.zusatzinformationen) html += `<li class="list-group-item"><strong>Zusatzinformationen:</strong> ${obj.zusatzinformationen}</li>`;
+    
+    html += '</ul>';
+
+    // Update UI
+    document.getElementById('form-chronic-survey-summary').innerHTML = html;
+    document.getElementById('form-chronic-survey-emailConfirm').textContent = `Wir senden eine Bestätigung an: ${obj.email || ''}`;
+    form.classList.add('d-none');
+    document.getElementById('form-chronic-survey-success').classList.remove('d-none');
+
+    // Send to netlify function
+    try {
+      const response = await fetch('/.netlify/functions/sendQuestionnaireConfirmation', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(obj)
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  });
+});
+</script>

@@ -1,0 +1,594 @@
+<!-- Individuelle Vorsorge-Fragebogen — eindeutiger Präfix form-individual-survey -->
+<form id="form-individual-survey" class="sv-multistep-form"
+      name="fragebogen-individuelle-vorsorge" method="POST"
+      data-netlify="true" netlify-honeypot="bot-field">
+
+  <!-- Hidden -->
+  <input type="hidden" name="language" value="de">
+  <input type="hidden" name="form-name" value="fragebogen-individuelle-vorsorge">
+  <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+
+  <!-- ---------- Schritt 1 ---------- -->
+  <section id="form-individual-survey-step-1" class="sv-form-step active" data-step="1">
+    <h3 class="sv-step-title mb-4">Schritt 1 von 3: Persönliche Angaben</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-individual-survey-vorname"
+             name="vorname" placeholder="Vorname *" required>
+      <label for="form-individual-survey-vorname">Vorname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-individual-survey-nachname"
+             name="nachname" placeholder="Nachname *" required>
+      <label for="form-individual-survey-nachname">Nachname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-individual-survey-email" type="email"
+             name="email" placeholder="name@example.com" required>
+      <label for="form-individual-survey-email">E-Mail-Adresse *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-individual-survey-gebjahr"
+             name="geburtsjahr" placeholder="Geburtsjahr *" required>
+      <label for="form-individual-survey-gebjahr">Geburtsjahr *</label>
+    </div>
+
+    <p class="sv-tooltip-info mb-2">
+      Für diagnostische Zwecke – z.&nbsp;B. Laboruntersuchungen – ist das biologische
+      Geschlecht wichtig, unabhängig von Ihrer geschlechtlichen Identität.
+    </p>
+    
+    <!-- Custom Dropdown for Geschlecht (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-geschlecht-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-geschlecht-display">Biologisches Geschlecht *</label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-geschlecht-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="männlich" id="geschlecht1" name="geschlecht">
+          <label class="form-check-label" for="geschlecht1">männlich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="weiblich" id="geschlecht2" name="geschlecht">
+          <label class="form-check-label" for="geschlecht2">weiblich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="möchte ich nicht angeben" id="geschlecht3" name="geschlecht">
+          <label class="form-check-label" for="geschlecht3">möchte ich nicht angeben</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-individual-survey-dsp1"
+             type="checkbox" name="datenschutz1" required>
+      <label class="form-check-label" for="form-individual-survey-dsp1">
+        Ich stimme der Datenverarbeitung zu.
+      </label>
+    </div>
+
+    <div class="d-grid sv-button-container">
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 2 ---------- -->
+  <section id="form-individual-survey-step-2" class="sv-form-step" data-step="2">
+    <h3 class="sv-step-title mb-4">Schritt 2 von 3: Individuelle Vorsorgeplanung</h3>
+
+    <!-- Custom Dropdown for Body regions (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-bodyregion-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-bodyregion-display">
+        1. Welche Körperregion möchten Sie untersuchen lassen? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-bodyregion-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Gehirn / Nerven" id="body1" name="body_regions[]">
+          <label class="form-check-label" for="body1">Gehirn / Nerven</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Herz / Kreislauf" id="body2" name="body_regions[]">
+          <label class="form-check-label" for="body2">Herz / Kreislauf</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Bauchorgane" id="body3" name="body_regions[]">
+          <label class="form-check-label" for="body3">Bauchorgane</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Bewegungsapparat" id="body4" name="body_regions[]">
+          <label class="form-check-label" for="body4">Bewegungsapparat</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Blutanalyse / Blutwerte" id="body5" name="body_regions[]">
+          <label class="form-check-label" for="body5">Blutanalyse / Blutwerte</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Keine bestimmte" id="body6" name="body_regions[]">
+          <label class="form-check-label" for="body6">Keine bestimmte</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Checkup frequency (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-checkup-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-checkup-display">
+        2. Wie oft lassen Sie sich medizinisch durchchecken?
+      </label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-checkup-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Jährlich" id="checkup1" name="checkup_frequency">
+          <label class="form-check-label" for="checkup1">Jährlich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Alle paar Jahre" id="checkup2" name="checkup_frequency">
+          <label class="form-check-label" for="checkup2">Alle paar Jahre</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nur bei Beschwerden" id="checkup3" name="checkup_frequency">
+          <label class="form-check-label" for="checkup3">Nur bei Beschwerden</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Noch nie" id="checkup4" name="checkup_frequency">
+          <label class="form-check-label" for="checkup4">Noch nie</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Previous conditions (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-conditions-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-conditions-display">
+        3. Haben Sie bekannte Vorerkrankungen? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-conditions-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Herz-Kreislauf-Erkrankungen" id="condition1" name="known_conditions[]">
+          <label class="form-check-label" for="condition1">Herz-Kreislauf-Erkrankungen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Stoffwechselerkrankungen" id="condition2" name="known_conditions[]">
+          <label class="form-check-label" for="condition2">Stoffwechselerkrankungen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Chronische Erkrankungen" id="condition3" name="known_conditions[]">
+          <label class="form-check-label" for="condition3">Chronische Erkrankungen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Krebserkrankungen (eigene / familiär)" id="condition4" name="known_conditions[]">
+          <label class="form-check-label" for="condition4">Krebserkrankungen (eigene / familiär)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Andere" id="condition5" name="known_conditions[]">
+          <label class="form-check-label" for="condition5">Andere</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Keine bekannten Erkrankungen oder Risikofaktoren" id="condition6" name="known_conditions[]">
+          <label class="form-check-label" for="condition6">Keine bekannten Erkrankungen oder Risikofaktoren</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input field for "Andere" if selected -->
+    <div class="form-floating sv-form-floating mb-3" id="other-condition-container" style="display: none;">
+      <input class="form-control" id="form-individual-survey-other-condition"
+             name="other_condition" placeholder="Andere Vorerkrankung">
+      <label for="form-individual-survey-other-condition">Andere Vorerkrankung</label>
+    </div>
+
+    <!-- Custom Dropdown for Risk factors (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-risks-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-risks-display">
+        4. Haben Sie bekannte Risikofaktoren? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-risks-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Rauchen" id="risk1" name="risk_factors[]">
+          <label class="form-check-label" for="risk1">Rauchen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Übergewicht" id="risk2" name="risk_factors[]">
+          <label class="form-check-label" for="risk2">Übergewicht</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Bewegungsmangel" id="risk3" name="risk_factors[]">
+          <label class="form-check-label" for="risk3">Bewegungsmangel</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Hoher Alkoholkonsum" id="risk4" name="risk_factors[]">
+          <label class="form-check-label" for="risk4">Hoher Alkoholkonsum</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Keine bekannten Risikofaktoren" id="risk5" name="risk_factors[]">
+          <label class="form-check-label" for="risk5">Keine bekannten Risikofaktoren</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Chronische Erkrankungen" id="risk6" name="risk_factors[]">
+          <label class="form-check-label" for="risk6">Chronische Erkrankungen</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Examinations (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-examinations-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-examinations-display">
+        5. Welche Untersuchung halten Sie für sinnvoll? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-examinations-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Blutuntersuchung (Cholesterin, Zuckerwerte …)" id="exam1" name="examinations[]">
+          <label class="form-check-label" for="exam1">Blutuntersuchung (Cholesterin, Zuckerwerte …)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Bildgebende Verfahren (MRI, CT, Sonographie)" id="exam2" name="examinations[]">
+          <label class="form-check-label" for="exam2">Bildgebende Verfahren (MRI, CT, Sonographie)</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Lab values (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-labvalues-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-labvalues-display">
+        6. Gab es in der Vergangenheit auffällige Laborwerte oder ärztliche Hinweise? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-labvalues-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Blutzuckerwerte / Diabetes" id="lab1" name="lab_values[]">
+          <label class="form-check-label" for="lab1">Blutzuckerwerte / Diabetes</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Cholesterin- / Blutfettwerte" id="lab2" name="lab_values[]">
+          <label class="form-check-label" for="lab2">Cholesterin- / Blutfettwerte</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Leber- / Nierenwerte" id="lab3" name="lab_values[]">
+          <label class="form-check-label" for="lab3">Leber- / Nierenwerte</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Hinweise, aber unklar welche" id="lab4" name="lab_values[]">
+          <label class="form-check-label" for="lab4">Hinweise, aber unklar welche</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nein, bisher unauffällig" id="lab5" name="lab_values[]">
+          <label class="form-check-label" for="lab5">Nein, bisher unauffällig</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Surgery history (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-surgery-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-surgery-display">
+        7. Haben Sie in der Vergangenheit Operationen / chirurgische Eingriffe gehabt?
+      </label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-surgery-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, grössere Eingriffe (z. B. Herz- oder Wirbelsäulen-OP)" id="surgery1" name="surgery_history">
+          <label class="form-check-label" for="surgery1">Ja, grössere Eingriffe (z. B. Herz- oder Wirbelsäulen-OP)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja, kleinere Eingriffe (z. B. Gallenblase, Meniskus)" id="surgery2" name="surgery_history">
+          <label class="form-check-label" for="surgery2">Ja, kleinere Eingriffe (z. B. Gallenblase, Meniskus)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nein, noch nie" id="surgery3" name="surgery_history">
+          <label class="form-check-label" for="surgery3">Nein, noch nie</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ich kann mich nicht genau erinnern" id="surgery4" name="surgery_history">
+          <label class="form-check-label" for="surgery4">Ich kann mich nicht genau erinnern</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-4">
+      <textarea class="form-control" id="form-individual-survey-freetext"
+                name="freitext" style="height:150px"></textarea>
+      <label for="form-individual-survey-freetext">
+        Freitext – Was möchten Sie uns sonst noch mitteilen?
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 3 ---------- -->
+  <section id="form-individual-survey-step-3" class="sv-form-step" data-step="3">
+    <h3 class="sv-step-title mb-4">Schritt 3 von 3: Kontaktaufnahme</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-individual-survey-tel"
+             name="telefon" type="tel" placeholder="Ihre Telefonnummer" required>
+      <label for="form-individual-survey-tel">Ihre Telefonnummer</label>
+    </div>
+    <p class="sv-tooltip-info mb-3">
+      Bitte Mobilnummer mit Landesvorwahl angeben, z.&nbsp;B. +41 79 123 45 67
+    </p>
+
+    <!-- Custom Dropdown for Callback times (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-individual-survey-calltime-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-individual-survey-calltime-display">
+        Bevorzugte Rückrufzeiten (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-individual-survey-calltime-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Vormittags (08:00–12:00 Uhr)" id="calltime1" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime1">Vormittags (08:00–12:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Mittags (12:00–14:00 Uhr)" id="calltime2" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime2">Mittags (12:00–14:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nachmittags (14:00–18:00 Uhr)" id="calltime3" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime3">Nachmittags (14:00–18:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Abends (18:00–20:00 Uhr)" id="calltime4" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime4">Abends (18:00–20:00 Uhr)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <textarea class="form-control" id="form-individual-survey-extra"
+                name="zusatzinformationen" style="height:100px"></textarea>
+      <label for="form-individual-survey-extra">
+        Zusätzliche Informationen zur Erreichbarkeit (optional)
+      </label>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-individual-survey-privacy"
+             type="checkbox" name="datenschutz" required>
+      <label class="form-check-label" for="form-individual-survey-privacy">
+        Ich stimme der <a href="/privacy">Datenschutzerklärung</a> zu.
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="submit" class="btn btn-primary sv-btn-xl">Absenden</button>
+    </div>
+  </section>
+</form>
+
+<!-- Erfolgsnachricht -->
+<div id="form-individual-survey-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
+  <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
+  <div class="text-start" id="form-individual-survey-summary"></div>
+  <hr>
+  <p class="lead mt-3" id="form-individual-survey-emailConfirm"></p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-individual-survey');
+  const steps = form.querySelectorAll('.sv-form-step');
+  
+  // Navigation function
+  const show = n => { 
+    steps.forEach(s => s.classList.remove('active'));
+    steps[n-1].classList.add('active');
+    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
+  };
+
+  // Next button handlers
+  form.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber + 1);
+    });
+  });
+
+  // Previous button handlers
+  form.querySelectorAll('[data-prev]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber - 1);
+    });
+  });
+
+  // Telephone validation
+  const tel = document.getElementById('form-individual-survey-tel');
+  const fmt = n => n.replace(/\D/g,'').replace(/(\d{3})(\d{3})(\d{2})(\d{2})/,'$1 $2 $3 $4');
+  
+  tel.addEventListener('blur', () => {
+    const d = tel.value.replace(/\D/g,'');
+    if(d.length !== 10 || d[0] !== '0') { 
+      alert('Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.'); 
+      tel.value = ''; 
+      tel.focus();
+    } else {
+      tel.value = fmt(d);
+    }
+  });
+
+  // Custom dropdown functionality for all dropdowns
+  function initializeDropdown(displayId, dropdownId, checkboxName, isSingleChoice = false) {
+    const display = document.getElementById(displayId);
+    const dropdown = document.getElementById(dropdownId);
+    const checkboxes = dropdown.querySelectorAll(`input[name="${checkboxName}"]`);
+    
+    // Toggle dropdown on click
+    display.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && e.target !== display) {
+        dropdown.style.display = 'none';
+      }
+    });
+    
+    // Prevent dropdown from closing when clicking inside
+    dropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    // Update display when checkboxes change
+    function updateDisplay() {
+      const selected = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.parentElement.querySelector('label').textContent);
+      
+      if (selected.length > 0) {
+        display.textContent = selected.join(', ');
+      } else {
+        display.textContent = 'Bitte wählen';
+      }
+    }
+    
+    // Handle checkbox changes
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (isSingleChoice) {
+          // For single choice, uncheck all other checkboxes when one is selected
+          checkboxes.forEach(cb => {
+            if (cb !== checkbox) {
+              cb.checked = false;
+            }
+          });
+        }
+        updateDisplay();
+
+        // Show/hide conditional fields
+        if (checkboxName === 'known_conditions[]') {
+          const otherContainer = document.getElementById('other-condition-container');
+          const isOtherSelected = Array.from(checkboxes)
+            .find(cb => cb.value === 'Andere')?.checked;
+          
+          otherContainer.style.display = isOtherSelected ? 'block' : 'none';
+        }
+      });
+    });
+  }
+
+  // Initialize all dropdowns - single choice
+  initializeDropdown('form-individual-survey-geschlecht-display', 'form-individual-survey-geschlecht-dropdown', 'geschlecht', true);
+  initializeDropdown('form-individual-survey-checkup-display', 'form-individual-survey-checkup-dropdown', 'checkup_frequency', true);
+  initializeDropdown('form-individual-survey-surgery-display', 'form-individual-survey-surgery-dropdown', 'surgery_history', true);
+  
+  // Initialize all dropdowns - multiple choice
+  initializeDropdown('form-individual-survey-bodyregion-display', 'form-individual-survey-bodyregion-dropdown', 'body_regions[]', false);
+  initializeDropdown('form-individual-survey-conditions-display', 'form-individual-survey-conditions-dropdown', 'known_conditions[]', false);
+  initializeDropdown('form-individual-survey-risks-display', 'form-individual-survey-risks-dropdown', 'risk_factors[]', false);
+  initializeDropdown('form-individual-survey-examinations-display', 'form-individual-survey-examinations-dropdown', 'examinations[]', false);
+  initializeDropdown('form-individual-survey-labvalues-display', 'form-individual-survey-labvalues-dropdown', 'lab_values[]', false);
+  initializeDropdown('form-individual-survey-calltime-display', 'form-individual-survey-calltime-dropdown', 'rueckruf_zeiten[]', false);
+
+  // Submit handler
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    
+    const fd = new FormData(form);
+    const obj = Object.fromEntries(fd.entries());
+    obj.telefon = fmt(obj.telefon);
+
+    // Build summary
+    let html = '<ul class="list-group">';
+    
+    // Map variable names to display labels
+    const fieldLabels = {
+      'vorname': 'Vorname',
+      'nachname': 'Nachname',
+      'geburtsjahr': 'Geburtsjahr',
+      'email': 'Email',
+      'telefon': 'Telefon',
+      'geschlecht': 'Geschlecht',
+      'surgery_history': 'Operations-Historie',
+      'checkup_frequency': 'Checkup-Häufigkeit',
+      'other_condition': 'Andere Vorerkrankung'
+    };
+    
+    // Simple fields
+    const simple = ['vorname', 'nachname', 'geburtsjahr', 'email', 'telefon', 'geschlecht', 'surgery_history', 'checkup_frequency'];
+    simple.forEach(k => { 
+      if(obj[k]) html += `<li class="list-group-item"><strong>${fieldLabels[k] || k}:</strong> ${obj[k]}</li>`; 
+    });
+    
+    // Multiple selection fields with proper labels
+    const multi = [
+      { name: 'body_regions[]', label: 'Körperregionen' },
+      { name: 'known_conditions[]', label: 'Vorerkrankungen' },
+      { name: 'risk_factors[]', label: 'Risikofaktoren' },
+      { name: 'examinations[]', label: 'Gewünschte Untersuchungen' },
+      { name: 'lab_values[]', label: 'Laborwerte' },
+      { name: 'rueckruf_zeiten[]', label: 'Rückrufzeiten' }
+    ];
+    
+    multi.forEach(item => {
+      const arr = fd.getAll(item.name);
+      if(arr.length) html += `<li class="list-group-item"><strong>${item.label}:</strong> ${arr.join(', ')}</li>`;
+    });
+
+    // Other fields
+    if(obj.other_condition) html += `<li class="list-group-item"><strong>${fieldLabels.other_condition}:</strong> ${obj.other_condition}</li>`;
+    
+    // Free text
+    if(obj.freitext) html += `<li class="list-group-item"><strong>Freitext:</strong> ${obj.freitext}</li>`;
+    if(obj.zusatzinformationen) html += `<li class="list-group-item"><strong>Zusatzinformationen:</strong> ${obj.zusatzinformationen}</li>`;
+    
+    html += '</ul>';
+
+    // Update UI
+    document.getElementById('form-individual-survey-summary').innerHTML = html;
+    document.getElementById('form-individual-survey-emailConfirm').textContent = `Wir senden eine Bestätigung an: ${obj.email || ''}`;
+    form.classList.add('d-none');
+    document.getElementById('form-individual-survey-success').classList.remove('d-none');
+
+    // Send to netlify function
+    try {
+      const response = await fetch('/.netlify/functions/sendQuestionnaireConfirmation', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(obj)
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  });
+});
+</script>

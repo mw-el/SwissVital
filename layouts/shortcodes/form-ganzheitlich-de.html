@@ -1,0 +1,516 @@
+<!-- Ganzheitliche Vorsorge-Fragebogen — eindeutiger Präfix form-holistic-survey -->
+<form id="form-holistic-survey" class="sv-multistep-form"
+      name="fragebogen-ganzheitliche-vorsorge" method="POST"
+      data-netlify="true" netlify-honeypot="bot-field">
+
+  <!-- Hidden -->
+  <input type="hidden" name="language" value="de">
+  <input type="hidden" name="form-name" value="fragebogen-ganzheitliche-vorsorge">
+  <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+
+  <!-- ---------- Schritt 1 ---------- -->
+  <section id="form-holistic-survey-step-1" class="sv-form-step active" data-step="1">
+    <h3 class="sv-step-title mb-4">Schritt 1 von 3: Persönliche Angaben</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-holistic-survey-vorname"
+             name="vorname" placeholder="Vorname *" required>
+      <label for="form-holistic-survey-vorname">Vorname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-holistic-survey-nachname"
+             name="nachname" placeholder="Nachname *" required>
+      <label for="form-holistic-survey-nachname">Nachname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-holistic-survey-email" type="email"
+             name="email" placeholder="name@example.com" required>
+      <label for="form-holistic-survey-email">E-Mail-Adresse *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-holistic-survey-gebjahr"
+             name="geburtsjahr" placeholder="Geburtsjahr *" required>
+      <label for="form-holistic-survey-gebjahr">Geburtsjahr *</label>
+    </div>
+
+    <p class="sv-tooltip-info mb-2">
+      Für diagnostische Zwecke – z.&nbsp;B. Laboruntersuchungen – ist das biologische
+      Geschlecht wichtig, unabhängig von Ihrer geschlechtlichen Identität.
+    </p>
+    
+    <!-- Custom Dropdown for Geschlecht (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-holistic-survey-geschlecht-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-holistic-survey-geschlecht-display">Biologisches Geschlecht *</label>
+      <div class="dropdown-menu p-3" id="form-holistic-survey-geschlecht-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="männlich" id="geschlecht1" name="geschlecht">
+          <label class="form-check-label" for="geschlecht1">männlich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="weiblich" id="geschlecht2" name="geschlecht">
+          <label class="form-check-label" for="geschlecht2">weiblich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="möchte ich nicht angeben" id="geschlecht3" name="geschlecht">
+          <label class="form-check-label" for="geschlecht3">möchte ich nicht angeben</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-holistic-survey-dsp1"
+             type="checkbox" name="datenschutz1" required>
+      <label class="form-check-label" for="form-holistic-survey-dsp1">
+        Ich stimme der Datenverarbeitung zu.
+      </label>
+    </div>
+
+    <div class="d-grid sv-button-container">
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 2 ---------- -->
+  <section id="form-holistic-survey-step-2" class="sv-form-step" data-step="2">
+    <h3 class="sv-step-title mb-4">Schritt 2 von 3: Allgemeine Vorsorge</h3>
+
+    <!-- Custom Dropdown for Interest reasons (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-holistic-survey-interest-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-holistic-survey-interest-display">
+        1. Warum interessieren Sie sich für eine Vorsorgeuntersuchung? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-holistic-survey-interest-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Generelle Gesundheitsvorsorge" id="interest1" name="interest_reasons[]">
+          <label class="form-check-label" for="interest1">Generelle Gesundheitsvorsorge</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Früherkennung von Erkrankungen" id="interest2" name="interest_reasons[]">
+          <label class="form-check-label" for="interest2">Früherkennung von Erkrankungen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Verbesserung des Wohlbefindens" id="interest3" name="interest_reasons[]">
+          <label class="form-check-label" for="interest3">Verbesserung des Wohlbefindens</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Sicherheit für die Zukunft" id="interest4" name="interest_reasons[]">
+          <label class="form-check-label" for="interest4">Sicherheit für die Zukunft</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Keine besondere Motivation" id="interest5" name="interest_reasons[]">
+          <label class="form-check-label" for="interest5">Keine besondere Motivation</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Health complaints (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-holistic-survey-complaints-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-holistic-survey-complaints-display">
+        2. Haben Sie gesundheitliche Beschwerden?
+      </label>
+      <div class="dropdown-menu p-3" id="form-holistic-survey-complaints-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Ja" id="complaint1" name="health_complaints">
+          <label class="form-check-label" for="complaint1">Ja</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nein" id="complaint2" name="health_complaints">
+          <label class="form-check-label" for="complaint2">Nein</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Unsicher" id="complaint3" name="health_complaints">
+          <label class="form-check-label" for="complaint3">Unsicher</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input field for complaints specification if "Ja" is selected -->
+    <div class="form-floating sv-form-floating mb-3" id="complaint-details-container" style="display: none;">
+      <input class="form-control" id="form-holistic-survey-complaint-details"
+             name="complaint_details" placeholder="Welche Beschwerden">
+      <label for="form-holistic-survey-complaint-details">Welche Beschwerden</label>
+    </div>
+
+    <!-- Custom Dropdown for Checkup frequency (single choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-holistic-survey-checkup-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-holistic-survey-checkup-display">
+        3. Wie oft lassen Sie sich medizinisch durchchecken?
+      </label>
+      <div class="dropdown-menu p-3" id="form-holistic-survey-checkup-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Jährlich" id="checkup1" name="checkup_frequency">
+          <label class="form-check-label" for="checkup1">Jährlich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Alle paar Jahre" id="checkup2" name="checkup_frequency">
+          <label class="form-check-label" for="checkup2">Alle paar Jahre</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nur bei Beschwerden" id="checkup3" name="checkup_frequency">
+          <label class="form-check-label" for="checkup3">Nur bei Beschwerden</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Noch nie" id="checkup4" name="checkup_frequency">
+          <label class="form-check-label" for="checkup4">Noch nie</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Known risks (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-holistic-survey-risks-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-holistic-survey-risks-display">
+        4. Gibt es bekannte Risiken oder bestehende Erkrankungen? (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-holistic-survey-risks-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Herz-Kreislauf-Erkrankungen" id="risk1" name="known_risks[]">
+          <label class="form-check-label" for="risk1">Herz-Kreislauf-Erkrankungen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Stoffwechselerkrankungen" id="risk2" name="known_risks[]">
+          <label class="form-check-label" for="risk2">Stoffwechselerkrankungen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Chronische Erkrankungen" id="risk3" name="known_risks[]">
+          <label class="form-check-label" for="risk3">Chronische Erkrankungen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Krebserkrankungen in der Vorgeschichte" id="risk4" name="known_risks[]">
+          <label class="form-check-label" for="risk4">Krebserkrankungen in der Vorgeschichte</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Andere" id="risk5" name="known_risks[]">
+          <label class="form-check-label" for="risk5">Andere</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Keine bekannten Erkrankungen oder Risikofaktoren" id="risk6" name="known_risks[]">
+          <label class="form-check-label" for="risk6">Keine bekannten Erkrankungen oder Risikofaktoren</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input field for "Andere" if selected -->
+    <div class="form-floating sv-form-floating mb-3" id="other-risk-container" style="display: none;">
+      <input class="form-control" id="form-holistic-survey-other-risk"
+             name="other_risk" placeholder="Andere Risiken oder Erkrankungen">
+      <label for="form-holistic-survey-other-risk">Andere Risiken oder Erkrankungen</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-4">
+      <textarea class="form-control" id="form-holistic-survey-freetext"
+                name="freitext" style="height:150px"></textarea>
+      <label for="form-holistic-survey-freetext">
+        Freitext – Was möchten Sie uns sonst noch mitteilen?
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 3 ---------- -->
+  <section id="form-holistic-survey-step-3" class="sv-form-step" data-step="3">
+    <h3 class="sv-step-title mb-4">Schritt 3 von 3: Kontaktaufnahme</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-holistic-survey-tel"
+             name="telefon" type="tel" placeholder="Ihre Telefonnummer" required>
+      <label for="form-holistic-survey-tel">Ihre Telefonnummer</label>
+    </div>
+    <p class="sv-tooltip-info mb-3">
+      Bitte Mobilnummer mit Landesvorwahl angeben, z.&nbsp;B. +41 79 123 45 67
+    </p>
+
+    <!-- Custom Dropdown for Callback times (multiple choice) -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-holistic-survey-calltime-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-holistic-survey-calltime-display">
+        Bevorzugte Rückrufzeiten (Mehrfachauswahl möglich)
+      </label>
+      <div class="dropdown-menu p-3" id="form-holistic-survey-calltime-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Vormittags (08:00–12:00 Uhr)" id="calltime1" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime1">Vormittags (08:00–12:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Mittags (12:00–14:00 Uhr)" id="calltime2" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime2">Mittags (12:00–14:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Nachmittags (14:00–18:00 Uhr)" id="calltime3" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime3">Nachmittags (14:00–18:00 Uhr)</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Abends (18:00–20:00 Uhr)" id="calltime4" name="rueckruf_zeiten[]">
+          <label class="form-check-label" for="calltime4">Abends (18:00–20:00 Uhr)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <textarea class="form-control" id="form-holistic-survey-extra"
+                name="zusatzinformationen" style="height:100px"></textarea>
+      <label for="form-holistic-survey-extra">
+        Zusätzliche Informationen zur Erreichbarkeit (optional)
+      </label>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-holistic-survey-privacy"
+             type="checkbox" name="datenschutz" required>
+      <label class="form-check-label" for="form-holistic-survey-privacy">
+        Ich stimme der <a href="/privacy">Datenschutzerklärung</a> zu.
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="submit" class="btn btn-primary sv-btn-xl">Absenden</button>
+    </div>
+  </section>
+</form>
+
+<!-- Erfolgsnachricht -->
+<div id="form-holistic-survey-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
+  <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
+  <div class="text-start" id="form-holistic-survey-summary"></div>
+  <hr>
+  <p class="lead mt-3" id="form-holistic-survey-emailConfirm"></p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-holistic-survey');
+  const steps = form.querySelectorAll('.sv-form-step');
+  
+  // Navigation function
+  const show = n => { 
+    steps.forEach(s => s.classList.remove('active'));
+    steps[n-1].classList.add('active');
+    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
+  };
+
+  // Next button handlers
+  form.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber + 1);
+    });
+  });
+
+  // Previous button handlers
+  form.querySelectorAll('[data-prev]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber - 1);
+    });
+  });
+
+  // Telephone validation
+  const tel = document.getElementById('form-holistic-survey-tel');
+  const fmt = n => n.replace(/\D/g,'').replace(/(\d{3})(\d{3})(\d{2})(\d{2})/,'$1 $2 $3 $4');
+  
+  tel.addEventListener('blur', () => {
+    const d = tel.value.replace(/\D/g,'');
+    if(d.length !== 10 || d[0] !== '0') { 
+      alert('Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.'); 
+      tel.value = ''; 
+      tel.focus();
+    } else {
+      tel.value = fmt(d);
+    }
+  });
+
+  // Custom dropdown functionality for all dropdowns
+  function initializeDropdown(displayId, dropdownId, checkboxName, isSingleChoice = false) {
+    const display = document.getElementById(displayId);
+    const dropdown = document.getElementById(dropdownId);
+    const checkboxes = dropdown.querySelectorAll(`input[name="${checkboxName}"]`);
+    
+    // Toggle dropdown on click
+    display.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && e.target !== display) {
+        dropdown.style.display = 'none';
+      }
+    });
+    
+    // Prevent dropdown from closing when clicking inside
+    dropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    // Update display when checkboxes change
+    function updateDisplay() {
+      const selected = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.parentElement.querySelector('label').textContent);
+      
+      if (selected.length > 0) {
+        display.textContent = selected.join(', ');
+      } else {
+        display.textContent = 'Bitte wählen';
+      }
+    }
+    
+    // Handle checkbox changes
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (isSingleChoice) {
+          // For single choice, uncheck all other checkboxes when one is selected
+          checkboxes.forEach(cb => {
+            if (cb !== checkbox) {
+              cb.checked = false;
+            }
+          });
+        }
+        updateDisplay();
+      });
+    });
+  }
+
+  // Initialize all dropdowns - single choice
+  initializeDropdown('form-holistic-survey-geschlecht-display', 'form-holistic-survey-geschlecht-dropdown', 'geschlecht', true);
+  initializeDropdown('form-holistic-survey-complaints-display', 'form-holistic-survey-complaints-dropdown', 'health_complaints', true);
+  initializeDropdown('form-holistic-survey-checkup-display', 'form-holistic-survey-checkup-dropdown', 'checkup_frequency', true);
+  
+  // Initialize all dropdowns - multiple choice
+  initializeDropdown('form-holistic-survey-interest-display', 'form-holistic-survey-interest-dropdown', 'interest_reasons[]', false);
+  initializeDropdown('form-holistic-survey-risks-display', 'form-holistic-survey-risks-dropdown', 'known_risks[]', false);
+  initializeDropdown('form-holistic-survey-calltime-display', 'form-holistic-survey-calltime-dropdown', 'rueckruf_zeiten[]', false);
+
+  // Show/hide fields based on checkbox selection
+  const complaintCheckboxes = document.querySelectorAll('input[name="health_complaints"]');
+  const complaintDetailsContainer = document.getElementById('complaint-details-container');
+  
+  complaintCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.value === 'Ja' && checkbox.checked) {
+        complaintDetailsContainer.style.display = 'block';
+      } else if (checkbox.value === 'Ja' && !checkbox.checked) {
+        complaintDetailsContainer.style.display = 'none';
+      }
+    });
+  });
+
+  const riskCheckboxes = document.querySelectorAll('input[name="known_risks[]"]');
+  const otherRiskContainer = document.getElementById('other-risk-container');
+  
+  riskCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.value === 'Andere' && checkbox.checked) {
+        otherRiskContainer.style.display = 'block';
+      } else if (checkbox.value === 'Andere' && !checkbox.checked) {
+        otherRiskContainer.style.display = 'none';
+      }
+    });
+  });
+
+  // Submit handler
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    
+    const fd = new FormData(form);
+    const obj = Object.fromEntries(fd.entries());
+    obj.telefon = fmt(obj.telefon);
+
+    // Build summary
+    let html = '<ul class="list-group">';
+    
+    // Map variable names to display labels
+    const fieldLabels = {
+      'vorname': 'Vorname',
+      'nachname': 'Nachname',
+      'geburtsjahr': 'Geburtsjahr',
+      'email': 'Email',
+      'telefon': 'Telefon',
+      'geschlecht': 'Geschlecht',
+      'health_complaints': 'Gesundheitliche Beschwerden',
+      'complaint_details': 'Beschwerden Details',
+      'checkup_frequency': 'Checkup-Häufigkeit',
+      'other_risk': 'Andere Risiken'
+    };
+    
+    // Simple fields
+    const simple = ['vorname', 'nachname', 'geburtsjahr', 'email', 'telefon', 'geschlecht', 'health_complaints', 'checkup_frequency'];
+    simple.forEach(k => { 
+      if(obj[k]) html += `<li class="list-group-item"><strong>${fieldLabels[k] || k}:</strong> ${obj[k]}</li>`; 
+    });
+    
+    // Multiple selection fields with proper labels
+    const multi = [
+      { name: 'interest_reasons[]', label: 'Gründe für Interesse' },
+      { name: 'known_risks[]', label: 'Bekannte Risiken' },
+      { name: 'rueckruf_zeiten[]', label: 'Rückrufzeiten' }
+    ];
+    
+    multi.forEach(item => {
+      const arr = fd.getAll(item.name);
+      if(arr.length) html += `<li class="list-group-item"><strong>${item.label}:</strong> ${arr.join(', ')}</li>`;
+    });
+
+    // Other fields
+    if(obj.complaint_details) html += `<li class="list-group-item"><strong>${fieldLabels.complaint_details}:</strong> ${obj.complaint_details}</li>`;
+    if(obj.other_risk) html += `<li class="list-group-item"><strong>${fieldLabels.other_risk}:</strong> ${obj.other_risk}</li>`;
+    
+    // Free text
+    if(obj.freitext) html += `<li class="list-group-item"><strong>Freitext:</strong> ${obj.freitext}</li>`;
+    if(obj.zusatzinformationen) html += `<li class="list-group-item"><strong>Zusatzinformationen:</strong> ${obj.zusatzinformationen}</li>`;
+    
+    html += '</ul>';
+
+    // Update UI
+    document.getElementById('form-holistic-survey-summary').innerHTML = html;
+    document.getElementById('form-holistic-survey-emailConfirm').textContent = `Wir senden eine Bestätigung an: ${obj.email || ''}`;
+    form.classList.add('d-none');
+    document.getElementById('form-holistic-survey-success').classList.remove('d-none');
+
+    // Send to netlify function
+    try {
+      const response = await fetch('/.netlify/functions/sendQuestionnaireConfirmation', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(obj)
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  });
+});
+</script>
