@@ -1,0 +1,883 @@
+[page_title]
+other = "Booking Form"
+
+[label_firstname]
+other = "First Name *"
+
+[label_lastname]
+other = "Last Name *"
+
+[label_email]
+other = "Email Address *"
+
+[label_phone]
+other = "Phone *"
+
+[label_birthyear]
+other = "Year of Birth *"
+
+[label_street]
+other = "Street *"
+
+[label_zip]
+other = "ZIP Code *"
+
+[label_city]
+other = "City *"
+
+[button_next]
+other = "Next"
+
+[button_back]
+other = "Back"
+
+[button_submit]
+other = "Submit"
+
+[option_select]
+other = "Please select"
+
+[honeypot_label]
+other = "Please do not fill in:"
+
+[tooltip_birthyear]
+other = "Please enter your year of birth."
+
+[alert_phone_invalid]
+other = "Please enter a valid phone number with 10 digits."
+
+[placeholder_email]
+other = "name@example.com"
+
+[bookingform.step1_title]
+other = "Step 1 of 3: Email & Location"
+
+[bookingform.step2_title]
+other = "Step 2 of 3: Personal Information"
+
+[bookingform.step3_title]
+other = "Step 3 of 3: Completion"
+
+[bookingform.label_location]
+other = "Location *"
+
+[bookingform.label_exam]
+other = "Examination *"
+
+[bookingform.label_appointment]
+other = "Appointment Request *"
+
+[bookingform.option_urgent]
+other = "Urgent"
+
+[bookingform.option_6weeks]
+other = "Within the next six weeks"
+
+[bookingform.option_3months]
+other = "Within the next three months"
+
+[bookingform.option_callback]
+other = "Please call me to arrange an appointment."
+
+[bookingform.dataprotection_consent_short]
+other = "I agree to the data processing."
+
+[bookingform.terms_agreement]
+other = "I agree to the <a href=\"/agb\">Terms and Conditions</a>."
+
+[bookingform.privacy_agreement]
+other = "I agree to the <a href=\"/privacy\">Privacy Policy</a>."
+
+[bookingform.submit_button]
+other = "Book Appointment"
+
+[bookingform.location_zurich]
+other = "Zurich"
+
+[bookingform.location_bern]
+other = "Bern"
+
+[bookingform.location_basel]
+other = "Basel"
+
+[bookingform.product1]
+other = "Product 1 - CHF 1970.-"
+
+[bookingform.product2]
+other = "Product 2 - CHF 2350.-"
+
+[bookingform.product3]
+other = "Product 3 - CHF 850.-"
+
+[success.icon_text]
+other = "check_circle"
+
+[success.heading]
+other = "Thank you for your registration!"
+
+[success.summary_intro]
+other = "You have provided us with the following information:"
+
+[success.email_confirmation]
+other = "You will receive a confirmation email shortly at:"
+
+[summary.firstname]
+other = "First Name:"
+
+[summary.lastname]
+other = "Last Name:"
+
+[summary.birthyear]
+other = "Year of Birth:"
+
+[summary.street]
+other = "Street:"
+
+[summary.zip]
+other = "ZIP Code:"
+
+[summary.city]
+other = "City:"
+
+[summary.email]
+other = "Email:"
+
+[summary.phone]
+other = "Phone:"
+
+[summary.location]
+other = "Selected Practice Location:"
+
+[summary.appointment]
+other = "Appointment Request:"
+
+[summary.exam]
+other = "Examination:"
+
+[email.subject]
+other = "Booking Confirmation: for"
+
+[email.greeting]
+other = "Hello"
+
+[email.confirmation_intro]
+other = "This is an automatic confirmation of your appointment booking at SwissVital in"
+
+[email.data_intro]
+other = "We have noted the following information from you:"
+
+[email.personal_data_title]
+other = "Personal Data:"
+
+[email.appointment_details_title]
+other = "Appointment Details:"
+
+[email.confirmation_question]
+other = "Is this correct? If not, please reply to this message with your correction request."
+
+[email.callback_note]
+other = "We will call you anyway to finalize your preferred appointment. Then we will quickly take care of it - you can count on it."
+
+[email.goodbye]
+other = "Kind regards and see you soon."
+
+[email.sender]
+other = "The Patient Reception of SwissVital"
+
+# Basic Questionnaire Fields
+[questionnaire.step1_title]
+other = "Step 1 of 3: Personal Information"
+
+[questionnaire.step3_title]
+other = "Step 3 of 3: Contact Information"
+
+[questionnaire.label_gender]
+other = "Gender *"
+
+[questionnaire.gender_male]
+other = "Male"
+
+[questionnaire.gender_female]
+other = "Female"
+
+[questionnaire.gender_not_specified]
+other = "Prefer not to say"
+
+[questionnaire.gender_tooltip]
+other = "We collect biological gender for better medical assessment."
+
+[questionnaire.phone_tooltip]
+other = "We need your phone number to arrange the appointment."
+
+[questionnaire.callback_times]
+other = "When can we best reach you?"
+
+[questionnaire.callback_morning]
+other = "Morning (08:00–12:00)"
+
+[questionnaire.callback_noon]
+other = "Noon (12:00–14:00)"
+
+[questionnaire.callback_afternoon]
+other = "Afternoon (14:00–18:00)"
+
+[questionnaire.callback_evening]
+other = "Evening (18:00–20:00)"
+
+[questionnaire.additional_info]
+other = "Additional information that might be important for us:"
+
+[questionnaire.free_text]
+other = "Do you have any other complaints or concerns that you would like to clarify during the examination?"
+
+# Sports Questionnaire Specific
+[questionnaire.athlete_step2_title]
+other = "Step 2 of 3: Athletic Activity"
+
+[questionnaire.sport_frequency_label]
+other = "How often do you exercise?"
+
+[questionnaire.sport_daily]
+other = "Daily"
+
+[questionnaire.sport_multiple_week]
+other = "Several times a week"
+
+[questionnaire.sport_once_week]
+other = "Once a week"
+
+[questionnaire.sport_occasional]
+other = "Occasionally"
+
+[questionnaire.sport_rarely]
+other = "Rarely or never"
+
+[questionnaire.sport_type_label]
+other = "What type(s) of sport do you mainly practice?"
+
+[questionnaire.sport_strength]
+other = "Strength training (e.g., fitness, weightlifting)"
+
+[questionnaire.sport_endurance]
+other = "Endurance sports (e.g., running, cycling, swimming)"
+
+[questionnaire.sport_team]
+other = "Team sports (e.g., football, basketball, volleyball)"
+
+[questionnaire.sport_extreme]
+other = "Extreme sports (e.g., climbing, diving, martial arts)"
+
+[questionnaire.sport_various]
+other = "Various"
+
+[questionnaire.recent_injuries_label]
+other = "Have you had a sports-related injury in the last 12 months?"
+
+[questionnaire.injury_severe]
+other = "Yes, a severe injury (e.g., fracture, surgery required)"
+
+[questionnaire.injury_medium]
+other = "Yes, a moderate injury (e.g., ligament tear, extended break)"
+
+[questionnaire.injury_light]
+other = "Yes, a minor injury (e.g., strain, bruise)"
+
+[questionnaire.injury_none]
+other = "No"
+
+[questionnaire.past_injuries_label]
+other = "Have you previously had sports-related injuries? (Multiple choice possible)"
+
+[questionnaire.injury_bones]
+other = "Bones/joints"
+
+[questionnaire.injury_muscles]
+other = "Muscles/tendons"
+
+[questionnaire.injury_chronic]
+other = "Chronic overuse"
+
+[questionnaire.injury_other]
+other = "Other"
+
+[questionnaire.body_region_label]
+other = "Which body region would you like to have examined preventively?"
+
+[questionnaire.body_back]
+other = "Back"
+
+[questionnaire.body_knees]
+other = "Knees/joints"
+
+[questionnaire.body_shoulders]
+other = "Shoulders/arms"
+
+[questionnaire.body_muscles]
+other = "General musculature"
+
+[questionnaire.body_whole]
+other = "Whole body"
+
+[questionnaire.pain_after_sport_label]
+other = "Do you have pain or discomfort after sports?"
+
+[questionnaire.pain_regular]
+other = "Yes, regularly"
+
+[questionnaire.pain_occasional]
+other = "Occasionally"
+
+[questionnaire.pain_after_intense]
+other = "Only after intense training"
+
+[questionnaire.pain_rarely]
+other = "Rarely to never"
+
+[questionnaire.pain_none]
+other = "None"
+
+# Sports Questionnaire Summary
+[questionnaire.summary_gender]
+other = "Gender:"
+
+[questionnaire.summary_sport_frequency]
+other = "Exercise frequency:"
+
+[questionnaire.summary_sport_types]
+other = "Types of sport:"
+
+[questionnaire.summary_recent_injuries]
+other = "Recent injuries:"
+
+[questionnaire.summary_past_injuries]
+other = "Previous injuries:"
+
+[questionnaire.summary_body_regions]
+other = "Body regions to examine:"
+
+[questionnaire.summary_pain_after_sport]
+other = "Pain after sports:"
+
+[questionnaire.summary_callback_times]
+other = "Preferred callback times:"
+
+# Stress Questionnaire Translations
+[questionnaire.stress_step2_title]
+other = "Step 2 of 3: Stress Effects"
+
+[questionnaire.stress_impairment_label]
+other = "How much do your complaints affect your daily life?"
+
+[questionnaire.stress_impairment_strong]
+other = "Severely (e.g., unable to work)"
+
+[questionnaire.stress_impairment_often]
+other = "Often (reduced performance)"
+
+[questionnaire.stress_impairment_sometimes]
+other = "Sometimes, but I manage"
+
+[questionnaire.stress_impairment_rarely]
+other = "Rarely or hardly"
+
+[questionnaire.stress_impairment_none]
+other = "No impairment"
+
+[questionnaire.stress_symptoms_label]
+other = "What symptoms do you notice due to stress? (Multiple selection possible)"
+
+[questionnaire.stress_symptom_headache]
+other = "Headaches"
+
+[questionnaire.stress_symptom_sleep]
+other = "Sleep disorders"
+
+[questionnaire.stress_symptom_stomach]
+other = "Gastrointestinal problems"
+
+[questionnaire.stress_symptom_tension]
+other = "Tension / Muscle pain"
+
+[questionnaire.stress_symptom_none]
+other = "None of the above"
+
+[questionnaire.stress_frequency_label]
+other = "How often do stress-related complaints occur?"
+
+[questionnaire.stress_frequency_daily]
+other = "Daily"
+
+[questionnaire.stress_frequency_weekly]
+other = "Several times a week"
+
+[questionnaire.stress_frequency_rarely]
+other = "Rarely"
+
+[questionnaire.stress_frequency_extreme]
+other = "Only in extreme situations"
+
+[questionnaire.stress_frequency_never]
+other = "Never"
+
+[questionnaire.stress_medical_check_label]
+other = "Have you already had medical examinations due to stress?"
+
+[questionnaire.stress_check_acute]
+other = "Only for acute complaints"
+
+[questionnaire.stress_diagnosis_label]
+other = "Have you been diagnosed with a stress-related health disorder? (Multiple selection possible)"
+
+[questionnaire.stress_diagnosis_mental]
+other = "Anxiety disorder or depression"
+
+[questionnaire.stress_diagnosis_heart]
+other = "Heart disease or high blood pressure"
+
+[questionnaire.stress_diagnosis_gastro]
+other = "Gastrointestinal disease (e.g., stomach irritation)"
+
+[questionnaire.stress_diagnosis_other]
+other = "Other"
+
+[questionnaire.stress_diagnosis_none]
+other = "No"
+
+[questionnaire.stress_diagnosis_other_specify]
+other = "Other diagnosis (please specify)"
+
+# Ganzheitliche Vorsorge Questionnaire Translations
+[questionnaire.holistic_step2_title]
+other = "Step 2 of 3: General Prevention"
+
+[questionnaire.holistic_interest_label]
+other = "Why are you interested in a preventive examination? (Multiple selection possible)"
+
+[questionnaire.holistic_interest_general]
+other = "General health prevention"
+
+[questionnaire.holistic_interest_early]
+other = "Early detection of diseases"
+
+[questionnaire.holistic_interest_wellbeing]
+other = "Improving well-being"
+
+[questionnaire.holistic_interest_security]
+other = "Security for the future"
+
+[questionnaire.holistic_interest_none]
+other = "No particular motivation"
+
+[questionnaire.holistic_complaints_label]
+other = "Do you have any health complaints?"
+
+[questionnaire.holistic_complaints_specify]
+other = "Which complaints?"
+
+[questionnaire.holistic_checkup_frequency_label]
+other = "How often do you have medical check-ups?"
+
+[questionnaire.holistic_checkup_annual]
+other = "Annually"
+
+[questionnaire.holistic_checkup_few_years]
+other = "Every few years"
+
+[questionnaire.holistic_checkup_complaints]
+other = "Only when complaints arise"
+
+[questionnaire.holistic_checkup_never]
+other = "Never"
+
+[questionnaire.holistic_risks_label]
+other = "Are there any known risks or existing conditions? (Multiple selection possible)"
+
+[questionnaire.holistic_risk_cardio]
+other = "Cardiovascular diseases"
+
+[questionnaire.holistic_risk_metabolic]
+other = "Metabolic disorders"
+
+[questionnaire.holistic_risk_chronic]
+other = "Chronic diseases"
+
+[questionnaire.holistic_risk_cancer]
+other = "History of cancer"
+
+[questionnaire.holistic_risk_other]
+other = "Other"
+
+[questionnaire.holistic_risk_none]
+other = "No known diseases or risk factors"
+
+[questionnaire.holistic_risk_other_specify]
+other = "Other risks (please specify)"
+
+# Individuelle Vorsorge Questionnaire Translations
+[questionnaire.individual_step2_title]
+other = "Step 2 of 3: Individual Prevention Planning"
+
+[questionnaire.individual_body_region_label]
+other = "Which body region would you like to have examined? (Multiple selection possible)"
+
+[questionnaire.individual_body_brain]
+other = "Brain / Nerves"
+
+[questionnaire.individual_body_heart]
+other = "Heart / Circulation"
+
+[questionnaire.individual_body_abdominal]
+other = "Abdominal organs"
+
+[questionnaire.individual_body_musculoskeletal]
+other = "Musculoskeletal system"
+
+[questionnaire.individual_body_blood]
+other = "Blood analysis / Blood values"
+
+[questionnaire.individual_body_none]
+other = "No specific region"
+
+[questionnaire.individual_checkup_frequency_label]
+other = "How often do you have medical check-ups?"
+
+[questionnaire.individual_checkup_annual]
+other = "Annually"
+
+[questionnaire.individual_checkup_few_years]
+other = "Every few years"
+
+[questionnaire.individual_checkup_complaints]
+other = "Only when complaints arise"
+
+[questionnaire.individual_checkup_never]
+other = "Never"
+
+[questionnaire.individual_conditions_label]
+other = "Do you have any known pre-existing conditions? (Multiple selection possible)"
+
+[questionnaire.individual_condition_cardio]
+other = "Cardiovascular diseases"
+
+[questionnaire.individual_condition_metabolic]
+other = "Metabolic disorders"
+
+[questionnaire.individual_condition_chronic]
+other = "Chronic diseases"
+
+[questionnaire.individual_condition_cancer]
+other = "Cancer (personal / family history)"
+
+[questionnaire.individual_condition_other]
+other = "Other"
+
+[questionnaire.individual_condition_none]
+other = "No known diseases or risk factors"
+
+[questionnaire.individual_condition_other_specify]
+other = "Other condition (please specify)"
+
+[questionnaire.individual_risk_factors_label]
+other = "Do you have any known risk factors? (Multiple selection possible)"
+
+[questionnaire.individual_risk_smoking]
+other = "Smoking"
+
+[questionnaire.individual_risk_overweight]
+other = "Overweight"
+
+[questionnaire.individual_risk_sedentary]
+other = "Lack of exercise"
+
+[questionnaire.individual_risk_alcohol]
+other = "High alcohol consumption"
+
+[questionnaire.individual_risk_none]
+other = "No known risk factors"
+
+[questionnaire.individual_examination_label]
+other = "Which examination do you consider meaningful? (Multiple selection possible)"
+
+[questionnaire.individual_exam_blood]
+other = "Blood tests (cholesterol, blood sugar…)"
+
+[questionnaire.individual_exam_imaging]
+other = "Imaging procedures (MRI, CT, ultrasound)"
+
+[questionnaire.individual_lab_values_label]
+other = "Have there been any abnormal laboratory values or medical recommendations in the past? (Multiple selection possible)"
+
+[questionnaire.individual_lab_glucose]
+other = "Blood sugar values / Diabetes"
+
+[questionnaire.individual_lab_cholesterol]
+other = "Cholesterol / Blood lipid values"
+
+[questionnaire.individual_lab_liver_kidney]
+other = "Liver / Kidney values"
+
+[questionnaire.individual_lab_unclear]
+other = "Recommendations, but unclear which ones"
+
+[questionnaire.individual_lab_normal]
+other = "No, all normal so far"
+
+[questionnaire.individual_surgery_label]
+other = "Have you had any surgeries / surgical procedures in the past?"
+
+[questionnaire.individual_surgery_major]
+other = "Yes, major procedures (e.g., heart or spine surgery)"
+
+[questionnaire.individual_surgery_minor]
+other = "Yes, minor procedures (e.g., gallbladder, meniscus)"
+
+[questionnaire.individual_surgery_none]
+other = "No, never"
+
+[questionnaire.individual_surgery_unsure]
+other = "I can't remember exactly"
+
+# Chronische Beschwerden Questionnaire Translations
+[questionnaire.chronic_step2_title]
+other = "Step 2 of 3: Chronic Complaints"
+
+[questionnaire.chronic_complaints_label]
+other = "Which complaints do you experience most frequently? (Multiple selection possible)"
+
+[questionnaire.chronic_complaint_back]
+other = "Back pain"
+
+[questionnaire.chronic_complaint_joints]
+other = "Joint pain"
+
+[questionnaire.chronic_complaint_headache]
+other = "Headaches/Migraine"
+
+[questionnaire.chronic_complaint_gastro]
+other = "Gastrointestinal problems"
+
+[questionnaire.chronic_complaint_other]
+other = "Other"
+
+[questionnaire.chronic_complaint_other_specify]
+other = "Other complaints (please specify)"
+
+[questionnaire.chronic_duration_label]
+other = "How long have you had these complaints?"
+
+[questionnaire.chronic_duration_weeks]
+other = "A few weeks"
+
+[questionnaire.chronic_duration_3to6months]
+other = "3–6 months"
+
+[questionnaire.chronic_duration_6to12months]
+other = "6–12 months"
+
+[questionnaire.chronic_duration_1to5years]
+other = "1–5 years"
+
+[questionnaire.chronic_duration_over5years]
+other = "Over 5 years"
+
+[questionnaire.chronic_pain_level_label]
+other = "How severe is your pain/complaints on a scale of 1–10?"
+
+[questionnaire.chronic_pain_level_mild]
+other = "1–3 (mild)"
+
+[questionnaire.chronic_pain_level_medium]
+other = "4–6 (moderate)"
+
+[questionnaire.chronic_pain_level_strong]
+other = "7–8 (severe)"
+
+[questionnaire.chronic_pain_level_very_strong]
+other = "9–10 (very severe)"
+
+[questionnaire.chronic_pain_level_variable]
+other = "Variable"
+
+[questionnaire.chronic_diagnosis_label]
+other = "Have you already been diagnosed with a chronic condition? (Multiple selection possible)"
+
+[questionnaire.chronic_diagnosis_musculoskeletal]
+other = "Yes, a joint or muscle disease (e.g., arthritis, rheumatism)"
+
+[questionnaire.chronic_diagnosis_neurological]
+other = "Yes, a neurological disease (e.g., migraine, polyneuropathy)"
+
+[questionnaire.chronic_diagnosis_gastro]
+other = "Yes, a gastrointestinal disease (e.g., IBS, Crohn's disease)"
+
+[questionnaire.chronic_diagnosis_other]
+other = "Yes, another chronic condition"
+
+[questionnaire.chronic_diagnosis_none]
+other = "No, no known chronic condition"
+
+[questionnaire.chronic_diagnosis_other_specify]
+other = "Other diagnosis (please specify)"
+
+[questionnaire.chronic_measures_label]
+other = "What measures have you already taken? (Multiple selection possible)"
+
+[questionnaire.chronic_measure_medication]
+other = "Medication"
+
+[questionnaire.chronic_measure_physio]
+other = "Physiotherapy"
+
+[questionnaire.chronic_measure_alternative]
+other = "Alternative treatments"
+
+[questionnaire.chronic_measure_surgery]
+other = "Surgery"
+
+[questionnaire.chronic_measure_nothing]
+other = "Nothing yet"
+
+[questionnaire.chronic_impact_label]
+other = "How often do the complaints limit your daily life?"
+
+[questionnaire.chronic_impact_none]
+other = "Not at all"
+
+[questionnaire.chronic_impact_occasional]
+other = "Occasionally"
+
+[questionnaire.chronic_impact_weekly]
+other = "Several times a week"
+
+[questionnaire.chronic_impact_daily]
+other = "Daily"
+
+[questionnaire.chronic_impact_severe]
+other = "Severely limiting"
+
+[questionnaire.chronic_imaging_label]
+other = "Have you already had imaging examinations (MRI/CT/X-ray)?"
+
+[questionnaire.chronic_imaging_recent]
+other = "Yes, less than 6 months ago"
+
+[questionnaire.chronic_imaging_1year]
+other = "Yes, 1 year ago"
+
+[questionnaire.chronic_imaging_2years]
+other = "Yes, more than 2 years ago"
+
+[questionnaire.chronic_imaging_recommended]
+other = "No, but recommended"
+
+[questionnaire.chronic_imaging_unnecessary]
+other = "No, not necessary"
+
+[questionnaire.chronic_expectations_label]
+other = "What do you expect from a preventive examination? (Multiple selection possible)"
+
+[questionnaire.chronic_expectation_cause]
+other = "Find the cause of pain"
+
+[questionnaire.chronic_expectation_treatment]
+other = "Identify treatment options"
+
+[questionnaire.chronic_expectation_exclude]
+other = "Rule out serious conditions"
+
+[questionnaire.chronic_expectation_quality]
+other = "Improve quality of life"
+
+[questionnaire.chronic_expectation_none]
+other = "No specific expectation"
+
+# Summary Translations for all questionnaires
+[questionnaire.summary_stress_impairment]
+other = "Daily impairment:"
+
+[questionnaire.summary_stress_symptoms]
+other = "Stress symptoms:"
+
+[questionnaire.summary_stress_frequency]
+other = "Frequency of complaints:"
+
+[questionnaire.summary_stress_medical_check]
+other = "Medical examinations:"
+
+[questionnaire.summary_stress_diagnoses]
+other = "Stress-related diagnoses:"
+
+[questionnaire.summary_stress_other_diagnosis]
+other = "Other diagnosis:"
+
+[questionnaire.summary_holistic_interests]
+other = "Interest in prevention:"
+
+[questionnaire.summary_holistic_complaints]
+other = "Health complaints:"
+
+[questionnaire.summary_holistic_complaints_details]
+other = "Complaint details:"
+
+[questionnaire.summary_holistic_checkup_frequency]
+other = "Check-up frequency:"
+
+[questionnaire.summary_holistic_risks]
+other = "Known risks:"
+
+[questionnaire.summary_holistic_other_risk]
+other = "Other risks:"
+
+[questionnaire.summary_individual_body_regions]
+other = "Body regions to examine:"
+
+[questionnaire.summary_individual_checkup_frequency]
+other = "Check-up frequency:"
+
+[questionnaire.summary_individual_conditions]
+other = "Pre-existing conditions:"
+
+[questionnaire.summary_individual_other_condition]
+other = "Other condition:"
+
+[questionnaire.summary_individual_risk_factors]
+other = "Risk factors:"
+
+[questionnaire.summary_individual_examinations]
+other = "Desired examinations:"
+
+[questionnaire.summary_individual_lab_values]
+other = "Abnormal lab values:"
+
+[questionnaire.summary_individual_surgery]
+other = "Surgical procedures:"
+
+[questionnaire.summary_chronic_complaints]
+other = "Chronic complaints:"
+
+[questionnaire.summary_chronic_other_complaint]
+other = "Other complaint:"
+
+[questionnaire.summary_chronic_duration]
+other = "Duration of complaints:"
+
+[questionnaire.summary_chronic_pain_level]
+other = "Pain level:"
+
+[questionnaire.summary_chronic_diagnoses]
+other = "Chronic diagnoses:"
+
+[questionnaire.summary_chronic_other_diagnosis]
+other = "Other diagnosis:"
+
+[questionnaire.summary_chronic_measures]
+other = "Measures taken:"
+
+[questionnaire.summary_chronic_daily_impact]
+other = "Daily life limitation:"
+
+[questionnaire.summary_chronic_imaging]
+other = "Imaging examination:"
+
+[questionnaire.summary_chronic_expectations]
+other = "Prevention expectations:"

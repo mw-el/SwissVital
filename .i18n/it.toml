@@ -1,0 +1,883 @@
+[page_title]
+other = "Modulo di prenotazione"
+
+[label_firstname]
+other = "Nome *"
+
+[label_lastname]
+other = "Cognome *"
+
+[label_email]
+other = "Indirizzo e-mail *"
+
+[label_phone]
+other = "Telefono *"
+
+[label_birthyear]
+other = "Anno di nascita *"
+
+[label_street]
+other = "Via *"
+
+[label_zip]
+other = "CAP *"
+
+[label_city]
+other = "Città *"
+
+[button_next]
+other = "Avanti"
+
+[button_back]
+other = "Indietro"
+
+[button_submit]
+other = "Invia"
+
+[option_select]
+other = "Seleziona"
+
+[honeypot_label]
+other = "Non compilare:"
+
+[tooltip_birthyear]
+other = "Inserisci il tuo anno di nascita."
+
+[alert_phone_invalid]
+other = "Inserisci un numero di telefono valido con 10 cifre."
+
+[placeholder_email]
+other = "nome@esempio.com"
+
+[bookingform.step1_title]
+other = "Passo 1 di 3: Email e posizione"
+
+[bookingform.step2_title]
+other = "Passo 2 di 3: Informazioni personali"
+
+[bookingform.step3_title]
+other = "Passo 3 di 3: Completamento"
+
+[bookingform.label_location]
+other = "Posizione *"
+
+[bookingform.label_exam]
+other = "Esame *"
+
+[bookingform.label_appointment]
+other = "Richiesta appuntamento *"
+
+[bookingform.option_urgent]
+other = "Urgente"
+
+[bookingform.option_6weeks]
+other = "Entro le prossime sei settimane"
+
+[bookingform.option_3months]
+other = "Entro i prossimi tre mesi"
+
+[bookingform.option_callback]
+other = "Vi prego di chiamarmi per fissare un appuntamento."
+
+[bookingform.dataprotection_consent_short]
+other = "Accetto il trattamento dei dati."
+
+[bookingform.terms_agreement]
+other = "Accetto i <a href=\"/agb\">Termini e condizioni</a>."
+
+[bookingform.privacy_agreement]
+other = "Accetto l'<a href=\"/privacy\">Informativa sulla privacy</a>."
+
+[bookingform.submit_button]
+other = "Prenota appuntamento"
+
+[bookingform.location_zurich]
+other = "Zurigo"
+
+[bookingform.location_bern]
+other = "Berna"
+
+[bookingform.location_basel]
+other = "Basilea"
+
+[bookingform.product1]
+other = "Prodotto 1 - CHF 1970.-"
+
+[bookingform.product2]
+other = "Prodotto 2 - CHF 2350.-"
+
+[bookingform.product3]
+other = "Prodotto 3 - CHF 850.-"
+
+[success.icon_text]
+other = "check_circle"
+
+[success.heading]
+other = "Grazie per la registrazione!"
+
+[success.summary_intro]
+other = "Ci hai fornito le seguenti informazioni:"
+
+[success.email_confirmation]
+other = "Riceverai a breve un'email di conferma a:"
+
+[summary.firstname]
+other = "Nome:"
+
+[summary.lastname]
+other = "Cognome:"
+
+[summary.birthyear]
+other = "Anno di nascita:"
+
+[summary.street]
+other = "Via:"
+
+[summary.zip]
+other = "CAP:"
+
+[summary.city]
+other = "Città:"
+
+[summary.email]
+other = "E-mail:"
+
+[summary.phone]
+other = "Telefono:"
+
+[summary.location]
+other = "Sede dello studio selezionata:"
+
+[summary.appointment]
+other = "Richiesta appuntamento:"
+
+[summary.exam]
+other = "Esame:"
+
+[email.subject]
+other = "Conferma prenotazione: per"
+
+[email.greeting]
+other = "Buongiorno"
+
+[email.confirmation_intro]
+other = "Questa è una conferma automatica della tua prenotazione presso SwissVital a"
+
+[email.data_intro]
+other = "Abbiamo annotato le seguenti informazioni da te fornite:"
+
+[email.personal_data_title]
+other = "Dati personali:"
+
+[email.appointment_details_title]
+other = "Dettagli appuntamento:"
+
+[email.confirmation_question]
+other = "È corretto? In caso contrario, rispondi a questo messaggio con la tua richiesta di correzione."
+
+[email.callback_note]
+other = "Ti chiameremo comunque per fissare il tuo appuntamento preferito. Poi ci occuperemo rapidamente di tutto - puoi contare su di noi."
+
+[email.goodbye]
+other = "Cordiali saluti e a presto."
+
+[email.sender]
+other = "La reception pazienti di SwissVital"
+
+# Basic Questionnaire Fields
+[questionnaire.step1_title]
+other = "Passo 1 di 3: Informazioni personali"
+
+[questionnaire.step3_title]
+other = "Passo 3 di 3: Informazioni di contatto"
+
+[questionnaire.label_gender]
+other = "Genere *"
+
+[questionnaire.gender_male]
+other = "Maschile"
+
+[questionnaire.gender_female]
+other = "Femminile"
+
+[questionnaire.gender_not_specified]
+other = "Preferisco non specificare"
+
+[questionnaire.gender_tooltip]
+other = "Raccogliamo il genere biologico per una migliore valutazione medica."
+
+[questionnaire.phone_tooltip]
+other = "Abbiamo bisogno del tuo numero di telefono per organizzare l'appuntamento."
+
+[questionnaire.callback_times]
+other = "Quando possiamo contattarti al meglio?"
+
+[questionnaire.callback_morning]
+other = "Mattina (08:00–12:00)"
+
+[questionnaire.callback_noon]
+other = "Mezzogiorno (12:00–14:00)"
+
+[questionnaire.callback_afternoon]
+other = "Pomeriggio (14:00–18:00)"
+
+[questionnaire.callback_evening]
+other = "Sera (18:00–20:00)"
+
+[questionnaire.additional_info]
+other = "Informazioni aggiuntive che potrebbero essere importanti per noi:"
+
+[questionnaire.free_text]
+other = "Hai altri disturbi o preoccupazioni che vorresti chiarire durante l'esame?"
+
+# Sports Questionnaire Specific
+[questionnaire.athlete_step2_title]
+other = "Passo 2 di 3: Attività sportiva"
+
+[questionnaire.sport_frequency_label]
+other = "Con quale frequenza pratichi sport?"
+
+[questionnaire.sport_daily]
+other = "Quotidianamente"
+
+[questionnaire.sport_multiple_week]
+other = "Più volte a settimana"
+
+[questionnaire.sport_once_week]
+other = "Una volta a settimana"
+
+[questionnaire.sport_occasional]
+other = "Occasionalmente"
+
+[questionnaire.sport_rarely]
+other = "Raramente o mai"
+
+[questionnaire.sport_type_label]
+other = "Che tipo di sport pratichi principalmente?"
+
+[questionnaire.sport_strength]
+other = "Allenamento con i pesi (es. fitness, sollevamento pesi)"
+
+[questionnaire.sport_endurance]
+other = "Sport di resistenza (es. corsa, ciclismo, nuoto)"
+
+[questionnaire.sport_team]
+other = "Sport di squadra (es. calcio, basket, pallavolo)"
+
+[questionnaire.sport_extreme]
+other = "Sport estremi (es. arrampicata, immersioni, arti marziali)"
+
+[questionnaire.sport_various]
+other = "Vari"
+
+[questionnaire.recent_injuries_label]
+other = "Hai avuto un infortunio sportivo negli ultimi 12 mesi?"
+
+[questionnaire.injury_severe]
+other = "Sì, un infortunio grave (es. frattura, necessaria operazione)"
+
+[questionnaire.injury_medium]
+other = "Sì, un infortunio moderato (es. strappo legamentoso, pausa prolungata)"
+
+[questionnaire.injury_light]
+other = "Sì, un infortunio lieve (es. stiramento, contusione)"
+
+[questionnaire.injury_none]
+other = "No"
+
+[questionnaire.past_injuries_label]
+other = "Hai avuto in precedenza infortuni sportivi? (Scelta multipla possibile)"
+
+[questionnaire.injury_bones]
+other = "Ossa/articolazioni"
+
+[questionnaire.injury_muscles]
+other = "Muscoli/tendini"
+
+[questionnaire.injury_chronic]
+other = "Sovraccarico cronico"
+
+[questionnaire.injury_other]
+other = "Altro"
+
+[questionnaire.body_region_label]
+other = "Quale regione del corpo vorresti far esaminare preventivamente?"
+
+[questionnaire.body_back]
+other = "Schiena"
+
+[questionnaire.body_knees]
+other = "Ginocchia/articolazioni"
+
+[questionnaire.body_shoulders]
+other = "Spalle/braccia"
+
+[questionnaire.body_muscles]
+other = "Muscolatura generale"
+
+[questionnaire.body_whole]
+other = "Corpo intero"
+
+[questionnaire.pain_after_sport_label]
+other = "Hai dolori o fastidi dopo lo sport?"
+
+[questionnaire.pain_regular]
+other = "Sì, regolarmente"
+
+[questionnaire.pain_occasional]
+other = "Occasionalmente"
+
+[questionnaire.pain_after_intense]
+other = "Solo dopo allenamento intenso"
+
+[questionnaire.pain_rarely]
+other = "Raramente o mai"
+
+[questionnaire.pain_none]
+other = "Nessuno"
+
+# Sports Questionnaire Summary
+[questionnaire.summary_gender]
+other = "Genere:"
+
+[questionnaire.summary_sport_frequency]
+other = "Frequenza di esercizio:"
+
+[questionnaire.summary_sport_types]
+other = "Tipi di sport:"
+
+[questionnaire.summary_recent_injuries]
+other = "Infortuni recenti:"
+
+[questionnaire.summary_past_injuries]
+other = "Infortuni precedenti:"
+
+[questionnaire.summary_body_regions]
+other = "Regioni del corpo da esaminare:"
+
+[questionnaire.summary_pain_after_sport]
+other = "Dolori dopo lo sport:"
+
+[questionnaire.summary_callback_times]
+other = "Orari di richiamata preferiti:"
+
+# Stress Questionnaire Translations
+[questionnaire.stress_step2_title]
+other = "Fase 2 di 3: Effetti dello stress"
+
+[questionnaire.stress_impairment_label]
+other = "Quanto i suoi disturbi influenzano la vita quotidiana?"
+
+[questionnaire.stress_impairment_strong]
+other = "Molto (es. inabilità al lavoro)"
+
+[questionnaire.stress_impairment_often]
+other = "Spesso (prestazioni ridotte)"
+
+[questionnaire.stress_impairment_sometimes]
+other = "A volte, ma riesco a gestirli"
+
+[questionnaire.stress_impairment_rarely]
+other = "Raramente o quasi mai"
+
+[questionnaire.stress_impairment_none]
+other = "Nessun impedimento"
+
+[questionnaire.stress_symptoms_label]
+other = "Quali sintomi nota a causa dello stress? (Selezione multipla possibile)"
+
+[questionnaire.stress_symptom_headache]
+other = "Mal di testa"
+
+[questionnaire.stress_symptom_sleep]
+other = "Disturbi del sonno"
+
+[questionnaire.stress_symptom_stomach]
+other = "Disturbi gastrointestinali"
+
+[questionnaire.stress_symptom_tension]
+other = "Tensioni / Dolori muscolari"
+
+[questionnaire.stress_symptom_none]
+other = "Nessuno dei suddetti"
+
+[questionnaire.stress_frequency_label]
+other = "Con quale frequenza si manifestano i disturbi legati allo stress?"
+
+[questionnaire.stress_frequency_daily]
+other = "Ogni giorno"
+
+[questionnaire.stress_frequency_weekly]
+other = "Più volte a settimana"
+
+[questionnaire.stress_frequency_rarely]
+other = "Raramente"
+
+[questionnaire.stress_frequency_extreme]
+other = "Solo in situazioni estreme"
+
+[questionnaire.stress_frequency_never]
+other = "Mai"
+
+[questionnaire.stress_medical_check_label]
+other = "Ha già fatto esami medici a causa dello stress?"
+
+[questionnaire.stress_check_acute]
+other = "Solo per disturbi acuti"
+
+[questionnaire.stress_diagnosis_label]
+other = "Le è stato diagnosticato un disturbo di salute legato allo stress? (Selezione multipla possibile)"
+
+[questionnaire.stress_diagnosis_mental]
+other = "Disturbo d'ansia o depressione"
+
+[questionnaire.stress_diagnosis_heart]
+other = "Malattie cardiache o ipertensione"
+
+[questionnaire.stress_diagnosis_gastro]
+other = "Malattie gastrointestinali (es. gastrite nervosa)"
+
+[questionnaire.stress_diagnosis_other]
+other = "Altro"
+
+[questionnaire.stress_diagnosis_none]
+other = "No"
+
+[questionnaire.stress_diagnosis_other_specify]
+other = "Altra diagnosi (specificare)"
+
+# Ganzheitliche Vorsorge Questionnaire Translations
+[questionnaire.holistic_step2_title]
+other = "Fase 2 di 3: Prevenzione generale"
+
+[questionnaire.holistic_interest_label]
+other = "Perché è interessato a un esame preventivo? (Selezione multipla possibile)"
+
+[questionnaire.holistic_interest_general]
+other = "Prevenzione sanitaria generale"
+
+[questionnaire.holistic_interest_early]
+other = "Diagnosi precoce delle malattie"
+
+[questionnaire.holistic_interest_wellbeing]
+other = "Miglioramento del benessere"
+
+[questionnaire.holistic_interest_security]
+other = "Sicurezza per il futuro"
+
+[questionnaire.holistic_interest_none]
+other = "Nessuna motivazione particolare"
+
+[questionnaire.holistic_complaints_label]
+other = "Ha problemi di salute?"
+
+[questionnaire.holistic_complaints_specify]
+other = "Quali problemi?"
+
+[questionnaire.holistic_checkup_frequency_label]
+other = "Con quale frequenza fa controlli medici?"
+
+[questionnaire.holistic_checkup_annual]
+other = "Annualmente"
+
+[questionnaire.holistic_checkup_few_years]
+other = "Ogni qualche anno"
+
+[questionnaire.holistic_checkup_complaints]
+other = "Solo in caso di disturbi"
+
+[questionnaire.holistic_checkup_never]
+other = "Mai"
+
+[questionnaire.holistic_risks_label]
+other = "Ci sono rischi noti o malattie esistenti? (Selezione multipla possibile)"
+
+[questionnaire.holistic_risk_cardio]
+other = "Malattie cardiovascolari"
+
+[questionnaire.holistic_risk_metabolic]
+other = "Malattie metaboliche"
+
+[questionnaire.holistic_risk_chronic]
+other = "Malattie croniche"
+
+[questionnaire.holistic_risk_cancer]
+other = "Storia di tumori"
+
+[questionnaire.holistic_risk_other]
+other = "Altro"
+
+[questionnaire.holistic_risk_none]
+other = "Nessuna malattia o fattore di rischio noto"
+
+[questionnaire.holistic_risk_other_specify]
+other = "Altri rischi (specificare)"
+
+# Individuelle Vorsorge Questionnaire Translations
+[questionnaire.individual_step2_title]
+other = "Fase 2 di 3: Pianificazione preventiva individuale"
+
+[questionnaire.individual_body_region_label]
+other = "Quale regione del corpo desidera far esaminare? (Selezione multipla possibile)"
+
+[questionnaire.individual_body_brain]
+other = "Cervello / Nervi"
+
+[questionnaire.individual_body_heart]
+other = "Cuore / Circolazione"
+
+[questionnaire.individual_body_abdominal]
+other = "Organi addominali"
+
+[questionnaire.individual_body_musculoskeletal]
+other = "Sistema muscolo-scheletrico"
+
+[questionnaire.individual_body_blood]
+other = "Analisi del sangue / Valori ematici"
+
+[questionnaire.individual_body_none]
+other = "Nessuna regione specifica"
+
+[questionnaire.individual_checkup_frequency_label]
+other = "Con quale frequenza fa controlli medici?"
+
+[questionnaire.individual_checkup_annual]
+other = "Annualmente"
+
+[questionnaire.individual_checkup_few_years]
+other = "Ogni qualche anno"
+
+[questionnaire.individual_checkup_complaints]
+other = "Solo in caso di disturbi"
+
+[questionnaire.individual_checkup_never]
+other = "Mai"
+
+[questionnaire.individual_conditions_label]
+other = "Ha patologie pregresse note? (Selezione multipla possibile)"
+
+[questionnaire.individual_condition_cardio]
+other = "Malattie cardiovascolari"
+
+[questionnaire.individual_condition_metabolic]
+other = "Malattie metaboliche"
+
+[questionnaire.individual_condition_chronic]
+other = "Malattie croniche"
+
+[questionnaire.individual_condition_cancer]
+other = "Tumori (personali / familiari)"
+
+[questionnaire.individual_condition_other]
+other = "Altro"
+
+[questionnaire.individual_condition_none]
+other = "Nessuna malattia o fattore di rischio noto"
+
+[questionnaire.individual_condition_other_specify]
+other = "Altra condizione (specificare)"
+
+[questionnaire.individual_risk_factors_label]
+other = "Ha fattori di rischio noti? (Selezione multipla possibile)"
+
+[questionnaire.individual_risk_smoking]
+other = "Fumo"
+
+[questionnaire.individual_risk_overweight]
+other = "Sovrappeso"
+
+[questionnaire.individual_risk_sedentary]
+other = "Sedentarietà"
+
+[questionnaire.individual_risk_alcohol]
+other = "Alto consumo di alcol"
+
+[questionnaire.individual_risk_none]
+other = "Nessun fattore di rischio noto"
+
+[questionnaire.individual_examination_label]
+other = "Quale esame ritiene utile? (Selezione multipla possibile)"
+
+[questionnaire.individual_exam_blood]
+other = "Analisi del sangue (colesterolo, glicemia...)"
+
+[questionnaire.individual_exam_imaging]
+other = "Esami di imaging (RMN, TC, ecografia)"
+
+[questionnaire.individual_lab_values_label]
+other = "In passato ci sono stati valori di laboratorio anomali o indicazioni mediche? (Selezione multipla possibile)"
+
+[questionnaire.individual_lab_glucose]
+other = "Glicemia / Diabete"
+
+[questionnaire.individual_lab_cholesterol]
+other = "Colesterolo / Lipidi nel sangue"
+
+[questionnaire.individual_lab_liver_kidney]
+other = "Valori epatici / renali"
+
+[questionnaire.individual_lab_unclear]
+other = "Indicazioni, ma non chiare"
+
+[questionnaire.individual_lab_normal]
+other = "No, finora tutto normale"
+
+[questionnaire.individual_surgery_label]
+other = "Ha subito interventi chirurgici in passato?"
+
+[questionnaire.individual_surgery_major]
+other = "Sì, interventi maggiori (es. chirurgia cardiaca o vertebrale)"
+
+[questionnaire.individual_surgery_minor]
+other = "Sì, interventi minori (es. cistifellea, menisco)"
+
+[questionnaire.individual_surgery_none]
+other = "No, mai"
+
+[questionnaire.individual_surgery_unsure]
+other = "Non ricordo esattamente"
+
+# Chronische Beschwerden Questionnaire Translations
+[questionnaire.chronic_step2_title]
+other = "Fase 2 di 3: Disturbi cronici"
+
+[questionnaire.chronic_complaints_label]
+other = "Quali disturbi ha più frequentemente? (Selezione multipla possibile)"
+
+[questionnaire.chronic_complaint_back]
+other = "Mal di schiena"
+
+[questionnaire.chronic_complaint_joints]
+other = "Dolori articolari"
+
+[questionnaire.chronic_complaint_headache]
+other = "Mal di testa/Emicrania"
+
+[questionnaire.chronic_complaint_gastro]
+other = "Problemi gastrointestinali"
+
+[questionnaire.chronic_complaint_other]
+other = "Altro"
+
+[questionnaire.chronic_complaint_other_specify]
+other = "Altri disturbi (specificare)"
+
+[questionnaire.chronic_duration_label]
+other = "Da quanto tempo ha questi disturbi?"
+
+[questionnaire.chronic_duration_weeks]
+other = "Poche settimane"
+
+[questionnaire.chronic_duration_3to6months]
+other = "3–6 mesi"
+
+[questionnaire.chronic_duration_6to12months]
+other = "6–12 mesi"
+
+[questionnaire.chronic_duration_1to5years]
+other = "1–5 anni"
+
+[questionnaire.chronic_duration_over5years]
+other = "Oltre 5 anni"
+
+[questionnaire.chronic_pain_level_label]
+other = "Quanto sono intensi i suoi dolori/disturbi su una scala da 1–10?"
+
+[questionnaire.chronic_pain_level_mild]
+other = "1–3 (lieve)"
+
+[questionnaire.chronic_pain_level_medium]
+other = "4–6 (medio)"
+
+[questionnaire.chronic_pain_level_strong]
+other = "7–8 (forte)"
+
+[questionnaire.chronic_pain_level_very_strong]
+other = "9–10 (molto forte)"
+
+[questionnaire.chronic_pain_level_variable]
+other = "Variabile"
+
+[questionnaire.chronic_diagnosis_label]
+other = "Le è già stata diagnosticata una malattia cronica? (Selezione multipla possibile)"
+
+[questionnaire.chronic_diagnosis_musculoskeletal]
+other = "Sì, una malattia articolare o muscolare (es. artrosi, reumatismi)"
+
+[questionnaire.chronic_diagnosis_neurological]
+other = "Sì, una malattia neurologica (es. emicrania, polineuropatia)"
+
+[questionnaire.chronic_diagnosis_gastro]
+other = "Sì, una malattia gastrointestinale (es. colon irritabile, morbo di Crohn)"
+
+[questionnaire.chronic_diagnosis_other]
+other = "Sì, un'altra malattia cronica"
+
+[questionnaire.chronic_diagnosis_none]
+other = "No, nessuna malattia cronica nota"
+
+[questionnaire.chronic_diagnosis_other_specify]
+other = "Altra diagnosi (specificare)"
+
+[questionnaire.chronic_measures_label]
+other = "Quali misure ha già intrapreso? (Selezione multipla possibile)"
+
+[questionnaire.chronic_measure_medication]
+other = "Farmaci"
+
+[questionnaire.chronic_measure_physio]
+other = "Fisioterapia"
+
+[questionnaire.chronic_measure_alternative]
+other = "Metodi di cura alternativi"
+
+[questionnaire.chronic_measure_surgery]
+other = "Intervento chirurgico"
+
+[questionnaire.chronic_measure_nothing]
+other = "Nulla finora"
+
+[questionnaire.chronic_impact_label]
+other = "Con quale frequenza i disturbi limitano la sua vita quotidiana?"
+
+[questionnaire.chronic_impact_none]
+other = "Per niente"
+
+[questionnaire.chronic_impact_occasional]
+other = "Occasionalmente"
+
+[questionnaire.chronic_impact_weekly]
+other = "Più volte a settimana"
+
+[questionnaire.chronic_impact_daily]
+other = "Quotidianamente"
+
+[questionnaire.chronic_impact_severe]
+other = "Molto limitante"
+
+[questionnaire.chronic_imaging_label]
+other = "Ha già fatto esami di imaging (RMN/TC/radiografia)?"
+
+[questionnaire.chronic_imaging_recent]
+other = "Sì, meno di 6 mesi fa"
+
+[questionnaire.chronic_imaging_1year]
+other = "Sì, 1 anno fa"
+
+[questionnaire.chronic_imaging_2years]
+other = "Sì, più di 2 anni fa"
+
+[questionnaire.chronic_imaging_recommended]
+other = "No, ma consigliato"
+
+[questionnaire.chronic_imaging_unnecessary]
+other = "No, non necessario"
+
+[questionnaire.chronic_expectations_label]
+other = "Cosa si aspetta da un esame preventivo? (Selezione multipla possibile)"
+
+[questionnaire.chronic_expectation_cause]
+other = "Trovare la causa del dolore"
+
+[questionnaire.chronic_expectation_treatment]
+other = "Identificare opzioni di trattamento"
+
+[questionnaire.chronic_expectation_exclude]
+other = "Escludere malattie gravi"
+
+[questionnaire.chronic_expectation_quality]
+other = "Migliorare la qualità della vita"
+
+[questionnaire.chronic_expectation_none]
+other = "Nessuna aspettativa specifica"
+
+# Summary Translations for all questionnaires
+[questionnaire.summary_stress_impairment]
+other = "Impedimento quotidiano:"
+
+[questionnaire.summary_stress_symptoms]
+other = "Sintomi di stress:"
+
+[questionnaire.summary_stress_frequency]
+other = "Frequenza dei disturbi:"
+
+[questionnaire.summary_stress_medical_check]
+other = "Esami medici:"
+
+[questionnaire.summary_stress_diagnoses]
+other = "Diagnosi legate allo stress:"
+
+[questionnaire.summary_stress_other_diagnosis]
+other = "Altra diagnosi:"
+
+[questionnaire.summary_holistic_interests]
+other = "Interesse per la prevenzione:"
+
+[questionnaire.summary_holistic_complaints]
+other = "Problemi di salute:"
+
+[questionnaire.summary_holistic_complaints_details]
+other = "Dettagli dei disturbi:"
+
+[questionnaire.summary_holistic_checkup_frequency]
+other = "Frequenza dei controlli:"
+
+[questionnaire.summary_holistic_risks]
+other = "Rischi noti:"
+
+[questionnaire.summary_holistic_other_risk]
+other = "Altri rischi:"
+
+[questionnaire.summary_individual_body_regions]
+other = "Regioni corporee da esaminare:"
+
+[questionnaire.summary_individual_checkup_frequency]
+other = "Frequenza dei controlli:"
+
+[questionnaire.summary_individual_conditions]
+other = "Patologie pregresse:"
+
+[questionnaire.summary_individual_other_condition]
+other = "Altra condizione:"
+
+[questionnaire.summary_individual_risk_factors]
+other = "Fattori di rischio:"
+
+[questionnaire.summary_individual_examinations]
+other = "Esami desiderati:"
+
+[questionnaire.summary_individual_lab_values]
+other = "Valori di laboratorio anomali:"
+
+[questionnaire.summary_individual_surgery]
+other = "Interventi chirurgici:"
+
+[questionnaire.summary_chronic_complaints]
+other = "Disturbi cronici:"
+
+[questionnaire.summary_chronic_other_complaint]
+other = "Altro disturbo:"
+
+[questionnaire.summary_chronic_duration]
+other = "Durata dei disturbi:"
+
+[questionnaire.summary_chronic_pain_level]
+other = "Livello di dolore:"
+
+[questionnaire.summary_chronic_diagnoses]
+other = "Diagnosi croniche:"
+
+[questionnaire.summary_chronic_other_diagnosis]
+other = "Altra diagnosi:"
+
+[questionnaire.summary_chronic_measures]
+other = "Misure intraprese:"
+
+[questionnaire.summary_chronic_daily_impact]
+other = "Limitazione quotidiana:"
+
+[questionnaire.summary_chronic_imaging]
+other = "Esame di imaging:"
+
+[questionnaire.summary_chronic_expectations]
+other = "Aspettative per la prevenzione:"

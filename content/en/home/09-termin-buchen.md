@@ -16,8 +16,14 @@ title: "Book Your Appointment"
 partial: "full-bg.html"
 ---
 
-Come to your appointment easily. **Enter email**, select location, done.
+{{< limit-width >}}
+
+Get your appointment easily. 
+
+**Enter email**, select location, done.
 
 {{< spacer >}}   
 
-{{< bookingFormMultilanguage >}}
+{{< /limit-width >}}
+
+{{< form-booking-en >}}

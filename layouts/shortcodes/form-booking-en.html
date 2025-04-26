@@ -1,0 +1,266 @@
+<!-- form-booking-en.html -->
+
+<style>
+  #multiStepForm { max-width: 600px; margin: 0 auto; }
+  .success-message { max-width: 600px; margin: 0 auto; }
+  .form-step { display: none; }
+  .form-step.active { display: block; }
+  .step-title { font-size: 1.5rem; font-weight: bold; text-align: center; }
+  .button-container { margin-top: clamp(30px, 5vw, 50px); }
+  .form-check-container { display: flex; align-items: flex-start; gap: 15px; }
+  .form-floating { width: 100%; }
+  .d-none { display: none; }
+  .tooltip-info { font-size: 0.8rem; color: #6c757d; margin-top: 0.25rem; }
+  .list-group { border-color: transparent; }
+  
+  /* Make form fields larger */
+  .form-control, .form-select {
+    font-size: 1.1rem;  /* Increase input font size */
+    padding: 12px 14px; /* Adjust padding for better spacing */
+    height: 50px; /* Ensure uniform field height */
+  }
+
+  /* Adjust checkbox alignment */
+  .form-check-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between checkbox and label */
+    font-size: 1.1rem; /* Increase label text size */
+    font-weight: 600;
+  }
+
+  .list-group {
+    border: transparent;
+  }
+  .form-check-input {
+    width: 1em;
+    height: 1em;
+    margin: 0 .2em .3em 0;
+    vertical-align: bottom;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Style the button for a larger, more prominent appearance */
+  .btn-xl {
+    font-size: 1.2rem;
+    padding: 14px 20px;
+    border-radius: 50px; /* Soft rounded button */
+  }
+
+  /* Increase space between form sections */
+  .form-step {
+    margin-bottom: 30px;
+  }
+</style>
+
+
+<form id="multiStepForm" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <!-- Hidden fields -->
+    <input type="hidden" name="language" value="en">
+    <input type="hidden" name="form-name" value="booking">
+    <p class="d-none">
+      <label>Please do not fill in: <input name="bot-field"></label>
+    </p>
+  
+    <!-- Step 1 -->
+    <div class="form-step active" id="step-1">
+      <h3 class="text-center mb-4 step-title">Step 1 of 3: Email & Location</h3>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com" required>
+        <label for="email">Email Address *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="standort" name="standort" required>
+          <option value="">Please select</option>
+          <option value="Zurich">Zurich</option>
+          <option value="Bern">Bern</option>
+          <option value="Basel">Basel</option>
+        </select>
+        <label for="standort">Location *</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="datenschutz1" name="datenschutz1" required>
+        <label class="form-check-label" for="datenschutz1">I agree to the data processing.</label>
+      </div>
+      <div class="d-grid button-container">
+        <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)">Next</button>
+      </div>
+    </div>
+  
+    <!-- Step 2 -->
+    <div class="form-step" id="step-2">
+      <h3 class="text-center mb-4 step-title">Step 2 of 3: Personal Information</h3>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="vorname" type="text" name="vorname" required>
+        <label for="vorname">First Name *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="nachname" type="text" name="nachname" required>
+        <label for="nachname">Last Name *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="geburtsjahr" type="text" name="geburtsjahr" required>
+        <label for="geburtsjahr">Year of Birth *</label>
+        <div class="tooltip-info">Please enter your year of birth.</div>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="strasse" type="text" name="strasse" required>
+        <label for="strasse">Street *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="plz" type="text" name="plz" required>
+        <label for="plz">ZIP Code *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="ort" type="text" name="ort" required>
+        <label for="ort">City *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input class="form-control" id="telefon" type="tel" name="telefon" required>
+        <label for="telefon">Phone *</label>
+      </div>
+      <div class="d-flex justify-content-between button-container">
+        <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)">Back</button>
+        <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)">Next</button>
+      </div>
+    </div>
+  
+    <!-- Step 3 -->
+    <div class="form-step" id="step-3">
+      <h3 class="text-center mb-4 step-title">Step 3 of 3: Completion</h3>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="untersuchung" name="untersuchung" required onchange="updateProductFields()">
+          <option value="">Please select</option>
+          <option value="Product 1 - CHF 1970.-">Product 1 - CHF 1970.-</option>
+          <option value="Product 2 - CHF 2350.-">Product 2 - CHF 2350.-</option>
+          <option value="Product 3 - CHF 850.-">Product 3 - CHF 850.-</option>
+        </select>
+        <label for="untersuchung">Examination *</label>
+      </div>
+      <div class="form-floating mb-3">
+        <select class="form-select" id="terminwunsch" name="terminwunsch" required>
+          <option value="">Please select</option>
+          <option value="Urgent">Urgent</option>
+          <option value="Within the next six weeks">Within the next six weeks</option>
+          <option value="Within the next three months">Within the next three months</option>
+          <option value="Please call me to arrange an appointment.">Please call me to arrange an appointment.</option>
+        </select>
+        <label for="terminwunsch">Appointment Request *</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="agb" name="agb" required>
+        <label class="form-check-label" for="agb">I agree to the <a href="/agb">Terms and Conditions</a>.</label>
+      </div>
+      <div class="form-check-container mb-3">
+        <input class="form-check-input" type="checkbox" id="datenschutz" name="datenschutz" required>
+        <label class="form-check-label" for="datenschutz">I agree to the <a href="/privacy">Privacy Policy</a>.</label>
+      </div>
+      <div class="d-flex justify-content-between button-container">
+        <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">Back</button>
+        <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Book Appointment</button>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Success message -->
+  <div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none success-message">
+    <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Thank you for your registration!</h3>
+    <p class="mb-3"><strong>You have provided us with the following information:</strong></p>
+    <div class="text-start" id="summaryContent"></div>
+    <hr>
+    <p class="lead" id="emailConfirmation" class="mt-3">You will receive a confirmation email shortly at: </p>
+  </div>
+
+<script>
+  // Telefonnummer-Formatierung und -Validierung
+  function formatPhoneNumber(number) {
+    let digits = number.replace(/\D/g, '');
+    if (digits.length === 10 && digits.startsWith("0")) {
+      return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+    }
+    return number;
+  }
+
+  function validatePhoneNumber(number) {
+    let digits = number.replace(/\D/g, '');
+    return (digits.length === 10 && digits.startsWith("0"));
+  }
+
+  document.getElementById("telefon").addEventListener("blur", function() {
+    let formatted = formatPhoneNumber(this.value);
+    if (!validatePhoneNumber(formatted)) {
+      alert("{{ i18n "alert_phone_invalid" }}");
+      this.value = "";
+    } else {
+      this.value = formatted;
+    }
+  });
+
+  // Navigation zwischen Formularschritten
+  function nextStep(currentStep) {
+    document.getElementById("step-" + currentStep).classList.remove("active");
+    document.getElementById("step-" + (currentStep + 1)).classList.add("active");
+  }
+
+  function prevStep(currentStep) {
+    document.getElementById("step-" + currentStep).classList.remove("active");
+    document.getElementById("step-" + (currentStep - 1)).classList.add("active");
+  }
+
+  // Formularabsendung und Zusammenfassung
+  document.getElementById("multiStepForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formObject = Object.fromEntries(formData.entries());
+
+    // Telefonnummer formatieren
+    formObject.telefon = formatPhoneNumber(formObject.telefon);
+
+    // Zusammenfassung in der aktuellen Sprache erstellen
+    let summaryHtml = `<ul class="list-group">
+          <li class="list-group-item"><strong>{{ i18n "summary.firstname" }}</strong> ${formObject.vorname}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.lastname" }}</strong> ${formObject.nachname}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.birthyear" }}</strong> ${formObject.geburtsjahr}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.street" }}</strong> ${formObject.strasse}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.zip" }}</strong> ${formObject.plz}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.city" }}</strong> ${formObject.ort}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.email" }}</strong> ${formObject.email}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.phone" }}</strong> ${formObject.telefon}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.location" }}</strong> ${formObject.standort}</li>`;
+
+    if (formObject.untersuchung) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "summary.exam" }}</strong> ${formObject.untersuchung}</li>`;
+    }
+
+    if (formObject.terminwunsch) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "summary.appointment" }}</strong> ${formObject.terminwunsch}</li>`;
+    }
+
+    summaryHtml += `</ul>`;
+
+    // Zusammenfassung anzeigen
+    document.getElementById("summaryContent").innerHTML = summaryHtml;
+    document.getElementById("emailConfirmation").textContent =
+      "{{ i18n "success.email_confirmation" }} " + (formObject.email || "");
+
+    // Formular ausblenden, Erfolgsmeldung einblenden
+    document.getElementById("multiStepForm").classList.add("d-none");
+    document.getElementById("successMessage").classList.remove("d-none");
+
+    // Daten an Netlify Function senden
+    fetch('/.netlify/functions/sendConfirmationMultilanguage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formObject)
+    });
+  });
+</script>

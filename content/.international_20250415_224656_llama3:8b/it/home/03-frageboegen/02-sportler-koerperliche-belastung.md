@@ -17,7 +17,7 @@ title: "Atletica"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_link: "/fragebogen-sportler/"
+primary_button_link: "/fragebogen-sportlerler/"
 
 weight: "1"
 ---

@@ -1,20 +1,23 @@
 ---
+title: "Sprechen wir darüber"
+pre_headline: "Was brauchen Sie ?"
+id: "form-sportler"
+layout: "section"
+
 background_color: "var(--sv-offwhite)"
 background_image: ""
+text_color: "var(--sv-richblack)"
 body_text_alignment: "center"
 button_alignment: "center"
 button_placement: "center"
+
 content_width: "12"    # Anzahl Zwölftel
 image_width:   "0"    # Anzahl Zwölftel
-image_position: ""  # "left" oder "right"
+image_position: "left"  # "left" oder "right"
 headline_alignment: "center"
-id: "termin-buchen"
 image: ""
 image-shadow: ""  # default to "shadow" for a simple drop-shadow effect
-layout: "section"
-text_color: "var(--sv-richblack)"
-pre_headline: "" 
-title: "Termin buchen"
+
 # ------------------------------------------------------------------------------
 # Available button classes (solid & skeleton):
 #   sv-btn-red            | sv-btn-red-sk
@@ -40,11 +43,14 @@ secondary_button_text: ""
 partial: "full-bg.html"
 ---
 
+{{< limit-width >}}
 
-Hier kommen Sie ganz einfach zu Ihrem Termin. 
+Wir beraten Sie persönlich zu Ihren medizinischen Anliegen.
+  
+Zur Vorbereitung haben wir diesen Fragebogen vorbereitet. Schicken SIe es ab, dann melden Wir uns für einen Besprechungstermin. Das Formular enthält nur die wichtigsten Fragen, damit Sie wenig Arbeit haben. Im Gespräch ist Zeit für alle Details.
 
-**E-Mail eintragen**, Standort wählen, ab die Post.
+{{< spacer >}}
 
-{{< spacer >}}   
+{{< /limit-width >}}
 
-{{< form-booking-de >}}
+{{< form-sportler-de >}}

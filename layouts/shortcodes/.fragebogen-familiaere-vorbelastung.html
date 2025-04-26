@@ -1,0 +1,291 @@
+
+<form id="multiStepForm" name="fragebogen-familiaer" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <!-- Versteckte Felder -->
+  <input type="hidden" name="language" value="{{ .Site.Language.Lang }}">
+  <input type="hidden" name="form-name" value="fragebogen-familiaer">
+  <p class="d-none">
+    <label>{{ i18n "honeypot_label" }} <input name="bot-field"></label>
+  </p>
+
+  <!-- Schritt 1: Persönliche Angaben -->
+  <div class="form-step active" id="step-1">
+    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.step1_title" }}</h3>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="vorname" type="text" name="vorname" placeholder="{{ i18n "label_firstname" }}" required>
+      <label for="vorname">{{ i18n "label_firstname" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="nachname" type="text" name="nachname" placeholder="{{ i18n "label_lastname" }}" required>
+      <label for="nachname">{{ i18n "label_lastname" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="email" type="email" name="email" placeholder="{{ i18n "placeholder_email" }}" required>
+      <label for="email">{{ i18n "label_email" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="geburtsjahr" type="text" name="geburtsjahr" placeholder="{{ i18n "label_birthyear" }}" required>
+      <label for="geburtsjahr">{{ i18n "label_birthyear" }}</label>
+      <div class="tooltip-info">{{ i18n "tooltip_birthyear" }}</div>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <select class="form-select" id="geschlecht" name="geschlecht" required>
+        <option value="">{{ i18n "option_select" }}</option>
+        <option value="männlich">{{ i18n "questionnaire.gender_male" }}</option>
+        <option value="weiblich">{{ i18n "questionnaire.gender_female" }}</option>
+        <option value="nicht angeben">{{ i18n "questionnaire.gender_not_specified" }}</option>
+      </select>
+      <label for="geschlecht">{{ i18n "questionnaire.label_gender" }}</label>
+      <div class="tooltip-info">{{ i18n "questionnaire.gender_tooltip" }}</div>
+    </div>
+    
+    <div class="d-grid button-container">
+      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)">{{ i18n "button_next" }}</button>
+    </div>
+  </div>
+
+  <!-- Schritt 2: Familiäre Vorbelastung -->
+  <div class="form-step" id="step-2">
+    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.family_step2_title" }}</h3>
+    
+    <div class="mb-4">
+      <label class="form-label">{{ i18n "questionnaire.family_diseases_label" }}</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="erkrankungen[]" value="Herz-Kreislauf" id="cardio">
+        <label class="form-check-label" for="cardio">{{ i18n "questionnaire.family_disease_cardio" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="erkrankungen[]" value="Stoffwechsel" id="metabolic">
+        <label class="form-check-label" for="metabolic">{{ i18n "questionnaire.family_disease_metabolic" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="erkrankungen[]" value="Krebs" id="cancer">
+        <label class="form-check-label" for="cancer">{{ i18n "questionnaire.family_disease_cancer" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="erkrankungen[]" value="Neurologisch" id="neuro">
+        <label class="form-check-label" for="neuro">{{ i18n "questionnaire.family_disease_neuro" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="erkrankungen[]" value="Autoimmun" id="autoimmune">
+        <label class="form-check-label" for="autoimmune">{{ i18n "questionnaire.family_disease_autoimmune" }}</label>
+      </div>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <select class="form-select" id="arzt-empfehlung" name="arzt_empfehlung" required>
+        <option value="">{{ i18n "option_select" }}</option>
+        <option value="ja">{{ i18n "questionnaire.yes" }}</option>
+        <option value="nein noch nicht">{{ i18n "questionnaire.no_not_yet" }}</option>
+        <option value="weiss nicht">{{ i18n "questionnaire.dont_know" }}</option>
+      </select>
+      <label for="arzt-empfehlung">{{ i18n "questionnaire.family_doctor_recommendation" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <select class="form-select" id="beschwerden" name="beschwerden" required>
+        <option value="">{{ i18n "option_select" }}</option>
+        <option value="ja regelmässig">{{ i18n "questionnaire.complaints_regular" }}</option>
+        <option value="gelegentlich">{{ i18n "questionnaire.complaints_occasional" }}</option>
+        <option value="selten">{{ i18n "questionnaire.complaints_rare" }}</option>
+        <option value="nein">{{ i18n "questionnaire.complaints_no" }}</option>
+        <option value="unsicher">{{ i18n "questionnaire.complaints_unsure" }}</option>
+      </select>
+      <label for="beschwerden">{{ i18n "questionnaire.family_complaints" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <select class="form-select" id="vorsorge" name="vorsorge" required>
+        <option value="">{{ i18n "option_select" }}</option>
+        <option value="ja">{{ i18n "questionnaire.yes" }}</option>
+        <option value="nein">{{ i18n "questionnaire.no" }}</option>
+      </select>
+      <label for="vorsorge">{{ i18n "questionnaire.family_prevention" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3" id="vorsorge-details" style="display: none;">
+      <input class="form-control" type="text" name="vorsorge_details" placeholder="{{ i18n "questionnaire.family_prevention_which" }}">
+      <label for="vorsorge_details">{{ i18n "questionnaire.family_prevention_which" }}</label>
+    </div>
+    
+    <div class="form-floating mb-4">
+      <textarea class="form-control" id="freitext" name="freitext" style="height: 150px" placeholder="{{ i18n "questionnaire.free_text" }}"></textarea>
+      <label for="freitext">{{ i18n "questionnaire.free_text" }}</label>
+    </div>
+    
+    <div class="d-flex justify-content-between button-container">
+      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)">{{ i18n "button_back" }}</button>
+      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)">{{ i18n "button_next" }}</button>
+    </div>
+  </div>
+
+  <!-- Schritt 3: Kontaktaufnahme -->
+  <div class="form-step" id="step-3">
+    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.step3_title" }}</h3>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="telefon" type="tel" name="telefon" placeholder="{{ i18n "label_phone" }}" required>
+      <label for="telefon">{{ i18n "label_phone" }}</label>
+      <div class="tooltip-info">{{ i18n "questionnaire.phone_tooltip" }}</div>
+    </div>
+    
+    <div class="mb-4">
+      <label class="form-label">{{ i18n "questionnaire.callback_times" }}</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Vormittags (08:00–12:00 Uhr)" id="morning">
+        <label class="form-check-label" for="morning">{{ i18n "questionnaire.callback_morning" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Mittags (12:00–14:00 Uhr)" id="noon">
+        <label class="form-check-label" for="noon">{{ i18n "questionnaire.callback_noon" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Nachmittags (14:00–18:00 Uhr)" id="afternoon">
+        <label class="form-check-label" for="afternoon">{{ i18n "questionnaire.callback_afternoon" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Abends (18:00–20:00 Uhr)" id="evening">
+        <label class="form-check-label" for="evening">{{ i18n "questionnaire.callback_evening" }}</label>
+      </div>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <textarea class="form-control" id="zusatz" name="zusatzinformationen" style="height: 100px" placeholder="{{ i18n "questionnaire.additional_info" }}"></textarea>
+      <label for="zusatz">{{ i18n "questionnaire.additional_info" }}</label>
+    </div>
+    
+    <div class="form-check-container mb-3">
+      <input class="form-check-input" type="checkbox" id="datenschutz" name="datenschutz" required>
+      <label class="form-check-label" for="datenschutz">{{ i18n "bookingform.privacy_agreement" | replaceRE "href=\"[^\"]*\"" "href=\"/de/privacy\"" | safeHTML }}</label>
+    </div>
+    
+    <div class="d-flex justify-content-between button-container">
+      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">{{ i18n "button_back" }}</button>
+      <button class="btn btn-primary btn-xl" id="submitButton" type="submit">{{ i18n "button_submit" }}</button>
+    </div>
+  </div>
+</form>
+
+<!-- Erfolgsnachricht -->
+<div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">{{ i18n "success.icon_text" }}</i> {{ i18n "success.heading" }}</h3>
+  <p class="mb-3"><strong>{{ i18n "success.summary_intro" }}</strong></p>
+  <div class="text-start" id="summaryContent"></div>
+  <hr>
+  <p class="lead" id="emailConfirmation" class="mt-3"></p>
+</div>
+
+<script>
+  // Telefonnummer-Formatierung und -Validierung
+  function formatPhoneNumber(number) {
+    let digits = number.replace(/\D/g, '');
+    if (digits.length === 10 && digits.startsWith("0")) {
+      return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+    }
+    return number;
+  }
+
+  function validatePhoneNumber(number) {
+    let digits = number.replace(/\D/g, '');
+    return (digits.length === 10 && digits.startsWith("0"));
+  }
+
+  document.getElementById("telefon").addEventListener("blur", function() {
+    let formatted = formatPhoneNumber(this.value);
+    if (!validatePhoneNumber(formatted)) {
+      alert("{{ i18n "alert_phone_invalid" }}");
+      this.value = "";
+    } else {
+      this.value = formatted;
+    }
+  });
+
+  // Navigation zwischen Formularschritten
+  function nextStep(currentStep) {
+    document.getElementById("step-" + currentStep).classList.remove("active");
+    document.getElementById("step-" + (currentStep + 1)).classList.add("active");
+  }
+
+  function prevStep(currentStep) {
+    document.getElementById("step-" + currentStep).classList.remove("active");
+    document.getElementById("step-" + (currentStep - 1)).classList.add("active");
+  }
+
+  // Show/hide prevention details based on selection
+  document.getElementById("vorsorge").addEventListener("change", function() {
+    const detailsDiv = document.getElementById("vorsorge-details");
+    if (this.value === "ja") {
+      detailsDiv.style.display = "block";
+    } else {
+      detailsDiv.style.display = "none";
+    }
+  });
+
+  // Formularabsendung und Zusammenfassung
+  document.getElementById("multiStepForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formObject = Object.fromEntries(formData.entries());
+
+    // Telefonnummer formatieren
+    formObject.telefon = formatPhoneNumber(formObject.telefon);
+
+    // Zusammenfassung erstellen
+    let summaryHtml = `<ul class="list-group">
+          <li class="list-group-item"><strong>{{ i18n "summary.firstname" }}</strong> ${formObject.vorname}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.lastname" }}</strong> ${formObject.nachname}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.birthyear" }}</strong> ${formObject.geburtsjahr}</li>
+          <li class="list-group-item"><strong>{{ i18n "questionnaire.summary_gender" }}</strong> ${formObject.geschlecht}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.email" }}</strong> ${formObject.email}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.phone" }}</strong> ${formObject.telefon}</li>`;
+
+    // Add question responses
+    const erkrankungen = formData.getAll('erkrankungen[]');
+    if (erkrankungen.length > 0) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_diseases" }}</strong> ${erkrankungen.join(', ')}</li>`;
+    }
+
+    if (formObject.arzt_empfehlung) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_doctor_recommendation" }}</strong> ${formObject.arzt_empfehlung}</li>`;
+    }
+
+    if (formObject.beschwerden) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_complaints" }}</strong> ${formObject.beschwerden}</li>`;
+    }
+
+    if (formObject.vorsorge) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_prevention" }}</strong> ${formObject.vorsorge}</li>`;
+    }
+
+    if (formObject.vorsorge_details) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_prevention_details" }}</strong> ${formObject.vorsorge_details}</li>`;
+    }
+
+    const rueckruf = formData.getAll('rueckruf_zeiten[]');
+    if (rueckruf.length > 0) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_callback_times" }}</strong> ${rueckruf.join(', ')}</li>`;
+    }
+
+    summaryHtml += `</ul>`;
+
+    // Zusammenfassung anzeigen
+    document.getElementById("summaryContent").innerHTML = summaryHtml;
+    document.getElementById("emailConfirmation").textContent =
+      "{{ i18n "success.email_confirmation" }} " + (formObject.email || "");
+
+    // Formular ausblenden, Erfolgsmeldung einblenden
+    document.getElementById("multiStepForm").classList.add("d-none");
+    document.getElementById("successMessage").classList.remove("d-none");
+
+    // Daten an Netlify Function senden
+    fetch('/.netlify/functions/sendQuestionnaireConfirmation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formObject)
+    });
+  });
+</script>

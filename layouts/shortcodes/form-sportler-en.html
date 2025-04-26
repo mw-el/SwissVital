@@ -1,0 +1,318 @@
+<!-- form-sportler-en.html -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<form id="multiStepForm" name="athlete-questionnaire" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="language" value="en">
+  <input type="hidden" name="form-name" value="athlete-questionnaire">
+  <p class="d-none">
+    <label>Please do not fill in: <input name="bot-field"></label>
+  </p>
+
+  <!-- Step 1 – Personal Info -->
+  <div class="form-step active" id="step-1">
+    <h3 class="text-center mb-4 step-title">Step 1 of 3: Personal Information</h3>
+
+    <div class="form-floating mb-3">
+      <input class="form-control" id="vorname" type="text" name="vorname" placeholder="First Name *" required>
+      <label for="vorname">First Name *</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input class="form-control" id="nachname" type="text" name="nachname" placeholder="Last Name *" required>
+      <label for="nachname">Last Name *</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input class="form-control" id="email" type="email" name="email" placeholder="name@example.com" required>
+      <label for="email">Email Address *</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input class="form-control" id="geburtsjahr" type="text" name="geburtsjahr" placeholder="Year of Birth *" required>
+      <label for="geburtsjahr">Year of Birth *</label>
+      <div class="tooltip-info">We collect biological gender for better medical assessment.</div>
+    </div>
+
+    <div class="form-floating mb-3">
+      <select class="form-select" id="geschlecht" name="geschlecht" required>
+        <option value="">Please select</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="not specified">Prefer not to say</option>
+      </select>
+      <label for="geschlecht">Gender *</label>
+    </div>
+
+    <div class="form-check-container mb-3">
+      <input class="form-check-input" type="checkbox" id="datenschutz1" name="datenschutz1" required>
+      <label class="form-check-label" for="datenschutz1">I agree to the data processing.</label>
+    </div>
+
+    <div class="d-grid button-container">
+      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)">Next</button>
+    </div>
+  </div>
+
+  <!-- Step 2 – Athletic Activity -->
+  <div class="form-step" id="step-2">
+    <h3 class="text-center mb-4 step-title">Step 2 of 3: Athletic Activity</h3>
+
+    <div class="form-floating mb-3">
+      <select class="form-select" id="sport-frequency" name="sport_frequency" required>
+        <option value="">Please select</option>
+        <option value="daily">Daily</option>
+        <option value="several">Several times a week</option>
+        <option value="weekly">Once a week</option>
+        <option value="occasional">Occasionally</option>
+        <option value="rarely">Rarely or never</option>
+      </select>
+      <label for="sport-frequency">How often do you exercise?</label>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label">What type(s) of sport do you mainly practice?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Strength training" id="strength">
+        <label class="form-check-label" for="strength">Strength training (e.g., fitness, weightlifting)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Endurance sports" id="endurance">
+        <label class="form-check-label" for="endurance">Endurance sports (e.g., running, cycling, swimming)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Team sports" id="team">
+        <label class="form-check-label" for="team">Team sports (e.g., football, basketball, volleyball)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Extreme sports" id="extreme">
+        <label class="form-check-label" for="extreme">Extreme sports (e.g., climbing, diving, martial arts)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Various" id="various">
+        <label class="form-check-label" for="various">Various</label>
+      </div>
+    </div>
+
+    <div class="form-floating mb-3">
+      <select class="form-select" id="recent-injuries" name="recent_injuries" required>
+        <option value="">Please select</option>
+        <option value="severe">Yes, a severe injury (e.g., fracture, surgery required)</option>
+        <option value="medium">Yes, a moderate injury (e.g., ligament tear, extended break)</option>
+        <option value="light">Yes, a minor injury (e.g., strain, bruise)</option>
+        <option value="none">No</option>
+      </select>
+      <label for="recent-injuries">Have you had a sports-related injury in the last 12 months?</label>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label">Have you previously had sports-related injuries? (Multiple choice)</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Bones/joints" id="bones">
+        <label class="form-check-label" for="bones">Bones/joints</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Muscles/tendons" id="muscles">
+        <label class="form-check-label" for="muscles">Muscles/tendons</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Chronic overuse" id="chronic">
+        <label class="form-check-label" for="chronic">Chronic overuse</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Other" id="other">
+        <label class="form-check-label" for="other">Other</label>
+      </>
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label">Which body region would you like to have examined preventively?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Back" id="back">
+        <label class="form-check-label" for="back">Back</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Knees/joints" id="knees">
+        <label class="form-check-label" for="knees">Knees/joints</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Shoulders/arms" id="shoulders">
+        <label class="form-check-label" for="shoulders">Shoulders/arms</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="General musculature" id="muscles-general">
+        <label class="form-check-label" for="muscles-general">General musculature</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Whole body" id="whole-body">
+        <label class="form-check-label" for="whole-body">Whole body</label>
+      </div>
+    </div>
+
+    <div class="form-floating mb-3">
+      <select class="form-select" id="pain-after-sport" name="pain_after_sport" required>
+        <option value="">Please select</option>
+        <option value="regular">Yes, regularly</option>
+        <option value="occasional">Occasionally</option>
+        <option value="after intense">Only after intense training</option>
+        <option value="rarely">Rarely to never</option>
+        <option value="none">None</option>
+      </select>
+      <label for="pain-after-sport">Do you have pain or discomfort after sports?</label>
+    </div>
+
+    <div class="form-floating mb-4">
+      <textarea class="form-control" id="freitext" name="freitext" style="height: 150px"
+        placeholder="Do you have any other complaints or concerns that you would like to clarify during the examination?"></textarea>
+      <label for="freitext">Do you have any other complaints or concerns that you would like to clarify during the examination?</label>
+    </div>
+
+    <div class="d-flex justify-content-between button-container">
+      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)">Back</button>
+      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)">Next</button>
+    </div>
+  </div>
+
+  <!-- Step 3 – Contact -->
+  <div class="form-step" id="step-3">
+    <h3 class="text-center mb-4 step-title">Step 3 of 3: Contact Information</h3>
+
+    <div class="form-floating mb-3">
+      <input class="form-control" id="telefon" type="tel" name="telefon" placeholder="Phone *" required>
+      <label for="telefon">Phone *</label>
+    </div>
+    <div class="tooltip-info">We need your phone number to arrange the appointment.</div>
+
+    <div class="mb-4">
+      <label class="form-label">When can we best reach you?</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Morning (08:00–12:00)" id="morning">
+        <label class="form-check-label" for="morning">Morning (08:00–12:00)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Noon (12:00–14:00)" id="noon">
+        <label class="form-check-label" for="noon">Noon (12:00–14:00)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Afternoon (14:00–18:00)" id="afternoon">
+        <label class="form-check-label" for="afternoon">Afternoon (14:00–18:00)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Evening (18:00–20:00)" id="evening">
+        <label class="form-check-label" for="evening">Evening (18:00–20:00)</label>
+      </div>
+    </div>
+
+    <div class="form-floating mb-3">
+      <textarea class="form-control" id="zusatz" name="zusatzinformationen" style="height: 100px"
+        placeholder="Additional information that might be important for us:"></textarea>
+      <label for="zusatz">Additional information that might be important for us:</label>
+    </div>
+
+    <div class="form-check-container mb-3">
+      <input class="form-check-input" type="checkbox" id="datenschutz" name="datenschutz" required>
+      <label class="form-check-label" for="datenschutz">I agree to the <a href="/privacy">Privacy Policy</a>.</label>
+    </div>
+
+    <div class="d-flex justify-content-between button-container">
+      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">Back</button>
+      <button class="btn btn-primary btn-xl" id="submitButton" type="submit">Submit</button>
+    </div>
+  </div>
+</form>
+
+<!-- Success message -->
+<div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Thank you for your registration!</h3>
+  <p class="mb-3"><strong>You have provided us with the following information:</strong></p>
+  <div class="text-start" id="summaryContent"></div>
+  <hr>
+  <p class="lead" id="emailConfirmation" class="mt-3">You will receive a confirmation email shortly at: </p>
+</div>
+
+
+
+
+<script>
+  // Telefonnummer-Formatierung und -Validierung
+  function formatPhoneNumber(number) {
+    let digits = number.replace(/\D/g, '');
+    if (digits.length === 10 && digits.startsWith("0")) {
+      return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+    }
+    return number;
+  }
+
+  function validatePhoneNumber(number) {
+    let digits = number.replace(/\D/g, '');
+    return (digits.length === 10 && digits.startsWith("0"));
+  }
+
+  document.getElementById("telefon").addEventListener("blur", function() {
+    let formatted = formatPhoneNumber(this.value);
+    if (!validatePhoneNumber(formatted)) {
+      alert("{{ i18n "alert_phone_invalid" }}");
+      this.value = "";
+    } else {
+      this.value = formatted;
+    }
+  });
+
+  // Navigation zwischen Formularschritten
+  function nextStep(currentStep) {
+    document.getElementById("step-" + currentStep).classList.remove("active");
+    document.getElementById("step-" + (currentStep + 1)).classList.add("active");
+  }
+
+  function prevStep(currentStep) {
+    document.getElementById("step-" + currentStep).classList.remove("active");
+    document.getElementById("step-" + (currentStep - 1)).classList.add("active");
+  }
+
+  // Formularabsendung und Zusammenfassung
+  document.getElementById("multiStepForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formObject = Object.fromEntries(formData.entries());
+
+    // Telefonnummer formatieren
+    formObject.telefon = formatPhoneNumber(formObject.telefon);
+
+    // Zusammenfassung in der aktuellen Sprache erstellen
+    let summaryHtml = `<ul class="list-group">
+          <li class="list-group-item"><strong>{{ i18n "summary.firstname" }}</strong> ${formObject.vorname}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.lastname" }}</strong> ${formObject.nachname}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.birthyear" }}</strong> ${formObject.geburtsjahr}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.street" }}</strong> ${formObject.strasse}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.zip" }}</strong> ${formObject.plz}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.city" }}</strong> ${formObject.ort}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.email" }}</strong> ${formObject.email}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.phone" }}</strong> ${formObject.telefon}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.location" }}</strong> ${formObject.standort}</li>`;
+
+    if (formObject.untersuchung) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "summary.exam" }}</strong> ${formObject.untersuchung}</li>`;
+    }
+
+    if (formObject.terminwunsch) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "summary.appointment" }}</strong> ${formObject.terminwunsch}</li>`;
+    }
+
+    summaryHtml += `</ul>`;
+
+    // Zusammenfassung anzeigen
+    document.getElementById("summaryContent").innerHTML = summaryHtml;
+    document.getElementById("emailConfirmation").textContent =
+      "{{ i18n "success.email_confirmation" }} " + (formObject.email || "");
+
+    // Formular ausblenden, Erfolgsmeldung einblenden
+    document.getElementById("multiStepForm").classList.add("d-none");
+    document.getElementById("successMessage").classList.remove("d-none");
+
+    // Daten an Netlify Function senden
+    fetch('/.netlify/functions/sendConfirmationMultilanguage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formObject)
+    });
+  });
+</script>

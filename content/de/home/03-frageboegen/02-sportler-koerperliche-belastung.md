@@ -17,7 +17,7 @@ title: "Sportler"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_link: "/sportverletzungen/"
+primary_button_link: "/sportler/"
 
 weight: "2"
 ---

@@ -1,0 +1,335 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<form id="multiStepForm" name="fragebogen-sportler" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <!-- Versteckte Felder -->
+  <input type="hidden" name="language" value="{{ .Site.Language.Lang }}">
+  <input type="hidden" name="form-name" value="fragebogen-sportler">
+  <p class="d-none">
+    <label>{{ i18n "honeypot_label" }} <input name="bot-field"></label>
+  </p>
+
+  <!-- Schritt 1: Persönliche Angaben -->
+  <div class="form-step active" id="step-1">
+    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.step1_title" }}</h3>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="vorname" type="text" name="vorname" placeholder="{{ i18n "label_firstname" }}" required>
+      <label for="vorname">{{ i18n "label_firstname" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="nachname" type="text" name="nachname" placeholder="{{ i18n "label_lastname" }}" required>
+      <label for="nachname">{{ i18n "label_lastname" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="email" type="email" name="email" placeholder="{{ i18n "placeholder_email" }}" required>
+      <label for="email">{{ i18n "label_email" }}</label>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="geburtsjahr" type="text" name="geburtsjahr" placeholder="{{ i18n "label_birthyear" }}" required>
+      <label for="geburtsjahr">{{ i18n "label_birthyear" }}</label>
+      <div class="tooltip-info">{{ i18n "tooltip_birthyear" }}</div>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <select class="form-select" id="geschlecht" name="geschlecht" required>
+        <option value="">{{ i18n "option_select" }}</option>
+        <option value="männlich">{{ i18n "questionnaire.gender_male" }}</option>
+        <option value="weiblich">{{ i18n "questionnaire.gender_female" }}</option>
+        <option value="nicht angeben">{{ i18n "questionnaire.gender_not_specified" }}</option>
+      </select>
+      <label for="geschlecht">{{ i18n "questionnaire.label_gender" }}</label>
+    </div>
+    
+    <div class="form-check-container mb-3">
+      <input class="form-check-input" type="checkbox" id="datenschutz1" name="datenschutz1" required>
+      <label class="form-check-label" for="datenschutz1">{{ i18n "bookingform.dataprotection_consent_short" }}</label>
+    </div>
+    
+    <div class="d-grid button-container">
+      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)">{{ i18n "button_next" }}</button>
+    </div>
+  </div>
+
+  <!-- Schritt 2: Sportliche Aktivität -->
+  <div class="form-step" id="step-2">
+    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.athlete_step2_title" }}</h3>
+    
+    <div class="form-floating mb-3">
+      <select class="form-select" id="sport-frequency" name="sport_frequency" required>
+        <option value="">{{ i18n "option_select" }}</option>
+        <option value="täglich">{{ i18n "questionnaire.sport_daily" }}</option>
+        <option value="mehrmals pro Woche">{{ i18n "questionnaire.sport_multiple_week" }}</option>
+        <option value="einmal pro Woche">{{ i18n "questionnaire.sport_once_week" }}</option>
+        <option value="gelegentlich">{{ i18n "questionnaire.sport_occasional" }}</option>
+        <option value="selten bis nie">{{ i18n "questionnaire.sport_rarely" }}</option>
+      </select>
+      <label for="sport-frequency">{{ i18n "questionnaire.sport_frequency_label" }}</label>
+    </div>
+    
+    <div class="mb-4">
+      <label class="form-label">{{ i18n "questionnaire.sport_type_label" }}</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Kraftsport" id="strength">
+        <label class="form-check-label" for="strength">{{ i18n "questionnaire.sport_strength" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Ausdauersport" id="endurance">
+        <label class="form-check-label" for="endurance">{{ i18n "questionnaire.sport_endurance" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Teamsport" id="team">
+        <label class="form-check-label" for="team">{{ i18n "questionnaire.sport_team" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Extremsport" id="extreme">
+        <label class="form-check-label" for="extreme">{{ i18n "questionnaire.sport_extreme" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Verschiedene" id="various">
+        <label class="form-check-label" for="various">{{ i18n "questionnaire.sport_various" }}</label>
+      </div>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <select class="form-select" id="recent-injuries" name="recent_injuries" required>
+        <option value="">{{ i18n "option_select" }}</option>
+        <option value="ja schwer">{{ i18n "questionnaire.injury_severe" }}</option>
+        <option value="ja mittel">{{ i18n "questionnaire.injury_medium" }}</option>
+        <option value="ja leicht">{{ i18n "questionnaire.injury_light" }}</option>
+        <option value="nein">{{ i18n "questionnaire.injury_none" }}</option>
+      </select>
+      <label for="recent-injuries">{{ i18n "questionnaire.recent_injuries_label" }}</label>
+    </div>
+    
+    <div class="mb-4">
+      <label class="form-label">{{ i18n "questionnaire.past_injuries_label" }}</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Knochen/Gelenke" id="bones">
+        <label class="form-check-label" for="bones">{{ i18n "questionnaire.injury_bones" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Muskel/Sehnen" id="muscles">
+        <label class="form-check-label" for="muscles">{{ i18n "questionnaire.injury_muscles" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Chronische Überlastung" id="chronic">
+        <label class="form-check-label" for="chronic">{{ i18n "questionnaire.injury_chronic" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Andere" id="other">
+        <label class="form-check-label" for="other">{{ i18n "questionnaire.injury_other" }}</label>
+      </div>
+    </div>
+    
+    <div class="mb-4">
+      <label class="form-label">{{ i18n "questionnaire.body_region_label" }}</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Rücken" id="back">
+        <label class="form-check-label" for="back">{{ i18n "questionnaire.body_back" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Knie/Gelenke" id="knees">
+        <label class="form-check-label" for="knees">{{ i18n "questionnaire.body_knees" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Schultern/Arme" id="shoulders">
+        <label class="form-check-label" for="shoulders">{{ i18n "questionnaire.body_shoulders" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Muskulatur allgemein" id="muscles-general">
+        <label class="form-check-label" for="muscles-general">{{ i18n "questionnaire.body_muscles" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Ganzer Körper" id="whole-body">
+        <label class="form-check-label" for="whole-body">{{ i18n "questionnaire.body_whole" }}</label>
+      </div>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <select class="form-select" id="pain-after-sport" name="pain_after_sport" required>
+        <option value="">{{ i18n "option_select" }}</option>
+        <option value="ja regelmässig">{{ i18n "questionnaire.pain_regular" }}</option>
+        <option value="gelegentlich">{{ i18n "questionnaire.pain_occasional" }}</option>
+        <option value="nur nach intensiv">{{ i18n "questionnaire.pain_after_intense" }}</option>
+        <option value="selten bis nie">{{ i18n "questionnaire.pain_rarely" }}</option>
+        <option value="keine">{{ i18n "questionnaire.pain_none" }}</option>
+      </select>
+      <label for="pain-after-sport">{{ i18n "questionnaire.pain_after_sport_label" }}</label>
+    </div>
+    
+    <div class="form-floating mb-4">
+      <textarea class="form-control" id="freitext" name="freitext" style="height: 150px" placeholder="{{ i18n "questionnaire.free_text" }}"></textarea>
+      <label for="freitext">{{ i18n "questionnaire.free_text" }}</label>
+    </div>
+    
+    <div class="d-flex justify-content-between button-container">
+      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)">{{ i18n "button_back" }}</button>
+      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)">{{ i18n "button_next" }}</button>
+    </div>
+  </div>
+
+  <!-- Schritt 3: Kontaktaufnahme -->
+  <div class="form-step" id="step-3">
+    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.step3_title" }}</h3>
+    
+    <div class="form-floating mb-3">
+      <input class="form-control" id="telefon" type="tel" name="telefon" placeholder="{{ i18n "label_phone" }}" required>
+      <label for="telefon">{{ i18n "label_phone" }}</label>
+    </div>
+    <div class="tooltip-info">{{ i18n "questionnaire.phone_tooltip" }}</div>
+    
+    <div class="mb-4">
+      <label class="form-label">{{ i18n "questionnaire.callback_times" }}</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Vormittags (08:00–12:00 Uhr)" id="morning">
+        <label class="form-check-label" for="morning">{{ i18n "questionnaire.callback_morning" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Mittags (12:00–14:00 Uhr)" id="noon">
+        <label class="form-check-label" for="noon">{{ i18n "questionnaire.callback_noon" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Nachmittags (14:00–18:00 Uhr)" id="afternoon">
+        <label class="form-check-label" for="afternoon">{{ i18n "questionnaire.callback_afternoon" }}</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Abends (18:00–20:00 Uhr)" id="evening">
+        <label class="form-check-label" for="evening">{{ i18n "questionnaire.callback_evening" }}</label>
+      </div>
+    </div>
+    
+    <div class="form-floating mb-3">
+      <textarea class="form-control" id="zusatz" name="zusatzinformationen" style="height: 100px" placeholder="{{ i18n "questionnaire.additional_info" }}"></textarea>
+      <label for="zusatz">{{ i18n "questionnaire.additional_info" }}</label>
+    </div>
+    
+    <div class="form-check-container mb-3">
+      <input class="form-check-input" type="checkbox" id="datenschutz" name="datenschutz" required>
+      <label class="form-check-label" for="datenschutz">{{ i18n "bookingform.privacy_agreement" | replaceRE "href=\"[^\"]*\"" "href=\"/de/privacy\"" | safeHTML }}</label>
+    </div>
+    
+    <div class="d-flex justify-content-between button-container">
+      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">{{ i18n "button_back" }}</button>
+      <button class="btn btn-primary btn-xl" id="submitButton" type="submit">{{ i18n "button_submit" }}</button>
+    </div>
+  </div>
+</form>
+
+<!-- Erfolgsnachricht -->
+<div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">{{ i18n "success.icon_text" }}</i> {{ i18n "success.heading" }}</h3>
+  <p class="mb-3"><strong>{{ i18n "success.summary_intro" }}</strong></p>
+  <div class="text-start" id="summaryContent"></div>
+  <hr>
+  <p class="lead" id="emailConfirmation" class="mt-3"></p>
+</div>
+
+<script>
+  // Telefonnummer-Formatierung und -Validierung
+  function formatPhoneNumber(number) {
+    let digits = number.replace(/\D/g, '');
+    if (digits.length === 10 && digits.startsWith("0")) {
+      return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+    }
+    return number;
+  }
+
+  function validatePhoneNumber(number) {
+    let digits = number.replace(/\D/g, '');
+    return (digits.length === 10 && digits.startsWith("0"));
+  }
+
+  document.getElementById("telefon").addEventListener("blur", function() {
+    let formatted = formatPhoneNumber(this.value);
+    if (!validatePhoneNumber(formatted)) {
+      alert("{{ i18n "alert_phone_invalid" }}");
+      this.value = "";
+    } else {
+      this.value = formatted;
+    }
+  });
+
+  // Navigation zwischen Formularschritten
+  function nextStep(currentStep) {
+    document.getElementById("step-" + currentStep).classList.remove("active");
+    document.getElementById("step-" + (currentStep + 1)).classList.add("active");
+  }
+
+  function prevStep(currentStep) {
+    document.getElementById("step-" + currentStep).classList.remove("active");
+    document.getElementById("step-" + (currentStep - 1)).classList.add("active");
+  }
+
+  // Formularabsendung und Zusammenfassung
+  document.getElementById("multiStepForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formObject = Object.fromEntries(formData.entries());
+
+    // Telefonnummer formatieren
+    formObject.telefon = formatPhoneNumber(formObject.telefon);
+
+    // Zusammenfassung erstellen
+    let summaryHtml = `<ul class="list-group">
+          <li class="list-group-item"><strong>{{ i18n "summary.firstname" }}</strong> ${formObject.vorname}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.lastname" }}</strong> ${formObject.nachname}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.birthyear" }}</strong> ${formObject.geburtsjahr}</li>
+          <li class="list-group-item"><strong>{{ i18n "questionnaire.summary_gender" }}</strong> ${formObject.geschlecht}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.email" }}</strong> ${formObject.email}</li>
+          <li class="list-group-item"><strong>{{ i18n "summary.phone" }}</strong> ${formObject.telefon}</li>`;
+
+    // Add sport-specific responses
+    if (formObject.sport_frequency) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_sport_frequency" }}</strong> ${formObject.sport_frequency}</li>`;
+    }
+
+    const sportarten = formData.getAll('sportarten[]');
+    if (sportarten.length > 0) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_sport_types" }}</strong> ${sportarten.join(', ')}</li>`;
+    }
+
+    if (formObject.recent_injuries) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_recent_injuries" }}</strong> ${formObject.recent_injuries}</li>`;
+    }
+
+    const pastInjuries = formData.getAll('fruehere_verletzungen[]');
+    if (pastInjuries.length > 0) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_past_injuries" }}</strong> ${pastInjuries.join(', ')}</li>`;
+    }
+
+    const bodyRegions = formData.getAll('koerperregionen[]');
+    if (bodyRegions.length > 0) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_body_regions" }}</strong> ${bodyRegions.join(', ')}</li>`;
+    }
+
+    if (formObject.pain_after_sport) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_pain_after_sport" }}</strong> ${formObject.pain_after_sport}</li>`;
+    }
+
+    const rueckruf = formData.getAll('rueckruf_zeiten[]');
+    if (rueckruf.length > 0) {
+      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_callback_times" }}</strong> ${rueckruf.join(', ')}</li>`;
+    }
+
+    summaryHtml += `</ul>`;
+
+    // Zusammenfassung anzeigen
+    document.getElementById("summaryContent").innerHTML = summaryHtml;
+    document.getElementById("emailConfirmation").textContent =
+      "{{ i18n "success.email_confirmation" }} " + (formObject.email || "");
+
+    // Formular ausblenden, Erfolgsmeldung einblenden
+    document.getElementById("multiStepForm").classList.add("d-none");
+    document.getElementById("successMessage").classList.remove("d-none");
+
+    // Daten an Netlify Function senden
+    fetch('/.netlify/functions/sendQuestionnaireConfirmation', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formObject)
+    });
+  });
+</script>

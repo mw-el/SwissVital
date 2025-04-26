@@ -1,0 +1,318 @@
+<form id="form-booking" class="sv-multistep-form"
+      name="buchung" method="POST"
+      data-netlify="true" netlify-honeypot="bot-field">
+
+  <!-- Hidden -->
+  <input type="hidden" name="language"  value="de">
+  <input type="hidden" name="form-name" value="buchung">
+  <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+
+  <!-- ----------- Schritt 1: E-Mail & Standort ----------- -->
+  <section id="form-booking-step-1" class="sv-form-step active" data-step="1">
+    <h3 class="sv-step-title mb-4">Schritt 1 von 3: E-Mail & Standort</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input  class="form-control" id="form-booking-email"
+              name="email" type="email"
+              placeholder="name@example.com" required>
+      <label for="form-booking-email">E-Mail-Adresse *</label>
+    </div>
+
+    <!-- Custom Dropdown for Standort -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-booking-location-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-booking-location-display">Standort *</label>
+      <div class="dropdown-menu p-3" id="form-booking-location-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Zürich" id="location1" name="standort">
+          <label class="form-check-label" for="location1">Zürich</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Bern" id="location2" name="standort">
+          <label class="form-check-label" for="location2">Bern</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Basel" id="location3" name="standort">
+          <label class="form-check-label" for="location3">Basel</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-booking-dsp1"
+             type="checkbox" name="datenschutz1" required>
+      <label class="form-check-label" for="form-booking-dsp1">
+        Ich stimme der Datenverarbeitung zu.
+      </label>
+    </div>
+
+    <div class="d-grid sv-button-container">
+      <button type="button" class="btn btn-primary sv-btn btn-cap" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ----------- Schritt 2: Persönliche Angaben ----------- -->
+  <section id="form-booking-step-2" class="sv-form-step" data-step="2">
+    <h3 class="sv-step-title mb-4">Schritt 2 von 3: Persönliche Angaben</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-booking-vorname"
+             name="vorname" placeholder="Vorname *" required>
+      <label for="form-booking-vorname">Vorname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-booking-nachname"
+             name="nachname" placeholder="Nachname *" required>
+      <label for="form-booking-nachname">Nachname *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-booking-gebjahr"
+             name="geburtsjahr" placeholder="Geburtsjahr *" required>
+      <label for="form-booking-gebjahr">Geburtsjahr *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-booking-street"
+             name="strasse" placeholder="Strasse *" required>
+      <label for="form-booking-street">Strasse *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-booking-plz"
+             name="plz" placeholder="PLZ *" required>
+      <label for="form-booking-plz">PLZ *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-booking-ort"
+             name="ort" placeholder="Ort *" required>
+      <label for="form-booking-ort">Ort *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-booking-phone" type="tel"
+             name="telefon" placeholder="Telefon *" required>
+      <label for="form-booking-phone">Telefon *</label>
+    </div>
+    <p class="sv-tooltip-info mb-3">
+      Bitte Telefonnummer im Schweizer Format (0xxxxxxxxx) angeben.
+    </p>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ----------- Schritt 3: Auswahl & Zustimmung ----------- -->
+  <section id="form-booking-step-3" class="sv-form-step" data-step="3">
+    <h3 class="sv-step-title mb-4">Schritt 3 von 3: Abschluss</h3>
+
+    <!-- Custom Dropdown for Untersuchung -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-booking-exam-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-booking-exam-display">Untersuchung *</label>
+      <div class="dropdown-menu p-3" id="form-booking-exam-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Produkt 1 – CHF 1970.–" id="exam1" name="untersuchung">
+          <label class="form-check-label" for="exam1">Produkt 1 – CHF 1970.–</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Produkt 2 – CHF 2350.–" id="exam2" name="untersuchung">
+          <label class="form-check-label" for="exam2">Produkt 2 – CHF 2350.–</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Produkt 3 – CHF 850.–" id="exam3" name="untersuchung">
+          <label class="form-check-label" for="exam3">Produkt 3 – CHF 850.–</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Dropdown for Terminwunsch -->
+    <div class="form-floating sv-form-floating mb-3">
+      <div class="form-control form-select" id="form-booking-termin-display" 
+           style="height: auto; min-height: 58px; cursor: pointer;">
+        Bitte wählen
+      </div>
+      <label for="form-booking-termin-display">Terminwunsch *</label>
+      <div class="dropdown-menu p-3" id="form-booking-termin-dropdown" style="display: none; width: 100%;">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Dringend" id="termin1" name="terminwunsch">
+          <label class="form-check-label" for="termin1">Dringend</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="In den nächsten sechs Wochen" id="termin2" name="terminwunsch">
+          <label class="form-check-label" for="termin2">In den nächsten sechs Wochen</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="In den nächsten drei Monaten" id="termin3" name="terminwunsch">
+          <label class="form-check-label" for="termin3">In den nächsten drei Monaten</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Bitte rufen Sie mich zur Terminvereinbarung an" id="termin4" name="terminwunsch">
+          <label class="form-check-label" for="termin4">Bitte rufen Sie mich zur Terminvereinbarung an</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-booking-agb" type="checkbox" required>
+      <label class="form-check-label" for="form-booking-agb">
+        Ich stimme den <a href="/agb">AGB</a> zu.
+      </label>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-booking-privacy" type="checkbox" required>
+      <label class="form-check-label" for="form-booking-privacy">
+        Ich stimme der <a href="/privacy">Datenschutzerklärung</a> zu.
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="submit" class="btn btn-primary sv-btn-xl">Termin buchen</button>
+    </div>
+  </section>
+</form>
+
+<!-- ---------- Erfolgsnachricht (wird per JS eingeblendet) ---------- -->
+<div id="form-booking-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
+  <h3 class="text-success mb-3">
+    <i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!
+  </h3>
+  <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
+  <div class="text-start" id="form-booking-summary"></div>
+  <hr>
+  <p class="lead mt-3" id="form-booking-emailConfirm"></p>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form   = document.getElementById('form-booking');
+  const steps  = form.querySelectorAll('.sv-form-step');
+  const show   = n => { steps.forEach(s=>s.classList.remove('active'));
+                        steps[n-1].classList.add('active');
+                        window.scroll({ top: form.offsetTop-20, behavior:'smooth'}); };
+
+  /* Navigation */
+  form.querySelectorAll('[data-next]').forEach(btn =>
+    btn.addEventListener('click', () =>
+      show(+btn.closest('.sv-form-step').dataset.step + 1)));
+  form.querySelectorAll('[data-prev]').forEach(btn =>
+    btn.addEventListener('click', () =>
+      show(+btn.closest('.sv-form-step').dataset.step - 1)));
+
+  /* Telefonformat + Prüfung */
+  const tel = document.getElementById('form-booking-phone');
+  const fmt = n => n.replace(/\D/g,'')
+                    .replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, '$1 $2 $3 $4');
+  tel.addEventListener('blur', () => {
+    const digits = tel.value.replace(/\D/g,'');
+    if (digits.length!==10 || digits[0]!=='0') {
+      alert('Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.');
+      tel.value=''; tel.focus();
+    } else tel.value = fmt(digits);
+  });
+
+  // Custom dropdown functionality
+  function initializeDropdown(displayId, dropdownId, checkboxName, isSingleChoice = true) {
+    const display = document.getElementById(displayId);
+    const dropdown = document.getElementById(dropdownId);
+    const checkboxes = dropdown.querySelectorAll(`input[name="${checkboxName}"]`);
+    
+    // Toggle dropdown on click
+    display.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target) && e.target !== display) {
+        dropdown.style.display = 'none';
+      }
+    });
+    
+    // Prevent dropdown from closing when clicking inside
+    dropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    // Update display when checkboxes change
+    function updateDisplay() {
+      const selected = Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.parentElement.querySelector('label').textContent);
+      
+      if (selected.length > 0) {
+        display.textContent = selected.join(', ');
+      } else {
+        display.textContent = 'Bitte wählen';
+      }
+    }
+    
+    // Handle checkbox changes
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (isSingleChoice) {
+          // For single choice, uncheck all other checkboxes when one is selected
+          checkboxes.forEach(cb => {
+            if (cb !== checkbox) {
+              cb.checked = false;
+            }
+          });
+        }
+        updateDisplay();
+      });
+    });
+  }
+
+  // Initialize all dropdowns - single choice
+  initializeDropdown('form-booking-location-display', 'form-booking-location-dropdown', 'standort', true);
+  initializeDropdown('form-booking-exam-display', 'form-booking-exam-dropdown', 'untersuchung', true);
+  initializeDropdown('form-booking-termin-display', 'form-booking-termin-dropdown', 'terminwunsch', true);
+
+  /* Submit & Zusammenfassung */
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const fd  = new FormData(form);
+    const obj = Object.fromEntries(fd.entries());
+    obj.telefon = fmt(obj.telefon);
+
+    /* Zusammenfassung bauen */
+    let html = '<ul class="list-group">';
+      const map = {
+        Vorname:obj.vorname, Nachname:obj.nachname, Geburtsjahr:obj.geburtsjahr,
+        Strasse:obj.strasse, PLZ:obj.plz, Ort:obj.ort,
+        'E-Mail':obj.email, Telefon:obj.telefon,
+        Standort:obj.standort, Untersuchung:obj.untersuchung,
+        Terminwunsch:obj.terminwunsch
+      };
+    for (const [k,v] of Object.entries(map))
+      if (v) html += `<li class="list-group-item"><strong>${k}:</strong> ${v}</li>`;
+    html += '</ul>';
+
+    /* UI updaten */
+    document.getElementById('form-booking-summary').innerHTML = html;
+    document.getElementById('form-booking-emailConfirm').textContent =
+      `Wir senden eine Bestätigung an: ${obj.email || ''}`;
+    form.classList.add('d-none');
+    document.getElementById('form-booking-success').classList.remove('d-none');
+
+    /* Netlify Function */
+    await fetch('/.netlify/functions/sendConfirmationMultilanguage', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(obj)
+    });
+  });
+});
+</script>
