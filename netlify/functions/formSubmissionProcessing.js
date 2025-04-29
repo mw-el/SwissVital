@@ -1,267 +1,162 @@
-// formSubmissionProcessing.js - Unified form handler for all SwissVital forms
-// Handles validation, spam protection, and forwards to email service
-const querystring = require('querystring');
-const fetch = require('node-fetch'); // Wird für HTTP-Requests benötigt (ggf. installieren mit: npm i node-fetch)
-
-// In-memory store for IP rate limiting
-// In production, consider using a database or Redis
-const ipCounts = {};
-
 /**
- * Validates email format
- * @param {string} email - Email to validate
- * @returns {boolean} - Whether the email is valid
+ * Centralized form submission processing handler for Netlify Functions
+ * 
+ * This function processes all form submissions from the website and:
+ * 1. Validates the submission data
+ * 2. Checks for spam indicators
+ * 3. Sends confirmation emails
+ * 4. Returns appropriate status codes and messages
  */
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
 
-/**
- * Forwards validated form data to the email service
- * @param {object} fields - Form data fields
- * @param {string} formType - Type of form
- * @param {string} language - Language code
- * @returns {Promise<boolean>} - Whether the email was sent successfully
- */
-const sendEmailNotification = async (fields, formType, language) => {
-  // Get base URL from environment or construct it from headers
-  const baseUrl = process.env.URL || process.env.DEPLOY_URL || 'https://swissvital.ch';
+// Import the email sender function
+const emailSender = require('./sendConfirmartonBilingualFragebogen');
+
+exports.handler = async (event, context) => {
+  // Set CORS headers for browser clients
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  };
+  
+  // Log the request details for debugging
+  console.log('Received request:', { 
+    method: event.httpMethod,
+    path: event.path,
+    headers: event.headers
+  });
+  
+  // Handle preflight OPTIONS request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 204,
+      headers,
+      body: ''
+    };
+  }
+  
+  // Only accept POST requests
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ message: 'Method not allowed' })
+    };
+  }
+  
+  // Parse submission data
+  let submission;
+  try {
+    submission = JSON.parse(event.body);
+    console.log('Form submission received:', {
+      type: submission.type,
+      timestamp: submission.timestamp,
+      formData: JSON.stringify(submission.fields).substring(0, 100) + '...' // Log truncated for brevity
+    });
+  } catch (error) {
+    console.error('Error parsing submission data:', error);
+    return {
+      statusCode: 400,
+      headers,
+      body: JSON.stringify({ message: 'Invalid submission data' })
+    };
+  }
+  
+  // Basic validation
+  if (!submission || !submission.fields || !submission.type) {
+    console.error('Missing required submission data');
+    return {
+      statusCode: 400,
+      headers,
+      body: JSON.stringify({ message: 'Missing required submission data' })
+    };
+  }
+  
+  // Simple spam check
+  if (isSpam(submission)) {
+    console.warn('Spam submission detected');
+    return {
+      statusCode: 403,
+      headers,
+      body: JSON.stringify({ message: 'Submission rejected' })
+    };
+  }
   
   try {
-    // Send the data to the email service
-    const response = await fetch(
-      `${baseUrl}/.netlify/functions/sendConfirmartonBilingualFragebogen`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...fields,
-          form_type: formType,
-          language: language
-        })
-      }
-    );
+    // Try to send confirmation emails
+    console.log('Sending confirmation emails for form type:', submission.type);
     
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Email service returned error:', errorText);
-      return false;
+    try {
+      // Call the email sender function
+      const result = await emailSender.sendConfirmationEmails(submission.fields, submission.type);
+      console.log('Email sending result:', result);
+    } catch (emailError) {
+      // Log error but don't fail the submission completely
+      console.error('Error sending confirmation emails:', emailError);
+      // Continue processing despite email error
     }
     
-    return true;
+    // Return success
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ 
+        message: 'Form submission processed successfully',
+        success: true
+      })
+    };
   } catch (error) {
-    console.error('Error forwarding to email service:', error);
-    return false;
-  }
-};
-
-// Configuration for different form types
-const formConfig = {
-  'sportler-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon', 'geschlecht']
-  },
-  'stress-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon', 'stress_level']
-  },
-  'familiaer-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon']
-  },
-  'ganzheitlich-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon']
-  },
-  'individuell-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon']
-  },
-  'chronisch-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon']
-  }
-  // Additional form types can be added here
-};
-
-exports.handler = async (event) => {
-  try {
-    // Only allow POST method
-    if (event.httpMethod !== 'POST') {
-      return { statusCode: 405, body: 'Method Not Allowed' };
-    }
-
-    // Get client IP for rate limiting
-    const ip = event.headers['client-ip'] || 
-               event.headers['x-forwarded-for'] || 
-               'unknown';
-
-    // Parse the submission
-    const submission = JSON.parse(event.body);
-    const formType = submission.type;
-    const fields = submission.fields;
-    const language = fields.language || 'de';
-    
-    // Get configuration for this form type
-    const config = formConfig[formType];
-    if (!config) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ message: 'Unbekannter Formulartyp.' })
-      };
-    }
-    
-    // === SPAM PROTECTION ===
-    
-    // 1. Missing sv_id check
-    if (!submission.spamProtection.sv_id) {
-      console.log('Spam detected: missing sv_id, ignoring submission');
-      return {
-        statusCode: 302,
-        headers: {
-          Location: '/danke-anmeldung/',
-          'Cache-Control': 'no-cache'
-        }
-      };
-    }
-
-    // 2. Check for honeypot fields
-    if (fields.website || fields['bot-field']) {
-      console.log('Spam detected: honeypot field filled');
-      return {
-        statusCode: 302,
-        headers: {
-          Location: '/danke-anmeldung/',
-          'Cache-Control': 'no-cache'
-        }
-      };
-    }
-
-    // 3. Time-based fill-out check
-    const start = parseInt(submission.spamProtection.form_start_time || 0);
-    const now = Date.now();
-    if (start > 0 && now - start < 2000) {
-      console.log('Spam detected: form filled too quickly');
-      return {
-        statusCode: 302,
-        headers: {
-          Location: '/danke-anmeldung/',
-          'Cache-Control': 'no-cache'
-        }
-      };
-    }
-
-    // 4. IP Rate limiting
-    if (!ipCounts[ip] || now - ipCounts[ip].timestamp > 3600000) {
-      ipCounts[ip] = { count: 0, timestamp: now };
-    }
-    if (ipCounts[ip].count >= 5) {
-      console.log(`Spam detected: rate limit exceeded for IP ${ip}`);
-      return {
-        statusCode: 429,
-        body: JSON.stringify({
-          message: 'Zu viele Anmeldungen. Bitte später erneut versuchen.'
-        })
-      };
-    }
-    ipCounts[ip].count++;
-
-    // 5. Required fields validation
-    for (const field of config.requiredFields) {
-      if (!fields[field]) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ 
-            message: language === 'de' 
-              ? `Feld ${field} ist erforderlich.` 
-              : `Field ${field} is required.` 
-          })
-        };
-      }
-    }
-
-    // 6. Email validation if provided
-    if (fields.email) {
-      if (!isValidEmail(fields.email)) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ 
-            message: language === 'de' 
-              ? 'Ungültige E-Mail-Adresse.' 
-              : 'Invalid email address.' 
-          })
-        };
-      }
-    }
-    
-    // 7. Name length validation
-    if (fields.vorname && (fields.vorname.length < 2 || fields.vorname.length > 50)) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ 
-          message: language === 'de' 
-            ? 'Vorname muss zwischen 2 und 50 Zeichen lang sein.' 
-            : 'First name must be between 2 and 50 characters.' 
-        })
-      };
-    }
-
-    if (fields.nachname && (fields.nachname.length < 2 || fields.nachname.length > 50)) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ 
-          message: language === 'de' 
-            ? 'Nachname muss zwischen 2 und 50 Zeichen lang sein.' 
-            : 'Last name must be between 2 and 50 characters.' 
-        })
-      };
-    }
-
-    // 8. Birth year validation if provided
-    if (fields.geburtsjahr) {
-      const birthYear = parseInt(fields.geburtsjahr);
-      const currentYear = new Date().getFullYear();
-      if (isNaN(birthYear) || birthYear < 1900 || birthYear > currentYear) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify({ 
-            message: language === 'de' 
-              ? 'Ungültiges Geburtsjahr.' 
-              : 'Invalid birth year.' 
-          })
-        };
-      }
-    }
-    
-    // === END SPAM PROTECTION ===
-    
-    // Forward to email service
-    const emailSent = await sendEmailNotification(fields, formType, language);
-    
-    if (emailSent) {
-      // Return success
-      return {
-        statusCode: 200,
-        body: JSON.stringify({
-          message: language === 'de' 
-            ? 'Vielen Dank für Ihre Anmeldung!' 
-            : 'Thank you for your submission!'
-        })
-      };
-    } else {
-      // Return error if email sending failed
-      return {
-        statusCode: 500,
-        body: JSON.stringify({
-          message: language === 'de' 
-            ? 'Es ist ein Fehler beim Versenden der E-Mail aufgetreten. Bitte versuchen Sie es später erneut.' 
-            : 'An error occurred while sending the email. Please try again later.'
-        })
-      };
-    }
-    
-  } catch (error) {
-    console.error('Form processing error:', error);
+    console.error('Error processing submission:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        message: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.'
+      headers,
+      body: JSON.stringify({ 
+        message: 'Internal server error',
+        error: error.message,
+        success: false
       })
     };
   }
 };
+
+/**
+ * Basic spam detection function
+ * 
+ * @param {Object} submission - The form submission data
+ * @returns {boolean} True if spam is detected, false otherwise
+ */
+function isSpam(submission) {
+  // Check for missing spam protection data
+  if (!submission.spamProtection) {
+    console.warn('No spam protection data provided');
+    return true;
+  }
+  
+  // Ensure sv_id is present and valid
+  if (!submission.spamProtection.sv_id || 
+      typeof submission.spamProtection.sv_id !== 'string' ||
+      !submission.spamProtection.sv_id.startsWith('sv_')) {
+    console.warn('Invalid sv_id');
+    return true;
+  }
+  
+  // Check for very quick submissions (< 3 seconds)
+  if (submission.spamProtection.form_start_time) {
+    const submissionTime = Date.now();
+    const formStartTime = parseInt(submission.spamProtection.form_start_time, 10);
+    
+    if (!isNaN(formStartTime) && (submissionTime - formStartTime < 3000)) {
+      console.warn('Submission too quick', 
+        { start: formStartTime, submit: submissionTime, diff: submissionTime - formStartTime });
+      return true;
+    }
+  }
+  
+  // Check for hidden honeypot field
+  if (submission.fields && submission.fields.website) {
+    console.warn('Honeypot field filled');
+    return true;
+  }
+  
+  return false;
+}

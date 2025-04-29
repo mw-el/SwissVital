@@ -7,21 +7,50 @@ const nodemailer = require('nodemailer');
 const fs = require('fs');
 const path = require('path');
 
-// E-Mail-Routing-Konfiguration laden
-let emailRouting;
+// Inline E-Mail-Routing-Konfiguration anstatt Dateilade-Versuch
+// Dies vermeidet Dateipfad-Probleme in der Netlify-Serverless-Umgebung
+const emailRouting = {
+  defaults: { 
+    from: "Swiss-Vital Patientenempfang <patientenempfang@swiss-vital.ch>",
+    bcc: ["archiv@swiss-vital.ch", "swissvital@elektromail.ch"]
+  },
+  // Optionale formularspezifische Konfigurationen hier hinzufügen
+  "sportler-survey": {
+    // Override default from/bcc if needed
+  },
+  "stress-survey": {
+    // Override default from/bcc if needed
+  }
+  // Weitere Formulartypen nach Bedarf hinzufügen
+};
+
+// Versuche trotzdem, die Konfigurationsdatei zu laden, falls sie existiert,
+// aber verwende den fest programmierten Fallback, wenn es nicht klappt
 try {
-  const routingFilePath = path.join(__dirname, 'email-routing.json');
-  const routingContent = fs.readFileSync(routingFilePath, 'utf8');
-  emailRouting = JSON.parse(routingContent);
+  console.log('Versuche, E-Mail-Routing-Konfiguration aus Datei zu laden...');
+  // Verschiedene mögliche Pfade ausprobieren
+  const possiblePaths = [
+    path.join(__dirname, 'email-routing.json'),
+    path.join(__dirname, '..', 'email-routing.json'),
+    '/var/task/netlify/functions/email-routing.json'
+  ];
+  
+  // Versuche jeden Pfad
+  for (const routingFilePath of possiblePaths) {
+    console.log(`Versuche Pfad: ${routingFilePath}`);
+    if (fs.existsSync(routingFilePath)) {
+      console.log(`Konfiguration gefunden unter: ${routingFilePath}`);
+      const routingContent = fs.readFileSync(routingFilePath, 'utf8');
+      const loadedConfig = JSON.parse(routingContent);
+      // Wenn erfolgreich geladen, überschreibe die Standardkonfiguration
+      Object.assign(emailRouting, loadedConfig);
+      console.log('E-Mail-Routing-Konfiguration erfolgreich aus Datei geladen.');
+      break;
+    }
+  }
 } catch (error) {
-  console.error('Error loading email routing configuration:', error);
-  // Fallback-Konfiguration, wenn die Datei nicht geladen werden kann
-  emailRouting = { 
-    defaults: { 
-      from: "Swiss-Vital Patientenempfang <patientenempfang@swiss-vital.ch>",
-      bcc: ["archiv@swiss-vital.ch", "swissvital@elektromail.ch"]
-    } 
-  };
+  console.error('Fehler beim Laden der E-Mail-Routing-Konfiguration:', error);
+  console.log('Verwende die integrierte Fallback-Konfiguration.');
 }
 
 /* ---------------------------------------------------------------------
@@ -239,6 +268,14 @@ exports.handler = async (event) => {
   const fromAddress = formConfig.from || emailRouting.defaults.from;
   const bccAddresses = (formConfig.bcc || emailRouting.defaults.bcc || []).join(',');
 
+  // Umgebungsvariablen für die E-Mail-Konfiguration protokollieren
+  console.log('SMTP-Konfiguration:');
+  console.log('Host:', process.env.SMTP_HOST);
+  console.log('Port:', process.env.SMTP_PORT);
+  console.log('Secure:', process.env.SMTP_SECURE);
+  console.log('User gesetzt:', !!process.env.SMTP_USER);
+  console.log('Passwort gesetzt:', !!process.env.SMTP_PASS);
+
   // E-Mail-Transporter erstellen
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -297,4 +334,19 @@ exports.handler = async (event) => {
       })
     };
   }
+};
+
+// Exportieren der sendConfirmationEmails-Funktion für die Verwendung in formSubmissionProcessing.js
+exports.sendConfirmationEmails = async (formData, formType) => {
+  // Simuliert einen Event-Body, wie er vom Netlify-Handler verwendet wird
+  const event = {
+    httpMethod: 'POST',
+    body: JSON.stringify({
+      ...formData,
+      form_type: formType
+    })
+  };
+  
+  // Ruft die Handler-Funktion auf und gibt das Ergebnis zurück
+  return await exports.handler(event);
 };
