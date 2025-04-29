@@ -821,42 +821,235 @@ margin-bottom: 1.5rem;
   transform: rotate(-180deg);
 }
 
+
 /*###########*/
 /* Formulare */
 /*###########*/
 
-/* Container‐Breite */
-.sv-multistep-form,
-.sv-success-message {
+
+/*###########*/ /* Form Styles */ /*###########*/
+
+/* Container width */
+.sv-multistep-form, .sv-success-message {
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* Schritt‐Blöcke */
-.sv-form-step       { display: none; margin-bottom: 30px; }
-.sv-form-step.active{ display: block; }
+/* Step blocks */
+.sv-form-step {
+  display: none;
+  margin-bottom: 30px;
+}
 
-/* Überschriften & Buttons */
-.sv-step-title      { font: 700 1.5rem/1.3 "Inter", sans-serif; text-align: center; }
-.sv-button-container{ margin-top: clamp(30px,5vw,50px); }
-.sv-btn-xl          { font-size: 1.2rem; padding: 14px 20px; border-radius: 50px; }
+.sv-form-step.active {
+  display: block;
+}
 
-/* Floating-Wrapper & Tooltip */
-.sv-form-floating   { width: 100%; }
-.sv-tooltip-info    { font-size: .8rem; color: #6c757d; margin-top: .25rem; }
-.sv-form-floating + .sv-tooltip-info{ margin-top:-10px; margin-bottom:15px; }
+/* Headings & buttons */
+.sv-step-title {
+  font: 700 1.5rem/1.3 "Inter", sans-serif;
+  text-align: center;
+}
 
-/* Eingaben */
-.sv-multistep-form .form-control{ font-size:1.1rem; padding:12px 14px; height:50px; }
-.sv-multistep-form .form-select { font-size:1.1rem; padding:12px 14px; height:70px; }
+.sv-button-container {
+  margin-top: clamp(30px, 5vw, 50px);
+}
 
-/* Checkboxen */
-.sv-form-check-container{ display:flex; align-items:center; gap:10px; font:600 1.1rem/1.4 "Inter",sans-serif; }
-.sv-multistep-form .form-check-input{
-  appearance:auto; width:1em; height:1em; margin:0 .2em .3em 0;
-  border:1px solid rgba(0,0,0,.25); vertical-align:bottom;
-  accent-color:var(--sv-royalblue-lighter);
+.sv-btn-xl {
+  font-size: 1.2rem;
+  padding: 14px 20px;
+  border-radius: 50px;
+}
+
+/* Floating wrapper & tooltip */
+.sv-form-floating {
+  width: 100%;
+}
+
+.sv-tooltip-info {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+.sv-form-floating + .sv-tooltip-info {
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+.sv-multistep-form .form-control {
+  font-size: 1.1rem;
+  padding: 12px 14px;
+  height: 50px;
+}
+
+.sv-multistep-form .form-select {
+  font-size: 1.1rem;
+  padding: 12px 14px;
+  height: 70px;
+}
+
+/* Checkboxes */
+.sv-form-check-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 1.1rem/1.4 "Inter", sans-serif;
+}
+
+.sv-multistep-form .form-check-input {
+  appearance: auto;
+  width: 1em;
+  height: 1em;
+  margin: 0 0.2em 0.3em 0;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  vertical-align: bottom;
+  accent-color: var(--sv-royalblue-lighter);
 }
 
 /* Utility */
-.sv-multistep-form .list-group{ border-color:transparent; }
+.sv-multistep-form .list-group {
+  border-color: transparent;
+}
+
+/* Question label styling - UPDATED per requirements */
+.sv-form-step .mb-2 {
+  font-weight: 500;
+  margin-bottom: 0.5rem !important;
+  color: #333;
+  font-size: 1.1rem; /* Match dropdown option size */
+  background-color: var(--sv-offwhite-dark); /* As requested */
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem 0.375rem 0 0;
+  margin-bottom: 0 !important;
+}
+
+/* Custom styling for form accordions */
+.sv-form-accordion {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.sv-form-accordion .accordion-item {
+  border-radius: 0 0 0.375rem 0.375rem;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: none;
+}
+
+/* Updated accordion button styling per requirements */
+.sv-form-accordion .accordion-button {
+  font-weight: 500;
+  padding: 1rem 1.25rem;
+  background-color: var(--sv-offwhite-dark); /* As requested */
+  color: #333;
+}
+
+.sv-form-accordion .accordion-button:not(.collapsed) {
+  background-color: var(--sv-offwhite-dark); /* Same as non-collapsed state */
+  color: #333;
+}
+
+.sv-form-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(223, 215, 199, 0.25);
+  border-color: var(--sv-offwhite-dark);
+}
+
+.sv-form-accordion .accordion-button::after {
+  margin-left: auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Selected options styling */
+.sv-form-accordion .sv-selected-options {
+  font-weight: 400;
+  margin-left: 0.5rem;
+  color: #333; /* Match dropdown option color */
+}
+
+/* Radio buttons and checkboxes inside accordions - UPDATED per requirements */
+.sv-form-accordion .form-check {
+  margin-bottom: 0.5rem;
+  padding-left: 2rem; /* 1rem padding as requested */
+}
+
+.sv-form-accordion .form-check:last-child {
+  margin-bottom: 0;
+}
+
+.sv-form-accordion .form-check-input {
+  margin-top: 0.3em;
+}
+
+.sv-form-accordion .form-check-label {
+  font-weight: 400;
+  font-size: 1.1rem; /* Match question label size */
+  color: #333; /* Match question label color */
+}
+
+/* Accordion body styling - UPDATED per requirements */
+.sv-form-accordion .accordion-body {
+  padding: 1rem 1.25rem;
+  background-color: var(--sv-offwhite-lighter); /* As requested */
+}
+
+/* Opened accordion styling - to show the first is active in screenshot */
+.sv-form-accordion .accordion-collapse.show {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Success message styling */
+.sv-success-message {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+.sv-success-message .text-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sv-success-message .material-icons {
+  font-size: 1.75rem;
+  color: #28a745;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 576px) {
+  .sv-step-title {
+    font-size: 1.3rem;
+  }
+  
+  .sv-btn-xl {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+  
+  .sv-form-check-container {
+    font-size: 1rem;
+  }
+  
+  .sv-form-accordion .accordion-button {
+    padding: 0.75rem 1rem;
+  }
+  
+  .sv-form-accordion .accordion-body {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* First accordion in a section needs top border radius */
+.sv-form-step .mb-2:first-of-type {
+  border-radius: 0.375rem 0.375rem 0 0;
+}
+
+/* Last accordion in a section needs bottom border radius */
+.sv-form-accordion:last-child .accordion-item {
+  border-radius: 0 0 0.375rem 0.375rem;
+}

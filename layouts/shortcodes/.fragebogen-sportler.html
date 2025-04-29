@@ -1,335 +1,610 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- 
+  Sport-Fragebogen — ein spezialisierter Fragebogen für Sportler
+  Datenstrom: form-sportler-survey
+  
+  Dieser Shortcode implementiert das dreistufige Formular für Sportler, das:
+  1. Persönliche Daten erfasst
+  2. Sport-spezifische Informationen sammelt
+  3. Kontaktdaten für die Rücksprache erfasst
+-->
+<form id="form-sportler-survey" class="sv-multistep-form"
+      name="fragebogen-sportler" method="POST"
+      data-netlify="true" netlify-honeypot="bot-field">
 
-<form id="multiStepForm" name="fragebogen-sportler" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <!-- Versteckte Felder -->
-  <input type="hidden" name="language" value="{{ .Site.Language.Lang }}">
+  <!-- Hidden Fields -->
+  <input type="hidden" name="language" value="de">
   <input type="hidden" name="form-name" value="fragebogen-sportler">
-  <p class="d-none">
-    <label>{{ i18n "honeypot_label" }} <input name="bot-field"></label>
-  </p>
+  <input type="hidden" name="form_type" value="sportler-survey">
+  
+  <!-- Spam-Schutz-Felder -->
+  {{ partial "spam-protection-fields.html" (dict "FORM_ID" "form-sportler-survey") }}
+  
+  <!-- Original honeypot field für Netlify -->
+  <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
 
-  <!-- Schritt 1: Persönliche Angaben -->
-  <div class="form-step active" id="step-1">
-    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.step1_title" }}</h3>
-    
-    <div class="form-floating mb-3">
-      <input class="form-control" id="vorname" type="text" name="vorname" placeholder="{{ i18n "label_firstname" }}" required>
-      <label for="vorname">{{ i18n "label_firstname" }}</label>
-    </div>
-    
-    <div class="form-floating mb-3">
-      <input class="form-control" id="nachname" type="text" name="nachname" placeholder="{{ i18n "label_lastname" }}" required>
-      <label for="nachname">{{ i18n "label_lastname" }}</label>
-    </div>
-    
-    <div class="form-floating mb-3">
-      <input class="form-control" id="email" type="email" name="email" placeholder="{{ i18n "placeholder_email" }}" required>
-      <label for="email">{{ i18n "label_email" }}</label>
-    </div>
-    
-    <div class="form-floating mb-3">
-      <input class="form-control" id="geburtsjahr" type="text" name="geburtsjahr" placeholder="{{ i18n "label_birthyear" }}" required>
-      <label for="geburtsjahr">{{ i18n "label_birthyear" }}</label>
-      <div class="tooltip-info">{{ i18n "tooltip_birthyear" }}</div>
-    </div>
-    
-    <div class="form-floating mb-3">
-      <select class="form-select" id="geschlecht" name="geschlecht" required>
-        <option value="">{{ i18n "option_select" }}</option>
-        <option value="männlich">{{ i18n "questionnaire.gender_male" }}</option>
-        <option value="weiblich">{{ i18n "questionnaire.gender_female" }}</option>
-        <option value="nicht angeben">{{ i18n "questionnaire.gender_not_specified" }}</option>
-      </select>
-      <label for="geschlecht">{{ i18n "questionnaire.label_gender" }}</label>
-    </div>
-    
-    <div class="form-check-container mb-3">
-      <input class="form-check-input" type="checkbox" id="datenschutz1" name="datenschutz1" required>
-      <label class="form-check-label" for="datenschutz1">{{ i18n "bookingform.dataprotection_consent_short" }}</label>
-    </div>
-    
-    <div class="d-grid button-container">
-      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(1)">{{ i18n "button_next" }}</button>
-    </div>
-  </div>
+  <!-- ---------- Schritt 1: Persönliche Daten ---------- -->
+  <section id="form-sportler-survey-step-1" class="sv-form-step active" data-step="1">
+    <h3 class="sv-step-title mb-4">Schritt 1 von 3: Persönliche Angaben</h3>
 
-  <!-- Schritt 2: Sportliche Aktivität -->
-  <div class="form-step" id="step-2">
-    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.athlete_step2_title" }}</h3>
-    
-    <div class="form-floating mb-3">
-      <select class="form-select" id="sport-frequency" name="sport_frequency" required>
-        <option value="">{{ i18n "option_select" }}</option>
-        <option value="täglich">{{ i18n "questionnaire.sport_daily" }}</option>
-        <option value="mehrmals pro Woche">{{ i18n "questionnaire.sport_multiple_week" }}</option>
-        <option value="einmal pro Woche">{{ i18n "questionnaire.sport_once_week" }}</option>
-        <option value="gelegentlich">{{ i18n "questionnaire.sport_occasional" }}</option>
-        <option value="selten bis nie">{{ i18n "questionnaire.sport_rarely" }}</option>
-      </select>
-      <label for="sport-frequency">{{ i18n "questionnaire.sport_frequency_label" }}</label>
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-sportler-survey-vorname"
+             name="vorname" placeholder="Vorname *" required>
+      <label for="form-sportler-survey-vorname">Vorname *</label>
     </div>
-    
-    <div class="mb-4">
-      <label class="form-label">{{ i18n "questionnaire.sport_type_label" }}</label>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Kraftsport" id="strength">
-        <label class="form-check-label" for="strength">{{ i18n "questionnaire.sport_strength" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Ausdauersport" id="endurance">
-        <label class="form-check-label" for="endurance">{{ i18n "questionnaire.sport_endurance" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Teamsport" id="team">
-        <label class="form-check-label" for="team">{{ i18n "questionnaire.sport_team" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Extremsport" id="extreme">
-        <label class="form-check-label" for="extreme">{{ i18n "questionnaire.sport_extreme" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="sportarten[]" value="Verschiedene" id="various">
-        <label class="form-check-label" for="various">{{ i18n "questionnaire.sport_various" }}</label>
-      </div>
-    </div>
-    
-    <div class="form-floating mb-3">
-      <select class="form-select" id="recent-injuries" name="recent_injuries" required>
-        <option value="">{{ i18n "option_select" }}</option>
-        <option value="ja schwer">{{ i18n "questionnaire.injury_severe" }}</option>
-        <option value="ja mittel">{{ i18n "questionnaire.injury_medium" }}</option>
-        <option value="ja leicht">{{ i18n "questionnaire.injury_light" }}</option>
-        <option value="nein">{{ i18n "questionnaire.injury_none" }}</option>
-      </select>
-      <label for="recent-injuries">{{ i18n "questionnaire.recent_injuries_label" }}</label>
-    </div>
-    
-    <div class="mb-4">
-      <label class="form-label">{{ i18n "questionnaire.past_injuries_label" }}</label>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Knochen/Gelenke" id="bones">
-        <label class="form-check-label" for="bones">{{ i18n "questionnaire.injury_bones" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Muskel/Sehnen" id="muscles">
-        <label class="form-check-label" for="muscles">{{ i18n "questionnaire.injury_muscles" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Chronische Überlastung" id="chronic">
-        <label class="form-check-label" for="chronic">{{ i18n "questionnaire.injury_chronic" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" value="Andere" id="other">
-        <label class="form-check-label" for="other">{{ i18n "questionnaire.injury_other" }}</label>
-      </div>
-    </div>
-    
-    <div class="mb-4">
-      <label class="form-label">{{ i18n "questionnaire.body_region_label" }}</label>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Rücken" id="back">
-        <label class="form-check-label" for="back">{{ i18n "questionnaire.body_back" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Knie/Gelenke" id="knees">
-        <label class="form-check-label" for="knees">{{ i18n "questionnaire.body_knees" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Schultern/Arme" id="shoulders">
-        <label class="form-check-label" for="shoulders">{{ i18n "questionnaire.body_shoulders" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Muskulatur allgemein" id="muscles-general">
-        <label class="form-check-label" for="muscles-general">{{ i18n "questionnaire.body_muscles" }}</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="koerperregionen[]" value="Ganzer Körper" id="whole-body">
-        <label class="form-check-label" for="whole-body">{{ i18n "questionnaire.body_whole" }}</label>
-      </div>
-    </div>
-    
-    <div class="form-floating mb-3">
-      <select class="form-select" id="pain-after-sport" name="pain_after_sport" required>
-        <option value="">{{ i18n "option_select" }}</option>
-        <option value="ja regelmässig">{{ i18n "questionnaire.pain_regular" }}</option>
-        <option value="gelegentlich">{{ i18n "questionnaire.pain_occasional" }}</option>
-        <option value="nur nach intensiv">{{ i18n "questionnaire.pain_after_intense" }}</option>
-        <option value="selten bis nie">{{ i18n "questionnaire.pain_rarely" }}</option>
-        <option value="keine">{{ i18n "questionnaire.pain_none" }}</option>
-      </select>
-      <label for="pain-after-sport">{{ i18n "questionnaire.pain_after_sport_label" }}</label>
-    </div>
-    
-    <div class="form-floating mb-4">
-      <textarea class="form-control" id="freitext" name="freitext" style="height: 150px" placeholder="{{ i18n "questionnaire.free_text" }}"></textarea>
-      <label for="freitext">{{ i18n "questionnaire.free_text" }}</label>
-    </div>
-    
-    <div class="d-flex justify-content-between button-container">
-      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(2)">{{ i18n "button_back" }}</button>
-      <button class="btn btn-primary btn-xl" type="button" onclick="nextStep(2)">{{ i18n "button_next" }}</button>
-    </div>
-  </div>
 
-  <!-- Schritt 3: Kontaktaufnahme -->
-  <div class="form-step" id="step-3">
-    <h3 class="text-center mb-4 step-title">{{ i18n "questionnaire.step3_title" }}</h3>
-    
-    <div class="form-floating mb-3">
-      <input class="form-control" id="telefon" type="tel" name="telefon" placeholder="{{ i18n "label_phone" }}" required>
-      <label for="telefon">{{ i18n "label_phone" }}</label>
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-sportler-survey-nachname"
+             name="nachname" placeholder="Nachname *" required>
+      <label for="form-sportler-survey-nachname">Nachname *</label>
     </div>
-    <div class="tooltip-info">{{ i18n "questionnaire.phone_tooltip" }}</div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-sportler-survey-email" type="email"
+             name="email" placeholder="name@example.com" required>
+      <label for="form-sportler-survey-email">E-Mail-Adresse *</label>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-sportler-survey-gebjahr"
+             name="geburtsjahr" placeholder="Geburtsjahr *" 
+             required type="number" min="1900" max="2050">
+      <label for="form-sportler-survey-gebjahr">Geburtsjahr *</label>
+    </div>
+
+    <p class="sv-tooltip-info mb-2">
+      Für diagnostische Zwecke – z.&nbsp;B. Laboruntersuchungen – ist das biologische
+      Geschlecht wichtig, unabhängig von Ihrer geschlechtlichen Identität.
+    </p>
     
-    <div class="mb-4">
-      <label class="form-label">{{ i18n "questionnaire.callback_times" }}</label>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Vormittags (08:00–12:00 Uhr)" id="morning">
-        <label class="form-check-label" for="morning">{{ i18n "questionnaire.callback_morning" }}</label>
+    <!-- Bootstrap Accordion für Geschlecht (Single-Choice) -->
+    <div class="mb-2">Biologisches Geschlecht *</div>
+    <div class="accordion sv-form-accordion mb-4" id="accordion-geschlecht">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-geschlecht">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-geschlecht" 
+                  aria-expanded="false" aria-controls="collapse-geschlecht">
+            Bitte wählen
+          </button>
+        </h2>
+        <div id="collapse-geschlecht" class="accordion-collapse collapse" 
+             aria-labelledby="heading-geschlecht" data-bs-parent="#accordion-geschlecht">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="geschlecht" 
+                     value="männlich" id="geschlecht1" required>
+              <label class="form-check-label" for="geschlecht1">männlich</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="geschlecht" 
+                     value="weiblich" id="geschlecht2">
+              <label class="form-check-label" for="geschlecht2">weiblich</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="geschlecht" 
+                     value="möchte ich nicht angeben" id="geschlecht3">
+              <label class="form-check-label" for="geschlecht3">möchte ich nicht angeben</label>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Mittags (12:00–14:00 Uhr)" id="noon">
-        <label class="form-check-label" for="noon">{{ i18n "questionnaire.callback_noon" }}</label>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-sportler-survey-dsp1"
+             type="checkbox" name="datenschutz1" required>
+      <label class="form-check-label" for="form-sportler-survey-dsp1">
+        Ich stimme der Datenverarbeitung zu.
+      </label>
+    </div>
+
+    <div class="d-grid sv-button-container">
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 2: Sportliche Aktivität ---------- -->
+  <section id="form-sportler-survey-step-2" class="sv-form-step" data-step="2">
+    <h3 class="sv-step-title mb-4">Schritt 2 von 3: Sportliche Aktivität</h3>
+
+    <!-- Bootstrap Accordion für Sport-Häufigkeit (Single-Choice) -->
+    <div class="mb-2">1. Wie häufig treiben Sie Sport?</div>
+    <div class="accordion sv-form-accordion mb-4" id="accordion-sportfreq">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-sportfreq">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-sportfreq" 
+                  aria-expanded="false" aria-controls="collapse-sportfreq">
+            Bitte wählen
+          </button>
+        </h2>
+        <div id="collapse-sportfreq" class="accordion-collapse collapse" 
+             aria-labelledby="heading-sportfreq" data-bs-parent="#accordion-sportfreq">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sport_frequency" 
+                     value="Täglich" id="freq1">
+              <label class="form-check-label" for="freq1">Täglich</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sport_frequency" 
+                     value="Mehrmals pro Woche" id="freq2">
+              <label class="form-check-label" for="freq2">Mehrmals pro Woche</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sport_frequency" 
+                     value="Einmal pro Woche" id="freq3">
+              <label class="form-check-label" for="freq3">Einmal pro Woche</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sport_frequency" 
+                     value="Gelegentlich" id="freq4">
+              <label class="form-check-label" for="freq4">Gelegentlich</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="sport_frequency" 
+                     value="Selten bis nie" id="freq5">
+              <label class="form-check-label" for="freq5">Selten bis nie</label>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Nachmittags (14:00–18:00 Uhr)" id="afternoon">
-        <label class="form-check-label" for="afternoon">{{ i18n "questionnaire.callback_afternoon" }}</label>
+    </div>
+
+    <!-- Bootstrap Accordion für Sportarten (Multiple-Choice) -->
+    <div class="mb-2">2. Welche Sportart betreiben Sie hauptsächlich? (Mehrfachauswahl möglich)</div>
+    <div class="accordion sv-form-accordion mb-4" id="accordion-sportarten">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-sportarten">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-sportarten" 
+                  aria-expanded="false" aria-controls="collapse-sportarten">
+            Bitte wählen
+          </button>
+        </h2>
+        <div id="collapse-sportarten" class="accordion-collapse collapse" 
+             aria-labelledby="heading-sportarten" data-bs-parent="#accordion-sportarten">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="sportarten[]" 
+                     value="Kraftsport" id="sportart1">
+              <label class="form-check-label" for="sportart1">Kraftsport</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="sportarten[]" 
+                     value="Ausdauersport" id="sportart2">
+              <label class="form-check-label" for="sportart2">Ausdauersport</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="sportarten[]" 
+                     value="Teamsport" id="sportart3">
+              <label class="form-check-label" for="sportart3">Teamsport</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="sportarten[]" 
+                     value="Extremsport" id="sportart4">
+              <label class="form-check-label" for="sportart4">Extremsport</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="sportarten[]" 
+                     value="Verschiedene" id="sportart5">
+              <label class="form-check-label" for="sportart5">Verschiedene</label>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" value="Abends (18:00–20:00 Uhr)" id="evening">
-        <label class="form-check-label" for="evening">{{ i18n "questionnaire.callback_evening" }}</label>
+    </div>
+
+    <!-- Bootstrap Accordion für kürzliche Verletzungen (Single-Choice) -->
+    <div class="mb-2">3. Haben Sie in den letzten 12 Monaten Verletzungen erlitten?</div>
+    <div class="accordion sv-form-accordion mb-4" id="accordion-recentinj">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-recentinj">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-recentinj" 
+                  aria-expanded="false" aria-controls="collapse-recentinj">
+            Bitte wählen
+          </button>
+        </h2>
+        <div id="collapse-recentinj" class="accordion-collapse collapse" 
+             aria-labelledby="heading-recentinj" data-bs-parent="#accordion-recentinj">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="recent_injuries" 
+                     value="Ja, schwere Verletzung (z. B. Bänderriss)" id="recentinj1">
+              <label class="form-check-label" for="recentinj1">Ja, schwere Verletzung (z. B. Bänderriss)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="recent_injuries" 
+                     value="Ja, mittelschwere Verletzung (z. B. Zerrung)" id="recentinj2">
+              <label class="form-check-label" for="recentinj2">Ja, mittelschwere Verletzung (z. B. Zerrung)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="recent_injuries" 
+                     value="Ja, leichte Beschwerden (z. B. Muskelkater)" id="recentinj3">
+              <label class="form-check-label" for="recentinj3">Ja, leichte Beschwerden (z. B. Muskelkater)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="recent_injuries" 
+                     value="Nein" id="recentinj4">
+              <label class="form-check-label" for="recentinj4">Nein</label>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    
-    <div class="form-floating mb-3">
-      <textarea class="form-control" id="zusatz" name="zusatzinformationen" style="height: 100px" placeholder="{{ i18n "questionnaire.additional_info" }}"></textarea>
-      <label for="zusatz">{{ i18n "questionnaire.additional_info" }}</label>
+
+    <!-- Bootstrap Accordion für frühere Verletzungen (Multiple-Choice) -->
+    <div class="mb-2">4. Frühere Verletzungen oder Überlastungsschäden (Mehrfachauswahl möglich)</div>
+    <div class="accordion sv-form-accordion mb-4" id="accordion-previnj">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-previnj">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-previnj" 
+                  aria-expanded="false" aria-controls="collapse-previnj">
+            Bitte wählen
+          </button>
+        </h2>
+        <div id="collapse-previnj" class="accordion-collapse collapse" 
+             aria-labelledby="heading-previnj" data-bs-parent="#accordion-previnj">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" 
+                     value="Knochenbrüche / Gelenkverletzungen" id="previnj1">
+              <label class="form-check-label" for="previnj1">Knochenbrüche / Gelenkverletzungen</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" 
+                     value="Muskel- / Sehnenverletzungen" id="previnj2">
+              <label class="form-check-label" for="previnj2">Muskel- / Sehnenverletzungen</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" 
+                     value="Chronische Überlastungsbeschwerden" id="previnj3">
+              <label class="form-check-label" for="previnj3">Chronische Überlastungsbeschwerden</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="fruehere_verletzungen[]" 
+                     value="Andere sportbedingte Probleme" id="previnj4">
+              <label class="form-check-label" for="previnj4">Andere sportbedingte Probleme</label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="form-check-container mb-3">
-      <input class="form-check-input" type="checkbox" id="datenschutz" name="datenschutz" required>
-      <label class="form-check-label" for="datenschutz">{{ i18n "bookingform.privacy_agreement" | replaceRE "href=\"[^\"]*\"" "href=\"/de/privacy\"" | safeHTML }}</label>
+
+    <!-- Bootstrap Accordion für Körperregionen (Multiple-Choice) -->
+    <div class="mb-2">5. Welche Körperregion belasten Sie am meisten? (Mehrfachauswahl möglich)</div>
+    <div class="accordion sv-form-accordion mb-4" id="accordion-region">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-region">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-region" 
+                  aria-expanded="false" aria-controls="collapse-region">
+            Bitte wählen
+          </button>
+        </h2>
+        <div id="collapse-region" class="accordion-collapse collapse" 
+             aria-labelledby="heading-region" data-bs-parent="#accordion-region">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="koerperregionen[]" 
+                     value="Rücken" id="region1">
+              <label class="form-check-label" for="region1">Rücken</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="koerperregionen[]" 
+                     value="Knie / Gelenke" id="region2">
+              <label class="form-check-label" for="region2">Knie / Gelenke</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="koerperregionen[]" 
+                     value="Schultern / Arme" id="region3">
+              <label class="form-check-label" for="region3">Schultern / Arme</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="koerperregionen[]" 
+                     value="Muskulatur allgemein" id="region4">
+              <label class="form-check-label" for="region4">Muskulatur allgemein</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="koerperregionen[]" 
+                     value="Ganzer Körper" id="region5">
+              <label class="form-check-label" for="region5">Ganzer Körper</label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="d-flex justify-content-between button-container">
-      <button class="btn btn-secondary btn-xl" type="button" onclick="prevStep(3)">{{ i18n "button_back" }}</button>
-      <button class="btn btn-primary btn-xl" id="submitButton" type="submit">{{ i18n "button_submit" }}</button>
+
+    <!-- Bootstrap Accordion für Schmerzen nach Sport (Single-Choice) -->
+    <div class="mb-2">6. Haben Sie anhaltende Schmerzen nach dem Sport?</div>
+    <div class="accordion sv-form-accordion mb-4" id="accordion-pain">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-pain">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-pain" 
+                  aria-expanded="false" aria-controls="collapse-pain">
+            Bitte wählen
+          </button>
+        </h2>
+        <div id="collapse-pain" class="accordion-collapse collapse" 
+             aria-labelledby="heading-pain" data-bs-parent="#accordion-pain">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pain_after_sport" 
+                     value="Ja, regelmässig" id="pain1">
+              <label class="form-check-label" for="pain1">Ja, regelmässig</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pain_after_sport" 
+                     value="Gelegentlich" id="pain2">
+              <label class="form-check-label" for="pain2">Gelegentlich</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pain_after_sport" 
+                     value="Nur nach intensiven Einheiten" id="pain3">
+              <label class="form-check-label" for="pain3">Nur nach intensiven Einheiten</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pain_after_sport" 
+                     value="Selten bis nie" id="pain4">
+              <label class="form-check-label" for="pain4">Selten bis nie</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="pain_after_sport" 
+                     value="Keine Schmerzen" id="pain5">
+              <label class="form-check-label" for="pain5">Keine Schmerzen</label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+
+    <div class="form-floating sv-form-floating mb-4">
+      <textarea class="form-control" id="form-sportler-survey-freetext"
+                name="freitext" style="height:150px"></textarea>
+      <label for="form-sportler-survey-freetext">
+        Freitext – Was möchten Sie uns sonst noch mitteilen?
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 3: Kontaktaufnahme ---------- -->
+  <section id="form-sportler-survey-step-3" class="sv-form-step" data-step="3">
+    <h3 class="sv-step-title mb-4">Schritt 3 von 3: Kontaktaufnahme</h3>
+
+    <!-- Telefon-Feld mit spezieller Validierung und Formatierung -->
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-sportler-survey-tel"
+             name="telefon" type="tel" placeholder="Ihre Telefonnummer" required>
+      <label for="form-sportler-survey-tel">Ihre Telefonnummer</label>
+    </div>
+    <p class="sv-tooltip-info mb-3">
+      Bitte Mobilnummer mit Landesvorwahl angeben, z.&nbsp;B. +41 79 123 45 67
+    </p>
+
+    <!-- Bootstrap Accordion für Rückrufzeiten (Multiple-Choice) -->
+    <div class="mb-2">Bevorzugte Rückrufzeiten (Mehrfachauswahl möglich)</div>
+    <div class="accordion sv-form-accordion mb-4" id="accordion-calltime">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-calltime">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-calltime" 
+                  aria-expanded="false" aria-controls="collapse-calltime">
+            Bitte wählen
+          </button>
+        </h2>
+        <div id="collapse-calltime" class="accordion-collapse collapse" 
+             aria-labelledby="heading-calltime" data-bs-parent="#accordion-calltime">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" 
+                     value="Vormittags (08:00–12:00 Uhr)" id="calltime1">
+              <label class="form-check-label" for="calltime1">Vormittags (08:00–12:00 Uhr)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" 
+                     value="Mittags (12:00–14:00 Uhr)" id="calltime2">
+              <label class="form-check-label" for="calltime2">Mittags (12:00–14:00 Uhr)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" 
+                     value="Nachmittags (14:00–18:00 Uhr)" id="calltime3">
+              <label class="form-check-label" for="calltime3">Nachmittags (14:00–18:00 Uhr)</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="rueckruf_zeiten[]" 
+                     value="Abends (18:00–20:00 Uhr)" id="calltime4">
+              <label class="form-check-label" for="calltime4">Abends (18:00–20:00 Uhr)</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <textarea class="form-control" id="form-sportler-survey-extra"
+                name="zusatzinformationen" style="height:100px"></textarea>
+      <label for="form-sportler-survey-extra">
+        Zusätzliche Informationen zur Erreichbarkeit (optional)
+      </label>
+    </div>
+
+    <div class="sv-form-check-container mb-3">
+      <input class="form-check-input" id="form-sportler-survey-privacy"
+             type="checkbox" name="datenschutz" required>
+      <label class="form-check-label" for="form-sportler-survey-privacy">
+        Ich stimme der <a href="/privacy">Datenschutzerklärung</a> zu.
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="submit" class="btn btn-primary sv-btn-xl">Absenden</button>
+    </div>
+  </section>
 </form>
 
 <!-- Erfolgsnachricht -->
-<div id="successMessage" class="card shadow-sm p-4 mt-4 text-center d-none success-message">
-  <h3 class="text-success mb-3"><i class="material-icons">{{ i18n "success.icon_text" }}</i> {{ i18n "success.heading" }}</h3>
-  <p class="mb-3"><strong>{{ i18n "success.summary_intro" }}</strong></p>
-  <div class="text-start" id="summaryContent"></div>
+<div id="form-sportler-survey-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
+  <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
+  <div class="text-start" id="form-sportler-survey-summary"></div>
   <hr>
-  <p class="lead" id="emailConfirmation" class="mt-3"></p>
+  <p class="lead mt-3" id="form-sportler-survey-emailConfirm"></p>
 </div>
 
+<!-- Einbindung der zentralisierten Form-Assets -->
+{{ partial "form-assets.html" (dict
+  "FormID" "form-sportler-survey"
+  "FieldLabels" (dict
+    "vorname" "Vorname"
+    "nachname" "Nachname"
+    "email" "E-Mail"
+    "geburtsjahr" "Geburtsjahr"
+    "telefon" "Telefon"
+    "geschlecht" "Biologisches Geschlecht"
+    "sport_frequency" "Sporthäufigkeit"
+    "recent_injuries" "Verletzungen in den letzten 12 Monaten"
+    "pain_after_sport" "Schmerzen nach dem Sport"
+    "sportarten" "Sportarten"
+    "fruehere_verletzungen" "Frühere Verletzungen"
+    "koerperregionen" "Körperregionen"
+    "rueckruf_zeiten" "Rückrufzeiten"
+    "freitext" "Freitext"
+    "zusatzinformationen" "Zusatzinformationen"
+  )
+) }}
+
+<!-- Formularspezifisches JavaScript -->
 <script>
-  // Telefonnummer-Formatierung und -Validierung
-  function formatPhoneNumber(number) {
-    let digits = number.replace(/\D/g, '');
-    if (digits.length === 10 && digits.startsWith("0")) {
-      return digits.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
-    }
-    return number;
-  }
-
-  function validatePhoneNumber(number) {
-    let digits = number.replace(/\D/g, '');
-    return (digits.length === 10 && digits.startsWith("0"));
-  }
-
-  document.getElementById("telefon").addEventListener("blur", function() {
-    let formatted = formatPhoneNumber(this.value);
-    if (!validatePhoneNumber(formatted)) {
-      alert("{{ i18n "alert_phone_invalid" }}");
-      this.value = "";
-    } else {
-      this.value = formatted;
-    }
-  });
-
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('form-sportler-survey');
+  const steps = form.querySelectorAll('.sv-form-step');
+  
   // Navigation zwischen Formularschritten
-  function nextStep(currentStep) {
-    document.getElementById("step-" + currentStep).classList.remove("active");
-    document.getElementById("step-" + (currentStep + 1)).classList.add("active");
-  }
+  const show = function(n) { 
+    steps.forEach(function(s) { s.classList.remove('active'); });
+    steps[n-1].classList.add('active');
+    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
+  };
 
-  function prevStep(currentStep) {
-    document.getElementById("step-" + currentStep).classList.remove("active");
-    document.getElementById("step-" + (currentStep - 1)).classList.add("active");
-  }
-
-  // Formularabsendung und Zusammenfassung
-  document.getElementById("multiStepForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const formObject = Object.fromEntries(formData.entries());
-
-    // Telefonnummer formatieren
-    formObject.telefon = formatPhoneNumber(formObject.telefon);
-
-    // Zusammenfassung erstellen
-    let summaryHtml = `<ul class="list-group">
-          <li class="list-group-item"><strong>{{ i18n "summary.firstname" }}</strong> ${formObject.vorname}</li>
-          <li class="list-group-item"><strong>{{ i18n "summary.lastname" }}</strong> ${formObject.nachname}</li>
-          <li class="list-group-item"><strong>{{ i18n "summary.birthyear" }}</strong> ${formObject.geburtsjahr}</li>
-          <li class="list-group-item"><strong>{{ i18n "questionnaire.summary_gender" }}</strong> ${formObject.geschlecht}</li>
-          <li class="list-group-item"><strong>{{ i18n "summary.email" }}</strong> ${formObject.email}</li>
-          <li class="list-group-item"><strong>{{ i18n "summary.phone" }}</strong> ${formObject.telefon}</li>`;
-
-    // Add sport-specific responses
-    if (formObject.sport_frequency) {
-      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_sport_frequency" }}</strong> ${formObject.sport_frequency}</li>`;
-    }
-
-    const sportarten = formData.getAll('sportarten[]');
-    if (sportarten.length > 0) {
-      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_sport_types" }}</strong> ${sportarten.join(', ')}</li>`;
-    }
-
-    if (formObject.recent_injuries) {
-      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_recent_injuries" }}</strong> ${formObject.recent_injuries}</li>`;
-    }
-
-    const pastInjuries = formData.getAll('fruehere_verletzungen[]');
-    if (pastInjuries.length > 0) {
-      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_past_injuries" }}</strong> ${pastInjuries.join(', ')}</li>`;
-    }
-
-    const bodyRegions = formData.getAll('koerperregionen[]');
-    if (bodyRegions.length > 0) {
-      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_body_regions" }}</strong> ${bodyRegions.join(', ')}</li>`;
-    }
-
-    if (formObject.pain_after_sport) {
-      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_pain_after_sport" }}</strong> ${formObject.pain_after_sport}</li>`;
-    }
-
-    const rueckruf = formData.getAll('rueckruf_zeiten[]');
-    if (rueckruf.length > 0) {
-      summaryHtml += `<li class="list-group-item"><strong>{{ i18n "questionnaire.summary_callback_times" }}</strong> ${rueckruf.join(', ')}</li>`;
-    }
-
-    summaryHtml += `</ul>`;
-
-    // Zusammenfassung anzeigen
-    document.getElementById("summaryContent").innerHTML = summaryHtml;
-    document.getElementById("emailConfirmation").textContent =
-      "{{ i18n "success.email_confirmation" }} " + (formObject.email || "");
-
-    // Formular ausblenden, Erfolgsmeldung einblenden
-    document.getElementById("multiStepForm").classList.add("d-none");
-    document.getElementById("successMessage").classList.remove("d-none");
-
-    // Daten an Netlify Function senden
-    fetch('/.netlify/functions/sendQuestionnaireConfirmation', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formObject)
+  // Event-Handler für Weiter-Buttons
+  form.querySelectorAll('[data-next]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber + 1);
     });
   });
+
+  // Event-Handler für Zurück-Buttons
+  form.querySelectorAll('[data-prev]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber - 1);
+    });
+  });
+
+  // Telefonnummer-Formatierung
+  const tel = document.getElementById('form-sportler-survey-tel');
+  const fmt = function(n) { return n.replace(/\D/g,'').replace(/(\d{3})(\d{3})(\d{2})(\d{2})/,'$1 $2 $3 $4'); };
+  
+  if (tel) {
+    tel.addEventListener('blur', function() {
+      const d = tel.value.replace(/\D/g,'');
+      if(d.length !== 10 || d[0] !== '0') { 
+        alert('Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.'); 
+        tel.value = ''; 
+        tel.focus();
+      } else {
+        tel.value = fmt(d);
+      }
+    });
+  }
+  
+  // Accordion-Status anzeigen in Accordion-Button
+  document.querySelectorAll('.accordion-button').forEach(function(button) {
+    const accordionItem = button.closest('.accordion-item');
+    const accordionBody = accordionItem.querySelector('.accordion-body');
+    
+    if (!accordionBody) return;
+    
+    const checkboxes = accordionBody.querySelectorAll('input[type="checkbox"]');
+    const radioButtons = accordionBody.querySelectorAll('input[type="radio"]');
+    
+    // Funktion zum Aktualisieren des Accordion-Button-Textes basierend auf Auswahl
+    const updateButtonText = function() {
+      const originalText = button.getAttribute('data-original-text') || button.textContent;
+      
+      // Wenn keine data-original-text gesetzt ist, speichern wir den ursprünglichen Text
+      if (!button.getAttribute('data-original-text')) {
+        button.setAttribute('data-original-text', originalText);
+      }
+      
+      let selectedValues = [];
+      
+      // Checkboxen (Mehrfachauswahl)
+      if (checkboxes.length > 0) {
+        checkboxes.forEach(function(cb) {
+          if (cb.checked) {
+            const label = cb.nextElementSibling;
+            if (label && label.textContent) {
+              selectedValues.push(label.textContent.trim());
+            }
+          }
+        });
+      }
+      
+      // Radiobuttons (Einfachauswahl)
+      if (radioButtons.length > 0) {
+        radioButtons.forEach(function(rb) {
+          if (rb.checked) {
+            const label = rb.nextElementSibling;
+            if (label && label.textContent) {
+              selectedValues.push(label.textContent.trim());
+            }
+          }
+        });
+      }
+      
+      // Text aktualisieren
+      if (selectedValues.length > 0) {
+        button.innerHTML = originalText + ': <span class="sv-selected-options">' + selectedValues.join(', ') + '</span>';
+      } else {
+        button.textContent = originalText;
+      }
+    };
+    
+    // Event-Listener für Änderungen an Checkboxen und Radiobuttons
+    checkboxes.forEach(function(cb) {
+      cb.addEventListener('change', updateButtonText);
+    });
+    
+    radioButtons.forEach(function(rb) {
+      rb.addEventListener('change', updateButtonText);
+    });
+    
+    // Initialen Status setzen
+    updateButtonText();
+  });
+  
+  // Formularübermittlung
+  if (typeof window.handleFormSubmit === 'function') {
+    window.handleFormSubmit('form-sportler-survey', {
+      successElementId: 'form-sportler-survey-success',
+      summaryElementId: 'form-sportler-survey-summary',
+      emailConfirmElementId: 'form-sportler-survey-emailConfirm'
+    });
+  } else {
+    console.warn('handleFormSubmit function not found. Form submission may not work correctly.');
+  }
+});
 </script>

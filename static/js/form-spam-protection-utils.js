@@ -81,9 +81,18 @@ function handleFormSubmit(formId, options = {}) {
     // Custom success message if provided
     const successMessage = options.successMessage || 'Vielen Dank für Ihre Anmeldung!';
     
-    // Call the unified Netlify function
     try {
-      const response = await fetch('/.netlify/functions/formSubmissionProcessing', {
+      // Determine if we're in development or production environment
+      // In development, the URL should be /netlify/functions/... (without the dot)
+      // In production, the URL should be /.netlify/functions/...
+      const isLocalhost = window.location.hostname === 'localhost' || 
+                         window.location.hostname === '127.0.0.1';
+      
+      // Determine the appropriate path based on environment
+      const functionsPath = isLocalhost ? '/netlify/functions/' : '/.netlify/functions/';
+      
+      // Call the unified Netlify function with the appropriate path
+      const response = await fetch(functionsPath + 'formSubmissionProcessing', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(submission)
@@ -91,36 +100,23 @@ function handleFormSubmit(formId, options = {}) {
       
       // Handle response
       if (response.ok) {
+        // Create a summary using the original form data directly
+        // This is more reliable than using the processed submission object
+        createFormSummary(form, formId, options);
+        
         // Show success message
         const successElement = document.getElementById(options.successElementId || `${formId}-success`);
         if (successElement) {
           form.classList.add('d-none');
           successElement.classList.remove('d-none');
-          
-          // If there's a summary element, populate it
-          const summaryElement = document.getElementById(options.summaryElementId || `${formId}-summary`);
-          if (summaryElement) {
-            let html = '<ul class="list-group">';
-            for (const [key, value] of Object.entries(submission.fields)) {
-              const label = options.fieldLabels?.[key] || key;
-              if (Array.isArray(value)) {
-                html += `<li class="list-group-item"><strong>${label}:</strong> ${value.join(', ')}</li>`;
-              } else if (value) {
-                html += `<li class="list-group-item"><strong>${label}:</strong> ${value}</li>`;
-              }
-            }
-            html += '</ul>';
-            summaryElement.innerHTML = html;
-          }
-          
-          // If there's an email confirmation element, update it
-          const emailConfirmElement = document.getElementById(options.emailConfirmElementId || `${formId}-emailConfirm`);
-          if (emailConfirmElement && submission.fields.email) {
-            emailConfirmElement.textContent = `Wir senden eine Bestätigung an: ${submission.fields.email}`;
-          }
         }
       } else {
-        const errorData = await response.json();
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch (e) {
+          errorData = { message: 'Unbekannter Fehler bei der Formularverarbeitung' };
+        }
         // Handle error response
         alert(errorData.message || 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
       }
@@ -129,6 +125,59 @@ function handleFormSubmit(formId, options = {}) {
       alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
     }
   });
+}
+
+/**
+ * Creates and displays a summary of the submitted form data
+ *
+ * @param {HTMLFormElement} form - The form element
+ * @param {string} formId - The ID of the form
+ * @param {object} options - The options object from handleFormSubmit
+ */
+function createFormSummary(form, formId, options) {
+  // Get the summary element
+  const summaryElement = document.getElementById(options.summaryElementId || `${formId}-summary`);
+  if (!summaryElement) return;
+  
+  // Use FormData to get all the form values including arrays
+  const fd = new FormData(form);
+  const obj = Object.fromEntries(fd.entries());
+
+  let html = '<ul class="list-group">';
+  
+  // Simple fields that are not arrays
+  const simple = ['vorname', 'nachname', 'geburtsjahr', 'email', 'telefon', 'geschlecht', 'sport_frequency', 'recent_injuries', 'pain_after_sport'];
+  simple.forEach(k => { 
+    if (obj[k]) html += `<li class="list-group-item"><strong>${options.fieldLabels?.[k] || k}:</strong> ${obj[k]}</li>`; 
+  });
+
+  // Multiple selection fields (arrays)
+  const multi = [
+    { name: 'sportarten[]', label: options.fieldLabels?.sportarten || 'Sportarten' },
+    { name: 'fruehere_verletzungen[]', label: options.fieldLabels?.fruehere_verletzungen || 'Frühere Verletzungen' },
+    { name: 'koerperregionen[]', label: options.fieldLabels?.koerperregionen || 'Körperregionen' },
+    { name: 'rueckruf_zeiten[]', label: options.fieldLabels?.rueckruf_zeiten || 'Rückrufzeiten' }
+  ];
+
+  multi.forEach(item => {
+    const arr = fd.getAll(item.name);
+    if (arr.length) html += `<li class="list-group-item"><strong>${item.label}:</strong> ${arr.join(', ')}</li>`;
+  });
+
+  // Free text fields
+  if (obj.freitext) html += `<li class="list-group-item"><strong>${options.fieldLabels?.freitext || 'Freitext'}:</strong> ${obj.freitext}</li>`;
+  if (obj.zusatzinformationen) html += `<li class="list-group-item"><strong>${options.fieldLabels?.zusatzinformationen || 'Zusatzinformationen'}:</strong> ${obj.zusatzinformationen}</li>`;
+
+  html += '</ul>';
+
+  // Update summary content
+  summaryElement.innerHTML = html;
+  
+  // Update email confirmation if it exists
+  const emailConfirmElement = document.getElementById(options.emailConfirmElementId || `${formId}-emailConfirm`);
+  if (emailConfirmElement && obj.email) {
+    emailConfirmElement.textContent = `Wir senden eine Bestätigung an: ${obj.email || ''}`;
+  }
 }
 
 // Export functions to make them globally available
