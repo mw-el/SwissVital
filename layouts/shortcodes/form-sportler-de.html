@@ -6,7 +6,14 @@
   <!-- Hidden -->
   <input type="hidden" name="language" value="de">
   <input type="hidden" name="form-name" value="fragebogen-sportler">
+  <!-- SPAM-PROTECTION: BEGIN HIDDEN FIELDS -->
+  <input type="hidden" name="sv_id" id="form-sportler-survey-sv-id">
+  <input type="hidden" name="form_start_time" id="form_start_time">
+  <!-- Original honeypot field -->
   <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+  <!-- Enhanced honeypot field for bots -->
+  <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+  <!-- SPAM-PROTECTION: END HIDDEN FIELDS -->
 
   <!-- ---------- Schritt 1 ---------- -->
   <section id="form-sportler-survey-step-1" class="sv-form-step active" data-step="1">
@@ -362,6 +369,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('form-sportler-survey');
   const steps = form.querySelectorAll('.sv-form-step');
   
+  // ---- SPAM PROTECTION: BEGIN JAVASCRIPT IMPLEMENTATION ----
+  
+  // 1. Generate unique ID for sv_id field
+  function generateUniqueId() {
+    return 'sv_' + Math.random().toString(36).substring(2, 15) + 
+           Math.random().toString(36).substring(2, 15);
+  }
+  
+  // Set the sv_id and timestamp when form loads
+  document.getElementById('form-sportler-survey-sv-id').value = generateUniqueId();
+  document.getElementById('form_start_time').value = Date.now();
+  
+  // ---- SPAM PROTECTION: END JAVASCRIPT IMPLEMENTATION ----
+  
   // Navigation function
   const show = n => { 
     steps.forEach(s => s.classList.remove('active'));
@@ -522,16 +543,28 @@ document.addEventListener('DOMContentLoaded', () => {
     form.classList.add('d-none');
     document.getElementById('form-sportler-survey-success').classList.remove('d-none');
 
-    // Send to netlify function
-    try {
-      const response = await fetch('/.netlify/functions/sendQuestionnaireConfirmation', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(obj)
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
+    
   });
 });
+{{/* form-assets partial bindet JS nur ein, wenn das Formular gerendert wird */}}
+{{ partial "form-assets.html" (dict
+  "FormID" "form-sportler-survey"
+  "FieldLabels" (dict
+    "vorname" "Vorname"
+    "nachname" "Nachname"
+    "email" "E-Mail"
+    "geburtsjahr" "Geburtsjahr"
+    "telefon" "Telefon"
+    "geschlecht" "Biologisches Geschlecht"
+    "sport_frequency" "Sporthäufigkeit"
+    "recent_injuries" "Verletzungen in den letzten 12 Monaten"
+    "pain_after_sport" "Schmerzen nach dem Sport"
+    "sportarten" "Sportarten"
+    "fruehere_verletzungen" "Frühere Verletzungen"
+    "koerperregionen" "Körperregionen"
+    "rueckruf_zeiten" "Rückrufzeiten"
+    "freitext" "Freitext"
+    "zusatzinformationen" "Zusatzinformationen"
+  )
+) }}
 </script>

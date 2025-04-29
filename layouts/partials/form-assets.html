@@ -1,0 +1,24 @@
+<!-- form-assets.html -->
+<!-- Einheitliche Spamschutz und Submission-Logik für alle Formulare -->
+
+
+<script src="{{ "js/form-spam-protection-utils.js" | relURL }}" defer></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Spam-Schutz aktivieren
+  if (typeof initSpamProtection === 'function') {
+    initSpamProtection('{{ .FormID }}');
+  }
+
+  // Einheitliche Submission-Logik
+  if (typeof handleFormSubmit === 'function') {
+    handleFormSubmit('{{ .FormID }}', {
+      fieldLabels: {{ .FieldLabels | jsonify }},
+      successElementId: '{{ .FormID }}-success',
+      summaryElementId: '{{ .FormID }}-summary',
+      emailConfirmElementId: '{{ .FormID }}-emailConfirm'
+    });
+  }
+});
+</script>

@@ -57,4 +57,5 @@ Zur Vorbereitung haben wir diesen Fragebogen vorbereitet. Schicken Sie ihn ab, d
 {{< form-chronisch-de >}}
 {{< form-stress-de >}}
 {{< form-ganzheitlich-de >}}
-{{< form-individual-de >}}
+{{< form-individuell-de >}}
+{{< form-familiaer-de >}}

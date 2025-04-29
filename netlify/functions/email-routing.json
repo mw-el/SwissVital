@@ -1,0 +1,33 @@
+//### EMAIL ROUTING CONFIGURATION INSTRUCTIONS
+//### Manage mail routes via 'email-routing.json' in netlify/functions/
+//### JSON keys:
+//###   - defaults: defines base from and bcc
+//###   - <formType>: override bcc or from for specific forms (currently commented)
+//###   - locations: override bcc or from for specific locations (currently commented)
+{
+  "defaults": {
+    "from": "Swiss-Vital Patientenempfang <patientenempfang@swiss-vital.ch>",
+    "bcc": [
+      "archiv@swiss-vital.ch",       // Always BCC archive
+      "swissvital@elektromail.ch"    // Always BCC operational
+    ]
+  },
+  //"sportler-survey": {
+  //  "bcc": ["coach-sport@swissvital.com"]
+  //},
+  //"stress-survey": {
+  //  "bcc": ["coach-stress@swissvital.com"]
+  //},
+  //"chronisch-survey": {
+  //  "bcc": ["chronic@swissvital.com"]
+  //},
+  //\"locations\": {
+  //  \"Zürich\": {
+  //    \"bcc\": [\"arzt-zuerich@swissvital.com\"],
+  //    \"from\": \"Swiss-Vital Zürich <zuerich@swiss-vital.ch>\"
+  //  },
+  //  \"Genf\": {
+  //    \"bcc\": [\"arzt-genf@swissvital.com\"]
+  //  }
+  //}
+}

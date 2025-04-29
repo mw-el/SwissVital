@@ -493,15 +493,6 @@ document.addEventListener('DOMContentLoaded', () => {
           });
         }
         updateDisplay();
-
-        // Show/hide conditional fields
-        if (checkboxName === 'known_conditions[]') {
-          const otherContainer = document.getElementById('other-condition-container');
-          const isOtherSelected = Array.from(checkboxes)
-            .find(cb => cb.value === 'Andere')?.checked;
-          
-          otherContainer.style.display = isOtherSelected ? 'block' : 'none';
-        }
       });
     });
   }
@@ -518,6 +509,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeDropdown('form-individual-survey-examinations-display', 'form-individual-survey-examinations-dropdown', 'examinations[]', false);
   initializeDropdown('form-individual-survey-labvalues-display', 'form-individual-survey-labvalues-dropdown', 'lab_values[]', false);
   initializeDropdown('form-individual-survey-calltime-display', 'form-individual-survey-calltime-dropdown', 'rueckruf_zeiten[]', false);
+
+  // Show/hide fields based on checkbox selection
+  const conditionCheckboxes = document.querySelectorAll('input[name="known_conditions[]"]');
+  const otherConditionContainer = document.getElementById('other-condition-container');
+  
+  conditionCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.value === 'Andere' && checkbox.checked) {
+        otherConditionContainer.style.display = 'block';
+      } else if (checkbox.value === 'Andere' && !checkbox.checked) {
+        otherConditionContainer.style.display = 'none';
+      }
+    });
+  });
 
   // Submit handler
   form.addEventListener('submit', async e => {
@@ -538,24 +543,24 @@ document.addEventListener('DOMContentLoaded', () => {
       'email': 'Email',
       'telefon': 'Telefon',
       'geschlecht': 'Geschlecht',
-      'surgery_history': 'Operations-Historie',
       'checkup_frequency': 'Checkup-Häufigkeit',
+      'surgery_history': 'Chirurgische Eingriffe',
       'other_condition': 'Andere Vorerkrankung'
     };
     
     // Simple fields
-    const simple = ['vorname', 'nachname', 'geburtsjahr', 'email', 'telefon', 'geschlecht', 'surgery_history', 'checkup_frequency'];
+    const simple = ['vorname', 'nachname', 'geburtsjahr', 'email', 'telefon', 'geschlecht', 'checkup_frequency', 'surgery_history'];
     simple.forEach(k => { 
       if(obj[k]) html += `<li class="list-group-item"><strong>${fieldLabels[k] || k}:</strong> ${obj[k]}</li>`; 
     });
     
     // Multiple selection fields with proper labels
     const multi = [
-      { name: 'body_regions[]', label: 'Körperregionen' },
-      { name: 'known_conditions[]', label: 'Vorerkrankungen' },
+      { name: 'body_regions[]', label: 'Zu untersuchende Körperregionen' },
+      { name: 'known_conditions[]', label: 'Bekannte Vorerkrankungen' },
       { name: 'risk_factors[]', label: 'Risikofaktoren' },
       { name: 'examinations[]', label: 'Gewünschte Untersuchungen' },
-      { name: 'lab_values[]', label: 'Laborwerte' },
+      { name: 'lab_values[]', label: 'Auffällige Laborwerte' },
       { name: 'rueckruf_zeiten[]', label: 'Rückrufzeiten' }
     ];
     
