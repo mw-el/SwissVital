@@ -1,8 +1,5 @@
-<!-- form-assets.html -->
-<!-- Einheitliche Spamschutz und Submission-Logik für alle Formulare -->
-
-
 <script src="{{ "js/form-spam-protection-utils.js" | relURL }}" defer></script>
+<script src="{{ "js/form-dropdown-utils.js" | relURL }}" defer></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,5 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
       emailConfirmElementId: '{{ .FormID }}-emailConfirm'
     });
   }
+  
+  // Dropdowns initialisieren, falls CustomDropdowns übergeben wurde
+  {{ if .CustomDropdowns }}
+    if (typeof initializeDropdown === 'function') {
+      {{ range .CustomDropdowns }}
+        initializeDropdown('{{ .displayId }}', '{{ .dropdownId }}', '{{ .checkboxName }}', {{ .isSingleChoice }});
+      {{ end }}
+    }
+  {{ end }}
 });
 </script>

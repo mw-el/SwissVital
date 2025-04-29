@@ -1,65 +1,7 @@
 // formSubmissionProcessing.js - Unified form handler for all SwissVital forms
+// Handles validation, spam protection, and forwards to email service
 const querystring = require('querystring');
-const nodemailer = require('nodemailer');
-
-// Configuration for different form types
-const formConfig = {
-  'sportler-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon', 'geschlecht'],
-    emailTemplate: 'sportler-email-template',
-    recipients: ['sport@swissvital.com'],
-    subject: {
-      de: 'Neue Sportler-Anfrage bei SwissVital',
-      en: 'New athlete inquiry at SwissVital'
-    }
-  },
-  'stress-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon', 'stress_level'],
-    emailTemplate: 'stress-email-template',
-    recipients: ['stress@swissvital.com'],
-    subject: {
-      de: 'Neue Stress-Anfrage bei SwissVital',
-      en: 'New stress inquiry at SwissVital'
-    }
-  },
-  'familiaer-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon'],
-    emailTemplate: 'familiaer-email-template',
-    recipients: ['family@swissvital.com'],
-    subject: {
-      de: 'Neue Familienanamnese-Anfrage bei SwissVital',
-      en: 'New family history inquiry at SwissVital'
-    }
-  },
-  'ganzheitlich-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon'],
-    emailTemplate: 'ganzheitlich-email-template',
-    recipients: ['holistic@swissvital.com'],
-    subject: {
-      de: 'Neue ganzheitliche Anfrage bei SwissVital',
-      en: 'New holistic inquiry at SwissVital'
-    }
-  },
-  'individuell-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon'],
-    emailTemplate: 'individuell-email-template',
-    recipients: ['individual@swissvital.com'],
-    subject: {
-      de: 'Neue individuelle Anfrage bei SwissVital',
-      en: 'New individual inquiry at SwissVital'
-    }
-  },
-  'chronisch-survey': {
-    requiredFields: ['vorname', 'nachname', 'email', 'telefon'],
-    emailTemplate: 'chronisch-email-template',
-    recipients: ['chronic@swissvital.com'],
-    subject: {
-      de: 'Neue Anfrage zu chronischen Beschwerden bei SwissVital',
-      en: 'New chronic condition inquiry at SwissVital'
-    }
-  }
-  // Add configurations for other form types as needed
-};
+const fetch = require('node-fetch'); // Wird für HTTP-Requests benötigt (ggf. installieren mit: npm i node-fetch)
 
 // In-memory store for IP rate limiting
 // In production, consider using a database or Redis
@@ -76,110 +18,66 @@ function isValidEmail(email) {
 }
 
 /**
- * Generates an email body based on form data and language
- * @param {object} fields - Form fields
- * @param {string} formType - Type of form submitted
- * @param {string} language - Language code (de/en)
- * @returns {string} - HTML email body
- */
-function generateEmailBody(fields, formType, language = 'de') {
-  const isGerman = language === 'de';
-  
-  let html = `
-    <html>
-    <head>
-      <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        h1 { color: #003366; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background-color: #f2f2f2; }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <h1>${isGerman ? 'Neue Anfrage' : 'New Inquiry'} - SwissVital</h1>
-        <p>${isGerman ? 'Formulartyp' : 'Form type'}: <strong>${formType}</strong></p>
-        <table>
-          <tr>
-            <th>${isGerman ? 'Feld' : 'Field'}</th>
-            <th>${isGerman ? 'Wert' : 'Value'}</th>
-          </tr>
-  `;
-  
-  // Add all fields to the email
-  for (const [key, value] of Object.entries(fields)) {
-    if (Array.isArray(value)) {
-      html += `
-        <tr>
-          <td><strong>${key}</strong></td>
-          <td>${value.join(', ')}</td>
-        </tr>
-      `;
-    } else if (value) {
-      html += `
-        <tr>
-          <td><strong>${key}</strong></td>
-          <td>${value}</td>
-        </tr>
-      `;
-    }
-  }
-  
-  html += `
-        </table>
-        <p>${isGerman ? 'Diese Nachricht wurde automatisch generiert.' : 'This message was generated automatically.'}</p>
-      </div>
-    </body>
-    </html>
-  `;
-  
-  return html;
-}
-
-/**
- * Send email with form data
+ * Forwards validated form data to the email service
  * @param {object} fields - Form data fields
  * @param {string} formType - Type of form
  * @param {string} language - Language code
- * @returns {Promise} - Email sending result
+ * @returns {Promise<boolean>} - Whether the email was sent successfully
  */
-async function sendEmail(fields, formType, language) {
-  const config = formConfig[formType];
-  if (!config) throw new Error('Unknown form type');
+const sendEmailNotification = async (fields, formType, language) => {
+  // Get base URL from environment or construct it from headers
+  const baseUrl = process.env.URL || process.env.DEPLOY_URL || 'https://swissvital.ch';
   
-  // Create email transport (configure with your SMTP settings)
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: process.env.SMTP_SECURE === 'true',
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD
+  try {
+    // Send the data to the email service
+    const response = await fetch(
+      `${baseUrl}/.netlify/functions/sendConfirmartonBilingualFragebogen`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...fields,
+          form_type: formType,
+          language: language
+        })
+      }
+    );
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Email service returned error:', errorText);
+      return false;
     }
-  });
-  
-  // Generate email body
-  const htmlBody = generateEmailBody(fields, formType, language);
-  
-  // Prepare email
-  const mailOptions = {
-    from: process.env.EMAIL_FROM || 'forms@swissvital.com',
-    to: config.recipients.join(','),
-    subject: config.subject[language] || config.subject.de,
-    html: htmlBody
-  };
-  
-  // Send confirmation to user if email is provided
-  if (fields.email && isValidEmail(fields.email)) {
-    // Send user confirmation (implementation depends on your templates)
-    // This would be a separate email send with a user-friendly template
+    
+    return true;
+  } catch (error) {
+    console.error('Error forwarding to email service:', error);
+    return false;
   }
-  
-  // Send email to recipients
-  return transporter.sendMail(mailOptions);
-}
+};
+
+// Configuration for different form types
+const formConfig = {
+  'sportler-survey': {
+    requiredFields: ['vorname', 'nachname', 'email', 'telefon', 'geschlecht']
+  },
+  'stress-survey': {
+    requiredFields: ['vorname', 'nachname', 'email', 'telefon', 'stress_level']
+  },
+  'familiaer-survey': {
+    requiredFields: ['vorname', 'nachname', 'email', 'telefon']
+  },
+  'ganzheitlich-survey': {
+    requiredFields: ['vorname', 'nachname', 'email', 'telefon']
+  },
+  'individuell-survey': {
+    requiredFields: ['vorname', 'nachname', 'email', 'telefon']
+  },
+  'chronisch-survey': {
+    requiredFields: ['vorname', 'nachname', 'email', 'telefon']
+  }
+  // Additional form types can be added here
+};
 
 exports.handler = async (event) => {
   try {
@@ -332,10 +230,10 @@ exports.handler = async (event) => {
     
     // === END SPAM PROTECTION ===
     
-    // Process the form - send email notification
-    try {
-      await sendEmail(fields, formType, language);
-      
+    // Forward to email service
+    const emailSent = await sendEmailNotification(fields, formType, language);
+    
+    if (emailSent) {
       // Return success
       return {
         statusCode: 200,
@@ -345,8 +243,8 @@ exports.handler = async (event) => {
             : 'Thank you for your submission!'
         })
       };
-    } catch (emailError) {
-      console.error('Error sending email:', emailError);
+    } else {
+      // Return error if email sending failed
       return {
         statusCode: 500,
         body: JSON.stringify({

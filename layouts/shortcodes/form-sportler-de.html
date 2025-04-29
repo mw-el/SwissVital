@@ -1,21 +1,73 @@
-<!-- Sport-Fragebogen — eindeutiger Präfix form-sportler-survey -->
+<!-- 
+  Sport-Fragebogen — ein spezialisierter Fragebogen für Sportler
+  Datenstrom: form-sportler-survey
+  
+  Dieser Shortcode implementiert das dreistufige Formular für Sportler, das:
+  1. Persönliche Daten erfasst
+  2. Sport-spezifische Informationen sammelt
+  3. Kontaktdaten für die Rücksprache erfasst
+  
+  Das Formular nutzt das zentrale Spam-Schutz-, Dropdown- und Formularverarbeitungssystem.
+
+  ARCHITEKTUR UND FUNKTIONSWEISE:
+  ------------------------------
+  1. FORMULAR-STRUKTUR:
+     - Das Formular ist in drei "Schritte" unterteilt, implementiert als <section>-Elemente.
+     - Die Navigation zwischen den Schritten erfolgt via JavaScript.
+     - Jeder Schritt hat seine eigenen Validierungsregeln.
+
+  2. DATENFLUSS UND VERARBEITUNG:
+     - Daten werden via AJAX an /.netlify/functions/formSubmissionProcessing gesendet.
+     - Server validiert Eingaben und überprüft auf Spam-Merkmale.
+     - Bei Erfolg: E-Mail-Versand via sendConfirmartonBilingualFragebogen.js.
+     - Bei Erfolg (Client): Formular wird ausgeblendet, Erfolgsmeldung wird angezeigt.
+
+  3. ZENTRALE KOMPONENTEN:
+     - spam-protection-fields.html: Liefert versteckte Felder für Spam-Schutz.
+     - form-assets.html: Lädt JS-Ressourcen und initialisiert Formularverarbeitung.
+     - form-spam-protection-utils.js: Enthält Funktionen für Spam-Schutz und AJAX-Übermittlung.
+     - form-dropdown-utils.js: Enthält Funktionen zur Initialisierung von Custom-Dropdowns.
+     - formSubmissionProcessing.js: Server-seitige Validierung und Weiterleitung.
+     - sendConfirmartonBilingualFragebogen.js: Generiert und sendet E-Mails.
+     - email-routing.json: Konfiguriert E-Mail-Routing basierend auf Formulartyp und Standort.
+
+  4. SPEZIELLES FÜR DIESES FORMULAR:
+     - Custom Dropdowns: Gesteuert durch form-dropdown-utils.js
+     - Telefonnummern-Formatierung: Spezielle Validierung für CH-Nummern.
+     - Mehrfachauswahl: Bestimmte Felder erlauben mehrere Antworten.
+-->
 <form id="form-sportler-survey" class="sv-multistep-form"
       name="fragebogen-sportler" method="POST"
       data-netlify="true" netlify-honeypot="bot-field">
 
-  <!-- Hidden -->
+  <!-- 
+    Hidden Fields:
+    - language: Sprachversion für die E-Mail-Verarbeitung
+    - form-name: Netlify-Identifier für die Formularverarbeitung
+    - form_type: Formulartyp für die zentralisierte Verarbeitung und E-Mail-Routing
+                Dieser Wert wird in formSubmissionProcessing.js verwendet, um das 
+                richtige E-Mail-Template und die Empfängerliste zu bestimmen.
+  -->
   <input type="hidden" name="language" value="de">
   <input type="hidden" name="form-name" value="fragebogen-sportler">
-  <!-- SPAM-PROTECTION: BEGIN HIDDEN FIELDS -->
-  <input type="hidden" name="sv_id" id="form-sportler-survey-sv-id">
-  <input type="hidden" name="form_start_time" id="form_start_time">
-  <!-- Original honeypot field -->
+  <input type="hidden" name="form_type" value="sportler-survey">
+  
+  <!-- 
+    Spam-Schutz-Felder:
+    Diese werden über das spam-protection-fields.html Partial eingebunden, welches enthält:
+    - sv_id: Eine client-seitig generierte eindeutige ID, die Bot-Aktivität erkennen hilft
+    - form_start_time: Zeitstempel der Formularerstellung für zeitbasierte Spam-Erkennung
+    - website: Ein verstecktes Feld, das nur von Bots ausgefüllt wird (Honeypot)
+    
+    Die Werte werden vom form-spam-protection-utils.js Script automatisch gesetzt und
+    später von formSubmissionProcessing.js validiert.
+  -->
+  {{ partial "spam-protection-fields.html" (dict "FORM_ID" "form-sportler-survey") }}
+  
+  <!-- Original honeypot field für Netlify - zweite Schutzebene -->
   <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
-  <!-- Enhanced honeypot field for bots -->
-  <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
-  <!-- SPAM-PROTECTION: END HIDDEN FIELDS -->
 
-  <!-- ---------- Schritt 1 ---------- -->
+  <!-- ---------- Schritt 1: Persönliche Daten ---------- -->
   <section id="form-sportler-survey-step-1" class="sv-form-step active" data-step="1">
     <h3 class="sv-step-title mb-4">Schritt 1 von 3: Persönliche Angaben</h3>
 
@@ -48,7 +100,12 @@
       Geschlecht wichtig, unabhängig von Ihrer geschlechtlichen Identität.
     </p>
     
-    <!-- Custom Dropdown for Geschlecht (single choice) -->
+    <!-- 
+      Custom Dropdown für biologisches Geschlecht (Single-Choice)
+      Diese eigene Dropdown-Implementierung verwendet Checkboxen im Hintergrund,
+      zeigt aber nur eine Auswahl an (isSingleChoice=true in der JavaScript-Initialisierung).
+      Die Dropdown-Funktionalität wird durch form-dropdown-utils.js gesteuert.
+    -->
     <div class="form-floating sv-form-floating mb-3">
       <div class="form-control form-select" id="form-sportler-survey-geschlecht-display" 
            style="height: auto; min-height: 58px; cursor: pointer;">
@@ -84,11 +141,11 @@
     </div>
   </section>
 
-  <!-- ---------- Schritt 2 ---------- -->
+  <!-- ---------- Schritt 2: Sportliche Aktivität ---------- -->
   <section id="form-sportler-survey-step-2" class="sv-form-step" data-step="2">
     <h3 class="sv-step-title mb-4">Schritt 2 von 3: Sportliche Aktivität</h3>
 
-    <!-- Custom Dropdown for Sport frequency (single choice) -->
+    <!-- Custom Dropdown für Sport-Häufigkeit (Single-Choice) -->
     <div class="form-floating sv-form-floating mb-3">
       <div class="form-control form-select" id="form-sportler-survey-sportfreq-display" 
            style="height: auto; min-height: 58px; cursor: pointer;">
@@ -119,7 +176,11 @@
       </div>
     </div>
 
-    <!-- Custom Dropdown for Sportarten (multiple choice) -->
+    <!-- 
+      Custom Dropdown für Sportarten (Multiple-Choice)
+      Bei dieser Variante können mehrere Optionen ausgewählt werden (isSingleChoice=false).
+      Das name-Attribut endet mit [], was im Backend als Array interpretiert wird.
+    -->
     <div class="form-floating sv-form-floating mb-3">
       <div class="form-control form-select" id="form-sportler-survey-sportarten-display" 
            style="height: auto; min-height: 58px; cursor: pointer;">
@@ -152,7 +213,7 @@
       </div>
     </div>
 
-    <!-- Custom Dropdown for Recent injuries (single choice) -->
+    <!-- Custom Dropdown für kürzliche Verletzungen (Single-Choice) -->
     <div class="form-floating sv-form-floating mb-3">
       <div class="form-control form-select" id="form-sportler-survey-recentinj-display" 
            style="height: auto; min-height: 58px; cursor: pointer;">
@@ -181,7 +242,7 @@
       </div>
     </div>
 
-    <!-- Custom Dropdown for Previous injuries (multiple choice) -->
+    <!-- Custom Dropdown für frühere Verletzungen (Multiple-Choice) -->
     <div class="form-floating sv-form-floating mb-3">
       <div class="form-control form-select" id="form-sportler-survey-previnj-display" 
            style="height: auto; min-height: 58px; cursor: pointer;">
@@ -210,7 +271,7 @@
       </div>
     </div>
 
-    <!-- Custom Dropdown for Body regions (multiple choice) -->
+    <!-- Custom Dropdown für Körperregionen (Multiple-Choice) -->
     <div class="form-floating sv-form-floating mb-3">
       <div class="form-control form-select" id="form-sportler-survey-region-display" 
            style="height: auto; min-height: 58px; cursor: pointer;">
@@ -243,7 +304,7 @@
       </div>
     </div>
 
-    <!-- Custom Dropdown for Pain (single choice) -->
+    <!-- Custom Dropdown für Schmerzen nach Sport (Single-Choice) -->
     <div class="form-floating sv-form-floating mb-3">
       <div class="form-control form-select" id="form-sportler-survey-pain-display" 
            style="height: auto; min-height: 58px; cursor: pointer;">
@@ -290,10 +351,15 @@
     </div>
   </section>
 
-  <!-- ---------- Schritt 3 ---------- -->
+  <!-- ---------- Schritt 3: Kontaktaufnahme ---------- -->
   <section id="form-sportler-survey-step-3" class="sv-form-step" data-step="3">
     <h3 class="sv-step-title mb-4">Schritt 3 von 3: Kontaktaufnahme</h3>
 
+    <!-- 
+      Telefon-Feld mit spezieller Validierung und Formatierung
+      Das Blur-Event aktiviert eine Funktion, die Schweizer Nummern validiert
+      und in das Format "XXX XXX XX XX" umformatiert.
+    -->
     <div class="form-floating sv-form-floating mb-3">
       <input class="form-control" id="form-sportler-survey-tel"
              name="telefon" type="tel" placeholder="Ihre Telefonnummer" required>
@@ -303,7 +369,7 @@
       Bitte Mobilnummer mit Landesvorwahl angeben, z.&nbsp;B. +41 79 123 45 67
     </p>
 
-    <!-- Custom Dropdown for Callback times (multiple choice) -->
+    <!-- Custom Dropdown für Rückrufzeiten (Multiple-Choice) -->
     <div class="form-floating sv-form-floating mb-3">
       <div class="form-control form-select" id="form-sportler-survey-calltime-display" 
            style="height: auto; min-height: 58px; cursor: pointer;">
@@ -355,7 +421,18 @@
   </section>
 </form>
 
-<!-- Erfolgsnachricht -->
+<!-- 
+  Erfolgsnachricht:
+  Wird nach erfolgreicher Formularübermittlung angezeigt.
+  
+  Bei erfolgreicher Übermittlung:
+  1. Das Formular wird per JavaScript ausgeblendet (form.classList.add('d-none'))
+  2. Diese Erfolgsmeldung wird eingeblendet (success.classList.remove('d-none'))
+  3. Die Zusammenfassung wird mit übermittelten Daten befüllt (#form-sportler-survey-summary)
+  4. Die E-Mail-Bestätigung wird aktualisiert (#form-sportler-survey-emailConfirm)
+  
+  Dies geschieht automatisch durch die handleFormSubmit-Funktion in form-spam-protection-utils.js
+-->
 <div id="form-sportler-survey-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
   <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
   <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
@@ -364,189 +441,27 @@
   <p class="lead mt-3" id="form-sportler-survey-emailConfirm"></p>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('form-sportler-survey');
-  const steps = form.querySelectorAll('.sv-form-step');
+<!-- 
+  Einbindung der zentralisierten Form-Assets:
   
-  // ---- SPAM PROTECTION: BEGIN JAVASCRIPT IMPLEMENTATION ----
+  1. Was es ist: 
+     Ein Hugo-Partial, das die nötigen JavaScript-Ressourcen lädt und initialisiert.
   
-  // 1. Generate unique ID for sv_id field
-  function generateUniqueId() {
-    return 'sv_' + Math.random().toString(36).substring(2, 15) + 
-           Math.random().toString(36).substring(2, 15);
-  }
+  2. Welche Datei aufgerufen wird: 
+     layouts/partials/form-assets.html
   
-  // Set the sv_id and timestamp when form loads
-  document.getElementById('form-sportler-survey-sv-id').value = generateUniqueId();
-  document.getElementById('form_start_time').value = Date.now();
+  3. Was diese Datei tut:
+     - Lädt form-spam-protection-utils.js und form-dropdown-utils.js
+     - Initialisiert drei Hauptfunktionen, wenn das DOM geladen ist:
+       * initSpamProtection('form-sportler-survey') - Setzt unique ID und Zeitstempel
+       * handleFormSubmit('form-sportler-survey', {...}) - Registriert Submit-Handler
+       * Initialisiert alle im CustomDropdowns übergebenen Dropdowns
   
-  // ---- SPAM PROTECTION: END JAVASCRIPT IMPLEMENTATION ----
-  
-  // Navigation function
-  const show = n => { 
-    steps.forEach(s => s.classList.remove('active'));
-    steps[n-1].classList.add('active');
-    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
-  };
-
-  // Next button handlers
-  form.querySelectorAll('[data-next]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentStep = btn.closest('.sv-form-step');
-      const stepNumber = +currentStep.dataset.step;
-      show(stepNumber + 1);
-    });
-  });
-
-  // Previous button handlers
-  form.querySelectorAll('[data-prev]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const currentStep = btn.closest('.sv-form-step');
-      const stepNumber = +currentStep.dataset.step;
-      show(stepNumber - 1);
-    });
-  });
-
-  // Telephone validation
-  const tel = document.getElementById('form-sportler-survey-tel');
-  const fmt = n => n.replace(/\D/g,'').replace(/(\d{3})(\d{3})(\d{2})(\d{2})/,'$1 $2 $3 $4');
-  
-  tel.addEventListener('blur', () => {
-    const d = tel.value.replace(/\D/g,'');
-    if(d.length !== 10 || d[0] !== '0') { 
-      alert('Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.'); 
-      tel.value = ''; 
-      tel.focus();
-    } else {
-      tel.value = fmt(d);
-    }
-  });
-
-  // Custom dropdown functionality for all dropdowns
-  function initializeDropdown(displayId, dropdownId, checkboxName, isSingleChoice = false) {
-    const display = document.getElementById(displayId);
-    const dropdown = document.getElementById(dropdownId);
-    const checkboxes = dropdown.querySelectorAll(`input[name="${checkboxName}"]`);
-    
-    // Toggle dropdown on click
-    display.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-    });
-    
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target) && e.target !== display) {
-        dropdown.style.display = 'none';
-      }
-    });
-    
-    // Prevent dropdown from closing when clicking inside
-    dropdown.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-    
-    // Update display when checkboxes change
-    function updateDisplay() {
-      const selected = Array.from(checkboxes)
-        .filter(cb => cb.checked)
-        .map(cb => cb.parentElement.querySelector('label').textContent);
-      
-      if (selected.length > 0) {
-        display.textContent = selected.join(', ');
-      } else {
-        display.textContent = 'Bitte wählen';
-      }
-    }
-    
-    // Handle checkbox changes
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', () => {
-        if (isSingleChoice) {
-          // For single choice, uncheck all other checkboxes when one is selected
-          checkboxes.forEach(cb => {
-            if (cb !== checkbox) {
-              cb.checked = false;
-            }
-          });
-        }
-        updateDisplay();
-      });
-    });
-  }
-
-  // Initialize all dropdowns - single choice
-  initializeDropdown('form-sportler-survey-geschlecht-display', 'form-sportler-survey-geschlecht-dropdown', 'geschlecht', true);
-  initializeDropdown('form-sportler-survey-sportfreq-display', 'form-sportler-survey-sportfreq-dropdown', 'sport_frequency', true);
-  initializeDropdown('form-sportler-survey-recentinj-display', 'form-sportler-survey-recentinj-dropdown', 'recent_injuries', true);
-  initializeDropdown('form-sportler-survey-pain-display', 'form-sportler-survey-pain-dropdown', 'pain_after_sport', true);
-  
-  // Initialize all dropdowns - multiple choice
-  initializeDropdown('form-sportler-survey-sportarten-display', 'form-sportler-survey-sportarten-dropdown', 'sportarten[]', false);
-  initializeDropdown('form-sportler-survey-previnj-display', 'form-sportler-survey-previnj-dropdown', 'fruehere_verletzungen[]', false);
-  initializeDropdown('form-sportler-survey-region-display', 'form-sportler-survey-region-dropdown', 'koerperregionen[]', false);
-  initializeDropdown('form-sportler-survey-calltime-display', 'form-sportler-survey-calltime-dropdown', 'rueckruf_zeiten[]', false);
-
-  // Submit handler
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    
-    const fd = new FormData(form);
-    const obj = Object.fromEntries(fd.entries());
-    obj.telefon = fmt(obj.telefon);
-
-    // Build summary
-    let html = '<ul class="list-group">';
-    
-    // Map variable names to display labels
-    const fieldLabels = {
-      'vorname': 'Vorname',
-      'nachname': 'Nachname',
-      'geburtsjahr': 'Geburtsjahr',
-      'email': 'Email',
-      'telefon': 'Telefon',
-      'geschlecht': 'Geschlecht',
-      'sport_frequency': 'Sporthäufigkeit',
-      'recent_injuries': 'Verletzungen in den letzten 12 Monaten',
-      'pain_after_sport': 'Schmerzen nach dem Sport'
-    };
-    
-    // Simple fields
-    const simple = ['vorname', 'nachname', 'geburtsjahr', 'email', 'telefon', 'geschlecht', 'sport_frequency', 'recent_injuries', 'pain_after_sport'];
-    simple.forEach(k => { 
-      if(obj[k]) html += `<li class="list-group-item"><strong>${fieldLabels[k] || k}:</strong> ${obj[k]}</li>`; 
-    });
-    
-    // Multiple selection fields with proper labels
-    const multi = [
-      { name: 'sportarten[]', label: 'Sportarten' },
-      { name: 'fruehere_verletzungen[]', label: 'Frühere Verletzungen' },
-      { name: 'koerperregionen[]', label: 'Körperregionen' },
-      { name: 'rueckruf_zeiten[]', label: 'Rückrufzeiten' }
-    ];
-    
-    multi.forEach(item => {
-      const arr = fd.getAll(item.name);
-      if(arr.length) html += `<li class="list-group-item"><strong>${item.label}:</strong> ${arr.join(', ')}</li>`;
-    });
-    
-    // Free text
-    if(obj.freitext) html += `<li class="list-group-item"><strong>Freitext:</strong> ${obj.freitext}</li>`;
-    if(obj.zusatzinformationen) html += `<li class="list-group-item"><strong>Zusatzinformationen:</strong> ${obj.zusatzinformationen}</li>`;
-    
-    html += '</ul>';
-
-    // Update UI
-    document.getElementById('form-sportler-survey-summary').innerHTML = html;
-    document.getElementById('form-sportler-survey-emailConfirm').textContent = `Wir senden eine Bestätigung an: ${obj.email || ''}`;
-    form.classList.add('d-none');
-    document.getElementById('form-sportler-survey-success').classList.remove('d-none');
-
-    
-  });
-});
-{{/* form-assets partial bindet JS nur ein, wenn das Formular gerendert wird */}}
+  4. Parameter:
+     - FormID: Der Selektor des Formulars ('form-sportler-survey')
+     - FieldLabels: Dictionary mit Übersetzungen für die Zusammenfassung
+     - CustomDropdowns: Liste von Dropdown-Definitionen für automatische Initialisierung
+-->
 {{ partial "form-assets.html" (dict
   "FormID" "form-sportler-survey"
   "FieldLabels" (dict
@@ -566,5 +481,157 @@ document.addEventListener('DOMContentLoaded', () => {
     "freitext" "Freitext"
     "zusatzinformationen" "Zusatzinformationen"
   )
+  "CustomDropdowns" (slice
+    (dict 
+      "displayId" "form-sportler-survey-geschlecht-display" 
+      "dropdownId" "form-sportler-survey-geschlecht-dropdown" 
+      "checkboxName" "geschlecht" 
+      "isSingleChoice" true
+    )
+    (dict 
+      "displayId" "form-sportler-survey-sportfreq-display" 
+      "dropdownId" "form-sportler-survey-sportfreq-dropdown" 
+      "checkboxName" "sport_frequency" 
+      "isSingleChoice" true
+    )
+    (dict 
+      "displayId" "form-sportler-survey-recentinj-display" 
+      "dropdownId" "form-sportler-survey-recentinj-dropdown" 
+      "checkboxName" "recent_injuries" 
+      "isSingleChoice" true
+    )
+    (dict 
+      "displayId" "form-sportler-survey-pain-display" 
+      "dropdownId" "form-sportler-survey-pain-dropdown" 
+      "checkboxName" "pain_after_sport" 
+      "isSingleChoice" true
+    )
+    (dict 
+      "displayId" "form-sportler-survey-sportarten-display" 
+      "dropdownId" "form-sportler-survey-sportarten-dropdown" 
+      "checkboxName" "sportarten[]" 
+      "isSingleChoice" false
+    )
+    (dict 
+      "displayId" "form-sportler-survey-previnj-display" 
+      "dropdownId" "form-sportler-survey-previnj-dropdown" 
+      "checkboxName" "fruehere_verletzungen[]" 
+      "isSingleChoice" false
+    )
+    (dict 
+      "displayId" "form-sportler-survey-region-display" 
+      "dropdownId" "form-sportler-survey-region-dropdown" 
+      "checkboxName" "koerperregionen[]" 
+      "isSingleChoice" false
+    )
+    (dict 
+      "displayId" "form-sportler-survey-calltime-display" 
+      "dropdownId" "form-sportler-survey-calltime-dropdown" 
+      "checkboxName" "rueckruf_zeiten[]" 
+      "isSingleChoice" false
+    )
+  )
 ) }}
+
+<!-- 
+  Formularspezifisches JavaScript:
+  
+  FUNKTIONALITÄT:
+  1. Schritt-Navigation:
+     - Bei Klick auf [data-next] und [data-prev] werden die Formularschritte gewechselt
+     - Die show(n)-Funktion macht den n-ten Schritt sichtbar und scrollt zur richtigen Position
+  
+  2. Telefonnummer-Formatierung:
+     - Bei blur-Event wird die Telefonnummer validiert und formatiert
+     - Prüfung auf 10 Ziffern mit führender 0
+     - Formatierung in Gruppen: XXX XXX XX XX
+  
+  HINWEIS:
+  - Die Custom-Dropdown-Funktionalität wird jetzt durch form-dropdown-utils.js zentral verwaltet
+  - Die Initialisierung erfolgt durch form-assets.html mit den übergebenen CustomDropdowns
+  - Die eigentliche Formularabsendung wird durch handleFormSubmit() aus form-spam-protection-utils.js übernommen
+-->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-sportler-survey');
+  const steps = form.querySelectorAll('.sv-form-step');
+  
+  // Navigation zwischen Formularschritten
+  const show = n => { 
+    steps.forEach(s => s.classList.remove('active'));
+    steps[n-1].classList.add('active');
+    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
+  };
+
+  // Event-Handler für Weiter-Buttons
+  form.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber + 1);
+    });
+  });
+
+  // Event-Handler für Zurück-Buttons
+  form.querySelectorAll('[data-prev]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber - 1);
+    });
+  });
+
+  // Telefonnummer-Formatierung
+  const tel = document.getElementById('form-sportler-survey-tel');
+  const fmt = n => n.replace(/\D/g,'').replace(/(\d{3})(\d{3})(\d{2})(\d{2})/,'$1 $2 $3 $4');
+  
+  tel.addEventListener('blur', () => {
+    const d = tel.value.replace(/\D/g,'');
+    if(d.length !== 10 || d[0] !== '0') { 
+      alert('Bitte geben Sie eine gültige Telefonnummer mit 10 Ziffern ein.'); 
+      tel.value = ''; 
+      tel.focus();
+    } else {
+      tel.value = fmt(d);
+    }
+  });
+  
+  // Hinweis: Die Custom-Dropdown-Initialisierung erfolgt jetzt zentral über form-assets.html
+  // und die dort übergebenen CustomDropdowns werden durch form-dropdown-utils.js verarbeitet
+});
 </script>
+
+<!-- 
+  GESAMTDATENFLUSS ZUSAMMENFASSUNG:
+  
+  1. CLIENT-SEITE VORBEREITUNG
+     - Nutzer öffnet die Seite mit dem Formular
+     - form-assets.html lädt form-spam-protection-utils.js und form-dropdown-utils.js
+     - initSpamProtection() generiert sv_id und form_start_time
+     - handleFormSubmit() registriert einen Submit-Handler für das Formular
+     - Custom-Dropdowns werden durch initializeDropdown() aus form-dropdown-utils.js initialisiert
+  
+  2. NUTZER-INTERAKTION
+     - Nutzer füllt das Formular in den drei Schritten aus
+     - Custom Dropdowns und Telefon-Formatierung unterstützen die Eingabe
+     - Beim Klick auf "Absenden" wird das submit-Event ausgelöst
+  
+  3. FORMULARVERARBEITUNG
+     - handleFormSubmit() in form-spam-protection-utils.js fängt das submit-Event ab
+     - Alle Formulardaten werden gesammelt und als JSON strukturiert
+     - Spam-Schutz-Informationen (sv_id, form_start_time) werden hinzugefügt
+     - AJAX-Anfrage an /.netlify/functions/formSubmissionProcessing wird gesendet
+  
+  4. SERVER-SIDE VERARBEITUNG
+     - formSubmissionProcessing.js validiert die Daten und prüft auf Spam
+     - E-Mail-Routing wird anhand der Formulartyp-Konfiguration bestimmt
+     - sendConfirmartonBilingualFragebogen.js generiert und sendet E-Mails
+     - Erfolgsmeldung oder Fehlermeldung wird zurückgegeben
+  
+  5. ERFOLGS-DARSTELLUNG
+     - Bei Erfolg blendet handleFormSubmit() das Formular aus
+     - Erfolgsmeldung wird eingeblendet
+     - Die Zusammenfassung wird mit den übermittelten Daten gefüllt
+     - E-Mail-Bestätigung wird angezeigt
+-->
+ übergebenen Dropdowns
