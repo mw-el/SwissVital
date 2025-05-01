@@ -54,16 +54,3 @@ Zur Vorbereitung haben wir diesen Fragebogen vorbereitet. Schicken Sie ihn ab, d
 {{< /limit-width >}}
 
 {{< form-sportler-modular >}}
-<br>
-<br>
-alte Formulare<br>
-<br>
-sportler alt
-{{< form-sportler-de >}}
-chronisch alt
-{{< form-chronisch-de >}}
-stress alt
-{{< form-stress-de >}}
-{{< form-ganzheitlich-de >}}
-{{< form-individuell-de >}}
-{{< form-familiaer-de >}}
