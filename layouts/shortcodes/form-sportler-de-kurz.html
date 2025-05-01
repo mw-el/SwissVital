@@ -1,0 +1,254 @@
+<!-- 
+  Test-Fragebogen — vereinfachtes Formular für Tests
+  Datenstrom: form-test-survey
+  
+  Dieser Shortcode implementiert ein dreistufiges Testformular mit:
+  1. Ein Textfeld (persönliche Daten)
+  2. Eine Checkbox-Gruppe (Multiple-Choice)
+  3. Eine Radio-Gruppe (Single-Choice)
+-->
+<form id="form-test-survey" class="sv-multistep-form"
+      name="fragebogen-test" method="POST"
+      data-netlify="true" netlify-honeypot="bot-field">
+
+  <!-- Hidden Fields -->
+  <input type="hidden" name="language" value="de">
+  <input type="hidden" name="form-name" value="fragebogen-test">
+  <input type="hidden" name="form_type" value="test-survey">
+  
+  <!-- Spam-Schutz-Felder -->
+  {{ partial "spam-protection-fields.html" (dict "FORM_ID" "form-test-survey") }}
+  
+  <!-- Original honeypot field für Netlify -->
+  <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+
+  <!-- ---------- Schritt 1: Persönliche Daten ---------- -->
+  <section id="form-test-survey-step-1" class="sv-form-step active" data-step="1">
+    <h3 class="sv-step-title mb-4">Schritt 1 von 3: Einfaches Textfeld</h3>
+
+    <div class="form-floating sv-form-floating mb-3">
+      <input class="form-control" id="form-test-survey-name"
+             name="name" placeholder="Name *" required>
+      <label for="form-test-survey-name">Name *</label>
+    </div>
+
+    <div class="d-grid sv-button-container">
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 2: Multiple-Choice ---------- -->
+  <section id="form-test-survey-step-2" class="sv-form-step" data-step="2">
+    <h3 class="sv-step-title mb-4">Schritt 2 von 3: Multiple-Choice</h3>
+
+    <!-- Bootstrap Accordion für Mehrfachauswahl (Multiple-Choice) -->
+    <div class="accordion sv-form-accordion mb-4" id="accordion-mehrfachauswahl">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-mehrfachauswahl">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-mehrfachauswahl" 
+                  aria-expanded="false" aria-controls="collapse-mehrfachauswahl">
+            Mehrfachauswahl (Mehrfachauswahl möglich)
+          </button>
+        </h2>
+        <div id="collapse-mehrfachauswahl" class="accordion-collapse collapse" 
+             aria-labelledby="heading-mehrfachauswahl" data-bs-parent="#accordion-mehrfachauswahl">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="mehrfachauswahl[]" 
+                     value="Option A" id="mehrfach1">
+              <label class="form-check-label" for="mehrfach1">Option A</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="mehrfachauswahl[]" 
+                     value="Option B" id="mehrfach2">
+              <label class="form-check-label" for="mehrfach2">Option B</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="mehrfachauswahl[]" 
+                     value="Option C" id="mehrfach3">
+              <label class="form-check-label" for="mehrfach3">Option C</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+    </div>
+  </section>
+
+  <!-- ---------- Schritt 3: Single-Choice und Freitext ---------- -->
+  <section id="form-test-survey-step-3" class="sv-form-step" data-step="3">
+    <h3 class="sv-step-title mb-4">Schritt 3 von 3: Single-Choice und Freitext</h3>
+
+    <!-- Bootstrap Accordion für Einfachauswahl (Single-Choice) -->
+    <div class="accordion sv-form-accordion mb-4" id="accordion-einfachauswahl">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-einfachauswahl">
+          <button class="accordion-button collapsed" type="button" 
+                  data-bs-toggle="collapse" data-bs-target="#collapse-einfachauswahl" 
+                  aria-expanded="false" aria-controls="collapse-einfachauswahl">
+            Einfachauswahl (Single-Choice)
+          </button>
+        </h2>
+        <div id="collapse-einfachauswahl" class="accordion-collapse collapse" 
+             aria-labelledby="heading-einfachauswahl" data-bs-parent="#accordion-einfachauswahl">
+          <div class="accordion-body">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="einfachauswahl" 
+                     value="Option X" id="einfach1">
+              <label class="form-check-label" for="einfach1">Option X</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="einfachauswahl" 
+                     value="Option Y" id="einfach2">
+              <label class="form-check-label" for="einfach2">Option Y</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="einfachauswahl" 
+                     value="Option Z" id="einfach3">
+              <label class="form-check-label" for="einfach3">Option Z</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Freitext -->
+    <div class="form-floating sv-form-floating mb-4">
+      <textarea class="form-control" id="form-test-survey-freitext"
+                name="freitext" style="height:100px"></textarea>
+      <label for="form-test-survey-freitext">
+        Freitext – Was möchten Sie uns mitteilen?
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-between sv-button-container">
+      <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+      <button type="submit" class="btn btn-primary sv-btn-xl">Absenden</button>
+    </div>
+  </section>
+</form>
+
+<!-- Erfolgsnachricht -->
+<div id="form-test-survey-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> Vielen Dank für Ihre Anmeldung!</h3>
+  <p class="mb-3"><strong>Sie haben uns das Folgende mitgeteilt:</strong></p>
+  <div class="text-start" id="form-test-survey-summary"></div>
+  <hr>
+  <p class="lead mt-3" id="form-test-survey-emailConfirm"></p>
+</div>
+
+<!-- Einbindung der zentralisierten Form-Assets -->
+{{ partial "form-assets.html" (dict
+  "FormID" "form-test-survey"
+  "FieldLabels" (dict
+    "name" "Name"
+    "mehrfachauswahl" "Mehrfachauswahl"
+    "einfachauswahl" "Einfachauswahl"
+    "freitext" "Freitext"
+  )
+) }}
+
+<!-- Formularspezifisches JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('form-test-survey');
+  const steps = form.querySelectorAll('.sv-form-step');
+  
+  // Navigation zwischen Formularschritten
+  const show = function(n) { 
+    steps.forEach(function(s) { s.classList.remove('active'); });
+    steps[n-1].classList.add('active');
+    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
+  };
+
+  // Event-Handler für Weiter-Buttons
+  form.querySelectorAll('[data-next]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber + 1);
+    });
+  });
+
+  // Event-Handler für Zurück-Buttons
+  form.querySelectorAll('[data-prev]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const currentStep = btn.closest('.sv-form-step');
+      const stepNumber = +currentStep.dataset.step;
+      show(stepNumber - 1);
+    });
+  });
+  
+  // Accordion-Status anzeigen in Accordion-Button
+  document.querySelectorAll('.accordion-button').forEach(function(button) {
+    const accordionItem = button.closest('.accordion-item');
+    const accordionBody = accordionItem.querySelector('.accordion-body');
+    
+    if (!accordionBody) return;
+    
+    const checkboxes = accordionBody.querySelectorAll('input[type="checkbox"]');
+    const radioButtons = accordionBody.querySelectorAll('input[type="radio"]');
+    
+    // Funktion zum Aktualisieren des Accordion-Button-Textes basierend auf Auswahl
+    const updateButtonText = function() {
+      const originalText = button.getAttribute('data-original-text') || button.textContent;
+      
+      // Wenn keine data-original-text gesetzt ist, speichern wir den ursprünglichen Text
+      if (!button.getAttribute('data-original-text')) {
+        button.setAttribute('data-original-text', originalText);
+      }
+      
+      let selectedValues = [];
+      
+      // Checkboxen (Mehrfachauswahl)
+      if (checkboxes.length > 0) {
+        checkboxes.forEach(function(cb) {
+          if (cb.checked) {
+            const label = cb.nextElementSibling;
+            if (label && label.textContent) {
+              selectedValues.push(label.textContent.trim());
+            }
+          }
+        });
+      }
+      
+      // Radiobuttons (Einfachauswahl)
+      if (radioButtons.length > 0) {
+        radioButtons.forEach(function(rb) {
+          if (rb.checked) {
+            const label = rb.nextElementSibling;
+            if (label && label.textContent) {
+              selectedValues.push(label.textContent.trim());
+            }
+          }
+        });
+      }
+      
+      // Text aktualisieren
+      if (selectedValues.length > 0) {
+        button.innerHTML = originalText + ': <span class="sv-selected-options">' + selectedValues.join(', ') + '</span>';
+      } else {
+        button.textContent = originalText;
+      }
+    };
+    
+    // Event-Listener für Änderungen an Checkboxen und Radiobuttons
+    checkboxes.forEach(function(cb) {
+      cb.addEventListener('change', updateButtonText);
+    });
+    
+    radioButtons.forEach(function(rb) {
+      rb.addEventListener('change', updateButtonText);
+    });
+    
+    // Initialen Status setzen
+    updateButtonText();
+  });
+  
+});
+</script>

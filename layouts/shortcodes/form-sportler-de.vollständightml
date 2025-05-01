@@ -590,5 +590,15 @@ document.addEventListener('DOMContentLoaded', function() {
     updateButtonText();
   });
   
+  // Formularübermittlung
+  if (typeof window.handleFormSubmit === 'function') {
+    window.handleFormSubmit('form-sportler-survey', {
+      successElementId: 'form-sportler-survey-success',
+      summaryElementId: 'form-sportler-survey-summary',
+      emailConfirmElementId: 'form-sportler-survey-emailConfirm'
+    });
+  } else {
+    console.warn('handleFormSubmit function not found. Form submission may not work correctly.');
+  }
 });
 </script>
