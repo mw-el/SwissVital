@@ -17,4 +17,4 @@ Thumbs.db
 
 # Environment variables
 .env
-.env
+git push --force

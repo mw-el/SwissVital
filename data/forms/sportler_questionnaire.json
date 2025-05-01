@@ -1,0 +1,92 @@
+{
+    "id": "form-sportler-survey",
+    "title": "Sportler-Fragebogen",
+    "form_type": "sportler-survey",
+    "steps": [
+      "common/step_one_personal_info",
+      {
+        "id": "step2",
+        "title": "Schritt 2 von 3: Sportliche Aktivität",
+        "fields": [
+          {
+            "name": "sport_frequency",
+            "type": "radio",
+            "label": "1. Wie häufig treiben Sie Sport?",
+            "options": [
+              {"value": "Täglich", "label": "Täglich"},
+              {"value": "Mehrmals pro Woche", "label": "Mehrmals pro Woche"},
+              {"value": "Einmal pro Woche", "label": "Einmal pro Woche"},
+              {"value": "Gelegentlich", "label": "Gelegentlich"},
+              {"value": "Selten bis nie", "label": "Selten bis nie"}
+            ]
+          },
+          {
+            "name": "sportarten[]",
+            "type": "checkbox",
+            "label": "2. Welche Sportart betreiben Sie hauptsächlich? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Kraftsport", "label": "Kraftsport"},
+              {"value": "Ausdauersport", "label": "Ausdauersport"},
+              {"value": "Teamsport", "label": "Teamsport"},
+              {"value": "Extremsport", "label": "Extremsport"},
+              {"value": "Verschiedene", "label": "Verschiedene"}
+            ]
+          },
+          {
+            "name": "recent_injuries",
+            "type": "radio",
+            "label": "3. Haben Sie in den letzten 12 Monaten Verletzungen erlitten?",
+            "options": [
+              {"value": "Ja, schwere Verletzung (z. B. Bänderriss)", "label": "Ja, schwere Verletzung (z. B. Bänderriss)"},
+              {"value": "Ja, mittelschwere Verletzung (z. B. Zerrung)", "label": "Ja, mittelschwere Verletzung (z. B. Zerrung)"},
+              {"value": "Ja, leichte Beschwerden (z. B. Muskelkater)", "label": "Ja, leichte Beschwerden (z. B. Muskelkater)"},
+              {"value": "Nein", "label": "Nein"}
+            ]
+          },
+          {
+            "name": "fruehere_verletzungen[]",
+            "type": "checkbox",
+            "label": "4. Frühere Verletzungen oder Überlastungsschäden (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Knochenbrüche / Gelenkverletzungen", "label": "Knochenbrüche / Gelenkverletzungen"},
+              {"value": "Muskel- / Sehnenverletzungen", "label": "Muskel- / Sehnenverletzungen"},
+              {"value": "Chronische Überlastungsbeschwerden", "label": "Chronische Überlastungsbeschwerden"},
+              {"value": "Andere sportbedingte Probleme", "label": "Andere sportbedingte Probleme"}
+            ]
+          },
+          {
+            "name": "koerperregionen[]",
+            "type": "checkbox",
+            "label": "5. Welche Körperregion belasten Sie am meisten? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Rücken", "label": "Rücken"},
+              {"value": "Knie / Gelenke", "label": "Knie / Gelenke"},
+              {"value": "Schultern / Arme", "label": "Schultern / Arme"},
+              {"value": "Muskulatur allgemein", "label": "Muskulatur allgemein"},
+              {"value": "Ganzer Körper", "label": "Ganzer Körper"}
+            ]
+          },
+          {
+            "name": "pain_after_sport",
+            "type": "radio",
+            "label": "6. Haben Sie anhaltende Schmerzen nach dem Sport?",
+            "options": [
+              {"value": "Ja, regelmässig", "label": "Ja, regelmässig"},
+              {"value": "Gelegentlich", "label": "Gelegentlich"},
+              {"value": "Nur nach intensiven Einheiten", "label": "Nur nach intensiven Einheiten"},
+              {"value": "Selten bis nie", "label": "Selten bis nie"},
+              {"value": "Keine Schmerzen", "label": "Keine Schmerzen"}
+            ]
+          },
+          {
+            "name": "freitext",
+            "type": "textarea",
+            "label": "Freitext – Was möchten Sie uns sonst noch mitteilen?",
+            "required": false,
+            "height": 150
+          }
+        ]
+      },
+      "common/step_three_contact_and_submit"
+    ]
+  }

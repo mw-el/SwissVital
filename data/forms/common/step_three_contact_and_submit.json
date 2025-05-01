@@ -1,0 +1,44 @@
+{
+    "id": "step3",
+    "title": "Schritt 3 von 3: Kontakt & Absenden",
+    "fields": [
+      {
+        "name": "telefon",
+        "type": "tel",
+        "label": "Telefon",
+        "required": true,
+        "placeholder": "Ihre Telefonnummer",
+        "tooltip": "Bitte Mobilnummer mit Landesvorwahl angeben, z.&nbsp;B. +41 79 123 45 67"
+      },
+      {
+        "name": "rueckruf_zeiten[]",
+        "type": "checkbox",
+        "label": "Bevorzugte Rückrufzeiten (Mehrfachauswahl möglich)",
+        "options": [
+          {"value": "Vormittags (08:00–12:00 Uhr)", "label": "Vormittags (08:00–12:00 Uhr)"},
+          {"value": "Mittags (12:00–14:00 Uhr)", "label": "Mittags (12:00–14:00 Uhr)"},
+          {"value": "Nachmittags (14:00–18:00 Uhr)", "label": "Nachmittags (14:00–18:00 Uhr)"},
+          {"value": "Abends (18:00–20:00 Uhr)", "label": "Abends (18:00–20:00 Uhr)"}
+        ]
+      },
+      {
+        "name": "zusatzinformationen",
+        "type": "textarea",
+        "label": "Zusätzliche Informationen zur Erreichbarkeit (optional)",
+        "required": false,
+        "height": 100
+      },
+      {
+        "name": "datenschutz",
+        "type": "checkbox",
+        "label": "Datenschutz",
+        "options": [
+          {
+            "value": "consent",
+            "label": "Ich stimme der <a href=\"/privacy\">Datenschutzerklärung</a> zu.",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }
