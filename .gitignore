@@ -16,4 +16,5 @@ Thumbs.db
 .netlify
 
 # Environment variables
-.env.env
+.env
+.env
