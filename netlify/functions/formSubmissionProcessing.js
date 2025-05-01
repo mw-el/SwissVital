@@ -9,7 +9,7 @@
  */
 
 // Import the email sender function
-const emailSender = require('./sendConfirmartonBilingualFragebogen');
+const emailSender = require('./sendConfirmationBilingualFragebogen');
 
 exports.handler = async (event, context) => {
   // Set CORS headers for browser clients

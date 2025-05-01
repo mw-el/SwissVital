@@ -39,12 +39,14 @@ secondary_button_link: ""
 secondary_button_text: ""
 partial: "full-bg.html"
 ---
-
+{{< limit-width >}}
 
 Hier kommen Sie ganz einfach zu Ihrem Termin. 
 
 **E-Mail eintragen**, Standort wählen, ab die Post.
 
 {{< spacer >}}   
+
+{{< /limit-width >}}
 
 {{< form-booking-de >}}

@@ -80,12 +80,12 @@ const TXT = {
 };
 
 /* ---------------------------------------------------------------------
-   2 – Label‑Mapping für die Zusammenfassung (nach Bedarf ergänzen)  
+   2 – Label-Mapping für die Zusammenfassung (nach Bedarf ergänzen)  
    ------------------------------------------------------------------ */
 const LABELS = {
   vorname:         { de: 'Vorname',                    en: 'First name' },
   nachname:        { de: 'Nachname',                   en: 'Last name' },
-  email:           { de: 'E‑Mail',                     en: 'Email' },
+  email:           { de: 'E-Mail',                     en: 'Email' },
   telefon:         { de: 'Telefon',                    en: 'Phone' },
   geburtsjahr:     { de: 'Geburtsjahr',                en: 'Year of birth' },
   geschlecht:      { de: 'Biologisches Geschlecht',    en: 'Biological sex' },
@@ -102,7 +102,7 @@ const LABELS = {
 };
 
 /* ---------------------------------------------------------------------
-   3 – HTML‑Generator für Benutzer-Bestätigungen
+   3 – HTML-Generator für Benutzer-Bestätigungen
    ------------------------------------------------------------------ */
 function buildHtml(data, lang) {
   const t = TXT[lang] || TXT.de;
@@ -144,7 +144,7 @@ function buildHtml(data, lang) {
 }
 
 /* ---------------------------------------------------------------------
-   4 – HTML‑Generator für Team-Benachrichtigungen
+   4 – HTML-Generator für Team-Benachrichtigungen
    ------------------------------------------------------------------ */
 function buildTeamNotificationHtml(data, formType, lang) {
   // Übersetzungen für die Team-Benachrichtigung
@@ -162,14 +162,10 @@ function buildTeamNotificationHtml(data, formType, lang) {
     automatedMessage: 'Dies ist eine automatische Benachrichtigung.'
   };
 
-  // Felder für die Kontaktinformationen
+  // Feldgruppen
   const contactFields = ['vorname', 'nachname', 'email', 'telefon', 'rueckruf_zeiten', 'zusatzinformationen'];
-  
-  // Felder, die übersprungen werden sollen
-  const skip = new Set(['language', 'bot-field', 'website', 'sv_id', 'form_start_time', 'form_type', 'datenschutz', 'datenschutz1', 
-                        ...contactFields]);
+  const skip = new Set(['language','bot-field','website','sv_id','form_start_time','form_type','datenschutz','datenschutz1', ...contactFields]);
 
-  // Kontaktdaten formatieren
   const contactItems = contactFields
     .filter(k => data[k])
     .map(k => {
@@ -179,7 +175,6 @@ function buildTeamNotificationHtml(data, formType, lang) {
     })
     .join('');
 
-  // Formular-spezifische Daten formatieren
   const dataItems = Object.entries(data)
     .filter(([k,v]) => v && !skip.has(k))
     .map(([k,v]) => {
@@ -189,7 +184,6 @@ function buildTeamNotificationHtml(data, formType, lang) {
     })
     .join('');
 
-  // Human-readable Formulartyp generieren
   let formTypeName;
   switch(formType) {
     case 'sportler-survey': formTypeName = lang === 'de' ? 'Sportler-Fragebogen' : 'Athletes Questionnaire'; break;
@@ -245,7 +239,7 @@ const SUBJECT_TEMPLATES = {
 };
 
 /* ---------------------------------------------------------------------
-   6 – Netlify Function‑Handler  
+   6 – Netlify Function-Handler  
    ------------------------------------------------------------------ */
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST')
@@ -272,7 +266,7 @@ exports.handler = async (event) => {
   console.log('SMTP-Konfiguration:');
   console.log('Host:', process.env.SMTP_HOST);
   console.log('Port:', process.env.SMTP_PORT);
-  console.log('Secure:', process.env.SMTP_SECURE);
+  console.log('Secure:', process.env.SMTP_PORT === '465');
   console.log('User gesetzt:', !!process.env.SMTP_USER);
   console.log('Passwort gesetzt:', !!process.env.SMTP_PASS);
 
@@ -280,56 +274,56 @@ exports.handler = async (event) => {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: +process.env.SMTP_PORT,
-    secure: process.env.SMTP_SECURE === 'true',
+    secure: process.env.SMTP_PORT === '465',
     auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
   });
 
   try {
-    // Prüfen, ob es eine gültige E-Mail-Adresse gibt
+    // Verbindungs- und Login-Prüfung
+    await transporter.verify();
+
+    // 1. E-Mail an Benutzer senden (wenn gültige E-Mail-Adresse vorhanden)
     const hasValidEmail = data.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
-    
-    // 1. E-Mail an Benutzer senden (wenn eine gültige E-Mail-Adresse vorhanden ist)
     if (hasValidEmail) {
-      const userMailOptions = {
+      await transporter.sendMail({
         from: fromAddress,
         to: data.email,
         subject: t.subject(fullName),
         html: buildHtml(data, lang)
-      };
-      
-      await transporter.sendMail(userMailOptions);
+      });
       console.log(`User confirmation email sent to: ${data.email}`);
     } else {
       console.log('No valid user email provided, skipping confirmation email');
     }
-    
+
     // 2. E-Mail an Team senden (immer)
-    // Betreffzeile aus Template oder Fallback
     const teamSubjectTemplate = SUBJECT_TEMPLATES[lang][formType] || SUBJECT_TEMPLATES[lang]['default'];
-    const teamMailOptions = {
+    await transporter.sendMail({
       from: fromAddress,
       to: bccAddresses,
       subject: teamSubjectTemplate(fullName),
       html: buildTeamNotificationHtml(data, formType, lang)
-    };
-
-    await transporter.sendMail(teamMailOptions);
+    });
     console.log(`Team notification email sent to: ${bccAddresses}`);
-    
-    return { 
-      statusCode: 200, 
+
+    return {
+      statusCode: 200,
       body: JSON.stringify({
         success: true,
-        message: lang === 'de' ? 'E-Mails erfolgreich gesendet' : 'Emails sent successfully'
+        message: lang === 'de'
+          ? 'E-Mails erfolgreich gesendet'
+          : 'Emails sent successfully'
       })
     };
   } catch (err) {
     console.error('Email sending error:', err);
-    return { 
-      statusCode: 500, 
+    return {
+      statusCode: 500,
       body: JSON.stringify({
         success: false,
-        message: lang === 'de' ? 'Fehler beim E-Mail-Versand' : 'Email sending error',
+        message: lang === 'de'
+          ? 'Fehler beim E-Mail-Versand'
+          : 'Email sending error',
         error: err.message
       })
     };
@@ -338,15 +332,9 @@ exports.handler = async (event) => {
 
 // Exportieren der sendConfirmationEmails-Funktion für die Verwendung in formSubmissionProcessing.js
 exports.sendConfirmationEmails = async (formData, formType) => {
-  // Simuliert einen Event-Body, wie er vom Netlify-Handler verwendet wird
   const event = {
     httpMethod: 'POST',
-    body: JSON.stringify({
-      ...formData,
-      form_type: formType
-    })
+    body: JSON.stringify({ ...formData, form_type: formType })
   };
-  
-  // Ruft die Handler-Funktion auf und gibt das Ergebnis zurück
   return await exports.handler(event);
 };

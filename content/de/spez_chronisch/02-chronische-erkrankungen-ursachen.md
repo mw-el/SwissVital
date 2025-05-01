@@ -1,8 +1,7 @@
 ---
-title: "Wie Sportverletzungen entstehen"
-pre_headline: "Vorsorgen statt heilen" 
+title: "Chronische Erkrankungen: Häufige Ursachen"
+pre_headline: "Eine präzise Diagnose ist der erste Schritt zur Heilung"
 type: "pages"
-
 
 # Bildpositionierung
 content_width: 7
@@ -10,7 +9,7 @@ image_width: 5
 image_position: left
 
 # Standardbild (wird vor Interaktion angezeigt)
-image: "/img/sport/_sportverletzung.webp"
+image: "/img/diagnostik/_chronische-erkrankungen.webp"
 image_shadow: "shadow"
 
 # Farbschema
@@ -31,43 +30,54 @@ primary_button_text: ""
 partial: "accordion-inline.html"
 ---
 
-Am besten, Sie verletzen sich erst gar nicht. Damit Sie wissen, worauf Sie achten sollten, geben wir Ihnen hier einen Überblick über die häufigsten Ursachen für Sportverletzungen. Trainieren Sie vorsichtig, dann brauchen Sie unsere Hilfe nicht. Und wenn doch mal etwas passiert: **Wir sind für Sie da**.
+Chronische Krankheiten entwickeln sich oft schleichend. Damit Sie frühzeitig handeln können, zeigen wir Ihnen hier die häufigsten Ursachen, die wir mit moderner Magnetresonanztomografie (MRT), umfassender Labordiagnostik und gezielten Genanalysen abklären können.
 
 {{< inline-accordion >}}
-{{< inline-accordion-item title="Überbeanspruchung" >}}
-**Entstehung:** Wiederholte Bewegungen und Überbeanspruchung von Sehnen und Bändern führen zu Mikroverletzungen und Entzündungen, häufig bei Sportarten wie Tennis, Laufen oder Gewichtheben.
+{{< inline-accordion-item title="Chronische Entzündungen" >}}
+**Entstehung:** Persistierende, oft unbemerkte Entzündungsprozesse («Silent Inflammation») ausgelöst durch Infektionen, Mikroverletzungen oder adipöses Gewebe.  
 
-**Folgen:** Schmerzen, Schwellungen und eingeschränkte Beweglichkeit in betroffenen Gelenken, häufig an Sehnenansätzen wie der Achillessehne oder dem Ellbogen (Tennisarm). Langfristig können diese Verletzungen die Leistungsfähigkeit stark beeinträchtigen.
+**Folgen:** Müdigkeit, Gelenksteifigkeit, erhöhtes kardiovaskuläres Risiko.  
 
-**Diagnose:** Ultraschall oder MRT zur Beurteilung von Entzündungen, Sehnenschäden oder Rissen. Bluttests (z. B. Entzündungsmarker wie CRP) können begleitende Entzündungen nachweisen.
-
+**Diagnose:** Blutbild mit hochsensitivem CRP und Zytokinen (z. B. IL-6), MRT zur Darstellung entzündlicher Läsionen (Darm, Gelenke), genetische Analyse von Entzündungs-SNPs.
 {{< /inline-accordion-item >}}
 
-{{< inline-accordion-item title="Geenkverschleiss (Arthrose)" >}}
-**Entstehung:** Wiederholte Belastung und Fehlbelastungen der Gelenke können im Laufe der Zeit zu einem Verschleiss des Gelenkknorpels führen, besonders bei Sportarten mit starken Belastungen wie Fussball, Basketball oder Laufen.
+{{< inline-accordion-item title="Autoimmunreaktionen" >}}
+**Entstehung:** Fehlgeleitete Immunantwort, getriggert durch Viren, Toxine oder Dysbiose.  
 
-**Folgen:** Schmerzen, eingeschränkte Beweglichkeit und steife Gelenke, insbesondere in den Kniegelenken, Hüften und Sprunggelenken
+**Folgen:** Chronische Schmerzen, Organfunktionsverlust (Schilddrüse, Darm, Gelenke).  
 
-**Diagnose:** Röntgen zur Beurteilung von Gelenkspaltverengungen, Knochenauswüchsen und Knorpelschäden, MRT zur detaillierteren Beurteilung von Knorpel- und Weichteilschäden
-
+**Diagnose:** Autoantikörper-Panel (ANA, ENA, dsDNA), MRT zur Früherkennung von Gelenk- und Organveränderungen, HLA-Typisierung.
 {{< /inline-accordion-item >}}
 
-{{< inline-accordion-item title="Muskelverletzungen (z. B. Zerrungen und Risse)" >}}
-**Entstehung:** Akute Belastungen oder plötzliche Bewegungen können zu Muskelzerrungen oder -rissen führen, insbesondere bei explosiven Sportarten wie Sprinten oder Fussball.
+{{< inline-accordion-item title="Stoffwechselstörungen" >}}
+**Entstehung:** Insulinresistenz, Dyslipidämie oder Purinstoffwechselstörung durch Ernährung, Stress oder Veranlagung.  
 
-**Folgen:** Akute Schmerzen, Blutergüsse und Funktionsverlust im betroffenen Muskelbereich
+**Folgen:** Typ-2-Diabetes, Fettleber, Arteriosklerose, Gicht.  
 
-**Diagnose:** Ultraschall zur schnellen Diagnose von Muskelrissen oder -zerrungen, MRT zur genaueren Beurteilung von Muskelschäden
-
+**Diagnose:** Laborparameter (Glukose, HbA1c, Lipidprofil, Harnsäure), MRT-Leberfettquantifizierung, Genvarianten (PNPLA3, APOE).
 {{< /inline-accordion-item >}}
 
-{{< inline-accordion-item title="Schleimbeutelentzündungen (Bursitis)" >}}
-**Entstehung:** Wiederholte Bewegungen oder Überlastung der Gelenke, insbesondere der Schulter, können die Schleimbeutel entzünden und schmerzhafte Schwellungen verursachen.
+{{< inline-accordion-item title="Hormonelle Dysbalancen" >}}
+**Entstehung:** Störungen der Schilddrüse, Nebennieren oder Gonaden sowie der Hypophysenachsen.  
 
-**Folgen:** Schmerzen bei Bewegung, Schwellungen und Überwärmung des betroffenen Gelenks
+**Folgen:** Gewichtszunahme, Erschöpfung, Zyklusstörungen, Osteoporose.  
 
-**Diagnose:** Ultraschall oder MRT zur Darstellung von entzündeten Schleimbeuteln und Flüssigkeitsansammlungen
-
+**Diagnose:** Umfassendes Hormonpanel (TSH, Cortisol-Tagesprofil, Sexualhormone), MRT von Hypophyse und Nebennieren, genetische Analyse des HPA-Axis-Signalwegs.
 {{< /inline-accordion-item >}}
 
+{{< inline-accordion-item title="Genetische Prädispositionen" >}}
+**Entstehung:** Vererbte oder de-novo Mutationen beeinflussen Stoffwechsel, Entgiftung und Immunfunktion.  
+
+**Folgen:** Erhöhtes Risiko für Krebs, neurodegenerative Erkrankungen oder Thrombosen.  
+
+**Diagnose:** Ganzgenom-Sequenzierung oder gezielte Panels, funktionelle SNP-Analyse, MRT zur Detektion präsymptomatischer Veränderungen (z. B. Hirnvolumen).
+{{< /inline-accordion-item >}}
+
+{{< inline-accordion-item title="Umwelt- und Lebensstilfaktoren" >}}
+**Entstehung:** Chronische Belastung durch Schwermetalle, Feinstaub, Stress, Schlafmangel oder Bewegungsmangel.  
+
+**Folgen:** Erschöpfungssyndrom, kardiometabolische Erkrankungen, Atemwegsleiden.  
+
+**Diagnose:** Bluttests auf Schwermetalle und oxidativen Stress, MRT von Lunge oder Herz, kombinierte Anamnese mit Wearables-Daten.
+{{< /inline-accordion-item >}}
 {{< /inline-accordion >}}
