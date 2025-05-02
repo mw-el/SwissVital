@@ -189,16 +189,19 @@
         {{ end }}
       {{ end }}
       
-      <!-- Navigation buttons -->
-      <div class="{{ if eq $stepIndex 0 }}d-grid{{ else }}d-flex justify-content-between{{ end }} sv-button-container">
+      <!-- Navigation buttons with revised styling -->
+      <div class="{{ if eq $stepIndex 0 }}text-center{{ else }}d-flex justify-content-between{{ end }} sv-button-container">
         {{ if gt $stepIndex 0 }}
-          <button type="button" class="btn btn-secondary sv-btn-xl" data-prev>Zurück</button>
+          <button type="button" class="btn sv-btn sv-btn-richblack-sk btn-cap" data-prev>Zurück</button>
         {{ end }}
         
         {{ if lt $stepIndex (sub (len $resolvedSteps) 1) }}
-          <button type="button" class="btn btn-primary sv-btn-xl" data-next>Weiter</button>
+          <button type="button" class="btn sv-btn sv-btn-red btn-cap" data-next>Weiter</button>
         {{ else }}
-          <button type="submit" class="btn btn-primary sv-btn-xl">Absenden</button>
+          <button type="submit" class="btn sv-btn sv-btn-red btn-cap" id="{{ $formID }}-submit">
+            <span>Absenden</span>
+            <span class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+          </button>
         {{ end }}
       </div>
     </section>
@@ -230,18 +233,33 @@
   
     // Navigation zwischen Formularschritten
     const show = function(n) {
+      // Deactivate all steps, activate the requested one
       steps.forEach(function(s) { s.classList.remove('active'); });
       steps[n-1].classList.add('active');
-  
-      // Nach kurzem Delay sauber zur Überschrift scrollen
+
+      // Get the current step and its title before any automatic scrolling occurs
+      const currentStepEl = steps[n-1];
+      const title = currentStepEl.querySelector('.sv-step-title');
+      
+      // Use setTimeout with a small delay to ensure our scroll happens after any automatic browser scrolling
       setTimeout(() => {
-        const currentStepEl = steps[n-1];
-        const title = currentStepEl.querySelector('.sv-step-title');
         if (title) {
-          const offset = title.getBoundingClientRect().top + window.scrollY - 20;
-          window.scrollTo({ top: offset, behavior: 'smooth' });
+          // Calculate position accounting for any fixed headers
+          const headerOffset = 120; // Adjusted for more space at the top
+          const titlePosition = title.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = titlePosition - headerOffset;
+          
+          // Scroll to the title
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Move keyboard focus to the heading without further scrolling
+          title.setAttribute('tabindex', '-1');
+          title.focus({ preventScroll: true });
         }
-      }, 100);
+      }, 50); // Small delay to let the browser finish its own operations
     };
   
     // Event-Handler für Weiter-Buttons
@@ -265,6 +283,8 @@
   
         if (isValid) {
           show(stepNumber + 1);
+          btn.blur();
+          btn.setAttribute('tabindex','-1');
           btn.blur();             // Fokus vom Button nehmen → verhindert Zurückscrollen
         }
       });
@@ -276,6 +296,8 @@
         const currentStep = btn.closest('.sv-form-step');
         const stepNumber  = +currentStep.dataset.step;
         show(stepNumber - 1);
+        btn.blur();
+        btn.setAttribute('tabindex','-1');
         btn.blur();               // Fokus entfernen
       });
     });
@@ -303,7 +325,74 @@
         }
       });
     }
+    
+    // Form submission and loading indicator
+    const submitBtn = document.getElementById('{{ $formID }}-submit');
+    if (form && submitBtn) {
+      form.addEventListener('submit', function(e) {
+        // Show loading spinner
+        const spinner = submitBtn.querySelector('.spinner-border');
+        const btnText = submitBtn.querySelector('span:first-child');
+        
+        spinner.classList.remove('d-none');
+        btnText.textContent = 'Wird gesendet...';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('submitting');
+        
+        // Start the spinner rotation animation
+        startSpinnerAnimation(spinner);
+      });
+    }
+
+    // Function to animate the spinner
+    function startSpinnerAnimation(spinner) {
+      let rotation = 0;
+      const intervalId = setInterval(() => {
+        rotation += 45; // 45 degrees rotation every step
+        if (rotation >= 360) rotation = 0;
+        
+        spinner.style.transform = `rotate(${rotation}deg)`;
+        
+        // Check if form is still submitting (if not, clear interval)
+        const submitBtn = spinner.closest('button');
+        if (!submitBtn || !submitBtn.classList.contains('submitting')) {
+          clearInterval(intervalId);
+        }
+      }, 500); // Update every 500ms for a smooth animation
+    }
   
     // Accordion-Status-Update-Funktion entfernt – Label bleibt unverändert
   });
-  </script>
+</script>
+
+<!-- Additional CSS for loading state and centered elements -->
+<style>
+/* Submit button loading state */
+.sv-btn.submitting {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Custom spinner styling */
+.spinner-border {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  transition: transform 0.3s ease;
+}
+
+/* Force uppercase text on btn-cap */
+.btn-cap {
+  text-transform: uppercase !important;
+}
+
+/* Centered checkbox container */
+.sv-form-check-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font: 600 1.1rem/1.4 var(--sv-body-font-family);
+  text-align: left;
+}
+</style>
