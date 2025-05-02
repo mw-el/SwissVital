@@ -17,7 +17,7 @@ title: "Familiäre Vorbelastung"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_link: "/fragebogen-familiare-vorbelastung/"
+primary_button_link: "/familiaere-vorbelastung/"
 
 weight: "1"
 ---

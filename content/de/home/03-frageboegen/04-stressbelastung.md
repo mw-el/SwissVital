@@ -17,7 +17,7 @@ title: "Menschen mit Stress"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_link: "/fragebogen-stress/"
+primary_button_link: "/stress/"
 
 weight: "4"
 ---

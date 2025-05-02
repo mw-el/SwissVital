@@ -17,7 +17,7 @@ title: "Breite Vorsorge"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_link: "/fragebogen-breite-vorsorge/"
+primary_button_link: "/breite-vorsorge/"
 
 weight: "5"
 ---

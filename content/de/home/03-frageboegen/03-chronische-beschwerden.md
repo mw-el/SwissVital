@@ -17,7 +17,7 @@ title: "Chronische Beschwerden"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_link: "/fragebogen-chronisch/"
+primary_button_link: "/chronisch/"
 
 weight: "3"
 ---
