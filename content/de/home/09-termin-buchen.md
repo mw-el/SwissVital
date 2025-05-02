@@ -45,7 +45,7 @@ Hier kommen Sie ganz einfach zu Ihrem Termin.
 
 **E-Mail eintragen**, Standort wählen, ab die Post.
 
-{{< spacer >}}   
+{{< spacer >}}
 
 {{< /limit-width >}}
 

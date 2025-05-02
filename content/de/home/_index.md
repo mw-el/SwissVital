@@ -6,4 +6,3 @@ url: "/de"
 automatic_translate: "no"
 ---
 
-

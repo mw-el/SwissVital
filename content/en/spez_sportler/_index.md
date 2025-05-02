@@ -1,8 +1,8 @@
 ---
 type: "pages"
 layout: "list"
-title: "Sportverletzungen"
-url: "/de/sportler"
+title: "Sports Injuries"
+url: "/en/sportler"
 automatic_translate: "no"
 partial: "full-bg.html"
 ---

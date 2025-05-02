@@ -8,6 +8,4 @@ Die Standardanalyse umfasst über 40 verschiedene Parameter, darunter Blutbild, 
 
 Die Laboranalyse kann ideal mit einem MRI-Scan kombiniert werden, um ein umfassendes Bild Ihrer Gesundheit zu erhalten. Dieses ganzheitliche Screening ermöglicht eine präzise Gesundheitsvorsorge auf höchstem Niveau. Die Blutentnahme erfolgt dann in unserem Zentrum, in der Regel a dem Tag, an dem auch das MRI durchgeführt wird. Je nach Umfang der Analysen liegen die Ergebnisse innerhalb von 1-3 Werktagen vor.
 
-Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
-
-
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch.

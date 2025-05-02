@@ -42,12 +42,11 @@ partial: "full-bg.html"
 ---
 
 Gesundheit schützen mit Ganzköper-MRI
-# Wissen macht gesund.
 
+# Wissen macht gesund. 
 
 {{< spacer >}}
 
-
 Seit hochauflösende MRT-Untersuchungen des ganzen Körpers möglich sind, ist ein neues Zeitalter der **Früherkennung** angebrochen. Vor allem bei Krebserkrankungen haben MRT-Scans tausende Leben gerettet.
 
-**Und das ist nur der Anfang** 
+**Und das ist erst der Anfang**

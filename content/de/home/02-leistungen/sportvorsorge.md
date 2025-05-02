@@ -10,6 +10,4 @@ Die ergänzende Laboranalyse gibt Aufschluss über Ihren Stoffwechsel, Nährstof
 
 Die Sportvorsorge ist ideal für Hobby- und Leistungssportler jeder Altersklasse, besonders vor dem Start intensiver Trainingsphasen, bei Leistungsplateaus oder nach Verletzungen.
 
-Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch. 
-
-
+Unsere Präventionsärzte analysieren alle Befunde und erklären Ihnen das Ergebnis in einem persönlichen Gespräch.

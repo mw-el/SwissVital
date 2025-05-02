@@ -4,7 +4,6 @@ pre_headline: "Bessere Befunde durch Zusammenspiel von Technik, Analytik und Erf
 weight: 2
 type: "pages"
 
-
 # Bildpositionierung
 content_width: 7
 image_width: 5

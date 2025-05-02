@@ -1,0 +1,22 @@
+{{ $formID := .Page.Params.id | default (.Get 0) | default "" }}
+{{ if not $formID }}
+  <div class="alert alert-danger">Error: No form ID specified. Please provide a form ID in the front matter or as a parameter.</div>
+{{ else }}
+  {{ $cleanID := replace $formID "form-" "fragebogen_" }}
+  {{ $currentLang := .Page.Language.Lang | default "de" }}
+  {{ $formConfigName := print $cleanID "_" $currentLang }}
+  
+  {{ $formConfig := index site.Data.forms $formConfigName | default nil }}
+  {{ if not $formConfig }}
+    {{ $fallbackName := print $cleanID "_de" }}
+    {{ $formConfig = index site.Data.forms $fallbackName | default nil }}
+    {{ if not $formConfig }}
+      <div class="alert alert-warning">Form configuration not found: {{ $formConfigName }}</div>
+    {{ end }}
+  {{ end }}
+  
+  {{ if $formConfig }}
+    {{ partial "fragebogen-generate-form.html" (dict "FormConfig" $formConfig "Page" $.Page) }}
+  {{ end }}
+{{ end }}
+

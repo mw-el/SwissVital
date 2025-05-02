@@ -17,7 +17,7 @@ title: "Athlete"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_link: "/fragebogen-sportlerler/"
+primary_button_link: "/sportler/"
 
 weight: "2"
 ---

@@ -41,5 +41,5 @@ secondary_button_text: ""
 partial: "full-bg.html"
 ---
 
-Wohin geht ein Arzt, wenn er mal zum Arzt muss? 
-Die meisten Ärzte doktern erst einmal selbst an sich herum. Aber wenn sie doch Hilfe brauchen, haben sie ein Netzwerk aus guten Leuten, die sie vom Studium kennen oder von der gemeinschaftlichen Betreuung einiger Patient:innen. Zu so einer Person gehen sie, wenn sie mal einen Arzt oder eine Ärztin brauchen. Unsere Partner sind nicht nur approbiert und gut ausgebildet; sie haben ihre Fähigkeiten auch im persönlichen Kontakt mit SwissVital bewiesen. 
+Wohin geht ein Arzt, wenn er mal zum Arzt muss?
+Die meisten Ärzte doktern erst einmal selbst an sich herum. Aber wenn sie doch Hilfe brauchen, haben sie ein Netzwerk aus guten Leuten, die sie vom Studium kennen oder von der gemeinschaftlichen Betreuung einiger Patient:innen. Zu so einer Person gehen sie, wenn sie mal einen Arzt oder eine Ärztin brauchen. Unsere Partner sind nicht nur approbiert und gut ausgebildet; sie haben ihre Fähigkeiten auch im persönlichen Kontakt mit SwissVital bewiesen.

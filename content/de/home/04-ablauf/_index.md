@@ -33,4 +33,3 @@ partial: "accordion-image-switch.html"
 ---
 
 Wir begleiten Sie persönlich durch den gesamten Prozess – von der ersten Beratung bis zur ausführlichen Besprechung Ihrer Ergebnisse. Dabei legen wir Wert auf eine transparente und verständliche Kommunikation.
-

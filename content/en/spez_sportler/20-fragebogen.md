@@ -1,7 +1,7 @@
 ---
-title: "Sprechen wir darüber"
-pre_headline: "Was brauchen Sie ?"
-id: "form-sportler"
+title: "Let’s Talk About It"
+pre_headline: "What do you need?"
+id: "fragebogen_sportler"
 layout: "section"
 
 background_color: "var(--sv-offwhite)"
@@ -45,11 +45,11 @@ partial: "full-bg.html"
 
 {{< limit-width >}}
 
-Wir beraten Sie persönlich zu Ihren medizinischen Anliegen.
+We will advise you personally on your medical concerns.
   
-Zur Vorbereitung haben wir diesen Fragebogen vorbereitet. Schicken Sie ihn ab, dann melden Wir uns für einen Besprechungstermin.
+To prepare, we have put together this questionnaire. Send it off… and we will contact you to arrange an appointment.
 {{< spacer >}}
 
 {{< /limit-width >}}
 
-{{< form-sportler-modular >}}
+{{< fragebogen-modular >}}

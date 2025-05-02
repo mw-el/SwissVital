@@ -33,4 +33,3 @@ partial: "accordion-image-switch.html"
 ---
 
 Schmerzen beim Sport sind wichtige Warnsignale. Trainieren Sie nicht einfach weiter. Finden Sie die Ursachen heraus und ziehen Sie dann die richtigen Schlüsse für Ihr Training,
-

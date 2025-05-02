@@ -6,82 +6,82 @@
       "common/fragebogen_step_one_personal_info_en",
       {
         "id": "step2",
-        "title": "Step 2 of 3: Physical Activity",
+        "title": "Step 2 of 3: Athletic Activity",
         "fields": [
           {
             "name": "sport_frequency",
             "type": "radio",
-            "label": "1. How often do you engage in sports?",
+            "label": "1. How often do you exercise?",
             "options": [
-              {"value": "Täglich", "label": "Daily"},
-              {"value": "Mehrmals pro Woche", "label": "Multiple times per week"},
-              {"value": "Einmal pro Woche", "label": "Once per week"},
-              {"value": "Gelegentlich", "label": "Occasionally"},
-              {"value": "Selten bis nie", "label": "Rarely or never"}
+              {"value": "Daily", "label": "Daily"},
+              {"value": "Several times per week", "label": "Several times per week"},
+              {"value": "Once per week", "label": "Once per week"},
+              {"value": "Occasionally", "label": "Occasionally"},
+              {"value": "Rarely to never", "label": "Rarely to never"}
             ]
           },
           {
             "name": "sportarten[]",
             "type": "checkbox",
-            "label": "2. What type of sports do you mainly practice? (Multiple selections possible)",
+            "label": "2. Which type of sport do you primarily participate in? (Multiple selection possible)",
             "options": [
-              {"value": "Kraftsport", "label": "Strength training"},
-              {"value": "Ausdauersport", "label": "Endurance sports"},
-              {"value": "Teamsport", "label": "Team sports"},
-              {"value": "Extremsport", "label": "Extreme sports"},
-              {"value": "Verschiedene", "label": "Various"}
+              {"value": "Strength training", "label": "Strength training"},
+              {"value": "Endurance sports", "label": "Endurance sports"},
+              {"value": "Team sports", "label": "Team sports"},
+              {"value": "Extreme sports", "label": "Extreme sports"},
+              {"value": "Various", "label": "Various"}
             ]
           },
           {
             "name": "recent_injuries",
             "type": "radio",
-            "label": "3. Have you suffered any injuries in the last 12 months?",
+            "label": "3. Have you suffered any injuries in the past 12 months?",
             "options": [
-              {"value": "Ja, schwere Verletzung (z. B. Bänderriss)", "label": "Yes, severe injury (e.g., ligament tear)"},
-              {"value": "Ja, mittelschwere Verletzung (z. B. Zerrung)", "label": "Yes, moderate injury (e.g., strain)"},
-              {"value": "Ja, leichte Beschwerden (z. B. Muskelkater)", "label": "Yes, minor issues (e.g., muscle soreness)"},
-              {"value": "Nein", "label": "No"}
+              {"value": "Yes, severe injury (e.g., ligament tear)", "label": "Yes, severe injury (e.g., ligament tear)"},
+              {"value": "Yes, moderate injury (e.g., strain)", "label": "Yes, moderate injury (e.g., strain)"},
+              {"value": "Yes, minor discomfort (e.g., muscle soreness)", "label": "Yes, minor discomfort (e.g., muscle soreness)"},
+              {"value": "No", "label": "No"}
             ]
           },
           {
             "name": "fruehere_verletzungen[]",
             "type": "checkbox",
-            "label": "4. Previous injuries or overuse damage (Multiple selections possible)",
+            "label": "4. Previous injuries or overuse damage (Multiple selection possible)",
             "options": [
-              {"value": "Knochenbrüche / Gelenkverletzungen", "label": "Bone fractures / joint injuries"},
-              {"value": "Muskel- / Sehnenverletzungen", "label": "Muscle / tendon injuries"},
-              {"value": "Chronische Überlastungsbeschwerden", "label": "Chronic overuse conditions"},
-              {"value": "Andere sportbedingte Probleme", "label": "Other sports-related problems"}
+              {"value": "Fractures / Joint injuries", "label": "Fractures / Joint injuries"},
+              {"value": "Muscle / Tendon injuries", "label": "Muscle / Tendon injuries"},
+              {"value": "Chronic overuse issues", "label": "Chronic overuse issues"},
+              {"value": "Other sports-related problems", "label": "Other sports-related problems"}
             ]
           },
           {
             "name": "koerperregionen[]",
             "type": "checkbox",
-            "label": "5. Which body region do you strain the most? (Multiple selections possible)",
+            "label": "5. Which body region do you strain the most? (Multiple selection possible)",
             "options": [
-              {"value": "Rücken", "label": "Back"},
-              {"value": "Knie / Gelenke", "label": "Knees / joints"},
-              {"value": "Schultern / Arme", "label": "Shoulders / arms"},
-              {"value": "Muskulatur allgemein", "label": "Muscles in general"},
-              {"value": "Ganzer Körper", "label": "Whole body"}
+              {"value": "Back", "label": "Back"},
+              {"value": "Knees / Joints", "label": "Knees / Joints"},
+              {"value": "Shoulders / Arms", "label": "Shoulders / Arms"},
+              {"value": "Musculature in general", "label": "Musculature in general"},
+              {"value": "Whole body", "label": "Whole body"}
             ]
           },
           {
             "name": "pain_after_sport",
             "type": "radio",
-            "label": "6. Do you experience persistent pain after sports?",
+            "label": "6. Do you have persistent pain after exercise?",
             "options": [
-              {"value": "Ja, regelmässig", "label": "Yes, regularly"},
-              {"value": "Gelegentlich", "label": "Occasionally"},
-              {"value": "Nur nach intensiven Einheiten", "label": "Only after intensive sessions"},
-              {"value": "Selten bis nie", "label": "Rarely or never"},
-              {"value": "Keine Schmerzen", "label": "No pain"}
+              {"value": "Yes, regularly", "label": "Yes, regularly"},
+              {"value": "Occasionally", "label": "Occasionally"},
+              {"value": "Only after intensive sessions", "label": "Only after intensive sessions"},
+              {"value": "Rarely to never", "label": "Rarely to never"},
+              {"value": "No pain", "label": "No pain"}
             ]
           },
           {
             "name": "freitext",
             "type": "textarea",
-            "label": "Free text – Is there anything else you would like to tell us?",
+            "label": "Free text – What else would you like to tell us?",
             "required": false,
             "height": 150
           }

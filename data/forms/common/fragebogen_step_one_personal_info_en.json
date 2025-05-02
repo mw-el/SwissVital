@@ -1,0 +1,59 @@
+{
+    "id": "step1",
+    "title": "Step 1 of 3: Personal Information",
+    "fields": [
+      {
+        "name": "vorname",
+        "type": "text",
+        "label": "First Name",
+        "required": true,
+        "placeholder": "First Name *"
+      },
+      {
+        "name": "nachname",
+        "type": "text",
+        "label": "Last Name",
+        "required": true,
+        "placeholder": "Last Name *"
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "label": "Email",
+        "required": true,
+        "placeholder": "name@example.com"
+      },
+      {
+        "name": "geburtsjahr",
+        "type": "number",
+        "label": "Year of Birth",
+        "required": true,
+        "placeholder": "Year of Birth *",
+        "min": 1900,
+        "max": 2050
+      },
+      {
+        "name": "geschlecht",
+        "type": "radio",
+        "label": "Biological Sex",
+        "required": true,
+        "options": [
+          {"value": "männlich", "label": "male"},
+          {"value": "weiblich", "label": "female"},
+          {"value": "möchte ich nicht angeben", "label": "prefer not to say"}
+        ]
+      },
+      {
+        "name": "datenschutz1",
+        "type": "checkbox",
+        "label": "Data Protection",
+        "options": [
+          {
+            "value": "consent",
+            "label": "I agree to the data processing.",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }

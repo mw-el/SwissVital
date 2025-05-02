@@ -1,16 +1,17 @@
 ---
-title: "Verletzungen des Hüftgürtels"
+
+title: "Injuries of the Pelvic Girdle"
 image: "/img/sport/_hueftguertel.webp"
 ---
 
-Häufige Sportverletzungen und Abnutzungserscheinungen des Hüftgelenks und Hüftgürtels entstehen durch Über- oder Fehlbelastung sowie natürliche Abnutzung im Alter. 
+Common sports injuries and degenerative conditions of the hip joint and pelvic girdle arise from over‑ or mis‑loading as well as natural age‑related wear. 
 
-**Trochanterische Bursitis** tritt oft durch wiederholte Belastung bei Aktivitäten wie Laufen, Radfahren oder lange sitzende Tätigkeiten auf, bei denen die Aussenseite der Hüfte immer wieder beansprucht wird. 
+**Trochanteric bursitis** often develops through repetitive loading during activities such as running, cycling or prolonged sitting, where the outside of the hip is repeatedly stressed. 
 
-Das **Hüftimpingement (FAI)** entsteht häufig durch Fehlstellungen des Hüftgelenks oder übermässige Belastung durch Sportarten wie Fussball oder Tennis, bei denen es zu einer Reibung zwischen Oberschenkelkopf und Hüftpfanne kommt. 
+**Hip impingement (FAI)** frequently results from malalignment of the hip joint or excessive sporting load and causes friction between the femoral head and the acetabulum. 
 
-**Arthrose** des Hüftgelenks (Coxarthrose) ist meist das Ergebnis von wiederholter Überbelastung oder natürlichen Alterungsprozessen, die zu einer fortschreitenden Abnutzung des Knorpels führen. 
+**Osteoarthritis** of the hip joint (coxarthrosis) is usually the result of repeated over‑load or natural ageing processes, leading to progressive cartilage wear. 
 
-Eine **Adduktoren- oder Leistenzerrung** tritt häufig nach abrupten Bewegungen wie schnellen Richtungswechseln oder starken Dehnungen, etwa beim Fussball oder Tennis, auf und verursacht Schmerzen im Oberschenkel und in der Leiste. 
+An **adductor or groin strain** often occurs after sudden movements such as quick changes of direction or rapid acceleration and causes pain in the thigh and groin. 
 
-Diese Erkrankungen können durch mangelnde Regeneration, falsche Technik oder Überanstrengung entstehen und sollten frühzeitig behandelt werden, um langanhaltende Schäden zu vermeiden.
+These conditions can arise from insufficient recovery, poor technique or overexertion and should be treated early to avoid long‑lasting damage.

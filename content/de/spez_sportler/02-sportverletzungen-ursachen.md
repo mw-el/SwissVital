@@ -1,6 +1,6 @@
 ---
 title: "Wie Sportverletzungen entstehen"
-pre_headline: "Vorsorgen statt heilen" 
+pre_headline: "Wer seine Risiken kennt, ist immer einen Schritt voraus" 
 type: "pages"
 
 

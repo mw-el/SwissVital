@@ -1,0 +1,5 @@
+{{ $currentLang := .Page.Language.Lang | default "de" }}
+{{ $formConfigName := print "fragebogen_sportler_" $currentLang }}
+{{ $formConfig := index site.Data.forms $formConfigName | default site.Data.forms.fragebogen_sportler_de }}
+
+{{ partial "fragebogen-generate-form.html" (dict "FormConfig" $formConfig "Page" .Page) }}

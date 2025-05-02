@@ -1,18 +1,19 @@
 ---
-title: "Verletzungen des Schultergelenks"
+
+title: "Shoulder Joint Injuries"
 image: "/img/sport/_schulter.webp"
 ---
 
-Häufige **Sportverletzungen des Schultergelenks** und der Rotatorenmanschette entstehen durch Über- oder Fehlbelastung, wie beim Werfen oder Schwimmen. 
+Common **sports injuries of the shoulder joint** and the rotator cuff arise from over‑ or mis‑loading, as in throwing or swimming. 
 
-Dazu gehören **Rotatorenmanschettenverletzungen**, die Schmerzen im Schulterbereich verursachen, besonders bei Armbewegungen über Kopf oder hinter dem Rücken. Betroffene haben oft eingeschränkte Beweglichkeit im Arm, manchmal begleitet von einem Schwächegefühl oder Muskelschwund. 
+These include **rotator‑cuff injuries**, which cause shoulder pain, especially during overhead movements, sometimes accompanied by weakness or muscle wasting. 
 
-Ein weiteres Beispiel ist das **Schulterimpingement-Syndrom**, bei dem wiederholte Belastungen zu einer Einklemmung der Sehnen führen. Dies verursacht stechende Schmerzen, besonders bei Armbewegungen über Schulterhöhe, und eine eingeschränkte Beweglichkeit der Schulter. 
+Another example is **shoulder impingement syndrome**, in which repeated loads pinch tendons under the acromion, leading to pain on movements above shoulder height and limited shoulder mobility. 
 
-Auch Abnutzungserscheinungen wie **Arthrose** des Schultergelenks können durch wiederholte Überbelastung, Fehlbelastung oder altersbedingte Veränderungen auftreten. Symptome sind Schmerzen bei alltäglichen Bewegungen, Steifheit der Schulter und eine zunehmende Einschränkung der Beweglichkeit. 
+Degenerative changes such as **osteoarthritis** of the shoulder joint can also arise from repeated over‑load and lead to shoulder pain and increasing restriction of movement. 
 
-Bei einer **Schulterluxation**, oft nach einem Sturz, treten starke Schmerzen, sichtbare Fehlstellungen, Schwellungen und eine eingeschränkte Beweglichkeit des Gelenks auf. 
+In a **shoulder dislocation**, often after a fall, severe pain, visible misalignment and restricted joint movement occur. 
 
-Ebenso kann eine Bursitis **(Schleimbeutelentzündung)**, die durch falsche Bewegungen entstehen kann, zu Schmerzen, Schwellungen und einer schmerzhaften Bewegungseinschränkung führen. 
+A **bursitis** (inflammation of the bursa), which can be caused by improper movements, can likewise lead to swelling and painful limitation of motion. 
 
-Es ist wichtig, diese Verletzungen und Abnutzungserscheinungen frühzeitig zu behandeln, um dauerhafte Schäden zu vermeiden.
+It is important to treat these injuries and degenerative changes early to prevent permanent damage.

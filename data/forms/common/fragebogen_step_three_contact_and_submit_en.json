@@ -1,0 +1,43 @@
+{
+    "id": "step3",
+    "title": "Step 3 of 3: Contact & Submit",
+    "fields": [
+      {
+        "name": "telefon",
+        "type": "tel",
+        "label": "Phone",
+        "required": true,
+        "placeholder": "Your phone number"
+      },
+      {
+        "name": "rueckruf_zeiten[]",
+        "type": "checkbox",
+        "label": "Preferred callback times (Multiple selection possible)",
+        "options": [
+          {"value": "Vormittags (08:00–12:00 Uhr)", "label": "Morning (8:00 AM–12:00 PM)"},
+          {"value": "Mittags (12:00–14:00 Uhr)", "label": "Noon (12:00 PM–2:00 PM)"},
+          {"value": "Nachmittags (14:00–18:00 Uhr)", "label": "Afternoon (2:00 PM–6:00 PM)"},
+          {"value": "Abends (18:00–20:00 Uhr)", "label": "Evening (6:00 PM–8:00 PM)"}
+        ]
+      },
+      {
+        "name": "zusatzinformationen",
+        "type": "textarea",
+        "label": "Additional information about availability (optional)",
+        "required": false,
+        "height": 100
+      },
+      {
+        "name": "datenschutz",
+        "type": "checkbox",
+        "label": "Data Protection",
+        "options": [
+          {
+            "value": "consent",
+            "label": "I agree to the <a href=\"/en/privacy\">Privacy Policy</a>.",
+            "required": true
+          }
+        ]
+      }
+    ]
+  }

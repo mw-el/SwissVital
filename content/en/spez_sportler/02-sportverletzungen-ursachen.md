@@ -1,6 +1,6 @@
 ---
-title: "Wie Sportverletzungen entstehen"
-pre_headline: "Vorsorgen statt heilen" 
+title: "How Sports Injuries Happen"
+pre_headline: "Know your risk and plan ahead" 
 type: "pages"
 
 
@@ -31,42 +31,42 @@ primary_button_text: ""
 partial: "accordion-inline.html"
 ---
 
-Am besten, Sie verletzen sich erst gar nicht. Damit Sie wissen, worauf Sie achten sollten, geben wir Ihnen hier einen Überblick über die häufigsten Ursachen für Sportverletzungen. Trainieren Sie vorsichtig, dann brauchen Sie unsere Hilfe nicht. Und wenn doch mal etwas passiert: **Wir sind für Sie da**.
+It’s best not to get injured in the first place. To help you understand… and if something does happen: **we are here for you**.
 
 {{< inline-accordion >}}
-{{< inline-accordion-item title="Überbeanspruchung" >}}
-**Entstehung:** Wiederholte Bewegungen und Überbeanspruchung von Sehnen und Bändern führen zu Mikroverletzungen und Entzündungen, häufig bei Sportarten wie Tennis, Laufen oder Gewichtheben.
+{{< inline-accordion-item title="Overuse" >}}
+**Origin:** Repetitive movements and over‑loading of… common in sports such as tennis, running or weightlifting.
 
-**Folgen:** Schmerzen, Schwellungen und eingeschränkte Beweglichkeit in betroffenen Gelenken, häufig an Sehnenansätzen wie der Achillessehne oder dem Ellbogen (Tennisarm). Langfristig können diese Verletzungen die Leistungsfähigkeit stark beeinträchtigen.
+**Consequences:** Pain, swelling and restricted mobility… these injuries can significantly impair performance.
 
-**Diagnose:** Ultraschall oder MRT zur Beurteilung von Entzündungen, Sehnenschäden oder Rissen. Bluttests (z. B. Entzündungsmarker wie CRP) können begleitende Entzündungen nachweisen.
-
-{{< /inline-accordion-item >}}
-
-{{< inline-accordion-item title="Geenkverschleiss (Arthrose)" >}}
-**Entstehung:** Wiederholte Belastung und Fehlbelastungen der Gelenke können im Laufe der Zeit zu einem Verschleiss des Gelenkknorpels führen, besonders bei Sportarten mit starken Belastungen wie Fussball, Basketball oder Laufen.
-
-**Folgen:** Schmerzen, eingeschränkte Beweglichkeit und steife Gelenke, insbesondere in den Kniegelenken, Hüften und Sprunggelenken
-
-**Diagnose:** Röntgen zur Beurteilung von Gelenkspaltverengungen, Knochenauswüchsen und Knorpelschäden, MRT zur detaillierteren Beurteilung von Knorpel- und Weichteilschäden
+**Diagnosis:** Ultrasound or MRI to assess inflammation… blood tests (e.g. CRP) can reveal accompanying inflammation.
 
 {{< /inline-accordion-item >}}
 
-{{< inline-accordion-item title="Muskelverletzungen (z. B. Zerrungen und Risse)" >}}
-**Entstehung:** Akute Belastungen oder plötzliche Bewegungen können zu Muskelzerrungen oder -rissen führen, insbesondere bei explosiven Sportarten wie Sprinten oder Fussball.
+{{< inline-accordion-item title="Joint wear (osteoarthritis)" >}}
+**Origin:** Repeated load and mis‑load of joints… in high‑impact sports such as football, basketball or running.
 
-**Folgen:** Akute Schmerzen, Blutergüsse und Funktionsverlust im betroffenen Muskelbereich
+**Consequences:** Pain, limited mobility and stiff joints… especially in knees, hips and ankles.
 
-**Diagnose:** Ultraschall zur schnellen Diagnose von Muskelrissen oder -zerrungen, MRT zur genaueren Beurteilung von Muskelschäden
+**Diagnosis:** X‑ray to assess joint‑space narrowing, bone spurs and cartilage damage; MRI for a more detailed look at cartilage and soft tissue.
 
 {{< /inline-accordion-item >}}
 
-{{< inline-accordion-item title="Schleimbeutelentzündungen (Bursitis)" >}}
-**Entstehung:** Wiederholte Bewegungen oder Überlastung der Gelenke, insbesondere der Schulter, können die Schleimbeutel entzünden und schmerzhafte Schwellungen verursachen.
+{{< inline-accordion-item title="Muscle injuries (e.g. strains and tears)" >}}
+**Origin:** Acute stresses or sudden movements can… particularly in explosive sports such as sprinting or football.
 
-**Folgen:** Schmerzen bei Bewegung, Schwellungen und Überwärmung des betroffenen Gelenks
+**Consequences:** Acute pain, bruising and loss of function in the affected muscle region.
 
-**Diagnose:** Ultraschall oder MRT zur Darstellung von entzündeten Schleimbeuteln und Flüssigkeitsansammlungen
+**Diagnosis:** Ultrasound for rapid diagnosis of muscle tears… MRI for a more precise assessment of muscle damage.
+
+{{< /inline-accordion-item >}}
+
+{{< inline-accordion-item title="Bursitis (inflammation of bursae)" >}}
+**Origin:** Repetitive movements or over‑loading of joints can… cause the bursae to become inflamed and painfully swollen.
+
+**Consequences:** Pain on movement, swelling and warmth of the affected joint.
+
+**Diagnosis:** Ultrasound or MRI to visualise inflamed bursae and fluid collections.
 
 {{< /inline-accordion-item >}}
 

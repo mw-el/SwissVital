@@ -13,8 +13,8 @@ image: "/img/home/macbook-mri.jpg"
 image-shadow: "shadow"  # default to "shadow" for a simple drop-shadow effect
 layout: "section"
 text_color: "var(--sv-richblack)"
-pre_headline: "Protect Your Health with Whole-Body MRI" 
-title: "Knowledge makes healthy."
+pre_headline: "" 
+title: ""
 # ------------------------------------------------------------------------------
 # Available button classes (solid & skeleton):
 #   sv-btn-red            | sv-btn-red-sk
@@ -40,6 +40,10 @@ secondary_button_text: ""
 partial: "full-bg.html"
 ---
 
+Protect Your Health with Whole-Body MRI
+# Knowledge is Health.
+
+
 With high-resolution whole-body MRI scans now possible, a new era of **early detection** has begun. Especially in cancer cases, MRI scans have saved thousands of lives.
 
-And that's just the beginning.
+**And that's just the beginning.**

@@ -3,7 +3,6 @@ title: ""
 pre_headline: "" 
 type: "pages"
 
-
 # Bildpositionierung
 content_width: 7
 image_width: 5
@@ -25,17 +24,15 @@ button_placement: "accordion"
 button_alignment: "left"
 primary_button_class: "sv-btn-royalblue btn-cap"
 primary_button_link: "#termin-buchen"
-primary_button_text: "Untersuchung buchen"
+primary_button_text: "Book an examination"
 partial: "full-bg.html"
 ---
-Vorsorgen statt heilen
-# Hilfe für Sportler
 
+Prevention beats therapy every time
+# Help for Athletes
 
 {{< spacer >}}
 
-Wir haben viel Erfahrung mit der gesamten Diagnostik des Bewegungsapparats und konnten schon hunderten Sportlern helfen, sich wieder wohl und leistungsfähig zu fühlen.
+We have extensive experience with complete musculoskeletal diagnostics… helping athletes feel good and perform at their best again.
 
-Wenn Sie Beschwerden plagen, die Sie einfach nicht loswerden, können wir bestimmt Klarheit schaffen. Damit Sie Ihr Training anpassen oder wirksame Therapieoptionen wählen können.  
-
-
+If nagging ailments just won’t go away, we can… adapt your training or select effective therapy options.  

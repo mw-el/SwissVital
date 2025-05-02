@@ -1,7 +1,7 @@
 ---
 title: "Sprechen wir darüber"
 pre_headline: "Was brauchen Sie ?"
-id: "form-sportler"
+id: "fragebogen_sportler"
 layout: "section"
 
 background_color: "var(--sv-offwhite)"
@@ -52,4 +52,4 @@ Zur Vorbereitung haben wir diesen Fragebogen vorbereitet. Schicken Sie ihn ab, d
 
 {{< /limit-width >}}
 
-{{< form-sportler-modular >}}
+{{< fragebogen-modular >}}

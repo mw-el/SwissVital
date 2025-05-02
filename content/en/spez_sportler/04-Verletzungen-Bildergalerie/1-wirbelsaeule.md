@@ -1,18 +1,18 @@
 ---
-title: "Verletzungen der Wirbelsäule"
+title: "Spinal Injuries"
 image: "/img/sport/_wirbelsaeule.webp"
 ---
 
-Häufige Erkrankungen der Wirbelsäule durch Sport, Über- oder Fehlbelastung sowie Abnutzungserscheinungen sind unter anderem Bandscheibenprobleme wie ein **Bandscheibenvorfall**, bei dem der Gallertkern der Bandscheibe austritt und auf Nerven drückt, was zu Rückenschmerzen und Taubheitsgefühlen führt. 
+Common spinal conditions caused by sport, over‑ or mis‑loading include disc problems such as a **herniated disc**, where the nucleus pulposus presses on nerves, leading to back pain and numbness. 
 
-Spondylose **(Arthrose der Wirbelsäule)** ist eine Abnutzung der Bandscheiben und Wirbelgelenke, oft ausgelöst durch wiederholte Belastung oder Fehlhaltungen, und verursacht einen steifen Rücken, Schmerzen und eingeschränkte Beweglichkeit. 
+Spondylosis **(spinal osteoarthritis)** is degeneration of the discs and facet joints, often triggered by repeated loading or poor posture, and causes a stiff back, pain and limited mobility. 
 
-**Spondylolisthesis** tritt auf, wenn ein Wirbel aufgrund von Abnutzung oder Verletzungen nach vorne oder hinten gleitet, was zu Schmerzen und Bewegungsstörungen führt. 
+**Spondylolisthesis** occurs when a vertebra slips forward or backward because of wear or injury, causing pain and movement problems. 
 
-**Ischialgie**, also Reizung des Ischiasnervs, wird durch Überlastung oder Fehlstellungen der Wirbelsäule verursacht und führt zu Schmerzen, die ins Bein ausstrahlen. 
+**Sciatica**, irritation of the sciatic nerve, is caused by over‑load or poor posture of the spine and leads to pain radiating down the leg. 
 
-**Degenerative Wirbelsäulenerkrankungen**, wie etwa Spinalkanalstenose, bei der sich der Raum um das Rückenmark verengt, können zu Nervenschmerzen und Bewegungseinschränkungen führen. 
+**Degenerative spinal disorders**, such as spinal canal stenosis where the space around the spinal cord narrows, can lead to nerve pain and restricted movement. 
 
-Eine weitere häufige Erkrankung ist die **Zervikale Spondylose**, die durch Abnutzung der Halswirbelsäule verursacht wird und zu Nackensteifigkeit und Kopfschmerzen führt. 
+Another common condition is **cervical spondylosis**, which is caused by wear of the cervical spine and results in neck stiffness and headaches. 
 
-Diese Erkrankungen entstehen oft durch falsche Bewegungen, mangelnde Regeneration oder wiederholte Belastungen. Frühzeitige Behandlung hilft, langfristige Schäden zu vermeiden.
+These disorders often arise from incorrect movements, lack of stability or repeated loads. Early treatment helps prevent long‑term damage.
