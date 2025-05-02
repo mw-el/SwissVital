@@ -1,1 +1,142 @@
-generate-form.html
+
+{{/* accordion.html | Combines the content of an entire Folder ito an Accordion */}}
+
+{{ $cwStr := .Params.content_width | default "12" }}
+{{ $iwStr := .Params.image_width | default "0" }}
+{{ $pos   := .Params.image_position | default "right" | lower }}
+{{ $cw := int $cwStr }}
+{{ $iw := int $iwStr }}
+{{ $full := eq $iw 0 }}
+{{ $startsWithImage := and (not $full) (eq $pos "left") }}
+{{ $cw = cond (gt $cw 12) 12 $cw }}
+{{ $iw = cond (gt $iw 12) 12 $iw }}
+{{ $contentCol := printf "col-md-%d" $cw }}
+{{ $imageCol := cond $full "" (printf "col-md-%d" $iw) }}
+
+{{ $imgPath := .Params.image | default "" }}
+{{ if not (hasPrefix $imgPath "/") }}
+  {{ $imgPath = print "/" $imgPath }}
+{{ end }}
+{{ $img := resources.Get (strings.TrimPrefix "/" $imgPath) }}
+{{ $desk := "" }}{{ $mob := "" }}
+{{ if $img }}
+  {{ $desk = ($img.Resize "1400x q85").RelPermalink }}
+  {{ $mob  = ($img.Fill   "800x800 Top q85").RelPermalink }}
+{{ else }}
+  {{ $desk = $imgPath }}{{ $mob = $imgPath }}
+{{ end }}
+{{ $shadow := .Params.image_shadow | default "" }}
+
+{{ $bgColor := .Params.background_color | default "var(--sv-imperialred)" | safeCSS }}
+{{ $textColor := .Params.text_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionBgColor := .Params.accordion_background_color | default $bgColor | safeCSS }}
+{{ $accordionContentBgColor := .Params.accordion_content_background_color | default "var(--sv-offwhite)" | safeCSS }}
+{{ $accordionAccentColor := .Params.accordion_accent_color | default "var(--sv-pumpkin)" | safeCSS }}
+{{ $accordionAccentColorRGB := .Params.accordion_accent_color_rgb | default "248, 119, 30" | safeCSS }}
+
+{{ $preHeadline := .Params.pre_headline }}
+{{ $headlineAlign := .Params.headline_align | default "left" | safeCSS }}
+{{ $bodyTextAlign := .Params.body_text_align | default "left" | safeCSS }}
+
+{{ $accordionID := print "accordion-" (.File.ContentBaseName | urlize) }}
+
+<section class="sv-section sv-accordion-section">
+  <div class="sv-bg-canvas" style="background-color: {{ $bgColor }}; color: {{ $textColor }};">
+    <div class="container px-0">
+      <div class="row gx-md-5 align-items-stretch">
+
+        {{ if and (not $full) $startsWithImage }}
+          <div class="{{ $imageCol }} h-100 d-none d-md-flex">
+            <div class="flex-fill rounded-4 overflow-hidden {{ $shadow }}">
+              <img src="{{ $desk }}" alt="{{ .Title }}" class="w-100 h-100" style="object-fit:cover;object-position:50% 10%;" />
+            </div>
+          </div>
+        {{ end }}
+
+        <div class="{{ $contentCol }} d-flex flex-column h-100" style="text-align:{{ $bodyTextAlign }};">
+          <div class="sv-heading" style="text-align:{{ $headlineAlign }};">
+            {{ with $preHeadline }}<p class="sv-pre-headline">{{ . }}</p>{{ end }}
+            <h2 id="{{ .Params.id | default (.Title | urlize) }}" class="sv-spacer">{{ .Title }}</h2>
+          </div>
+
+          {{ if and (not $full) $mob }}
+            <div class="d-block d-md-none rounded-4 overflow-hidden {{ $shadow }} mb-4">
+              <img src="{{ $mob }}" alt="{{ .Title }}" class="w-100" style="aspect-ratio:1/1;object-fit:cover;object-position:center bottom;" />
+            </div>
+          {{ end }}
+
+          {{ if .Content }}
+            <div class="sv-text-content flex-grow-1">
+              <div class="sv-accordion-intro">
+                {{ .Content | safeHTML }}
+              </div>
+            </div>
+          {{ end }}
+
+          <div class="sv-accordion-container mt-4">
+            <div class="accordion" id="{{ $accordionID }}">
+              {{ range $index, $page := .Pages }}
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="heading-{{ $page.File.ContentBaseName | urlize }}">
+                    <button class="accordion-button collapsed" 
+                            type="button" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapse-{{ $page.File.ContentBaseName | urlize }}" 
+                            aria-expanded="false" 
+                            aria-controls="collapse-{{ $page.File.ContentBaseName | urlize }}">
+                      {{ $page.Title }}
+                    </button>
+                  </h3>
+                  <div id="collapse-{{ $page.File.ContentBaseName | urlize }}" 
+                       class="accordion-collapse collapse" 
+                       aria-labelledby="heading-{{ $page.File.ContentBaseName | urlize }}" 
+                       data-bs-parent="#{{ $accordionID }}">
+                    <div class="accordion-body" style="background-color: {{ $accordionContentBgColor }};">
+                      {{ $page.Content | safeHTML }}
+                    </div>
+                  </div>
+                </div>
+              {{ end }}
+            </div>
+          </div>
+        </div>
+
+        {{ if and (not $full) (not $startsWithImage) }}
+          <div class="{{ $imageCol }} h-100 d-none d-md-flex">
+            <div class="flex-fill rounded-4 overflow-hidden {{ $shadow }}">
+              <img src="{{ $desk }}" alt="{{ .Title }}" class="w-100 h-100" style="object-fit:cover;object-position:50% 10%;" />
+            </div>
+          </div>
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  #{{ $accordionID }} .accordion-item {
+    background-color: {{ $accordionBgColor }} !important;
+    border: 1px solid {{ $accordionAccentColor }} !important;
+  }
+
+  #{{ $accordionID }} .accordion-button {
+    background-color: {{ $accordionBgColor }} !important;
+    color: {{ $textColor }} !important;
+  }
+
+  #{{ $accordionID }} .accordion-button:not(.collapsed),
+  #{{ $accordionID }} .accordion-button:hover {
+    background-color: {{ $accordionAccentColor }} !important;
+    color: {{ $textColor }} !important;
+  }
+
+  #{{ $accordionID }} .accordion-body {
+    background-color: {{ $accordionContentBgColor }} !important;
+    color: inherit;
+  }
+
+  #{{ $accordionID }} .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23{{ replace (replace $textColor "var(--" "" ) ")" "" }}'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+  }
+</style>

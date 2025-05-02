@@ -47,8 +47,7 @@ partial: "full-bg.html"
 
 Wir beraten Sie persönlich zu Ihren medizinischen Anliegen.
   
-Zur Vorbereitung haben wir diesen Fragebogen vorbereitet. Schicken Sie ihn ab, dann melden Wir uns für einen Besprechungstermin. Das Formular enthält nur die wichtigsten Fragen, damit Sie wenig Arbeit haben. Im Gespräch ist Zeit für alle Details.
-
+Zur Vorbereitung haben wir diesen Fragebogen vorbereitet. Schicken Sie ihn ab, dann melden Wir uns für einen Besprechungstermin.
 {{< spacer >}}
 
 {{< /limit-width >}}
