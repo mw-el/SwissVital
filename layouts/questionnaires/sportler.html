@@ -1,9 +1,11 @@
+<!-- 
+  Generiert das Formular mit Hilfe des gererate-form.html partials auf 
+  basis der Bauanleitung aus einer yaml-Datei in assets/data/forms 
+-->
+
 {{ define "main" }}
 <div class="sv-questionnaire-container">
-  <h1>Sportler-Fragebogen</h1>
-  <p class="lead">Bitte füllen Sie den folgenden Fragebogen aus, um Ihre individuellen Bedürfnisse als Sportler besser zu verstehen.</p>
-  
-  {{ $formConfig := site.Data.forms.sportler_questionnaire }}
+    {{ $formConfig := site.Data.forms.sportler_questionnaire }}
   {{ partial "generate-form.html" (dict "FormConfig" $formConfig) }}
 </div>
 {{ end }}

@@ -37,7 +37,6 @@
       "type": "radio",
       "label": "Biologisches Geschlecht",
       "required": true,
-      "tooltip": "Für diagnostische Zwecke – z.&nbsp;B. Laboruntersuchungen – ist das biologische Geschlecht wichtig, unabhängig von Ihrer geschlechtlichen Identität.",
       "options": [
         {"value": "männlich", "label": "männlich"},
         {"value": "weiblich", "label": "weiblich"},

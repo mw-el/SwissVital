@@ -7,8 +7,7 @@
         "type": "tel",
         "label": "Telefon",
         "required": true,
-        "placeholder": "Ihre Telefonnummer",
-        "tooltip": "Bitte Mobilnummer mit Landesvorwahl angeben, z.&nbsp;B. +41 79 123 45 67"
+        "placeholder": "Ihre Telefonnummer"
       },
       {
         "name": "rueckruf_zeiten[]",

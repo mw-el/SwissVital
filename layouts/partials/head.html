@@ -41,3 +41,14 @@
 
 {{ $svStyles := resources.Get "css/sv-styles.css" | resources.ExecuteAsTemplate "css/sv-styles.css" . | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $svStyles.RelPermalink }}">
+
+{{ $formsStyles := resources.Get "css/sv-forms.css" | resources.ExecuteAsTemplate "css/sv-forms.css" . | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $formsStyles.RelPermalink }}">
+
+{{ $accordionStyles := resources.Get "css/sv-accordion.css" | resources.ExecuteAsTemplate "css/sv-accordion.css" . | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $accordionStyles.RelPermalink }}">
+
+{{ $buttonStyles := resources.Get "css/sv-buttons.css" | resources.ExecuteAsTemplate "css/sv-buttons.css" . | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $buttonStyles.RelPermalink }}">
+
+

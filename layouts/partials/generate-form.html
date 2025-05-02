@@ -1,3 +1,13 @@
+<!-- 
+  Generiert Formulare aus yaml dateien, die deren struktur beschreiben
+  yaml formulare liegen in assets/data/forms
+  Wiederverwertbare Formularbestandteile in assets/data/forms/common
+  Die Formulargenerierung wird durch layout-files in layouts/questionnaires/ getriggert
+  z.B. layouts/questionnaires/sportler.html
+  Das Formular kann dasn durch eien shortcode z.B. form-sprtler-modular.html 
+  in Markdown-Seiten eingebunden werden. 
+-->
+
 {{ $formConfig := .FormConfig }}
 {{ $formID := $formConfig.id }}
 
@@ -212,143 +222,88 @@
 
 <!-- Formularspezifisches JavaScript -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('{{ $formID }}');
-  if (!form) return;
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('{{ $formID }}');
+    if (!form) return;
   
-  const steps = form.querySelectorAll('.sv-form-step');
+    const steps = form.querySelectorAll('.sv-form-step');
   
-  // Navigation zwischen Formularschritten
-  const show = function(n) { 
-    steps.forEach(function(s) { s.classList.remove('active'); });
-    steps[n-1].classList.add('active');
-    window.scroll({top: form.offsetTop-20, behavior:'smooth'}); 
-  };
-
-  // Event-Handler für Weiter-Buttons
-  form.querySelectorAll('[data-next]').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      const currentStep = btn.closest('.sv-form-step');
-      const stepNumber = +currentStep.dataset.step;
-      
-      // Basic validation of current step
-      const requiredFields = currentStep.querySelectorAll('input[required], textarea[required], select[required]');
-      let isValid = true;
-      
-      requiredFields.forEach(function(field) {
-        if (!field.checkValidity()) {
-          isValid = false;
-          field.reportValidity();
+    // Navigation zwischen Formularschritten
+    const show = function(n) {
+      steps.forEach(function(s) { s.classList.remove('active'); });
+      steps[n-1].classList.add('active');
+  
+      // Nach kurzem Delay sauber zur Überschrift scrollen
+      setTimeout(() => {
+        const currentStepEl = steps[n-1];
+        const title = currentStepEl.querySelector('.sv-step-title');
+        if (title) {
+          const offset = title.getBoundingClientRect().top + window.scrollY - 20;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+      }, 100);
+    };
+  
+    // Event-Handler für Weiter-Buttons
+    form.querySelectorAll('[data-next]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const currentStep = btn.closest('.sv-form-step');
+        const stepNumber  = +currentStep.dataset.step;
+  
+        // Grundvalidierung des aktuellen Schritts
+        const requiredFields = currentStep.querySelectorAll(
+          'input[required], textarea[required], select[required]'
+        );
+        let isValid = true;
+  
+        requiredFields.forEach(function(field) {
+          if (!field.checkValidity()) {
+            isValid = false;
+            field.reportValidity();
+          }
+        });
+  
+        if (isValid) {
+          show(stepNumber + 1);
+          btn.blur();             // Fokus vom Button nehmen → verhindert Zurückscrollen
         }
       });
-      
-      if (isValid) {
-        show(stepNumber + 1);
-      }
     });
-  });
-
-  // Event-Handler für Zurück-Buttons
-  form.querySelectorAll('[data-prev]').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      const currentStep = btn.closest('.sv-form-step');
-      const stepNumber = +currentStep.dataset.step;
-      show(stepNumber - 1);
-    });
-  });
-
-  // Telefonnummer-Formatierung
-  const tel = document.getElementById('{{ $formID }}-telefon');
-  if (tel) {
-    tel.addEventListener('blur', function() {
-      const input = tel.value.trim();
-      
-      // Basic validation for Swiss phone numbers
-      if(input.startsWith('+41') || input.startsWith('0041') || input.startsWith('00 41')) {
-        // Format is fine, optionally clean it up
-        return;
-      } else if(input.startsWith('0')) {
-        // Convert local format to international
-        const cleaned = input.replace(/\D/g,'');
-        if(cleaned.length === 10 && cleaned.startsWith('0')) {
-          tel.value = '+41 ' + cleaned.substring(1, 3) + ' ' + 
-                      cleaned.substring(3, 6) + ' ' + 
-                      cleaned.substring(6, 8) + ' ' + 
-                      cleaned.substring(8, 10);
-        } else {
-          alert('Bitte geben Sie eine gültige Schweizer Telefonnummer ein, z.B. +41 79 123 45 67');
-        }
-      } else {
-        // Not recognizable as Swiss number
-        alert('Bitte geben Sie eine gültige Telefonnummer mit Landesvorwahl an, z.B. +41 79 123 45 67');
-      }
-    });
-  }
   
-  // Accordion-Status anzeigen in Accordion-Button
-  document.querySelectorAll('.accordion-button').forEach(function(button) {
-    const accordionItem = button.closest('.accordion-item');
-    const accordionBody = accordionItem.querySelector('.accordion-body');
-    
-    if (!accordionBody) return;
-    
-    const checkboxes = accordionBody.querySelectorAll('input[type="checkbox"]');
-    const radioButtons = accordionBody.querySelectorAll('input[type="radio"]');
-    
-    // Funktion zum Aktualisieren des Accordion-Button-Textes basierend auf Auswahl
-    const updateButtonText = function() {
-      const originalText = button.getAttribute('data-original-text') || button.textContent;
-      
-      // Wenn keine data-original-text gesetzt ist, speichern wir den ursprünglichen Text
-      if (!button.getAttribute('data-original-text')) {
-        button.setAttribute('data-original-text', originalText);
-      }
-      
-      let selectedValues = [];
-      
-      // Checkboxen (Mehrfachauswahl)
-      if (checkboxes.length > 0) {
-        checkboxes.forEach(function(cb) {
-          if (cb.checked) {
-            const label = cb.nextElementSibling;
-            if (label && label.textContent) {
-              selectedValues.push(label.textContent.trim());
-            }
-          }
-        });
-      }
-      
-      // Radiobuttons (Einfachauswahl)
-      if (radioButtons.length > 0) {
-        radioButtons.forEach(function(rb) {
-          if (rb.checked) {
-            const label = rb.nextElementSibling;
-            if (label && label.textContent) {
-              selectedValues.push(label.textContent.trim());
-            }
-          }
-        });
-      }
-      
-      // Text aktualisieren
-      if (selectedValues.length > 0) {
-        button.innerHTML = originalText + ': <span class="sv-selected-options">' + selectedValues.join(', ') + '</span>';
-      } else {
-        button.textContent = originalText;
-      }
-    };
-    
-    // Event-Listener für Änderungen an Checkboxen und Radiobuttons
-    checkboxes.forEach(function(cb) {
-      cb.addEventListener('change', updateButtonText);
+    // Event-Handler für Zurück-Buttons
+    form.querySelectorAll('[data-prev]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const currentStep = btn.closest('.sv-form-step');
+        const stepNumber  = +currentStep.dataset.step;
+        show(stepNumber - 1);
+        btn.blur();               // Fokus entfernen
+      });
     });
-    
-    radioButtons.forEach(function(rb) {
-      rb.addEventListener('change', updateButtonText);
-    });
-    
-    // Initialen Status setzen
-    updateButtonText();
+  
+    // Telefonnummer-Formatierung
+    const tel = document.getElementById('{{ $formID }}-telefon');
+    if (tel) {
+      tel.addEventListener('blur', function() {
+        const input = tel.value.trim();
+  
+        if (input.startsWith('+41') || input.startsWith('0041') || input.startsWith('00 41')) {
+          return;
+        } else if (input.startsWith('0')) {
+          const cleaned = input.replace(/\D/g, '');
+          if (cleaned.length === 10 && cleaned.startsWith('0')) {
+            tel.value = '+41 ' + cleaned.substring(1, 3) + ' ' +
+                        cleaned.substring(3, 6) + ' ' +
+                        cleaned.substring(6, 8) + ' ' +
+                        cleaned.substring(8, 10);
+          } else {
+            alert('Bitte geben Sie eine gültige Schweizer Telefonnummer ein, z.B. +41 79 123 45 67');
+          }
+        } else {
+          alert('Bitte geben Sie eine gültige Telefonnummer mit Landesvorwahl an, z.B. +41 79 123 45 67');
+        }
+      });
+    }
+  
+    // Accordion-Status-Update-Funktion entfernt – Label bleibt unverändert
   });
-});
-</script>
+  </script>
