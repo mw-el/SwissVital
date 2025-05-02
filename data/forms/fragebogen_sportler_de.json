@@ -3,7 +3,7 @@
     "title": "Sportler-Fragebogen",
     "form_type": "sportler-survey",
     "steps": [
-      "common/step_one_personal_info",
+      "common/fragebogen_step_one_personal_info_de",
       {
         "id": "step2",
         "title": "Schritt 2 von 3: Sportliche Aktivität",
@@ -87,6 +87,6 @@
           }
         ]
       },
-      "common/step_three_contact_and_submit"
+      "common/fragebogen_step_three_contact_and_submit_de"
     ]
   }

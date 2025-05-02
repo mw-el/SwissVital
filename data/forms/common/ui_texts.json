@@ -1,0 +1,16 @@
+{
+    "next": "Weiter",
+    "back": "Zurück",
+    "submit": "Absenden",
+    "success_title": "Vielen Dank für Ihre Anmeldung!",
+    "success_summary": "Sie haben uns das Folgende mitgeteilt:",
+    "email_confirm": "Eine Bestätigung wurde an Ihre E-Mail-Adresse gesendet.",
+    "loading": "Wird gesendet...",
+    "error_required": "Dieses Feld wird benötigt",
+    "error_email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "error_phone": "Bitte geben Sie eine gültige Telefonnummer ein",
+    "error_numeric": "Bitte geben Sie eine Zahl ein",
+    "error_year": "Bitte geben Sie ein gültiges vierstelliges Jahr ein (z.B. 1980)",
+    "error_gender": "Bitte geben Sie Ihr biologisches Geschlecht an, da es für bestimmte diagnostische Verfahren und die Interpretation von Testergebnissen relevant it; unabhängig von Ihrer Geschlechtsidentität.",
+    "form_error": "Bei der Übermittlung des Formulars ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+  }

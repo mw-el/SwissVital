@@ -1,0 +1,439 @@
+<!-- 
+  Generiert Formulare aus yaml dateien, die deren struktur beschreiben
+  yaml formulare liegen in assets/data/forms
+  Wiederverwertbare Formularbestandteile in assets/data/forms/common
+  Die Formulargenerierung wird durch layout-files in layouts/questionnaires/ getriggert
+  z.B. layouts/questionnaires/sportler.html
+  Das Formular kann dasn durch eien shortcode z.B. form-sprtler-modular.html 
+  in Markdown-Seiten eingebunden werden. 
+-->
+
+{{ $formConfig := .FormConfig }}
+{{ $formID := $formConfig.id }}
+{{ $currentLang := .Page.Language.Lang | default "de" }}
+
+<!-- Import common UI texts based on current language -->
+{{ $uiTextsFileName := print "ui_texts_" $currentLang }}
+{{ $uiTexts := index site.Data.forms.common $uiTextsFileName | default dict }}
+
+<!-- If language-specific UI texts don't exist, fall back to German -->
+{{ if not $uiTexts }}
+  {{ $uiTexts = index site.Data.forms.common "ui_texts_de" | default dict }}
+{{ end }}
+
+<form id="{{ $formID }}" class="sv-multistep-form"
+      name="{{ $formID }}" method="POST"
+      data-netlify="true" netlify-honeypot="bot-field">
+
+  <!-- Hidden Fields -->
+  <input type="hidden" name="language" value="{{ $currentLang }}">
+  <input type="hidden" name="form-name" value="{{ $formID }}">
+  <input type="hidden" name="form_type" value="{{ $formConfig.form_type }}">
+  
+  <!-- Spam-Schutz-Felder -->
+  {{ partial "spam-protection-fields.html" (dict "FORM_ID" $formID) }}
+  
+  <!-- Original honeypot field für Netlify -->
+  <p class="d-none"><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+
+  {{ $fieldLabels := dict }}
+  {{ $resolvedSteps := slice }}
+  
+  <!-- Resolve step imports with language suffix where appropriate -->
+  {{ range $stepRef := $formConfig.steps }}
+    {{ if eq (printf "%T" $stepRef) "string" }}
+      <!-- This is an import reference -->
+      {{ $parts := split $stepRef "/" }}
+      {{ $namespace := index $parts 0 }}
+      {{ $fileName := index $parts 1 }}
+      
+      {{ if and $namespace $fileName }}
+        <!-- Try to find language-specific version -->
+        {{ $langFileName := print $fileName "_" $currentLang }}
+        
+        {{ if eq $namespace "common" }}
+          <!-- Check if language-specific version exists -->
+          {{ $langStep := index site.Data.forms.common $langFileName | default nil }}
+          
+          {{ if $langStep }}
+            <!-- Language-specific version found -->
+            {{ $resolvedSteps = $resolvedSteps | append $langStep }}
+          {{ else }}
+            <!-- Fall back to default version -->
+            {{ $step := index site.Data.forms.common $fileName | default nil }}
+            {{ if $step }}
+              {{ $resolvedSteps = $resolvedSteps | append $step }}
+            {{ else }}
+              <!-- Log error but continue -->
+              {{ warnf "Could not find form step: %s/%s" $namespace $fileName }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      <!-- This is a direct step definition -->
+      {{ $resolvedSteps = $resolvedSteps | append $stepRef }}
+    {{ end }}
+  {{ end }}
+  
+  <!-- Generate form with resolved steps -->
+  {{ range $stepIndex, $step := $resolvedSteps }}
+    {{ if $step }}
+      <section id="{{ $formID }}-step-{{ add $stepIndex 1 }}" class="sv-form-step {{ if eq $stepIndex 0 }}active{{ end }}" data-step="{{ add $stepIndex 1 }}">
+        <h3 class="sv-step-title mb-4">{{ if isset $step "title" }}{{ $step.title }}{{ else }}Schritt {{ add $stepIndex 1 }}{{ end }}</h3>
+        
+        {{ if isset $step "fields" }}
+          {{ range $field := $step.fields }}
+            {{ if isset $field "name" }}
+              {{ $fieldID := print $formID "-" $field.name | replaceRE "\\[\\]$" "" }}
+              {{ $fieldName := $field.name }}
+              
+              <!-- Add field label to the fieldLabels dictionary -->
+              {{ if not (strings.HasSuffix $fieldName "[]") }}
+                {{ $fieldLabels = merge $fieldLabels (dict $fieldName $field.label) }}
+              {{ else }}
+                <!-- Handle array field labels by removing trailing [] -->
+                {{ $cleanFieldName := replace $fieldName "[]" "" }}
+                {{ $fieldLabels = merge $fieldLabels (dict $cleanFieldName $field.label) }}
+              {{ end }}
+              
+              {{ if eq $field.type "text" "email" "tel" "number" }}
+                <div class="form-floating sv-form-floating mb-3">
+                  <input 
+                    class="form-control" 
+                    id="{{ $fieldID }}" 
+                    name="{{ $field.name }}"
+                    type="{{ $field.type }}"
+                    placeholder="{{ $field.placeholder | default "" }}"
+                    {{ if isset $field "required" }}{{ if $field.required }}required{{ end }}{{ end }}
+                    {{ if isset $field "min" }}min="{{ $field.min }}"{{ end }}
+                    {{ if isset $field "max" }}max="{{ $field.max }}"{{ end }}
+                  >
+                  <label for="{{ $fieldID }}">{{ $field.label }}{{ if isset $field "required" }}{{ if $field.required }} *{{ end }}{{ end }}</label>
+                </div>
+                {{ if isset $field "tooltip" }}
+                <p class="sv-tooltip-info mb-3">
+                  {{ $field.tooltip | safeHTML }}
+                </p>
+                {{ end }}
+                
+              {{ else if eq $field.type "radio" }}
+                <!-- Bootstrap Accordion for Radio Buttons (Single-Choice) -->
+                <div class="accordion sv-form-accordion mb-4" id="accordion-{{ $fieldID }}">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading-{{ $fieldID }}">
+                      <button class="accordion-button collapsed" type="button" 
+                              data-bs-toggle="collapse" data-bs-target="#collapse-{{ $fieldID }}" 
+                              aria-expanded="false" aria-controls="collapse-{{ $fieldID }}"
+                              data-original-text="{{ $field.label }}">
+                        {{ $field.label }}{{ if isset $field "required" }}{{ if $field.required }} *{{ end }}{{ end }}
+                      </button>
+                    </h2>
+                    <div id="collapse-{{ $fieldID }}" class="accordion-collapse collapse" 
+                         aria-labelledby="heading-{{ $fieldID }}" data-bs-parent="#accordion-{{ $fieldID }}">
+                      <div class="accordion-body">
+                        {{ if isset $field "options" }}
+                          {{ range $i, $option := $field.options }}
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" name="{{ $field.name }}" 
+                                     value="{{ $option.value }}" id="{{ $fieldID }}-{{ $i }}"
+                                     {{ if isset $field "required" }}{{ if $field.required }}required{{ end }}{{ end }}
+                                     data-field-id="{{ $field.name }}">
+                              <label class="form-check-label" for="{{ $fieldID }}-{{ $i }}">{{ $option.label }}</label>
+                            </div>
+                          {{ end }}
+                        {{ end }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{ if isset $field "tooltip" }}
+                <p class="sv-tooltip-info mb-3">
+                  {{ $field.tooltip | safeHTML }}
+                </p>
+                {{ end }}
+                
+              {{ else if eq $field.type "checkbox" }}
+                {{ if isset $field "options" }}
+                  {{ if gt (len $field.options) 1 }}
+                    <!-- Bootstrap Accordion for Checkboxes (Multiple-Choice) -->
+                    <div class="accordion sv-form-accordion mb-4" id="accordion-{{ $fieldID }}">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-{{ $fieldID }}">
+                          <button class="accordion-button collapsed" type="button" 
+                                  data-bs-toggle="collapse" data-bs-target="#collapse-{{ $fieldID }}" 
+                                  aria-expanded="false" aria-controls="collapse-{{ $fieldID }}"
+                                  data-original-text="{{ $field.label }}">
+                            {{ $field.label }}
+                          </button>
+                        </h2>
+                        <div id="collapse-{{ $fieldID }}" class="accordion-collapse collapse" 
+                             aria-labelledby="heading-{{ $fieldID }}" data-bs-parent="#accordion-{{ $fieldID }}">
+                          <div class="accordion-body">
+                            {{ range $i, $option := $field.options }}
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="{{ $field.name }}" 
+                                       value="{{ $option.value }}" id="{{ $fieldID }}-{{ $i }}"
+                                       {{ if isset $option "required" }}{{ if $option.required }}required{{ end }}{{ end }}>
+                                <label class="form-check-label" for="{{ $fieldID }}-{{ $i }}">{{ $option.label }}</label>
+                              </div>
+                            {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {{ else }}
+                    <!-- Single Checkbox (e.g., for consent) -->
+                    <div class="sv-form-check-container mb-3">
+                      {{ range $i, $option := $field.options }}
+                        <input class="form-check-input" id="{{ $fieldID }}"
+                               type="checkbox" name="{{ $field.name }}" value="{{ $option.value }}"
+                               {{ if isset $option "required" }}{{ if $option.required }}required{{ end }}{{ end }}>
+                        <label class="form-check-label" for="{{ $fieldID }}">
+                          {{ $option.label | safeHTML }}
+                        </label>
+                      {{ end }}
+                    </div>
+                  {{ end }}
+                {{ end }}
+                {{ if isset $field "tooltip" }}
+                <p class="sv-tooltip-info mb-3">
+                  {{ $field.tooltip | safeHTML }}
+                </p>
+                {{ end }}
+                
+              {{ else if eq $field.type "textarea" }}
+                <div class="form-floating sv-form-floating mb-4">
+                  <textarea class="form-control" id="{{ $fieldID }}"
+                            name="{{ $field.name }}" 
+                            {{ if isset $field "height" }}style="height:{{ $field.height }}px"{{ else }}style="height:100px"{{ end }}
+                            {{ if isset $field "required" }}{{ if $field.required }}required{{ end }}{{ end }}></textarea>
+                  <label for="{{ $fieldID }}">
+                    {{ $field.label }}{{ if isset $field "required" }}{{ if $field.required }} *{{ end }}{{ end }}
+                  </label>
+                </div>
+                {{ if isset $field "tooltip" }}
+                <p class="sv-tooltip-info mb-3">
+                  {{ $field.tooltip | safeHTML }}
+                </p>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        
+        <!-- Navigation buttons with custom styling -->
+        <div class="{{ if eq $stepIndex 0 }}text-center{{ else }}d-flex justify-content-between{{ end }} sv-button-container">
+          {{ if gt $stepIndex 0 }}
+            <button type="button" class="btn sv-btn sv-btn-richblack-sk btn-cap" data-prev>{{ index $uiTexts "back" | default "Zurück" }}</button>
+          {{ end }}
+          
+          {{ if lt $stepIndex (sub (len $resolvedSteps) 1) }}
+            <button type="button" class="btn sv-btn sv-btn-red btn-cap" data-next>{{ index $uiTexts "next" | default "Weiter" }}</button>
+          {{ else }}
+            <button type="submit" class="btn sv-btn sv-btn-red btn-cap" id="{{ $formID }}-submit">
+              <span>{{ index $uiTexts "submit" | default "Absenden" }}</span>
+              <span class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+            </button>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+</form>
+
+<!-- Erfolgsnachricht -->
+<div id="{{ $formID }}-success" class="card shadow-sm p-4 mt-4 text-center d-none sv-success-message">
+  <h3 class="text-success mb-3"><i class="material-icons">check_circle</i> {{ index $uiTexts "success_title" | default "Vielen Dank für Ihre Anmeldung!" }}</h3>
+  <p class="mb-3"><strong>{{ index $uiTexts "success_summary" | default "Sie haben uns das Folgende mitgeteilt:" }}</strong></p>
+  <div class="text-start" id="{{ $formID }}-summary"></div>
+  <hr>
+  <p class="lead mt-3" id="{{ $formID }}-emailConfirm"></p>
+</div>
+
+<!-- Einbindung der zentralisierten Form-Assets -->
+{{ partial "form-assets.html" (dict
+  "FormID" $formID
+  "FieldLabels" $fieldLabels
+  "UITexts" $uiTexts
+) }}
+
+<!-- Formularspezifisches JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('{{ $formID }}');
+    if (!form) return;
+  
+    const steps = form.querySelectorAll('.sv-form-step');
+    
+    // Validation messages based on language
+    const validationMessages = {
+      required: "{{ index $uiTexts "error_required" | default "Dieses Feld wird benötigt" }}",
+      email: "{{ index $uiTexts "error_email" | default "Bitte geben Sie eine gültige E-Mail-Adresse ein" }}",
+      phone: "{{ index $uiTexts "error_phone" | default "Bitte geben Sie eine gültige Telefonnummer ein" }}",
+      year: "{{ index $uiTexts "error_year" | default "Bitte geben Sie ein gültiges vierstelliges Jahr ein (z.B. 1980)" }}"
+    };
+  
+    // Navigation zwischen Formularschritten
+    const show = function(n) {
+      // Deactivate all steps, activate the requested one
+      steps.forEach(function(s) { s.classList.remove('active'); });
+      steps[n-1].classList.add('active');
+
+      // Get the current step and its title before any automatic scrolling occurs
+      const currentStepEl = steps[n-1];
+      const title = currentStepEl.querySelector('.sv-step-title');
+      
+      // Use setTimeout with a small delay to ensure our scroll happens after any automatic browser scrolling
+      setTimeout(() => {
+        if (title) {
+          // Calculate position accounting for any fixed headers
+          const headerOffset = 120; // Adjusted for more space at the top
+          const titlePosition = title.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = titlePosition - headerOffset;
+          
+          // Scroll to the title
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Move keyboard focus to the heading without further scrolling
+          title.setAttribute('tabindex', '-1');
+          title.focus({ preventScroll: true });
+        }
+      }, 50); // Small delay to let the browser finish its own operations
+    };
+  
+    // Event-Handler für Weiter-Buttons
+    form.querySelectorAll('[data-next]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const currentStep = btn.closest('.sv-form-step');
+        const stepNumber = +currentStep.dataset.step;
+  
+        // Grundvalidierung des aktuellen Schritts
+        const requiredFields = currentStep.querySelectorAll(
+          'input[required], textarea[required], select[required]'
+        );
+        let isValid = true;
+  
+        requiredFields.forEach(function(field) {
+          if (!field.checkValidity()) {
+            isValid = false;
+            field.reportValidity();
+          }
+        });
+  
+        if (isValid) {
+          show(stepNumber + 1);
+          btn.blur();
+          btn.setAttribute('tabindex','-1');
+          btn.blur(); // Fokus vom Button nehmen → verhindert Zurückscrollen
+        }
+      });
+    });
+  
+    // Event-Handler für Zurück-Buttons
+    form.querySelectorAll('[data-prev]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const currentStep = btn.closest('.sv-form-step');
+        const stepNumber = +currentStep.dataset.step;
+        show(stepNumber - 1);
+        btn.blur();
+        btn.setAttribute('tabindex','-1');
+        btn.blur(); // Fokus entfernen
+      });
+    });
+  
+    // Telefonnummer-Formatierung
+    const tel = document.getElementById('{{ $formID }}-telefon');
+    if (tel) {
+      tel.addEventListener('blur', function() {
+        const input = tel.value.trim();
+  
+        if (input.startsWith('+41') || input.startsWith('0041') || input.startsWith('00 41')) {
+          return;
+        } else if (input.startsWith('0')) {
+          const cleaned = input.replace(/\D/g, '');
+          if (cleaned.length === 10 && cleaned.startsWith('0')) {
+            tel.value = '+41 ' + cleaned.substring(1, 3) + ' ' +
+                        cleaned.substring(3, 6) + ' ' +
+                        cleaned.substring(6, 8) + ' ' +
+                        cleaned.substring(8, 10);
+          } else {
+            alert(validationMessages.phone);
+          }
+        } else {
+          alert(validationMessages.phone);
+        }
+      });
+    }
+    
+    // Form submission and loading indicator
+    const submitBtn = document.getElementById('{{ $formID }}-submit');
+    if (form && submitBtn) {
+      form.addEventListener('submit', function(e) {
+        // Show loading spinner
+        const spinner = submitBtn.querySelector('.spinner-border');
+        const btnText = submitBtn.querySelector('span:first-child');
+        
+        spinner.classList.remove('d-none');
+        btnText.textContent = '{{ index $uiTexts "loading" | default "Wird gesendet..." }}';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('submitting');
+        
+        // Start the spinner rotation animation
+        startSpinnerAnimation(spinner);
+      });
+    }
+
+    // Function to animate the spinner
+    function startSpinnerAnimation(spinner) {
+      let rotation = 0;
+      const intervalId = setInterval(() => {
+        rotation += 45; // 45 degrees rotation every step
+        if (rotation >= 360) rotation = 0;
+        
+        spinner.style.transform = `rotate(${rotation}deg)`;
+        
+        // Check if form is still submitting (if not, clear interval)
+        const submitBtn = spinner.closest('button');
+        if (!submitBtn || !submitBtn.classList.contains('submitting')) {
+          clearInterval(intervalId);
+        }
+      }, 500); // Update every 500ms for a smooth animation
+    }
+  });
+</script>
+
+<!-- Additional CSS for loading state and centered elements -->
+<style>
+/* Submit button loading state */
+.sv-btn.submitting {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Custom spinner styling */
+.spinner-border {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  transition: transform 0.3s ease;
+}
+
+/* Force uppercase text on btn-cap */
+.btn-cap {
+  text-transform: uppercase !important;
+}
+
+/* Centered checkbox container */
+.sv-form-check-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font: 600 1.1rem/1.4 var(--sv-body-font-family);
+  text-align: left;
+}
+</style>

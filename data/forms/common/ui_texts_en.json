@@ -1,0 +1,16 @@
+{
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "success_title": "Thank you for your submission!",
+    "success_summary": "You have shared the following information:",
+    "email_confirm": "A confirmation has been sent to your email address.",
+    "loading": "Sending...",
+    "error_required": "This field is required",
+    "error_email": "Please enter a valid email address",
+    "error_phone": "Please enter a valid phone number",
+    "error_numeric": "Please enter a number",
+    "error_year": "Please enter a valid four-digit year (e.g., 1980)",
+    "error_gender": "Please identify your biological sex as it is medically relevant for certain diagnostic procedures and test interpretations, regardless of your gender identity.",
+    "form_error": "There was an error submitting the form. Please try again."
+  }

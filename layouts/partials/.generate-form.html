@@ -30,27 +30,27 @@
   {{ $resolvedSteps := slice }}
   
   <!-- Resolve step imports -->
-  {{ range $stepRef := $formConfig.steps }}
-    {{ if eq (printf "%T" $stepRef) "string" }}
-      <!-- This is an import reference -->
-      {{ $parts := split $stepRef "/" }}
-      {{ $namespace := index $parts 0 }}
-      {{ $fileName := index $parts 1 }}
-      
-      {{ if eq $namespace "common" }}
-        {{ if eq $fileName "step_one_personal_info" }}
-          {{ $step := index site.Data.forms.common "step_one_personal_info" }}
-          {{ $resolvedSteps = $resolvedSteps | append $step }}
-        {{ else if eq $fileName "step_three_contact_and_submit" }}
-          {{ $step := index site.Data.forms.common "step_three_contact_and_submit" }}
-          {{ $resolvedSteps = $resolvedSteps | append $step }}
-        {{ end }}
-      {{ end }}
-    {{ else }}
-      <!-- This is a direct step definition -->
-      {{ $resolvedSteps = $resolvedSteps | append $stepRef }}
+{{ range $stepRef := $formConfig.steps }}
+{{ if eq (printf "%T" $stepRef) "string" }}
+  <!-- This is an import reference -->
+  {{ $parts := split $stepRef "/" }}
+  {{ $namespace := index $parts 0 }}
+  {{ $fileName := index $parts 1 }}
+  
+  {{ if eq $namespace "common" }}
+    {{ if eq $fileName "fragebogen_step_one_personal_info" }}
+      {{ $step := index site.Data.forms.common "fragebogen_step_one_personal_info" }}
+      {{ $resolvedSteps = $resolvedSteps | append $step }}
+    {{ else if eq $fileName "fragebogen_step_three_contact_and_submit" }}
+      {{ $step := index site.Data.forms.common "fragebogen_step_three_contact_and_submit" }}
+      {{ $resolvedSteps = $resolvedSteps | append $step }}
     {{ end }}
   {{ end }}
+{{ else }}
+  <!-- This is a direct step definition -->
+  {{ $resolvedSteps = $resolvedSteps | append $stepRef }}
+{{ end }}
+{{ end }}
   
   <!-- Generate form with resolved steps -->
   {{ range $stepIndex, $step := $resolvedSteps }}
