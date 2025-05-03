@@ -38,13 +38,14 @@
           </div>
         </div>
 
-        <!-- GUT ZU WISSEN / LEGAL ------------------------------------------>
+        <!-- GUT ZU WISSEN -------------------------------------------------->
         <div class="sv-legal-dropdown me-3">
-          <span class="material-icons sv-icon"
+          <span class="material-icons-outlined sv-icon sv-icon-bigger"
                 aria-label='{{ if eq .Site.Language.Lang "de" }}Gut zu wissen{{ else }}Good to know{{ end }}'>
             psychology
           </span>
 
+   
           <div class="sv-legal-dropdown-content">
             <div class="sv-dropdown-header">
               {{ if eq .Site.Language.Lang "de" }}GUT ZU WISSEN{{ else }}GOOD TO KNOW{{ end }}
@@ -56,9 +57,9 @@
               <a href="{{ "/about-us/" | relLangURL }}">About&nbsp;us</a>
             {{ end }}
 
-            <a href="{{ "/agb/"      | relLangURL }}">{{ .Site.Params.agb        }}</a>
-            <a href="{{ "/privacy/"  | relLangURL }}">{{ .Site.Params.datenschutz }}</a>
-            <a href="{{ "/impressum/"| relLangURL }}">{{ .Site.Params.impressum  }}</a>
+            <a href="{{ "/agb/"       | relLangURL }}">{{ .Site.Params.agb        }}</a>
+            <a href="{{ "/privacy/"   | relLangURL }}">{{ .Site.Params.datenschutz }}</a>
+            <a href="{{ "/impressum/" | relLangURL }}">{{ .Site.Params.impressum  }}</a>
           </div>
         </div>
 
@@ -87,7 +88,6 @@
         </div>
 
       </div><!-- /Icon-Gruppe -->
-
     </div>
   </div>
 
@@ -96,7 +96,7 @@
     .logo-img{height:50px;transition:height .3s ease}
     @media(max-width:576px){.logo-img{height:35px}}
 
-    /* Icons */
+    /* Icons (Material Icons) */
     .sv-icon{
       font-size:30px!important;
       color:var(--sv-royalblue);
@@ -104,7 +104,7 @@
       transition:transform .3s ease;
     }
 
-    /* Gemeinsame Dropdown-Basis -----------------------------------------*/
+    /* Dropdown-Basis ------------------------------------------------------*/
     .sv-special-dropdown,
     .sv-legal-dropdown,
     .sv-language-dropdown{position:relative;display:inline-block}
@@ -144,11 +144,9 @@
     .sv-special-dropdown-content a:first-of-type,
     .sv-legal-dropdown-content  a:first-of-type{border-top:none}
     .sv-special-dropdown-content a:hover,
-    .sv-legal-dropdown-content  a:hover{
-      background:rgba(0,48,135,.1);
-      color:var(--sv-royalblue)
-    }
+    .sv-legal-dropdown-content  a:hover{background:rgba(0,48,135,.1)}
 
+    /* Sprach-Dropdown-Einträge */
     .sv-language-dropdown-content a{
       display:block;padding:.5rem 1rem;font-weight:600;text-decoration:none;
       color:var(--sv-royalblue);transition:background .2s ease;border-top:1px solid rgba(0,48,135,.1)
@@ -167,7 +165,15 @@
     }
     .sv-nav-button:hover{box-shadow:0 .8rem 1.5rem rgba(0,0,0,.25)}
 
+
+    /* icon */
+  
+    .sv-icon-bigger { font-size: 34px !important; }   /* tweak if needed */
+
+
     /* Navbar-Hintergrund */
+  
+
     #mainNav{
       background:var(--sv-offwhite-lighter)!important;
       box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
