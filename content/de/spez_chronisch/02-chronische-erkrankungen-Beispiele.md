@@ -9,7 +9,7 @@ image_width: 5
 image_position: left
 
 # Standardbild (wird vor Interaktion angezeigt)
-image: "/img/sport/_sportverletzung.webp"
+image: "/img/chronische-erkrankungen/_chronisch-2.webp"
 image_shadow: "shadow"
 
 # Farbschema

@@ -1,0 +1,141 @@
+{
+        "id": "form-chronic-survey",
+        "title": "Chronische Beschwerden-Fragebogen",
+        "form_type": "chronic-survey",
+        "steps": [
+          "common/fragebogen_step_one_personal_info_de",
+          {
+            "id": "step2",
+            "title": "Schritt 2 von 3: Chronische Beschwerden",
+            "fields": [
+              {
+                "name": "chronic_complaints[]",
+                "type": "checkbox",
+                "label": "Welche Beschwerden haben Sie am häufigsten? (Mehrfachauswahl möglich)",
+                "options": [
+                  {"value": "Rückenschmerzen", "label": "Rückenschmerzen"},
+                  {"value": "Gelenkschmerzen", "label": "Gelenkschmerzen"},
+                  {"value": "Kopfschmerzen/Migräne", "label": "Kopfschmerzen/Migräne"},
+                  {"value": "Magen-Darm-Probleme", "label": "Magen-Darm-Probleme"},
+                  {"value": "Sonstige", "label": "Sonstige"}
+                ]
+              },
+              {
+                "name": "other_complaint",
+                "type": "text",
+                "label": "Sonstige Beschwerden",
+                "required": false,
+                "placeholder": "Sonstige Beschwerden",
+                "conditional": {
+                  "field": "chronic_complaints[]",
+                  "value": "Sonstige"
+                }
+              },
+              {
+                "name": "complaint_duration",
+                "type": "radio",
+                "label": "Seit wann bestehen Ihre Beschwerden?",
+                "options": [
+                  {"value": "Wenige Wochen", "label": "Wenige Wochen"},
+                  {"value": "3–6 Monate", "label": "3–6 Monate"},
+                  {"value": "6–12 Monate", "label": "6–12 Monate"},
+                  {"value": "1–5 Jahre", "label": "1–5 Jahre"},
+                  {"value": "Über 5 Jahre", "label": "Über 5 Jahre"}
+                ]
+              },
+              {
+                "name": "pain_intensity",
+                "type": "radio",
+                "label": "Wie stark sind Ihre Schmerzen/Beschwerden auf einer Skala von 1–10?",
+                "options": [
+                  {"value": "1–3 (mild)", "label": "1–3 (mild)"},
+                  {"value": "4–6 (mittel)", "label": "4–6 (mittel)"},
+                  {"value": "7–8 (stark)", "label": "7–8 (stark)"},
+                  {"value": "9–10 (sehr stark)", "label": "9–10 (sehr stark)"},
+                  {"value": "Schwankend", "label": "Schwankend"}
+                ]
+              },
+              {
+                "name": "chronic_diagnoses[]",
+                "type": "checkbox",
+                "label": "Wurde bei Ihnen bereits eine chronische Erkrankung diagnostiziert? (Mehrfachauswahl möglich)",
+                "options": [
+                  {"value": "Ja, eine Gelenk- oder Muskelerkrankung (z. B. Arthrose, Rheuma)", "label": "Ja, eine Gelenk- oder Muskelerkrankung (z. B. Arthrose, Rheuma)"},
+                  {"value": "Ja, eine neurologische Erkrankung (z. B. Migräne, Polyneuropathie)", "label": "Ja, eine neurologische Erkrankung (z. B. Migräne, Polyneuropathie)"},
+                  {"value": "Ja, eine Magen-Darm-Erkrankung (z. B. Reizdarm, Morbus Crohn)", "label": "Ja, eine Magen-Darm-Erkrankung (z. B. Reizdarm, Morbus Crohn)"},
+                  {"value": "Ja, eine andere chronische Erkrankung", "label": "Ja, eine andere chronische Erkrankung"},
+                  {"value": "Nein, keine bekannte chronische Erkrankung", "label": "Nein, keine bekannte chronische Erkrankung"}
+                ]
+              },
+              {
+                "name": "other_diagnosis",
+                "type": "text",
+                "label": "Andere Diagnose",
+                "required": false,
+                "placeholder": "Andere Diagnose",
+                "conditional": {
+                  "field": "chronic_diagnoses[]",
+                  "value": "Ja, eine andere chronische Erkrankung"
+                }
+              },
+              {
+                "name": "measures_taken[]",
+                "type": "checkbox",
+                "label": "Welche Massnahmen haben Sie bereits ergriffen? (Mehrfachauswahl möglich)",
+                "options": [
+                  {"value": "Medikamente", "label": "Medikamente"},
+                  {"value": "Physiotherapie", "label": "Physiotherapie"},
+                  {"value": "Alternative Heilmethoden", "label": "Alternative Heilmethoden"},
+                  {"value": "Operation", "label": "Operation"},
+                  {"value": "Noch nichts", "label": "Noch nichts"}
+                ]
+              },
+              {
+                "name": "daily_impact",
+                "type": "radio",
+                "label": "Wie oft schränken die Beschwerden Ihren Alltag ein?",
+                "options": [
+                  {"value": "Gar nicht", "label": "Gar nicht"},
+                  {"value": "Gelegentlich", "label": "Gelegentlich"},
+                  {"value": "Mehrmals wöchentlich", "label": "Mehrmals wöchentlich"},
+                  {"value": "Täglich", "label": "Täglich"},
+                  {"value": "Stark beeinträchtigend", "label": "Stark beeinträchtigend"}
+                ]
+              },
+              {
+                "name": "imaging_exams",
+                "type": "radio",
+                "label": "Wurde bereits eine bildgebende Untersuchung (MRI/CT/Röntgen) gemacht?",
+                "options": [
+                  {"value": "Ja, vor weniger als 6 Monaten", "label": "Ja, vor weniger als 6 Monaten"},
+                  {"value": "Ja, vor 1 Jahr", "label": "Ja, vor 1 Jahr"},
+                  {"value": "Ja, vor mehr als 2 Jahren", "label": "Ja, vor mehr als 2 Jahren"},
+                  {"value": "Nein, aber empfohlen", "label": "Nein, aber empfohlen"},
+                  {"value": "Nein, nicht notwendig", "label": "Nein, nicht notwendig"}
+                ]
+              },
+              {
+                "name": "screening_expectations[]",
+                "type": "checkbox",
+                "label": "Was erwarten Sie von einer Vorsorgeuntersuchung? (Mehrfachauswahl möglich)",
+                "options": [
+                  {"value": "Schmerzursache finden", "label": "Schmerzursache finden"},
+                  {"value": "Behandlungsmöglichkeiten ermitteln", "label": "Behandlungsmöglichkeiten ermitteln"},
+                  {"value": "Schlimme Erkrankungen ausschliessen", "label": "Schlimme Erkrankungen ausschliessen"},
+                  {"value": "Lebensqualität verbessern", "label": "Lebensqualität verbessern"},
+                  {"value": "Keine konkrete Erwartung", "label": "Keine konkrete Erwartung"}
+                ]
+              },
+              {
+                "name": "freitext",
+                "type": "textarea",
+                "label": "Freitext – Was möchten Sie uns sonst noch mitteilen?",
+                "required": false,
+                "height": 150
+              }
+            ]
+          },
+          "common/fragebogen_step_three_contact_and_submit_de"
+        ]
+      }
+  

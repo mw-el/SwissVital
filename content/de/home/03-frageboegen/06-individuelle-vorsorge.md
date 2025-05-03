@@ -17,7 +17,7 @@ title: "Individuelle Vorsorge"
 #
 #   btn-cap (Text Grossbuchstaben)
 # ------------------------------------------------------------------------------
-primary_button_link: "/individuell/"
+primary_button_link: "/individuelle-vorsorge/"
 
 weight: "6"
 ---

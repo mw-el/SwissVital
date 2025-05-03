@@ -10,7 +10,7 @@ image_width: 5
 image_position: right
 
 # Standardbild (wird vor Interaktion angezeigt)
-image: "/img/chronische-erkrankungen/_chronisch.webp"
+image: "/img/breite-vorsorge/_breite-vorsorge.webp"
 image_shadow: "shadow"
 
 # Farbschema
@@ -28,11 +28,15 @@ primary_button_link: "#termin-buchen"
 primary_button_text: "Untersuchung buchen"
 partial: "full-bg.html"
 ---
-Erst die Diagnose, dan die Therapie
+Auf der sicheren Seite sein
 
-# Hilfe bei chronischen Erkrankungen
+# Schutz vor unliebsamen Überraschungen
 
 
 {{< spacer >}}
 
-Chronische Erkrankungen erfordern eine langfristig ausgerichtete therapeutishe Begleitung. Am anfang steht immer eine präzise Diagnostik. Daraus leiten wir individuell optimierte Therapieempfehlungen ab. Das können Medikamente, Physiotherapie und Veränderungen der Lebensgewohnheiten sein. Das Ziel: Eine bessere Lebensqualität trotz erschwerter Bedingungen.
+Auch gesunde Leute können von der modernen Vorsorgemedizin profitieren. 
+
+Viele schwere Erkrankungen verlaufen in der frühen Pahse somptomlos. Wenn Sie etwas bemerken, ist die Krankheit schon fortgeshritten und entsprechend schiweriger zu behandeln.
+
+Mit einer auf Ihre Lebenssituation abgestimmten Diagnostik tun Sie das beste, um solche bösen Überraschungen zu verhindern.

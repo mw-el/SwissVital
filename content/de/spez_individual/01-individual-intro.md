@@ -3,14 +3,13 @@ title: ""
 pre_headline: "" 
 type: "pages"
 
-
 # Bildpositionierung
 content_width: 7
 image_width: 5
 image_position: right
 
 # Standardbild (wird vor Interaktion angezeigt)
-image: "/img/chronische-erkrankungen/_chronisch.webp"
+image: "/img/individual/_individual.webp"
 image_shadow: "shadow"
 
 # Farbschema
@@ -28,11 +27,10 @@ primary_button_link: "#termin-buchen"
 primary_button_text: "Untersuchung buchen"
 partial: "full-bg.html"
 ---
-Erst die Diagnose, dan die Therapie
+Genau die Diagnostik, die Sie wollen und brauchen
 
-# Hilfe bei chronischen Erkrankungen
-
+# Individuelle Vorsorge
 
 {{< spacer >}}
 
-Chronische Erkrankungen erfordern eine langfristig ausgerichtete therapeutishe Begleitung. Am anfang steht immer eine präzise Diagnostik. Daraus leiten wir individuell optimierte Therapieempfehlungen ab. Das können Medikamente, Physiotherapie und Veränderungen der Lebensgewohnheiten sein. Das Ziel: Eine bessere Lebensqualität trotz erschwerter Bedingungen.
+Manchmal geht es nicht um allgemeine Gesundheitschecks – sondern um **gezielte Abklärung konkreter Beschwerden** oder familiärer Risiken. Die individuelle Vorsorge ermöglicht Ihnen genau das: Sie wählen die Körperregionen, Blutwerte oder Funktionsbereiche, die untersucht werden sollen. Gemeinsam mit Ihnen planen wir sinnvolle Massnahmen zur Prävention oder weiterführenden Diagnostik. Das Ziel: Sicherheit, Klarheit und Handlungsspielraum.

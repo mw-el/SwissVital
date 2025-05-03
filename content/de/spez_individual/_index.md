@@ -1,8 +1,8 @@
 ---
 type: "pages"
 layout: "list"
-title: "Chronische Erkrankungen"
-url: "/de/chronische-erkrankungen"
+title: "Individuelle Vorsorge"
+url: "/de/individuelle-vorsorge"
 automatic_translate: "no"
 partial: "full-bg.html"
 ---

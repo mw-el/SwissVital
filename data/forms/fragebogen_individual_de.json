@@ -1,0 +1,115 @@
+{
+    "id": "form-individual-survey",
+    "title": "Individuelle Vorsorge-Fragebogen",
+    "form_type": "individual-survey",
+    "steps": [
+      "common/fragebogen_step_one_personal_info_de",
+      {
+        "id": "step2",
+        "title": "Schritt 2 von 3: Individuelle Vorsorgeplanung",
+        "fields": [
+          {
+            "name": "body_regions[]",
+            "type": "checkbox",
+            "label": "Welche Körperregion möchten Sie untersuchen lassen? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Gehirn / Nerven", "label": "Gehirn / Nerven"},
+              {"value": "Herz / Kreislauf", "label": "Herz / Kreislauf"},
+              {"value": "Bauchorgane", "label": "Bauchorgane"},
+              {"value": "Bewegungsapparat", "label": "Bewegungsapparat"},
+              {"value": "Blutanalyse / Blutwerte", "label": "Blutanalyse / Blutwerte"},
+              {"value": "Keine bestimmte", "label": "Keine bestimmte"}
+            ]
+          },
+          {
+            "name": "checkup_frequency",
+            "type": "radio",
+            "label": "Wie oft lassen Sie sich medizinisch durchchecken?",
+            "options": [
+              {"value": "Jährlich", "label": "Jährlich"},
+              {"value": "Alle paar Jahre", "label": "Alle paar Jahre"},
+              {"value": "Nur bei Beschwerden", "label": "Nur bei Beschwerden"},
+              {"value": "Noch nie", "label": "Noch nie"}
+            ]
+          },
+          {
+            "name": "known_conditions[]",
+            "type": "checkbox",
+            "label": "Haben Sie bekannte Vorerkrankungen? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Herz-Kreislauf-Erkrankungen", "label": "Herz-Kreislauf-Erkrankungen"},
+              {"value": "Stoffwechselerkrankungen", "label": "Stoffwechselerkrankungen"},
+              {"value": "Chronische Erkrankungen", "label": "Chronische Erkrankungen"},
+              {"value": "Krebserkrankungen (eigene / familiär)", "label": "Krebserkrankungen (eigene / familiär)"},
+              {"value": "Andere", "label": "Andere"},
+              {"value": "Keine bekannten Erkrankungen oder Risikofaktoren", "label": "Keine bekannten Erkrankungen oder Risikofaktoren"}
+            ]
+          },
+          {
+            "name": "other_condition",
+            "type": "text",
+            "label": "Andere Vorerkrankung",
+            "required": false,
+            "placeholder": "Andere Vorerkrankung",
+            "conditional": {
+              "field": "known_conditions[]",
+              "value": "Andere"
+            }
+          },
+          {
+            "name": "risk_factors[]",
+            "type": "checkbox",
+            "label": "Haben Sie bekannte Risikofaktoren? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Rauchen", "label": "Rauchen"},
+              {"value": "Übergewicht", "label": "Übergewicht"},
+              {"value": "Bewegungsmangel", "label": "Bewegungsmangel"},
+              {"value": "Hoher Alkoholkonsum", "label": "Hoher Alkoholkonsum"},
+              {"value": "Keine bekannten Risikofaktoren", "label": "Keine bekannten Risikofaktoren"},
+              {"value": "Chronische Erkrankungen", "label": "Chronische Erkrankungen"}
+            ]
+          },
+          {
+            "name": "examinations[]",
+            "type": "checkbox",
+            "label": "Welche Untersuchung halten Sie für sinnvoll? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Blutuntersuchung (Cholesterin, Zuckerwerte …)", "label": "Blutuntersuchung (Cholesterin, Zuckerwerte …)"},
+              {"value": "Bildgebende Verfahren (MRI, CT, Sonographie)", "label": "Bildgebende Verfahren (MRI, CT, Sonographie)"}
+            ]
+          },
+          {
+            "name": "lab_values[]",
+            "type": "checkbox",
+            "label": "Gab es in der Vergangenheit auffällige Laborwerte oder ärztliche Hinweise? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Blutzuckerwerte / Diabetes", "label": "Blutzuckerwerte / Diabetes"},
+              {"value": "Cholesterin- / Blutfettwerte", "label": "Cholesterin- / Blutfettwerte"},
+              {"value": "Leber- / Nierenwerte", "label": "Leber- / Nierenwerte"},
+              {"value": "Hinweise, aber unklar welche", "label": "Hinweise, aber unklar welche"},
+              {"value": "Nein, bisher unauffällig", "label": "Nein, bisher unauffällig"}
+            ]
+          },
+          {
+            "name": "surgery_history",
+            "type": "radio",
+            "label": "Haben Sie in der Vergangenheit Operationen / chirurgische Eingriffe gehabt?",
+            "options": [
+              {"value": "Ja, grössere Eingriffe (z. B. Herz- oder Wirbelsäulen-OP)", "label": "Ja, grössere Eingriffe (z. B. Herz- oder Wirbelsäulen-OP)"},
+              {"value": "Ja, kleinere Eingriffe (z. B. Gallenblase, Meniskus)", "label": "Ja, kleinere Eingriffe (z. B. Gallenblase, Meniskus)"},
+              {"value": "Nein, noch nie", "label": "Nein, noch nie"},
+              {"value": "Ich kann mich nicht genau erinnern", "label": "Ich kann mich nicht genau erinnern"}
+            ]
+          },
+          {
+            "name": "freitext",
+            "type": "textarea",
+            "label": "Freitext – Was möchten Sie uns sonst noch mitteilen?",
+            "required": false,
+            "height": 150
+          }
+        ]
+      },
+      "common/fragebogen_step_three_contact_and_submit_de"
+    ]
+  }

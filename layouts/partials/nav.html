@@ -1,201 +1,179 @@
 <nav class="navbar navbar-light fixed-top py-3" id="mainNav">
   <div class="container px-4 px-lg-5">
     <div class="d-flex align-items-center justify-content-between flex-nowrap w-100">
+
+      <!-- Logo ------------------------------------------------------------->
       <div class="navbar-brand">
         <a href="{{ "/" | relLangURL }}">
           <img class="logo-img" src="/img/logo/swiss-vital-logo-2.svg" alt="Swiss Vital Logo">
         </a>
       </div>
-      <div>
+
+      <!-- Termin-Button (zentriert) --------------------------------------->
+      <div class="mx-auto">
         <a class="sv-nav-button" href="#termin-buchen">{{ .Site.Params.termin }}</a>
       </div>
-      <div class="language-switcher d-flex align-items-center justify-content-end">
-        <div class="sv-language-dropdown">
-          {{ if eq $.Page.Language.Lang "de" }}
-            <span class="material-icons sv-language-icon shadow" style="color: var(--sv-royalblue);">language</span>
-          {{ else }}
-            <span class="sv-active-language shadow">{{ $.Page.Language.Lang | upper }}</span>
-          {{ end }}
-          <div class="sv-language-dropdown-content">
-            {{/* For each language in the site config (de, en, fr, it, etc.) */}}
-            {{ range $.Site.Home.AllTranslations }}
-              {{ $isCurrentLang := eq $.Page.Language.Lang .Language.Lang }}
-              {{ $translation := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
 
-              {{/* If this language is already active, or if we actually have a translation, link there. */}}
-              {{ if $translation }}
-                <a href="{{ $translation.Permalink }}" 
-                   class="sv-language-option {{ if $isCurrentLang }}active{{ end }}" 
-                   title="{{ .Language.LanguageName }}">
-                  {{ .Language.Lang | upper }}
-                </a>
+      <!-- Rechte Icon-Gruppe --------------------------------------------->
+      <div class="d-flex align-items-center">
+
+        <!-- SPEZIALISIERUNGEN --------------------------------------------->
+        <div class="sv-special-dropdown me-3">
+          <span class="material-icons sv-icon"
+                aria-label='{{ if eq .Site.Language.Lang "de" }}Spezialisierungen{{ else }}Specializations{{ end }}'>
+            alt_route
+          </span>
+
+          <div class="sv-special-dropdown-content">
+            <div class="sv-dropdown-header">
+              {{ if eq .Site.Language.Lang "de" }}SPEZIALISIERUNGEN{{ else }}SPECIALIZATIONS{{ end }}
+            </div>
+
+            <a href="{{ "/familiaere-vorbelastung/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Familiäre Vorbelastung{{ else }}Family history{{ end }}</a>
+            <a href="{{ "/sportler/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Sport / physische Belastung{{ else }}Sports / physical strain{{ end }}</a>
+            <a href="{{ "/chronische-erkrankungen/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Chronische Beschwerden{{ else }}Chronic conditions{{ end }}</a>
+            <a href="{{ "/stress/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Stress{{ else }}Stress{{ end }}</a>
+            <a href="{{ "/breite-vorsorge/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Breite Vorsorge{{ else }}Comprehensive prevention{{ end }}</a>
+            <a href="{{ "/individuelle-vorsorge/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Individuelle Vorsorge{{ else }}Tailored prevention{{ end }}</a>
+          </div>
+        </div>
+
+        <!-- GUT ZU WISSEN / LEGAL ------------------------------------------>
+        <div class="sv-legal-dropdown me-3">
+          <span class="material-icons sv-icon"
+                aria-label='{{ if eq .Site.Language.Lang "de" }}Gut zu wissen{{ else }}Good to know{{ end }}'>
+            psychology
+          </span>
+
+          <div class="sv-legal-dropdown-content">
+            <div class="sv-dropdown-header">
+              {{ if eq .Site.Language.Lang "de" }}GUT ZU WISSEN{{ else }}GOOD TO KNOW{{ end }}
+            </div>
+
+            {{ if eq .Site.Language.Lang "de" }}
+              <a href="{{ "/ueber-uns/" | relLangURL }}">Über&nbsp;uns</a>
+            {{ else }}
+              <a href="{{ "/about-us/" | relLangURL }}">About&nbsp;us</a>
+            {{ end }}
+
+            <a href="{{ "/agb/"      | relLangURL }}">{{ .Site.Params.agb        }}</a>
+            <a href="{{ "/privacy/"  | relLangURL }}">{{ .Site.Params.datenschutz }}</a>
+            <a href="{{ "/impressum/"| relLangURL }}">{{ .Site.Params.impressum  }}</a>
+          </div>
+        </div>
+
+        <!-- Sprachwahl ----------------------------------------------------->
+        <div class="sv-language-dropdown">
+          <span class="material-icons sv-icon" aria-label="Sprachauswahl">language</span>
+
+          <div class="sv-language-dropdown-content">
+            {{ range $.Site.Home.AllTranslations }}
+              {{ $active := eq $.Page.Language.Lang .Language.Lang }}
+              {{ $t := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
+              {{ if $t }}
+                <a href="{{ $t.Permalink }}" class="{{ if $active }}active{{ end }}">{{ .Language.Lang | upper }}</a>
               {{ else if eq .Language.Lang "de" }}
-                {{/* If the target language is German but somehow not found, just link to the current page. */}}
-                <a href="{{ $.Page.Permalink }}" 
-                   class="sv-language-option {{ if $isCurrentLang }}active{{ end }}" 
-                   title="{{ .Language.LanguageName }}">
-                  {{ .Language.Lang | upper }}
-                </a>
+                <a href="{{ $.Page.Permalink }}" class="{{ if $active }}active{{ end }}">{{ .Language.Lang | upper }}</a>
               {{ else }}
-                {{/* Fallback to the German version of the *current* page if no direct translation exists. */}}
-                {{ $germanPage := index (where $.Page.Translations "Language.Lang" "de") 0 }}
-                {{ if $germanPage }}
-                  <a href="{{ $germanPage.Permalink }}"
-                     class="sv-language-option"
-                     title="{{ .Language.LanguageName }}">
-                    {{ .Language.Lang | upper }}
-                  </a>
+                {{ $dePage := index (where $.Page.Translations "Language.Lang" "de") 0 }}
+                {{ if $dePage }}
+                  <a href="{{ $dePage.Permalink }}">{{ .Language.Lang | upper }}</a>
                 {{ else }}
-                  {{/* If for some reason we don't even find a German page, link to the German homepage. */}}
-                  <a href="{{ $.Site.Home.Permalink }}"
-                     class="sv-language-option"
-                     title="{{ .Language.LanguageName }}">
-                    {{ .Language.Lang | upper }}
-                  </a>
+                  <a href="{{ $.Site.Home.Permalink }}">{{ .Language.Lang | upper }}</a>
                 {{ end }}
               {{ end }}
             {{ end }}
           </div>
         </div>
-      </div>
+
+      </div><!-- /Icon-Gruppe -->
+
     </div>
   </div>
 
   <style>
-    .logo-img {
-      height: 50px;
-      transition: height 0.3s ease;
-    }
-    @media (max-width: 576px) {
-      .logo-img {
-        height: 35px;
-      }
-    }
-    
-    /* Language dropdown styling */
-    .sv-language-dropdown {
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-      
-      padding-bottom: 20px; /* Extended padding to keep dropdown visible */
-    }
-    
-    .sv-language-icon {
-      color: var(--sv-royalblue);
-      font-size: 30px!important;
-      margin-top: 2rem;
-      transition: transform 0.3s ease;
-      box-shadow: none!important;
+    /* Logo */
+    .logo-img{height:50px;transition:height .3s ease}
+    @media(max-width:576px){.logo-img{height:35px}}
+
+    /* Icons */
+    .sv-icon{
+      font-size:30px!important;
+      color:var(--sv-royalblue);
+      cursor:pointer;
+      transition:transform .3s ease;
     }
 
+    /* Gemeinsame Dropdown-Basis -----------------------------------------*/
+    .sv-special-dropdown,
+    .sv-legal-dropdown,
+    .sv-language-dropdown{position:relative;display:inline-block}
 
+    .sv-special-dropdown-content,
+    .sv-legal-dropdown-content,
+    .sv-language-dropdown-content{
+      display:none;position:absolute;top:100%;background:var(--sv-offwhite-lighter);
+      box-shadow:0 8px 16px rgba(0,0,0,.2);border-radius:8px;padding:.5rem 0;z-index:1000
+    }
+    .sv-special-dropdown-content,
+    .sv-legal-dropdown-content{left:50%;transform:translateX(-50%);min-width:280px;white-space:nowrap}
+    .sv-language-dropdown-content{right:-10px;min-width:80px;text-align:center}
 
-    
-    .sv-active-language {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: transparent;
-      border: 2px solid var(--sv-royalblue);
-      color: var(--sv-royalblue);
-      font-size: 0.9rem;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      margin-top: 2rem;
-      padding-top: 3px;
-  }
+    .sv-special-dropdown:hover .sv-special-dropdown-content,
+    .sv-legal-dropdown:hover   .sv-legal-dropdown-content,
+    .sv-language-dropdown:hover .sv-language-dropdown-content{display:block}
 
-    .sv-language-dropdown-content {
-      display: none;
-      position: absolute;
-      right: -10px; /* Adjust position to be centered better */
-      top: 100%;
-      background-color: var(--sv-offwhite-lighter);
-      min-width: 80px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      padding: 0.5rem 0;
-      z-index: 1000;
-      margin-top: -15px; /* Reduced gap */
+    .sv-special-dropdown:hover .sv-icon,
+    .sv-legal-dropdown:hover   .sv-icon,
+    .sv-language-dropdown:hover .sv-icon{transform:scale(1.1)}
+
+    /* Header + Einträge --------------------------------------------------*/
+    .sv-dropdown-header{
+      background:rgba(0,48,135,.1);
+      color:var(--sv-royalblue);
+      font-weight:700;text-transform:uppercase;
+      text-align:left;padding:.4rem 1rem;
+      border-bottom:1px solid rgba(0,48,135,.15);pointer-events:none
     }
-    
-    /* Add a pseudo element to bridge the gap */
-    .sv-language-dropdown:after {
-      content: '';
-      display: block;
-      height: 20px;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
+    .sv-special-dropdown-content a,
+    .sv-legal-dropdown-content  a{
+      display:block;padding:.5rem 1rem;font-weight:600;text-decoration:none;
+      color:var(--sv-royalblue);text-align:left;
+      transition:background .2s ease;border-top:1px solid rgba(0,48,135,.1)
     }
-    
-    .sv-language-dropdown:hover .sv-language-dropdown-content {
-      display: block;
-    }
-    
-    .sv-language-dropdown:hover .sv-language-icon {
-      transform: scale(1.1);
-    }
-    
-    .sv-language-option {
-      display: block;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      color: var(--sv-royalblue);
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
-      text-align: center;
-    }
-    
-    .sv-language-option:hover {
-      background-color: rgba(0, 48, 135, 0.1);
-      color: var(--sv-royalblue-dark);
-    }
-    
-    .sv-language-option.active {
-      font-weight: 700;
-      color: var(--sv-royalblue-darker);
-      background-color: rgba(0, 48, 135, 0.05);
-    }
-    
-    .sv-nav-button {
-      font-size: clamp(0.7rem, 1.2vw, 1rem);
-      padding: clamp(0.3rem, 0.6vw, 0.6rem) clamp(1rem, 2vw, 2rem);
-      border-radius: 2rem;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.35);
-      background-color: var(--sv-royalblue);
-      margin-top: -1px;
-      transition: all 0.3s ease;
-      color: var(--sv-offwhite);
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .sv-nav-button:hover {
-      box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.25);
+    .sv-special-dropdown-content a:first-of-type,
+    .sv-legal-dropdown-content  a:first-of-type{border-top:none}
+    .sv-special-dropdown-content a:hover,
+    .sv-legal-dropdown-content  a:hover{
+      background:rgba(0,48,135,.1);
+      color:var(--sv-royalblue)
     }
 
-    #mainNav .container.px-4.px-lg-5 {
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
+    .sv-language-dropdown-content a{
+      display:block;padding:.5rem 1rem;font-weight:600;text-decoration:none;
+      color:var(--sv-royalblue);transition:background .2s ease;border-top:1px solid rgba(0,48,135,.1)
     }
+    .sv-language-dropdown-content a:first-of-type{border-top:none}
+    .sv-language-dropdown-content a:hover{background:rgba(0,48,135,.05)}
+    .sv-language-dropdown-content a.active{background:rgba(0,48,135,.1)}
 
-    #mainNav {
-      background-color: var(--sv-offwhite-lighter) !important;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    /* Termin-Button */
+    .sv-nav-button{
+      font-size:clamp(.7rem,1.2vw,1rem);
+      padding:clamp(.3rem,.6vw,.6rem) clamp(1rem,2vw,2rem);
+      border-radius:2rem;font-weight:600;text-transform:uppercase;
+      text-decoration:none;color:var(--sv-offwhite);background:var(--sv-royalblue);
+      box-shadow:0 .5rem 1rem rgba(0,0,0,.35);transition:box-shadow .3s ease
     }
+    .sv-nav-button:hover{box-shadow:0 .8rem 1.5rem rgba(0,0,0,.25)}
 
-    @media (min-width: 992px) {
-      #mainNav {
-        background-color: var(--sv-offwhite-lighter) !important;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-      }
+    /* Navbar-Hintergrund */
+    #mainNav{
+      background:var(--sv-offwhite-lighter)!important;
+      box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
+    }
+    #mainNav .container.px-4.px-lg-5{
+      padding-left:1rem!important;padding-right:1rem!important
     }
   </style>
 </nav>

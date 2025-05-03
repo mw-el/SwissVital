@@ -3,14 +3,13 @@ title: ""
 pre_headline: "" 
 type: "pages"
 
-
 # Bildpositionierung
 content_width: 7
 image_width: 5
 image_position: right
 
 # Standardbild (wird vor Interaktion angezeigt)
-image: "/img/chronische-erkrankungen/_chronisch.webp"
+image: "/img/stress/_stress.webp"
 image_shadow: "shadow"
 
 # Farbschema
@@ -28,11 +27,10 @@ primary_button_link: "#termin-buchen"
 primary_button_text: "Untersuchung buchen"
 partial: "full-bg.html"
 ---
-Erst die Diagnose, dan die Therapie
+Dauerstress mach krank
 
-# Hilfe bei chronischen Erkrankungen
-
+# Hilfe bei Stress 
 
 {{< spacer >}}
 
-Chronische Erkrankungen erfordern eine langfristig ausgerichtete therapeutishe Begleitung. Am anfang steht immer eine präzise Diagnostik. Daraus leiten wir individuell optimierte Therapieempfehlungen ab. Das können Medikamente, Physiotherapie und Veränderungen der Lebensgewohnheiten sein. Das Ziel: Eine bessere Lebensqualität trotz erschwerter Bedingungen.
+Stress gehört zum modernen Leben – doch wenn er chronisch wird, kann er Körper und Psyche dauerhaft belasten. Wichtig ist, die Anzeichen ernst zu nehmen und frühzeitig zu handeln. Mithilfe moderner Diagnostik analysieren wir Ihre individuelle Stressbelastung. Auf dieser Basis entwickeln wir gezielte Empfehlungen zur Regulation und Vorbeugung. Das Ziel: mehr Energie, bessere Erholung und langfristig gesunde Belastbarkeit.

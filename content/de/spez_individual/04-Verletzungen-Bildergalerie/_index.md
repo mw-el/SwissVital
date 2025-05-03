@@ -1,6 +1,5 @@
 ---
 title: "Schmerzen: Ursachen suchen"
-pre_headline: "Signale verstehen und richtig handeln"
 weight: 4
 
 # Bildpositionierung
@@ -18,6 +17,9 @@ text_color: "var(--sv-body-color)"
 accordion_background_color: "var(--sv-moonstone-lighter)"
 accordion_content_background_color: "var(--sv-offwhite-lighter)"
 accordion_accent_color: "var(--sv-moonstone-light)"
+
+# Überschrift
+pre_headline: "Signale verstehen und richtig handeln"
 
 # Button unter dem Accordion
 button_placement: "accordion"

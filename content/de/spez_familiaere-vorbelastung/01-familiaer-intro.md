@@ -10,7 +10,7 @@ image_width: 5
 image_position: right
 
 # Standardbild (wird vor Interaktion angezeigt)
-image: "/img/chronische-erkrankungen/_chronisch.webp"
+image: "/img/familiare-vorbelastung/_man-worried.webp"
 image_shadow: "shadow"
 
 # Farbschema
@@ -28,11 +28,11 @@ primary_button_link: "#termin-buchen"
 primary_button_text: "Untersuchung buchen"
 partial: "full-bg.html"
 ---
-Erst die Diagnose, dan die Therapie
+Wissen, wo man steht
 
-# Hilfe bei chronischen Erkrankungen
+# Genetische Faktoren beurteilen
 
 
 {{< spacer >}}
 
-Chronische Erkrankungen erfordern eine langfristig ausgerichtete therapeutishe Begleitung. Am anfang steht immer eine präzise Diagnostik. Daraus leiten wir individuell optimierte Therapieempfehlungen ab. Das können Medikamente, Physiotherapie und Veränderungen der Lebensgewohnheiten sein. Das Ziel: Eine bessere Lebensqualität trotz erschwerter Bedingungen.
+Genetische Faktoren können das Risiko für bestimmte Krankheiten erhöhen. Das bedeutet aber nicht, dass die Erkrankung Ihr unausweichliches Schicksal ist. Prävention und ein bewusst auf diese Veranlagungen ausgerichteter Lebensstil können viel dazu beitragen, dass Sie – trotz individueller Nachteile in der Gen-Lotterie – bis ins hohe Alter gesund bleiben.

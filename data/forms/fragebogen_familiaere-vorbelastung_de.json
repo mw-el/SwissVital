@@ -1,0 +1,76 @@
+{
+    "id": "form-family-survey",
+    "title": "Familiäre Vorbelastung-Fragebogen",
+    "form_type": "family-survey",
+    "steps": [
+      "common/fragebogen_step_one_personal_info_de",
+      {
+        "id": "step2",
+        "title": "Schritt 2 von 3: Familiäre Vorbelastung",
+        "fields": [
+          {
+            "name": "family_diseases[]",
+            "type": "checkbox",
+            "label": "Gibt es in Ihrer Familie bekannte Erkrankungen, die Ihr Risiko erhöhen könnten? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Herz-Kreislauf-Erkrankungen (z. B. Herzinfarkt, Schlaganfall)", "label": "Herz-Kreislauf-Erkrankungen (z. B. Herzinfarkt, Schlaganfall)"},
+              {"value": "Stoffwechselerkrankungen (z. B. Diabetes, Schilddrüsenerkrankungen)", "label": "Stoffwechselerkrankungen (z. B. Diabetes, Schilddrüsenerkrankungen)"},
+              {"value": "Krebserkrankungen", "label": "Krebserkrankungen"},
+              {"value": "Neurologische oder psychische Erkrankungen", "label": "Neurologische oder psychische Erkrankungen"},
+              {"value": "Autoimmunerkrankungen", "label": "Autoimmunerkrankungen"}
+            ]
+          },
+          {
+            "name": "doctor_recommendation",
+            "type": "radio",
+            "label": "Hat Ihr Arzt bereits Vorsorgeuntersuchungen empfohlen?",
+            "options": [
+              {"value": "Ja", "label": "Ja"},
+              {"value": "Nein, noch nicht", "label": "Nein, noch nicht"},
+              {"value": "Weiss ich nicht", "label": "Weiss ich nicht"}
+            ]
+          },
+          {
+            "name": "personal_symptoms",
+            "type": "radio",
+            "label": "Haben Sie selbst Beschwerden oder Symptome?",
+            "options": [
+              {"value": "Ja, regelmässig", "label": "Ja, regelmässig"},
+              {"value": "Gelegentlich", "label": "Gelegentlich"},
+              {"value": "Selten", "label": "Selten"},
+              {"value": "Nein", "label": "Nein"},
+              {"value": "Unsicher", "label": "Unsicher"}
+            ]
+          },
+          {
+            "name": "previous_checkup",
+            "type": "radio",
+            "label": "Haben Sie bereits eine Vorsorgeuntersuchung in Anspruch genommen?",
+            "options": [
+              {"value": "Ja", "label": "Ja"},
+              {"value": "Nein", "label": "Nein"}
+            ]
+          },
+          {
+            "name": "checkup_details",
+            "type": "text",
+            "label": "Welche Untersuchung",
+            "required": false,
+            "placeholder": "Welche Untersuchung",
+            "conditional": {
+              "field": "previous_checkup",
+              "value": "Ja"
+            }
+          },
+          {
+            "name": "freitext",
+            "type": "textarea",
+            "label": "Freitext – Was möchten Sie uns sonst noch mitteilen?",
+            "required": false,
+            "height": 150
+          }
+        ]
+      },
+      "common/fragebogen_step_three_contact_and_submit_de"
+    ]
+  }

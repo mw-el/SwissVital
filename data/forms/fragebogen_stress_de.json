@@ -1,0 +1,91 @@
+{
+    "id": "form-stress-survey",
+    "title": "Stress-Fragebogen",
+    "form_type": "stress-survey",
+    "steps": [
+      "common/fragebogen_step_one_personal_info_de",
+      {
+        "id": "step2",
+        "title": "Schritt 2 von 3: Stress-Auswirkungen",
+        "fields": [
+          {
+            "name": "stress_impairment",
+            "type": "radio",
+            "label": "Wie sehr beeinträchtigen Ihre Beschwerden Sie im Alltag?",
+            "options": [
+              {"value": "Stark (z. B. Arbeitsunfähigkeit)", "label": "Stark (z. B. Arbeitsunfähigkeit)"},
+              {"value": "Oft (reduzierte Leistungsfähigkeit)", "label": "Oft (reduzierte Leistungsfähigkeit)"},
+              {"value": "Manchmal, aber ich komme zurecht", "label": "Manchmal, aber ich komme zurecht"},
+              {"value": "Selten oder kaum", "label": "Selten oder kaum"},
+              {"value": "Keine Beeinträchtigung", "label": "Keine Beeinträchtigung"}
+            ]
+          },
+          {
+            "name": "stress_symptoms[]",
+            "type": "checkbox",
+            "label": "Welche Symptome bemerken Sie durch Stress? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Kopfschmerzen", "label": "Kopfschmerzen"},
+              {"value": "Schlafstörungen", "label": "Schlafstörungen"},
+              {"value": "Magen-Darm-Beschwerden", "label": "Magen-Darm-Beschwerden"},
+              {"value": "Verspannungen / Muskelschmerzen", "label": "Verspannungen / Muskelschmerzen"},
+              {"value": "Keine der genannten", "label": "Keine der genannten"}
+            ]
+          },
+          {
+            "name": "stress_frequency",
+            "type": "radio",
+            "label": "Wie oft treten stressbedingte Beschwerden auf?",
+            "options": [
+              {"value": "Täglich", "label": "Täglich"},
+              {"value": "Mehrmals pro Woche", "label": "Mehrmals pro Woche"},
+              {"value": "Selten", "label": "Selten"},
+              {"value": "Nur in extremen Situationen", "label": "Nur in extremen Situationen"},
+              {"value": "Nie", "label": "Nie"}
+            ]
+          },
+          {
+            "name": "stress_medical_check",
+            "type": "radio",
+            "label": "Haben Sie bereits medizinische Untersuchungen aufgrund von Stress gemacht?",
+            "options": [
+              {"value": "Ja", "label": "Ja"},
+              {"value": "Nur bei akuten Beschwerden", "label": "Nur bei akuten Beschwerden"},
+              {"value": "Nein", "label": "Nein"}
+            ]
+          },
+          {
+            "name": "stress_diagnoses[]",
+            "type": "checkbox",
+            "label": "Wurde bei Ihnen eine stressbedingte Gesundheitsstörung diagnostiziert? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Angststörung oder Depression", "label": "Angststörung oder Depression"},
+              {"value": "Herzerkrankung oder Bluthochdruck", "label": "Herzerkrankung oder Bluthochdruck"},
+              {"value": "Magen-Darm-Erkrankung (z. B. Reizmagen)", "label": "Magen-Darm-Erkrankung (z. B. Reizmagen)"},
+              {"value": "Andere", "label": "Andere"},
+              {"value": "Nein", "label": "Nein"}
+            ]
+          },
+          {
+            "name": "other_diagnosis",
+            "type": "text",
+            "label": "Andere Diagnose",
+            "required": false,
+            "placeholder": "Andere Diagnose",
+            "conditional": {
+              "field": "stress_diagnoses[]",
+              "value": "Andere"
+            }
+          },
+          {
+            "name": "freitext",
+            "type": "textarea",
+            "label": "Freitext – Was möchten Sie uns sonst noch mitteilen?",
+            "required": false,
+            "height": 150
+          }
+        ]
+      },
+      "common/fragebogen_step_three_contact_and_submit_de"
+    ]
+  }

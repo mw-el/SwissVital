@@ -1,0 +1,90 @@
+{
+    "id": "form-holistic-survey",
+    "title": "Ganzheitliche Vorsorge-Fragebogen",
+    "form_type": "holistic-survey",
+    "steps": [
+      "common/fragebogen_step_one_personal_info_de",
+      {
+        "id": "step2",
+        "title": "Schritt 2 von 3: Allgemeine Vorsorge",
+        "fields": [
+          {
+            "name": "interest_reasons[]",
+            "type": "checkbox",
+            "label": "Warum interessieren Sie sich für eine Vorsorgeuntersuchung? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Generelle Gesundheitsvorsorge", "label": "Generelle Gesundheitsvorsorge"},
+              {"value": "Früherkennung von Erkrankungen", "label": "Früherkennung von Erkrankungen"},
+              {"value": "Verbesserung des Wohlbefindens", "label": "Verbesserung des Wohlbefindens"},
+              {"value": "Sicherheit für die Zukunft", "label": "Sicherheit für die Zukunft"},
+              {"value": "Keine besondere Motivation", "label": "Keine besondere Motivation"}
+            ]
+          },
+          {
+            "name": "health_complaints",
+            "type": "radio",
+            "label": "Haben Sie gesundheitliche Beschwerden?",
+            "options": [
+              {"value": "Ja", "label": "Ja"},
+              {"value": "Nein", "label": "Nein"},
+              {"value": "Unsicher", "label": "Unsicher"}
+            ]
+          },
+          {
+            "name": "complaint_details",
+            "type": "text",
+            "label": "Welche Beschwerden",
+            "required": false,
+            "placeholder": "Welche Beschwerden",
+            "conditional": {
+              "field": "health_complaints",
+              "value": "Ja"
+            }
+          },
+          {
+            "name": "checkup_frequency",
+            "type": "radio",
+            "label": "Wie oft lassen Sie sich medizinisch durchchecken?",
+            "options": [
+              {"value": "Jährlich", "label": "Jährlich"},
+              {"value": "Alle paar Jahre", "label": "Alle paar Jahre"},
+              {"value": "Nur bei Beschwerden", "label": "Nur bei Beschwerden"},
+              {"value": "Noch nie", "label": "Noch nie"}
+            ]
+          },
+          {
+            "name": "known_risks[]",
+            "type": "checkbox",
+            "label": "Gibt es bekannte Risiken oder bestehende Erkrankungen? (Mehrfachauswahl möglich)",
+            "options": [
+              {"value": "Herz-Kreislauf-Erkrankungen", "label": "Herz-Kreislauf-Erkrankungen"},
+              {"value": "Stoffwechselerkrankungen", "label": "Stoffwechselerkrankungen"},
+              {"value": "Chronische Erkrankungen", "label": "Chronische Erkrankungen"},
+              {"value": "Krebserkrankungen in der Vorgeschichte", "label": "Krebserkrankungen in der Vorgeschichte"},
+              {"value": "Andere", "label": "Andere"},
+              {"value": "Keine bekannten Erkrankungen oder Risikofaktoren", "label": "Keine bekannten Erkrankungen oder Risikofaktoren"}
+            ]
+          },
+          {
+            "name": "other_risk",
+            "type": "text",
+            "label": "Andere Risiken oder Erkrankungen",
+            "required": false,
+            "placeholder": "Andere Risiken oder Erkrankungen",
+            "conditional": {
+              "field": "known_risks[]",
+              "value": "Andere"
+            }
+          },
+          {
+            "name": "freitext",
+            "type": "textarea",
+            "label": "Freitext – Was möchten Sie uns sonst noch mitteilen?",
+            "required": false,
+            "height": 150
+          }
+        ]
+      },
+      "common/fragebogen_step_three_contact_and_submit_de"
+    ]
+  }

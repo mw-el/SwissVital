@@ -1,0 +1,201 @@
+<nav class="navbar navbar-light fixed-top py-3" id="mainNav">
+  <div class="container px-4 px-lg-5">
+    <div class="d-flex align-items-center justify-content-between flex-nowrap w-100">
+      <div class="navbar-brand">
+        <a href="{{ "/" | relLangURL }}">
+          <img class="logo-img" src="/img/logo/swiss-vital-logo-2.svg" alt="Swiss Vital Logo">
+        </a>
+      </div>
+      <div>
+        <a class="sv-nav-button" href="#termin-buchen">{{ .Site.Params.termin }}</a>
+      </div>
+      <div class="language-switcher d-flex align-items-center justify-content-end">
+        <div class="sv-language-dropdown">
+          {{ if eq $.Page.Language.Lang "de" }}
+            <span class="material-icons sv-language-icon shadow" style="color: var(--sv-royalblue);">language</span>
+          {{ else }}
+            <span class="sv-active-language shadow">{{ $.Page.Language.Lang | upper }}</span>
+          {{ end }}
+          <div class="sv-language-dropdown-content">
+            {{/* For each language in the site config (de, en, fr, it, etc.) */}}
+            {{ range $.Site.Home.AllTranslations }}
+              {{ $isCurrentLang := eq $.Page.Language.Lang .Language.Lang }}
+              {{ $translation := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
+
+              {{/* If this language is already active, or if we actually have a translation, link there. */}}
+              {{ if $translation }}
+                <a href="{{ $translation.Permalink }}" 
+                   class="sv-language-option {{ if $isCurrentLang }}active{{ end }}" 
+                   title="{{ .Language.LanguageName }}">
+                  {{ .Language.Lang | upper }}
+                </a>
+              {{ else if eq .Language.Lang "de" }}
+                {{/* If the target language is German but somehow not found, just link to the current page. */}}
+                <a href="{{ $.Page.Permalink }}" 
+                   class="sv-language-option {{ if $isCurrentLang }}active{{ end }}" 
+                   title="{{ .Language.LanguageName }}">
+                  {{ .Language.Lang | upper }}
+                </a>
+              {{ else }}
+                {{/* Fallback to the German version of the *current* page if no direct translation exists. */}}
+                {{ $germanPage := index (where $.Page.Translations "Language.Lang" "de") 0 }}
+                {{ if $germanPage }}
+                  <a href="{{ $germanPage.Permalink }}"
+                     class="sv-language-option"
+                     title="{{ .Language.LanguageName }}">
+                    {{ .Language.Lang | upper }}
+                  </a>
+                {{ else }}
+                  {{/* If for some reason we don't even find a German page, link to the German homepage. */}}
+                  <a href="{{ $.Site.Home.Permalink }}"
+                     class="sv-language-option"
+                     title="{{ .Language.LanguageName }}">
+                    {{ .Language.Lang | upper }}
+                  </a>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .logo-img {
+      height: 50px;
+      transition: height 0.3s ease;
+    }
+    @media (max-width: 576px) {
+      .logo-img {
+        height: 35px;
+      }
+    }
+    
+    /* Language dropdown styling */
+    .sv-language-dropdown {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      
+      padding-bottom: 20px; /* Extended padding to keep dropdown visible */
+    }
+    
+    .sv-language-icon {
+      color: var(--sv-royalblue);
+      font-size: 30px!important;
+      margin-top: 2rem;
+      transition: transform 0.3s ease;
+      box-shadow: none!important;
+    }
+
+
+
+    
+    .sv-active-language {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid var(--sv-royalblue);
+      color: var(--sv-royalblue);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+      padding-top: 3px;
+  }
+
+    .sv-language-dropdown-content {
+      display: none;
+      position: absolute;
+      right: -10px; /* Adjust position to be centered better */
+      top: 100%;
+      background-color: var(--sv-offwhite-lighter);
+      min-width: 80px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 0.5rem 0;
+      z-index: 1000;
+      margin-top: -15px; /* Reduced gap */
+    }
+    
+    /* Add a pseudo element to bridge the gap */
+    .sv-language-dropdown:after {
+      content: '';
+      display: block;
+      height: 20px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+    
+    .sv-language-dropdown:hover .sv-language-dropdown-content {
+      display: block;
+    }
+    
+    .sv-language-dropdown:hover .sv-language-icon {
+      transform: scale(1.1);
+    }
+    
+    .sv-language-option {
+      display: block;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: var(--sv-royalblue);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    
+    .sv-language-option:hover {
+      background-color: rgba(0, 48, 135, 0.1);
+      color: var(--sv-royalblue-dark);
+    }
+    
+    .sv-language-option.active {
+      font-weight: 700;
+      color: var(--sv-royalblue-darker);
+      background-color: rgba(0, 48, 135, 0.05);
+    }
+    
+    .sv-nav-button {
+      font-size: clamp(0.7rem, 1.2vw, 1rem);
+      padding: clamp(0.3rem, 0.6vw, 0.6rem) clamp(1rem, 2vw, 2rem);
+      border-radius: 2rem;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.35);
+      background-color: var(--sv-royalblue);
+      margin-top: -1px;
+      transition: all 0.3s ease;
+      color: var(--sv-offwhite);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .sv-nav-button:hover {
+      box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.25);
+    }
+
+    #mainNav .container.px-4.px-lg-5 {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    #mainNav {
+      background-color: var(--sv-offwhite-lighter) !important;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+
+    @media (min-width: 992px) {
+      #mainNav {
+        background-color: var(--sv-offwhite-lighter) !important;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+      }
+    }
+  </style>
+</nav>

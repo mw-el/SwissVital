@@ -1,8 +1,8 @@
 ---
 type: "pages"
 layout: "list"
-title: "Chronische Erkrankungen"
-url: "/de/chronische-erkrankungen"
+title: "Familiäre Vorbelastung"
+url: "/de/familiaere-vorbelastung"
 automatic_translate: "no"
 partial: "full-bg.html"
 ---
