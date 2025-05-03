@@ -3,6 +3,8 @@ date: "2025-01-25"
 fullimage: "img/standorte/_basel.webp"
 image: "img/standorte/basel.webp"
 title: "Basel"
+weight: "3
+"
 ---
 
 In Basel werden die Untersuchungen bei unserem Partner durchgeführt. 

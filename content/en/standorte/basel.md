@@ -2,7 +2,8 @@
 date: "2025-01-25"
 fullimage: "img/standorte/_basel.webp"
 image: "img/standorte/basel.webp"
-title: ""
+title: "Basel"
+weight: "3"
 ---
 
 The investigations are carried out by our partner in Basel.

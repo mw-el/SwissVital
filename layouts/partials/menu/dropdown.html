@@ -1,0 +1,50 @@
+{{/* universelles Dropdown-Partial
+     .Key = "special" | "legal" | "lang" */}}
+
+     {{ $lang  := .Site.Language.Lang }}
+     {{ $data  := site.Data.menus.main }}
+     {{ $block := index $data .Key }}
+     
+     {{ if eq .Key "lang" }}
+       <!-- Sprachumschalter -->
+       <div class="sv-language-dropdown">
+         <span class="material-icons sv-icon">{{ $block.icon }}</span>
+     
+         <div class="sv-language-dropdown-content">
+           {{ range $.Site.Home.AllTranslations }}
+             {{ $code  := .Language.Lang }}
+     
+             {{/* passendes Item aus JSON */}}
+             {{ $item  := index (where $block.items "code" $code) 0 }}
+             {{ $label := index $item (printf "label_%s" $lang) }}
+             {{ $active := eq $code $lang }}
+     
+             {{/* Zielseite (falls Translation fehlt → Homepage) */}}
+             {{ $translations := .Page.Translations | default (slice) }}
+             {{ $destSlice := where $translations "Language.Lang" $code }}
+             {{ $dest := cond (gt (len $destSlice) 0) (index $destSlice 0) $.Site.Home }}
+     
+             <a href="{{ $dest.Permalink }}" class="{{ if $active }}active{{ end }}">{{ $label }}</a>
+           {{ end }}
+         </div>
+       </div>
+     
+     {{ else }}
+       <!-- Spezial- oder Legal-Dropdown -->
+       <div class="sv-{{ .Key }}-dropdown me-3">
+         <span class="material-icons sv-icon {{ $block.extra }}">{{ $block.icon }}</span>
+     
+         {{ $hdr := index (index $block.items 0) (printf "label_%s" $lang) | upper }}
+     
+         <div class="sv-{{ .Key }}-dropdown-content">
+           <div class="sv-dropdown-header">{{ $hdr }}</div>
+     
+           {{ range $block.items }}
+             {{ $url   := printf "url_%s"   $lang | index . | relLangURL }}
+             {{ $label := printf "label_%s" $lang | index . }}
+             <a href="{{ $url }}">{{ $label }}</a>
+           {{ end }}
+         </div>
+       </div>
+     {{ end }}
+     

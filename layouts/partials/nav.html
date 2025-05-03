@@ -1,3 +1,22 @@
+{{/* 
+  layouts/partials/nav.html
+
+  This navigation template gets its links from the site's menu YAML configuration file
+  located at: data/menus/main.yaml
+  
+  The YAML file contains "links", "headers", and "header" sections that define the navigation.
+  - Links: Individual menu items with URLs and labels in both languages
+  - Headers: Section titles in both languages
+  - Header: Controls the grouping and ordering of links in dropdown menus
+  
+  The navigation includes dropdown menus for:
+    1. Specializations (with links to specialized services)
+    2. Good to Know (with links to about us, legal information, etc.)
+    3. Language selection
+  
+  The ordering of links is taken from the YAML file, ensuring consistency
+  across the site and allowing for easy updates without template changes.
+*/}}
 <nav class="navbar navbar-light fixed-top py-3" id="mainNav">
   <div class="container px-4 px-lg-5">
     <div class="d-flex align-items-center justify-content-between flex-nowrap w-100">
@@ -19,47 +38,65 @@
 
         <!-- SPEZIALISIERUNGEN --------------------------------------------->
         <div class="sv-special-dropdown me-3">
+          {{ $currentLang := .Site.Language.Lang }}
+          {{ $headers := .Site.Data.menus.main.headers }}
+          {{ $links := .Site.Data.menus.main.links }}
+          {{ $header := .Site.Data.menus.main.header }}
+          
           <span class="material-icons sv-icon"
-                aria-label='{{ if eq .Site.Language.Lang "de" }}Spezialisierungen{{ else }}Specializations{{ end }}'>
+                aria-label='{{ if eq $currentLang "de" }}{{ $headers.specializations.label_de }}{{ else }}{{ $headers.specializations.label_en }}{{ end }}'>
             alt_route
           </span>
 
           <div class="sv-special-dropdown-content">
             <div class="sv-dropdown-header">
-              {{ if eq .Site.Language.Lang "de" }}SPEZIALISIERUNGEN{{ else }}SPECIALIZATIONS{{ end }}
+              {{ if eq $currentLang "de" }}{{ $headers.specializations.label_de }}{{ else }}{{ $headers.specializations.label_en }}{{ end }}
             </div>
 
-            <a href="{{ "/familiaere-vorbelastung/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Familiäre Vorbelastung{{ else }}Family history{{ end }}</a>
-            <a href="{{ "/sportler/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Sport / physische Belastung{{ else }}Sports / physical strain{{ end }}</a>
-            <a href="{{ "/chronische-erkrankungen/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Chronische Beschwerden{{ else }}Chronic conditions{{ end }}</a>
-            <a href="{{ "/stress/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Stress{{ else }}Stress{{ end }}</a>
-            <a href="{{ "/breite-vorsorge/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Breite Vorsorge{{ else }}Comprehensive prevention{{ end }}</a>
-            <a href="{{ "/individuelle-vorsorge/" | relLangURL }}">{{ if eq .Site.Language.Lang "de" }}Individuelle Vorsorge{{ else }}Tailored prevention{{ end }}</a>
+            <!-- Use ordered list from header section -->
+            {{ range $header }}
+              {{ if eq .icon "icon-special" }}
+                {{ range .refs }}
+                  {{ $key := . }}
+                  {{ $val := index $links $key }}
+                  <a href="{{ if eq $currentLang "de" }}{{ $val.url_de }}{{ else }}{{ $val.url_en }}{{ end }}">
+                    {{ if eq $currentLang "de" }}{{ $val.label_de }}{{ else }}{{ $val.label_en }}{{ end }}
+                  </a>
+                {{ end }}
+              {{ end }}
+            {{ end }}
           </div>
         </div>
 
         <!-- GUT ZU WISSEN -------------------------------------------------->
         <div class="sv-legal-dropdown me-3">
+          {{ $currentLang := .Site.Language.Lang }}
+          {{ $headers := .Site.Data.menus.main.headers }}
+          {{ $links := .Site.Data.menus.main.links }}
+          {{ $header := .Site.Data.menus.main.header }}
+          
           <span class="material-icons-outlined sv-icon sv-icon-bigger"
-                aria-label='{{ if eq .Site.Language.Lang "de" }}Gut zu wissen{{ else }}Good to know{{ end }}'>
+                aria-label='{{ if eq $currentLang "de" }}{{ $headers.good_to_know.label_de }}{{ else }}{{ $headers.good_to_know.label_en }}{{ end }}'>
             psychology
           </span>
 
-   
           <div class="sv-legal-dropdown-content">
             <div class="sv-dropdown-header">
-              {{ if eq .Site.Language.Lang "de" }}GUT ZU WISSEN{{ else }}GOOD TO KNOW{{ end }}
+              {{ if eq $currentLang "de" }}{{ $headers.good_to_know.label_de }}{{ else }}{{ $headers.good_to_know.label_en }}{{ end }}
             </div>
 
-            {{ if eq .Site.Language.Lang "de" }}
-              <a href="{{ "/ueber-uns/" | relLangURL }}">Über&nbsp;uns</a>
-            {{ else }}
-              <a href="{{ "/about-us/" | relLangURL }}">About&nbsp;us</a>
+            <!-- Use ordered list from header section -->
+            {{ range $header }}
+              {{ if eq .icon "icon-info" }}
+                {{ range .refs }}
+                  {{ $key := . }}
+                  {{ $val := index $links $key }}
+                  <a href="{{ if eq $currentLang "de" }}{{ $val.url_de }}{{ else }}{{ $val.url_en }}{{ end }}">
+                    {{ if eq $currentLang "de" }}{{ $val.label_de }}{{ else }}{{ $val.label_en }}{{ end }}
+                  </a>
+                {{ end }}
+              {{ end }}
             {{ end }}
-
-            <a href="{{ "/agb/"       | relLangURL }}">{{ .Site.Params.agb        }}</a>
-            <a href="{{ "/privacy/"   | relLangURL }}">{{ .Site.Params.datenschutz }}</a>
-            <a href="{{ "/impressum/" | relLangURL }}">{{ .Site.Params.impressum  }}</a>
           </div>
         </div>
 
@@ -68,21 +105,9 @@
           <span class="material-icons sv-icon" aria-label="Sprachauswahl">language</span>
 
           <div class="sv-language-dropdown-content">
-            {{ range $.Site.Home.AllTranslations }}
-              {{ $active := eq $.Page.Language.Lang .Language.Lang }}
-              {{ $t := index (where $.Page.Translations "Language.Lang" .Language.Lang) 0 }}
-              {{ if $t }}
-                <a href="{{ $t.Permalink }}" class="{{ if $active }}active{{ end }}">{{ .Language.Lang | upper }}</a>
-              {{ else if eq .Language.Lang "de" }}
-                <a href="{{ $.Page.Permalink }}" class="{{ if $active }}active{{ end }}">{{ .Language.Lang | upper }}</a>
-              {{ else }}
-                {{ $dePage := index (where $.Page.Translations "Language.Lang" "de") 0 }}
-                {{ if $dePage }}
-                  <a href="{{ $dePage.Permalink }}">{{ .Language.Lang | upper }}</a>
-                {{ else }}
-                  <a href="{{ $.Site.Home.Permalink }}">{{ .Language.Lang | upper }}</a>
-                {{ end }}
-              {{ end }}
+            {{ range .Site.Data.menus.main.languages }}
+              {{ $active := eq $.Site.Language.Lang .code }}
+              <a href="{{ .url_prefix }}" class="{{ if $active }}active{{ end }}">{{ .label }}</a>
             {{ end }}
           </div>
         </div>
@@ -90,96 +115,4 @@
       </div><!-- /Icon-Gruppe -->
     </div>
   </div>
-
-  <style>
-    /* Logo */
-    .logo-img{height:50px;transition:height .3s ease}
-    @media(max-width:576px){.logo-img{height:35px}}
-
-    /* Icons (Material Icons) */
-    .sv-icon{
-      font-size:30px!important;
-      color:var(--sv-royalblue);
-      cursor:pointer;
-      transition:transform .3s ease;
-    }
-
-    /* Dropdown-Basis ------------------------------------------------------*/
-    .sv-special-dropdown,
-    .sv-legal-dropdown,
-    .sv-language-dropdown{position:relative;display:inline-block}
-
-    .sv-special-dropdown-content,
-    .sv-legal-dropdown-content,
-    .sv-language-dropdown-content{
-      display:none;position:absolute;top:100%;background:var(--sv-offwhite-lighter);
-      box-shadow:0 8px 16px rgba(0,0,0,.2);border-radius:8px;padding:.5rem 0;z-index:1000
-    }
-    .sv-special-dropdown-content,
-    .sv-legal-dropdown-content{left:50%;transform:translateX(-50%);min-width:280px;white-space:nowrap}
-    .sv-language-dropdown-content{right:-10px;min-width:80px;text-align:center}
-
-    .sv-special-dropdown:hover .sv-special-dropdown-content,
-    .sv-legal-dropdown:hover   .sv-legal-dropdown-content,
-    .sv-language-dropdown:hover .sv-language-dropdown-content{display:block}
-
-    .sv-special-dropdown:hover .sv-icon,
-    .sv-legal-dropdown:hover   .sv-icon,
-    .sv-language-dropdown:hover .sv-icon{transform:scale(1.1)}
-
-    /* Header + Einträge --------------------------------------------------*/
-    .sv-dropdown-header{
-      background:rgba(0,48,135,.1);
-      color:var(--sv-royalblue);
-      font-weight:700;text-transform:uppercase;
-      text-align:left;padding:.4rem 1rem;
-      border-bottom:1px solid rgba(0,48,135,.15);pointer-events:none
-    }
-    .sv-special-dropdown-content a,
-    .sv-legal-dropdown-content  a{
-      display:block;padding:.5rem 1rem;font-weight:600;text-decoration:none;
-      color:var(--sv-royalblue);text-align:left;
-      transition:background .2s ease;border-top:1px solid rgba(0,48,135,.1)
-    }
-    .sv-special-dropdown-content a:first-of-type,
-    .sv-legal-dropdown-content  a:first-of-type{border-top:none}
-    .sv-special-dropdown-content a:hover,
-    .sv-legal-dropdown-content  a:hover{background:rgba(0,48,135,.1)}
-
-    /* Sprach-Dropdown-Einträge */
-    .sv-language-dropdown-content a{
-      display:block;padding:.5rem 1rem;font-weight:600;text-decoration:none;
-      color:var(--sv-royalblue);transition:background .2s ease;border-top:1px solid rgba(0,48,135,.1)
-    }
-    .sv-language-dropdown-content a:first-of-type{border-top:none}
-    .sv-language-dropdown-content a:hover{background:rgba(0,48,135,.05)}
-    .sv-language-dropdown-content a.active{background:rgba(0,48,135,.1)}
-
-    /* Termin-Button */
-    .sv-nav-button{
-      font-size:clamp(.7rem,1.2vw,1rem);
-      padding:clamp(.3rem,.6vw,.6rem) clamp(1rem,2vw,2rem);
-      border-radius:2rem;font-weight:600;text-transform:uppercase;
-      text-decoration:none;color:var(--sv-offwhite);background:var(--sv-royalblue);
-      box-shadow:0 .5rem 1rem rgba(0,0,0,.35);transition:box-shadow .3s ease
-    }
-    .sv-nav-button:hover{box-shadow:0 .8rem 1.5rem rgba(0,0,0,.25)}
-
-
-    /* icon */
-  
-    .sv-icon-bigger { font-size: 34px !important; }   /* tweak if needed */
-
-
-    /* Navbar-Hintergrund */
-  
-
-    #mainNav{
-      background:var(--sv-offwhite-lighter)!important;
-      box-shadow:0 .5rem 1rem rgba(0,0,0,.15)!important
-    }
-    #mainNav .container.px-4.px-lg-5{
-      padding-left:1rem!important;padding-right:1rem!important
-    }
-  </style>
 </nav>

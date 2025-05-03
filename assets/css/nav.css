@@ -1,0 +1,251 @@
+/* =====================================================================
+   nav.css  –  Styling für Top-Navigation UND Footer
+   ---------------------------------------------------------------------
+   • SECTION 1: # MAIN NAVIGATION – alle Regeln für die Kopfzeile
+   • SECTION 2: # FOOTER        – Farben, Abstände, Link-Stile
+   =====================================================================*/
+
+
+/* =====================================================================
+   SECTION 1 – MAIN NAVIGATION
+   =====================================================================*/
+
+/* Container ----------------------------------------------------------*/
+#mainNav {
+  background: var(--sv-offwhite-lighter) !important;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+#mainNav .container.px-4.px-lg-5 {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/* Logo ---------------------------------------------------------------*/
+.logo-img {
+  height: 60px;
+  transition: height .3s ease;
+}
+
+@media(max-width: 576px) {
+  .logo-img {
+    height: 40px;
+  }
+}
+
+/* Termin-Button ------------------------------------------------------*/
+.sv-nav-button {
+  font-size: clamp(.7rem, 1.2vw, 1rem);
+  padding: clamp(.3rem, .6vw, .6rem) clamp(1rem, 2vw, 2rem);
+  border-radius: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--sv-offwhite);
+  background: var(--sv-royalblue);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.35);
+  transition: box-shadow .3s ease;
+}
+
+.sv-nav-button:hover {
+  box-shadow: 0 .8rem 1.5rem rgba(0,0,0,.25);
+}
+
+/* Icons (Material) ---------------------------------------------------*/
+.sv-icon {
+  font-size: 30px !important;
+  color: var(--sv-royalblue);
+  cursor: pointer;
+  transition: transform .3s ease;
+}
+
+.sv-icon-bigger {
+  font-size: 33px !important;
+}
+
+/* Dropdown-Container -------------------------------------------------*/
+.sv-special-dropdown,
+.sv-legal-dropdown,
+.sv-language-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.sv-special-dropdown-content,
+.sv-legal-dropdown-content,
+.sv-language-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background: var(--sv-offwhite-lighter);
+  box-shadow: 0 8px 16px rgba(0,0,0,.2);
+  border-radius: 8px;
+  padding: .5rem 0;
+  z-index: 1000;
+}
+
+.sv-special-dropdown-content,
+.sv-legal-dropdown-content {
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 280px;
+  white-space: nowrap;
+}
+
+.sv-language-dropdown-content {
+  right: -10px;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Hover / Focus ------------------------------------------------------*/
+.sv-special-dropdown:hover .sv-special-dropdown-content,
+.sv-legal-dropdown:hover .sv-legal-dropdown-content,
+.sv-language-dropdown:hover .sv-language-dropdown-content {
+  display: block;
+}
+
+.sv-special-dropdown:hover .sv-icon,
+.sv-legal-dropdown:hover .sv-icon,
+.sv-language-dropdown:hover .sv-icon {
+  transform: scale(1.1);
+}
+
+/* Dropdown-Header ----------------------------------------------------*/
+.sv-dropdown-header {
+  background: rgba(0,48,135,.1);
+  color: var(--sv-royalblue);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: left;
+  padding: .4rem 1rem;
+  border-bottom: 1px solid rgba(0,48,135,.15);
+  pointer-events: none;
+}
+
+/* Dropdown-Links -----------------------------------------------------*/
+.sv-special-dropdown-content a,
+.sv-legal-dropdown-content a {
+  display: block;
+  padding: .5rem 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--sv-royalblue);
+  text-align: left;
+  transition: background .2s ease;
+  border-top: 1px solid rgba(0,48,135,.1);
+}
+
+.sv-special-dropdown-content a:first-of-type,
+.sv-legal-dropdown-content a:first-of-type {
+  border-top: none;
+}
+
+.sv-special-dropdown-content a:hover,
+.sv-legal-dropdown-content a:hover {
+  background: rgba(0,48,135,.1);
+}
+
+/* Language-Links -----------------------------------------------------*/
+.sv-language-dropdown-content a {
+  display: block;
+  padding: .5rem 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--sv-royalblue);
+  transition: background .2s ease;
+  border-top: 1px solid rgba(0,48,135,.1);
+}
+
+.sv-language-dropdown-content a:first-of-type {
+  border-top: none;
+}
+
+.sv-language-dropdown-content a:hover {
+  background: rgba(0,48,135,.05);
+}
+
+.sv-language-dropdown-content a.active {
+  background: rgba(0,48,135,.1);
+}
+
+
+/* =====================================================================
+   SECTION 2 – FOOTER
+   =====================================================================*/
+
+/* Footer-Grundlayout -----------------------------------------------*/
+footer {
+  background: #222;
+  color: var(--sv-offwhite);
+  padding: 3rem 0;
+  width: 100%;
+}
+
+/* Footer-Titel -------------------------------------------------------*/
+footer .footer-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+}
+
+/* Footer-Linkspalten -------------------------------------------------*/
+footer a {
+  color: var(--sv-offwhite);
+  text-decoration: none;
+  transition: opacity .2s ease;
+}
+
+footer a:hover {
+  opacity: .75;
+}
+
+/* Footer-Linklisten --------------------------------------------------*/
+footer .footer-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer-list li {
+  margin: .3rem 0;
+}
+
+/* Footer-Logo --------------------------------------------------------*/
+.footer-logo {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  display: block;
+  width: 100%;
+}
+
+.footer-logo img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  float: left;
+}
+
+footer .col-md-3 {
+  text-align: left;
+}
+
+/* Copyright / Bottom-Bar --------------------------------------------*/
+.footer-bottom {
+  background: #555;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  font-size: .85rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+
+/* Responsive Anpassungen --------------------------------------------*/
+@media (max-width: 768px) {
+  footer .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

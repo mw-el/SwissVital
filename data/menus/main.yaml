@@ -1,0 +1,165 @@
+# ==========================================================
+# SWISS VITAL MENU CONFIGURATION
+# ==========================================================
+# This YAML file serves as the central configuration for all navigation elements 
+# across the Swiss Vital website, including the main navigation dropdowns and footer.
+#
+# The structure allows for consistent link definitions in a single location,
+# supporting both German and English versions of the site while maintaining
+# the same URL structure (only language prefix changes).
+#
+# This configuration enables:
+# - Centralized management of all website navigation
+# - Proper multilingual support
+# - Control over the order and grouping of links
+# - Simple addition of new links without template changes
+# ==========================================================
+
+# ==========================================================
+# SECTION HEADERS
+# ==========================================================
+# These define the titles used in navigation dropdowns and footer columns.
+# Each section has a German and English title version.
+# ==========================================================
+headers:
+  specializations:
+    label_de: "SPEZIALISIERUNGEN"
+    label_en: "SPECIALIZATIONS"
+  locations:
+    label_de: "STANDORTE"
+    label_en: "LOCATIONS"
+  good_to_know:
+    label_de: "GUT ZU WISSEN"
+    label_en: "GOOD TO KNOW"
+
+# ==========================================================
+# CENTRAL LINK DEFINITIONS
+# ==========================================================
+# All site links are defined here with both language versions.
+# URL slugs remain identical across languages, only the prefix changes.
+# Each link has:
+#   - url_de: German URL path
+#   - url_en: English URL path (same slug, different prefix)
+#   - label_de: German display text
+#   - label_en: English display text
+# ==========================================================
+links:
+  # --- Specialization Links ---
+  familiaere-vorbelastung:
+    url_de: /de/familiaere-vorbelastung/
+    url_en: /en/familiaere-vorbelastung/
+    label_de: "Familiäre Vorbelastung"
+    label_en: "Family history"
+  sportler:
+    url_de: /de/sportler/
+    url_en: /en/sportler/
+    label_de: "Sport / physische Belastung"
+    label_en: "Sports / physical strain"
+  chronische-erkrankungen:
+    url_de: /de/chronische-erkrankungen/
+    url_en: /en/chronische-erkrankungen/
+    label_de: "Chronische Beschwerden"
+    label_en: "Chronic conditions"
+  stress:
+    url_de: /de/stress/
+    url_en: /en/stress/
+    label_de: "Stress"
+    label_en: "Stress"
+  breite-vorsorge:
+    url_de: /de/breite-vorsorge/
+    url_en: /en/breite-vorsorge/
+    label_de: "Breite Vorsorge"
+    label_en: "Comprehensive prevention"
+  individuelle-vorsorge:
+    url_de: /de/individuelle-vorsorge/
+    url_en: /en/individuelle-vorsorge/
+    label_de: "Individuelle Vorsorge"
+    label_en: "Tailored prevention"
+  
+  # --- About/Legal Links ---
+  ueber-uns:
+    url_de: /de/ueber-uns/
+    url_en: /en/ueber-uns/
+    label_de: "Über uns"
+    label_en: "About us"
+  agb:
+    url_de: /de/agb/
+    url_en: /en/agb/
+    label_de: "AGB"
+    label_en: "Terms & Conditions"
+  datenschutz:
+    url_de: /de/privacy/
+    url_en: /en/privacy/
+    label_de: "Datenschutzerklärung"
+    label_en: "Privacy"
+  impressum:
+    url_de: /de/impressum/
+    url_en: /en/impressum/
+    label_de: "Impressum"
+    label_en: "Imprint"
+  
+  # --- Location Links ---
+  basel:
+    url_de: /de/standorte/basel/
+    url_en: /en/standorte/basel/
+    label_de: "Basel"
+    label_en: "Basel"
+  bern:
+    url_de: /de/standorte/bern/
+    url_en: /en/standorte/bern/
+    label_de: "Bern"
+    label_en: "Bern"
+  genf:
+    url_de: /de/standorte/genf/
+    url_en: /en/standorte/genf/
+    label_de: "Genf"
+    label_en: "Genf"
+  zuerich:
+    url_de: /de/standorte/zuerich/
+    url_en: /en/standorte/zuerich/
+    label_de: "Zürich"
+    label_en: "Zurich"
+
+# ==========================================================
+# HEADER MENU CONFIGURATION
+# ==========================================================
+# This section defines the structure and ordering of the header navigation.
+# Each item in the list represents a dropdown menu in the navigation bar.
+# The 'refs' lists determine which links appear in each dropdown and in what order.
+# ==========================================================
+header:
+  # --- Good to Know Dropdown (About/Legal) ---
+  - icon: icon-info
+    refs:
+      - ueber-uns
+      - agb
+      - datenschutz
+      - impressum
+
+  # --- Specializations Dropdown ---
+  - icon: icon-special
+    refs:
+      - familiaere-vorbelastung
+      - sportler
+      - chronische-erkrankungen
+      - stress
+      - breite-vorsorge
+      - individuelle-vorsorge
+
+  # --- Language Switcher Dropdown ---
+  - type: languages
+    icon: icon-globe
+
+# ==========================================================
+# LANGUAGE OPTIONS
+# ==========================================================
+# Configures the available languages and their properties.
+# Used by the language switcher in the navigation.
+# ==========================================================
+languages:
+  - code: de
+    label: DE
+    url_prefix: /de/
+  - code: en
+    label: EN
+    url_prefix: /en/

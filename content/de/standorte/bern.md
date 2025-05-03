@@ -3,6 +3,7 @@ date: "2025-01-25"
 fullimage: "img/standorte/_bern.webp"
 image: "img/standorte/bern.webp"
 title: "Bern"
+weight: "2"
 ---
 
 In Bern werden die Untersuchungen bei MRI-Bern durchgeführt. 

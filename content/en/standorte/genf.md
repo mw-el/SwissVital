@@ -3,6 +3,7 @@ date: 2025-01-25
 fullimage: img/standorte/_genf.webp
 image: img/standorte/genf.webp
 title: "Geneva"
+weight: "4"
 ---
 
 The investigations are carried out by our partner in Geneva.

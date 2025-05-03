@@ -1,65 +1,118 @@
-<!-- Footer -->
-<footer class="bg-dark text-light text-lg-start">
-  <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between border-bottom" style="border-color: rgba(255, 255, 255, 0.1);">
-  </section>
+{{/* 
+  layouts/partials/footer.html
 
+  This footer template gets its links from the site's menu YAML configuration file
+  located at: data/menus/main.yaml
+  
+  The YAML file contains section configurations including ordered lists of links,
+  allowing complete control over both which links appear and in what order.
+  
+  The footer is organized into four columns:
+    1. Company Information & Contact
+    2. Specializations 
+    3. Locations
+    4. Legal/Good to Know
+*/}}
+<footer>
   <!-- Section: Links -->
-  <section class="bg-dark">
-    <div class="container text-md-start mt-5">
-      <!-- Grid row -->
-      <div class="row mt-3 text-md-start">
-        <!-- Company Info -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-start">
+  <section class="footer-content">
+    <div class="container">
+      <div class="row">
+
+        {{ $currentLang := .Site.Language.Lang }}
+        {{ $links := .Site.Data.menus.main.links }}
+        {{ $headers := .Site.Data.menus.main.headers }}
+        {{ $header := .Site.Data.menus.main.header }}
+
+        <!-- Company Info & Address -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mb-4 text-start">
           <div class="mb-3">
             <img src="/img/logo/swiss-vital-logo-2-white.svg" alt="Swiss Vital Logo" style="height: 50px;margin-left: 0.3rem;">
           </div>
           <p class="text-uppercase fw-bold mb-4">Metarad AG</p>
           <p>
-          <a href="mailto:info@swiss-vital.ch" class="text-light">service@swiss-vital.ch</a>
+          <a href="mailto:service@swiss-vital.ch" class="text-light">service@swiss-vital.ch</a>
           </p>
         </div>
 
-        <!-- Locations -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-start">
-          <p class="text-uppercase fw-bold mb-4">{{ .Site.Params.standorte }}</p>
-          {{ range where .Site.RegularPages "Section" "standorte" }}
-            <p><a href="{{ .RelPermalink }}" class="text-light">{{ .Title }}</a></p>
-          {{ end }}
+        <!-- Spezialisierungen -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mb-4">
+          <p class="footer-title">{{ if eq $currentLang "de" }}{{ $headers.specializations.label_de }}{{ else }}{{ $headers.specializations.label_en }}{{ end }}</p>
+          
+          <ul class="footer-list">
+            <!-- Use the order defined in the header section for specializations -->
+            {{ range $header }}
+              {{ if eq .icon "icon-special" }}
+                {{ range .refs }}
+                  {{ $key := . }}
+                  {{ $val := index $links $key }}
+                  <li>
+                    <a href="{{ if eq $currentLang "de" }}{{ $val.url_de }}{{ else }}{{ $val.url_en }}{{ end }}">
+                      {{ if eq $currentLang "de" }}{{ $val.label_de }}{{ else }}{{ $val.label_en }}{{ end }}
+                    </a>
+                  </li>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </ul>
         </div>
 
-        <!-- Links -->
-         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-start">
-          <p class="text-uppercase fw-bold mb-4">{{ .Site.Params.rechtliches }}</p>
-            <p><a href="/de/agb" class="text-light">{{ .Site.Params.agb }}</a></p>
-            <p><a href="/de/privacy" class="text-light">{{ .Site.Params.datenschutz }}</a></p>
-            <p><a href="/de/impressum" class="text-light">{{ .Site.Params.impressum }}</a></p>
+        <!-- Standorte -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mb-4">
+          <p class="footer-title">{{ if eq $currentLang "de" }}{{ $headers.locations.label_de }}{{ else }}{{ $headers.locations.label_en }}{{ end }}</p>
+          
+          <ul class="footer-list">
+            <!-- For locations, we'll use a predefined list since they're not in the header -->
+            {{ $locationKeys := slice "basel" "bern" "genf" "zuerich" }}
+            {{ range $locationKeys }}
+              {{ $key := . }}
+              {{ $val := index $links $key }}
+              <li>
+                <a href="{{ if eq $currentLang "de" }}{{ $val.url_de }}{{ else }}{{ $val.url_en }}{{ end }}">
+                  {{ if eq $currentLang "de" }}{{ $val.label_de }}{{ else }}{{ $val.label_en }}{{ end }}
+                </a>
+              </li>
+            {{ end }}
+          </ul>
         </div>
 
-        <!-- Untersuchungen -->
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-start">
-          <p class="text-uppercase fw-bold mb-4">{{ .Site.Params.untersuchungen }}</p>
-          {{ range where .Site.RegularPages "Section" "untersuchungen" }}
-          {{ $key := .File.TranslationBaseName }}
-          {{ $label := index .Site.Params $key | default .Title }}
-          <p><a href="{{ .RelPermalink }}" class="text-light">{{ $label }}</a></p>
-        {{ end }}
-        
+        <!-- Gut zu wissen -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mb-4">
+          <p class="footer-title">{{ if eq $currentLang "de" }}{{ $headers.good_to_know.label_de }}{{ else }}{{ $headers.good_to_know.label_en }}{{ end }}</p>
+          
+          <ul class="footer-list">
+            <!-- Use the order defined in the header section for GUT ZU WISSEN -->
+            {{ range $header }}
+              {{ if eq .icon "icon-info" }}
+                {{ range .refs }}
+                  {{ $key := . }}
+                  {{ $val := index $links $key }}
+                  <li>
+                    <a href="{{ if eq $currentLang "de" }}{{ $val.url_de }}{{ else }}{{ $val.url_en }}{{ end }}">
+                      {{ if eq $currentLang "de" }}{{ $val.label_de }}{{ else }}{{ $val.label_en }}{{ end }}
+                    </a>
+                  </li>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </ul>
         </div>
+
       </div>
     </div>
   </section>
-  
-  <!-- Full-Width Copyright with Lighter Background -->
-  <div class="w-100 text-center p-4" style="background-color: rgba(255, 255, 255, 0.1);">
-    © 2025 Copyright:
-    <a class="text-light fw-bold" href="https://swiss-vital.ch/">Swiss Vital</a>
+
+  <!-- Bottom-Bar -->
+  <div class="footer-bottom">
+    <div class="container">
+      © 2025 Copyright: Swiss Vital
+    </div>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    new SimpleLightbox({elements: '.portfolio-box'});
+    new SimpleLightbox({ elements: '.portfolio-box' });
   });
 </script>

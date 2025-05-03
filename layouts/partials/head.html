@@ -52,4 +52,5 @@
 {{ $buttonStyles := resources.Get "css/sv-buttons.css" | resources.ExecuteAsTemplate "css/sv-buttons.css" . | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $buttonStyles.RelPermalink }}">
 
-
+{{ $navStyles := resources.Get "css/nav.css" | resources.ExecuteAsTemplate "css/nav.css" . | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $navStyles.RelPermalink }}">
